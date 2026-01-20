@@ -1,0 +1,6 @@
+.DS_Store
+.agent/
+.vscode/
+node_modules/
+dist/
+.vercel/

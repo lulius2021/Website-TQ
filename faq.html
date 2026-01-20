@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - TrainQ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">TrainQ</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="features.html" class="nav-link">Features</a>
+                <a href="faq.html" class="nav-link" style="color: var(--color-primary);">FAQ</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section text-center">
+            <div class="container" style="max-width: 800px;">
+                <h1 class="mb-4">Frequently Asked Questions</h1>
+                <p class="mb-8">Everything you need to know about the product and billing.</p>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: 0;">
+            <div class="container" style="max-width: 800px;">
+
+                <div class="card"
+                    style="padding: 0; overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+
+                    <div class="accordion-item" style="padding: 0 var(--space-6);">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            Is TrainQ available on iOS and Android?
+                            <span style="font-weight: 400; color: var(--color-text-muted);">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            TrainQ is currently iOS-first (iPhone and Watch). An Android version is in development and
+                            scheduled for late 2026.
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" style="padding: 0 var(--space-6);">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            Do I need special equipment?
+                            <span style="font-weight: 400; color: var(--color-text-muted);">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            No specialized gym equipment is needed. However, we strongly recommend a reliable heart-rate
+                            monitor (chest strap or arm band) for the best adaptive results.
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" style="padding: 0 var(--space-6);">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            How does adaptive training work?
+                            <span style="font-weight: 400; color: var(--color-text-muted);">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            We analyze your completed session data (Pace, HR, RPE) and compare it to the planned
+                            prescription. If you under/over-performed or missed a session, the engine recalculates the
+                            next 3-7 days to keep you on track without burnout.
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" style="padding: 0 var(--space-6);">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            What about data privacy?
+                            <span style="font-weight: 400; color: var(--color-text-muted);">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            Privacy is our core value. Your health data is processed locally on your device whenever
+                            possible. We do not sell your data to third parties or advertisers. See our <a
+                                href="privacy.html"
+                                style="color: var(--color-primary); text-decoration: underline;">Privacy Policy</a> for
+                            details.
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" style="padding: 0 var(--space-6); border-bottom: none;">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            Can I export my data?
+                            <span style="font-weight: 400; color: var(--color-text-muted);">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            Yes. You can export all your workout history in standard .FIT or .TCX formats at any time.
+                            It's your data.
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-title">TrainQ</div>
+                <p class="small-text mb-4">Professional adaptive training structure for serious athletes.</p>
+                <p class="small-text text-muted">&copy; 2026 TrainQ Inc.</p>
+            </div>
+            <div>
+                <div class="footer-title">Product</div>
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="features.html" class="footer-link">Features</a>
+                <a href="pricing.html" class="footer-link">Pricing</a>
+                <a href="faq.html" class="footer-link">FAQ</a>
+            </div>
+            <div>
+                <div class="footer-title">Company</div>
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Blog (Coming Soon)</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+            <div>
+                <div class="footer-title">Legal</div>
+                <a href="impressum.html" class="footer-link">Impressum</a>
+                <a href="privacy.html" class="footer-link">Datenschutz</a>
+                <a href="#" class="footer-link">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            const content = item.querySelector('.accordion-content');
+            const icon = button.querySelector('span');
+
+            // Simple toggle logic
+            if (item.classList.contains('active')) {
+                item.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                // Optional: Close others
+                // document.querySelectorAll('.accordion-item').forEach(i => {
+                //   i.classList.remove('active');
+                //   i.querySelector('button span').textContent = '+';
+                // });
+
+                item.classList.add('active');
+                icon.textContent = '−';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

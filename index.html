@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrainQ - Premium Training Quality</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <img src="images/logos/logo.png" alt="TrainQ"
+                    style="height: 32px; width: auto; vertical-align: middle;">
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="features.html" class="nav-link">Features</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="section">
+            <div class="container hero">
+                <div class="hero-content">
+                    <span class="badge">Public Beta Now Open</span>
+                    <h1>Train with data-driven clarity.</h1>
+                    <p>TrainQ adapts to your performance, providing the professional structure you need to progress.
+                        Built
+                        for athletes who demand precision.</p>
+                    <div class="hero-actions">
+                        <a href="#join" class="btn btn-primary">Get Early Access</a>
+                        <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="hero-mockup-wrapper">
+                    <video src="images/hero/hero-ambient-9x16.mp4" autoplay loop muted playsinline
+                        class="hero-mockup"></video>
+                    <div class="hero-glow"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof Strip -->
+        <section class="section-sm" style="border-bottom: 1px solid var(--color-border);">
+            <div class="container text-center">
+                <p class="small-text mb-4">BUILT FOR ATHLETES WHO WANT STRUCTURE</p>
+                <div class="grid-3" style="grid-template-columns: repeat(4, 1fr); gap: var(--space-4); opacity: 0.7;">
+                    <div class="text-center"><strong>iOS-First</strong> Design</div>
+                    <div class="text-center"><strong>Privacy-First</strong> Data</div>
+                    <div class="text-center"><strong>Adaptive</strong> Training</div>
+                    <div class="text-center"><strong>Garmin</strong> Ready</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Benefits -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center mb-8">
+                    <h2>Why TrainQ?</h2>
+                    <p>Progress without guesswork.</p>
+                </div>
+
+                <div class="grid-3">
+                    <div class="card">
+                        <div class="card-icon mb-4">🎯</div>
+                        <h3>Train with Clarity</h3>
+                        <p>Structure your sessions with professional-grade plans that eliminate confusion.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon mb-4">🔄</div>
+                        <h3>Adapt to your Day</h3>
+                        <p>Missed a session? Our adaptive guidance adjusts your plan automatically.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon mb-4">📈</div>
+                        <h3>Progress Insight</h3>
+                        <p>Visualize your improvement with clear, actionable metrics not just raw data.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how-it-works" class="section" style="background-color: var(--color-bg-subtle);">
+            <div class="container">
+                <h2 class="text-center mb-8">How it Works</h2>
+                <div class="grid-3">
+                    <div>
+                        <div class="text-h3 mb-2" style="color: var(--color-primary);">01</div>
+                        <h3>Choose your Goal</h3>
+                        <p>Select a plan template or define your custom goal parameters.</p>
+                    </div>
+                    <div>
+                        <div class="text-h3 mb-2" style="color: var(--color-primary);">02</div>
+                        <h3>Train Guided</h3>
+                        <p>Execute structured sessions with clear guidance on every interval.</p>
+                    </div>
+                    <div>
+                        <div class="text-h3 mb-2" style="color: var(--color-primary);">03</div>
+                        <h3>Review & Adapt</h3>
+                        <p>We analyze your performance and adapt the next session instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Highlight 1 -->
+        <section class="section">
+            <div class="container grid-2" style="align-items: center;">
+                <div>
+                    <span class="badge">Smart Analysis</span>
+                    <h2 class="mb-4">Training Clarity</h2>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="mb-2">✓ Automated workout structuring</li>
+                        <li class="mb-2">✓ Clear interval targets</li>
+                        <li class="mb-2">✓ Post-workout adherence scores</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="images/sections/Live Start.png" alt="Live Activity View" class="feature-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Highlight 2 (Alt Layout) -->
+        <section class="section">
+            <div class="container grid-2" style="align-items: center;">
+                <div style="order: 2; @media (min-width: 768px) { order: 1; }">
+                    <img src="images/sections/Kalender.png" alt="Training Calendar View" class="feature-img">
+                </div>
+                <div style="order: 1; @media (min-width: 768px) { order: 2; }">
+                    <span class="badge">Adaptive Engine</span>
+                    <h2 class="mb-4">Adapt to Life</h2>
+                    <p class="mb-4">Your schedule changes. Your training should too. TrainQ automatically shifts
+                        sessions when 'life happens'.</p>
+                    <a href="features.html" class="btn btn-secondary">Explore Features →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy Trust -->
+        <section class="section" style="background-color: var(--color-bg-subtle);">
+            <div class="container text-center" style="max-width: 800px;">
+                <h2 class="mb-4">Privacy-First by Default</h2>
+                <p class="mb-8">Your health data belongs to you. We don't sell it, share it, or exploit it.</p>
+                <div class="grid-3 text-center">
+                    <div>
+                        <h3>Local First</h3>
+                        <p class="small-text">Data processing happens on-device where possible.</p>
+                    </div>
+                    <div>
+                        <h3>Transparent</h3>
+                        <p class="small-text">Clear, plain-English privacy terms.</p>
+                    </div>
+                    <div>
+                        <h3>Control</h3>
+                        <p class="small-text">Export or delete your data anytime.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section id="join" class="section text-center">
+            <div class="container" style="max-width: 600px;">
+                <h2 class="mb-4">Start Training Smarter</h2>
+                <p class="mb-8">Join the waitlist to get early access and shape the future of adaptive training.</p>
+                <form class="input-group mb-4">
+                    <input type="email" class="input-field" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Join Waitlist</button>
+                </form>
+                <p class="small-text">No spam. Unsubscribe anytime.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-title">TrainQ</div>
+                <p class="small-text mb-4">Professional adaptive training structure for serious athletes.</p>
+                <p class="small-text text-muted">&copy; 2026 TrainQ Inc.</p>
+            </div>
+            <div>
+                <div class="footer-title">Product</div>
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="features.html" class="footer-link">Features</a>
+                <a href="pricing.html" class="footer-link">Pricing</a>
+                <a href="faq.html" class="footer-link">FAQ</a>
+            </div>
+            <div>
+                <div class="footer-title">Company</div>
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Blog (Coming Soon)</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+            <div>
+                <div class="footer-title">Legal</div>
+                <a href="impressum.html" class="footer-link">Impressum</a>
+                <a href="privacy.html" class="footer-link">Datenschutz</a>
+                <a href="#" class="footer-link">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
