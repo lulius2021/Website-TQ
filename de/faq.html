@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - TrainQ</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">TrainQ</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="features.html" class="nav-link">Features</a>
+                <a href="faq.html" class="nav-link" style="color: var(--color-primary);">FAQ</a>
+                <a href="pricing.html" class="nav-link">Preise</a>
+                <a href="../faq.html" class="nav-link" style="margin-left: 10px; opacity: 0.8;">EN</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section text-center">
+            <div class="container" style="max-width: 800px;">
+                <h1 class="mb-4">Häufig gestellte Fragen</h1>
+                <p class="mb-8">Alles, was du über smartes Training mit TrainQ wissen musst.</p>
+            </div>
+        </section>
+
+        <!-- FAQ Content -->
+        <section class="section">
+            <div class="container" style="max-width: 800px;">
+
+                <div class="faq-accordion">
+                    <!-- Item 1 -->
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleAccordion(this)">
+                            Was brauche ich, um TrainQ zu nutzen?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Derzeit benötigst du eine Garmin-Uhr, um das Beste aus TrainQ herauszuholen. Wir
+                                synchronisieren deine strukturierten Workouts direkt auf dein Gerät.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleAccordion(this)">
+                            Wie funktioniert die "Adaptive Engine"?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Unsere Engine analysiert deine eingebrachten Trainingsdaten. Wenn du ein Training
+                                verpasst oder deine Leistung unerwartet abweicht (z. B. zu hohe Herzfrequenz), passt
+                                TrainQ den Plan für die kommenden Tage automatisch an, um Übertraining zu vermeiden und
+                                den Fokus zu wahren.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleAccordion(this)">
+                            Was passiert mit meinen Daten?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Deine Daten gehören dir. Wir nutzen sie ausschließlich, um deinen Trainingsplan zu
+                                optimieren. Wir verkaufen keine Daten an Dritte. Mehr dazu findest du in unserer <a
+                                    href="privacy.html" style="color: var(--color-primary);">Datenschutzerklärung</a>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleAccordion(this)">
+                            Kann ich meine Daten exportieren?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ja. Du kannst jederzeit einen vollständigen Export deiner Trainingshistorie anfordern.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleAccordion(this)">
+                            Ist TrainQ für Anfänger geeignet?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>TrainQ richtet sich primär an Athleten, die bereits regelmäßig trainieren und Struktur
+                                suchen. Aber auch als ambitionierter Einsteiger profitierst du von der klaren Führung,
+                                solange du eine Basis-Lauffitness mitbringst.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTAs -->
+        <section class="section text-center">
+            <div class="container">
+                <h3 class="mb-4">Noch Fragen?</h3>
+                <p class="mb-8">Schreib uns einfach eine Mail oder schau später wieder vorbei.</p>
+                <a href="mailto:Julius.Deusch@trainq.app" class="btn btn-secondary">Kontakt aufnehmen</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-title">TrainQ</div>
+                <p class="small-text mb-4">Professionelle adaptive Trainingsstruktur für ambitionierte Athleten.</p>
+                <p class="small-text text-muted">&copy; 2026 TrainQ Inc.</p>
+            </div>
+            <div>
+                <div class="footer-title">Produkt</div>
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="features.html" class="footer-link">Features</a>
+                <a href="pricing.html" class="footer-link">Preise</a>
+                <a href="faq.html" class="footer-link">FAQ</a>
+            </div>
+            <div>
+                <div class="footer-title">Unternehmen</div>
+                <a href="#" class="footer-link">Über uns</a>
+                <a href="#" class="footer-link">Blog (Bald verfügbar)</a>
+                <a href="#" class="footer-link">Kontakt</a>
+            </div>
+            <div>
+                <div class="footer-title">Rechtliches</div>
+                <a href="imprint.html" class="footer-link">Impressum</a>
+                <a href="privacy.html" class="footer-link">Datenschutz</a>
+                <a href="terms.html" class="footer-link">AGB</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            const answer = item.querySelector('.faq-answer');
+            const icon = button.querySelector('.faq-icon');
+
+            // Close others (optional - standard accordion behavior)
+            /*
+            document.querySelectorAll('.faq-item').forEach(i => {
+                if (i !== item) {
+                    i.querySelector('.faq-answer').style.maxHeight = null;
+                    i.querySelector('.faq-answer').style.paddingTop = null;
+                    i.querySelector('.faq-answer').style.paddingBottom = null;
+                    i.querySelector('.faq-icon').textContent = '+';
+                }
+            });
+            */
+
+            if (answer.style.maxHeight) {
+                answer.style.maxHeight = null;
+                answer.style.paddingTop = null;
+                answer.style.paddingBottom = null;
+                icon.textContent = '+';
+            } else {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                answer.style.paddingTop = "var(--space-4)";
+                answer.style.paddingBottom = "var(--space-4)";
+                icon.textContent = '-';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
