@@ -4,50 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrainQ - Premium Training Quality</title>
+    <title>TrainQ — Train Smarter, Not Harder</title>
+    <meta name="description" content="TrainQ adapts to your performance and helps you reach your athletic goals with data-driven training plans for gym, running, and cycling.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Aurora background orb -->
+    <div class="aurora-orb"></div>
 
     <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container nav-content">
             <a href="index.html" class="logo">
-                <img src="images/logos/logo.png" alt="TrainQ"
-                    style="height: 32px; width: auto; vertical-align: middle;">
+                <img src="images/logos/logo.png" alt="TrainQ">
             </a>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü öffnen">☰</button>
             <div class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html" class="nav-link active" aria-current="page">Home</a>
                 <a href="features.html" class="nav-link">Features</a>
                 <a href="faq.html" class="nav-link">FAQ</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
-                <a href="/de/index.html" class="nav-link" style="margin-left: 10px; opacity: 0.8;">DE</a>
+                <a href="/de/index.html" class="nav-link nav-lang">DE</a>
             </div>
         </div>
     </nav>
 
+    <!-- Mobile menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="features.html" class="nav-link">Features</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="/de/index.html" class="nav-link nav-lang">DE</a>
+    </div>
+
     <main>
-        <!-- Hero Section -->
-        <section class="section">
+
+        <!-- ===== HERO ===== -->
+        <section class="section" style="padding-bottom: 0; padding-top: var(--space-20);">
             <div class="container hero">
                 <div class="hero-content">
-                    <span class="badge">Pro launches end of February</span>
-                    <h1>Train with data-driven clarity.</h1>
-                    <p>TrainQ adapts to your performance, providing the professional structure you need to progress.
-                        Built
-                        for athletes who demand precision.</p>
+                    <span class="hero-eyebrow">Pro launches end of February</span>
+                    <h1 class="hero-title">
+                        Train with<br>
+                        <span class="gradient-text">data-driven clarity.</span>
+                    </h1>
+                    <p class="hero-description">
+                        TrainQ adapts to your performance — giving you professional structure for gym, running,
+                        and cycling. Progress without guesswork.
+                    </p>
                     <div class="hero-actions">
-                        <a href="#join" class="btn btn-primary">Coming end of February</a>
-                        <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
+                        <a href="#join" class="btn btn-primary">
+                            <span>Get Early Access</span>
+                        </a>
+                        <a href="#how-it-works" class="btn btn-secondary">How it works →</a>
+                    </div>
+                    <!-- Trust indicators -->
+                    <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: center;" class="reveal reveal-delay-4">
+                        <span class="stat-pill"><span class="stat-dot"></span>iOS-First</span>
+                        <span class="stat-pill"><span class="stat-dot"></span>Privacy-First</span>
+                        <span class="stat-pill"><span class="stat-dot"></span>Garmin Ready</span>
                     </div>
                 </div>
 
-                <!-- Hero Image -->
+                <!-- Hero Phone Mockup -->
                 <div class="hero-mockup-wrapper">
                     <video src="images/hero/hero-ambient-9x16.mp4" autoplay loop muted playsinline
                         class="hero-mockup"></video>
@@ -56,169 +80,303 @@
             </div>
         </section>
 
-        <!-- Social Proof Strip -->
-        <section class="section-sm" style="border-bottom: 1px solid var(--color-border);">
-            <div class="container text-center">
-                <p class="small-text mb-4">BUILT FOR ATHLETES WHO WANT STRUCTURE</p>
-                <div class="grid-3" style="grid-template-columns: repeat(4, 1fr); gap: var(--space-4); opacity: 0.7;">
-                    <div class="text-center"><strong>iOS-First</strong> Design</div>
-                    <div class="text-center"><strong>Privacy-First</strong> Data</div>
-                    <div class="text-center"><strong>Adaptive</strong> Training</div>
-                    <div class="text-center"><strong>Garmin</strong> Ready</div>
-                </div>
-            </div>
-        </section>
+        <!-- ===== DIVIDER ===== -->
+        <div class="container" style="padding-top: var(--space-16); padding-bottom: var(--space-16);">
+            <div class="section-divider"></div>
+        </div>
 
-        <!-- Key Benefits -->
-        <section class="section">
+        <!-- ===== WHY TRAINQ ===== -->
+        <section class="section" style="padding-top: 0;">
             <div class="container">
-                <div class="text-center mb-8">
-                    <h2>Why TrainQ?</h2>
-                    <p>Progress without guesswork.</p>
+                <div class="text-center mb-12 reveal">
+                    <p class="section-label">Why TrainQ</p>
+                    <h2>Built for athletes who want <span class="gradient-text-blue">real progress.</span></h2>
                 </div>
 
                 <div class="grid-3">
-                    <div class="card">
-                        <div class="card-icon mb-4">🎯</div>
-                        <h3>Train with Clarity</h3>
-                        <p>Structure your sessions with professional-grade plans that eliminate confusion.</p>
+                    <div class="card reveal reveal-delay-1">
+                        <div class="card-icon">🎯</div>
+                        <h3 class="mb-3">Train with Clarity</h3>
+                        <p>Professional-grade plans that eliminate confusion. Every session has exact targets — pace, heart rate, duration.</p>
                     </div>
-                    <div class="card">
-                        <div class="card-icon mb-4">🔄</div>
-                        <h3>Adapt to your Day</h3>
-                        <p>Missed a session? Our adaptive guidance adjusts your plan automatically.</p>
+                    <div class="card reveal reveal-delay-2">
+                        <div class="card-icon">🔄</div>
+                        <h3 class="mb-3">Adapts to Your Life</h3>
+                        <p>Missed a session? Our adaptive engine automatically recalibrates your plan. You're never "behind" again.</p>
                     </div>
-                    <div class="card">
-                        <div class="card-icon mb-4">📈</div>
-                        <h3>Progress Insight</h3>
-                        <p>Visualize your improvement with clear, actionable metrics not just raw data.</p>
+                    <div class="card reveal reveal-delay-3">
+                        <div class="card-icon">📈</div>
+                        <h3 class="mb-3">Progress Insight</h3>
+                        <p>Clean, actionable statistics — not just raw data. Understand if you're actually improving.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- How It Works -->
-        <section id="how-it-works" class="section" style="background-color: var(--color-bg-subtle);">
+        <!-- ===== HOW IT WORKS ===== -->
+        <section id="how-it-works" class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
             <div class="container">
-                <h2 class="text-center mb-8">How it Works</h2>
-                <div class="grid-3">
-                    <div>
-                        <div class="text-h3 mb-2" style="color: var(--color-primary);">01</div>
-                        <h3>Choose your Goal</h3>
-                        <p>Select a plan template or define your custom goal parameters.</p>
+                <div class="text-center mb-12 reveal">
+                    <p class="section-label">The Process</p>
+                    <h2>Simple by design.</h2>
+                </div>
+                <div class="steps-grid">
+                    <div class="reveal reveal-delay-1">
+                        <div class="step-number">01</div>
+                        <h3 class="mb-3">Set Your Goal</h3>
+                        <p>Choose a sport and goal — 5k, marathon, cycling race, or build general fitness. TrainQ creates your personalized plan.</p>
                     </div>
-                    <div>
-                        <div class="text-h3 mb-2" style="color: var(--color-primary);">02</div>
-                        <h3>Train Guided</h3>
-                        <p>Execute structured sessions with clear guidance on every interval.</p>
+                    <div class="reveal reveal-delay-2">
+                        <div class="step-number">02</div>
+                        <h3 class="mb-3">Train Live</h3>
+                        <p>Execute guided sessions with real-time feedback. Every interval, every rep — structured and tracked directly in the app.</p>
                     </div>
-                    <div>
-                        <div class="text-h3 mb-2" style="color: var(--color-primary);">03</div>
-                        <h3>Review & Adapt</h3>
-                        <p>We analyze your performance and adapt the next session instantly.</p>
+                    <div class="reveal reveal-delay-3">
+                        <div class="step-number">03</div>
+                        <h3 class="mb-3">Review & Adapt</h3>
+                        <p>Your performance shapes the next sessions. The adaptive engine keeps you on track without burnout.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Feature Highlight 1 -->
+        <!-- ===== FEATURE 1: Training Clarity ===== -->
         <section class="section">
-            <div class="container grid-2" style="align-items: center;">
-                <div>
-                    <span class="badge">Smart Analysis</span>
-                    <h2 class="mb-4">Training Clarity</h2>
-                    <ul style="list-style: none; padding: 0;">
-                        <li class="mb-2">✓ Automated workout structuring</li>
-                        <li class="mb-2">✓ Clear interval targets</li>
-                        <li class="mb-2">✓ Post-workout adherence scores</li>
+            <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
+                <div class="reveal">
+                    <span class="badge">Smart Training</span>
+                    <h2 class="mb-4">Structured sessions,<br><span class="gradient-text-blue">zero confusion.</span></h2>
+                    <p class="mb-6">Stop guessing what to do next. TrainQ builds professional-grade plans tailored to your specific goals — and shows you exactly what to do in every session.</p>
+                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3);">
+                        <li class="feature-check">
+                            <span class="icon">✓</span>
+                            Automated workout structuring per sport
+                        </li>
+                        <li class="feature-check">
+                            <span class="icon">✓</span>
+                            Live guidance during training sessions
+                        </li>
+                        <li class="feature-check">
+                            <span class="icon">✓</span>
+                            Post-workout adherence & performance scores
+                        </li>
                     </ul>
                 </div>
-                <div>
-                    <img src="images/sections/Live Start.png" alt="Live Activity View" class="feature-img">
+                <div class="feature-img-wrapper reveal reveal-delay-2">
+                    <img src="images/sections/Live Start.png" alt="Live Training Session" class="feature-img">
                 </div>
             </div>
         </section>
 
-        <!-- Feature Highlight 2 (Alt Layout) -->
-        <section class="section">
-            <div class="container grid-2" style="align-items: center;">
-                <div style="order: 2; @media (min-width: 768px) { order: 1; }">
-                    <img src="images/sections/Kalender.png" alt="Training Calendar View" class="feature-img">
+        <!-- ===== FEATURE 2: Adaptive Engine ===== -->
+        <section class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+            <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
+                <div class="feature-img-wrapper reveal">
+                    <img src="images/sections/Kalender.png" alt="Training Calendar" class="feature-img">
                 </div>
-                <div style="order: 1; @media (min-width: 768px) { order: 2; }">
+                <div class="reveal reveal-delay-2">
                     <span class="badge">Adaptive Engine</span>
-                    <h2 class="mb-4">Adapt to Life</h2>
-                    <p class="mb-4">Your schedule changes. Your training should too. TrainQ automatically shifts
-                        sessions when 'life happens'.</p>
-                    <a href="features.html" class="btn btn-secondary">Explore Features →</a>
+                    <h2 class="mb-4">Your schedule changes.<br><span class="gradient-text-blue">Your plan adapts.</span></h2>
+                    <p class="mb-6">Life happens. TrainQ automatically shifts sessions when you miss a workout, feel fatigued, or need extra recovery — keeping you on track without the guilt.</p>
+                    <a href="features.html" class="btn btn-secondary">Explore All Features →</a>
                 </div>
             </div>
         </section>
 
-        <!-- Privacy Trust -->
-        <section class="section" style="background-color: var(--color-bg-subtle);">
-            <div class="container text-center" style="max-width: 800px;">
-                <h2 class="mb-4">Privacy-First by Default</h2>
-                <p class="mb-8">Your health data belongs to you. We don't sell it, share it, or exploit it.</p>
-                <div class="grid-3 text-center">
-                    <div>
-                        <h3>Local First</h3>
-                        <p class="small-text">Data processing happens on-device where possible.</p>
+        <!-- ===== FEATURE 3: Statistics ===== -->
+        <section class="section">
+            <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
+                <div class="reveal">
+                    <span class="badge">Analytics</span>
+                    <h2 class="mb-4">Clean statistics.<br><span class="gradient-text-blue">Real insight.</span></h2>
+                    <p class="mb-6">TrainQ prioritizes clean, meaningful statistics over raw data dumps. Understand your fitness trends, predict race times, and see exactly how you're progressing.</p>
+                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3);">
+                        <li class="feature-check">
+                            <span class="icon">✓</span>
+                            Fitness vs. Fatigue trend visualization
+                        </li>
+                        <li class="feature-check">
+                            <span class="icon">✓</span>
+                            Race time predictions from real data
+                        </li>
+                        <li class="feature-check">
+                            <span class="icon">✓</span>
+                            Apple Health & Garmin sync
+                        </li>
+                    </ul>
+                </div>
+                <div class="feature-img-wrapper reveal reveal-delay-2">
+                    <img src="images/sections/Dashboard.png" alt="Statistics Dashboard" class="feature-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SPORTS ===== -->
+        <section class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+            <div class="container">
+                <div class="text-center mb-12 reveal">
+                    <p class="section-label">All Sports</p>
+                    <h2>Built for every athlete.</h2>
+                    <p style="max-width: 500px; margin: var(--space-4) auto 0;">TrainQ works for any sport — with a special focus on the three most popular training disciplines.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="card text-center reveal reveal-delay-1" style="padding: var(--space-12) var(--space-8);">
+                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">🏋️</div>
+                        <h3 class="mb-3">Gym</h3>
+                        <p class="small-text">Strength plans, progressive overload, exercise tracking and personal records.</p>
                     </div>
-                    <div>
-                        <h3>Transparent</h3>
-                        <p class="small-text">Clear, plain-English privacy terms.</p>
+                    <div class="card text-center reveal reveal-delay-2" style="padding: var(--space-12) var(--space-8); border-color: rgba(59, 127, 255, 0.3); box-shadow: 0 0 30px rgba(59, 127, 255, 0.1);">
+                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">🏃</div>
+                        <h3 class="mb-3">Running</h3>
+                        <p class="small-text">5k to marathon plans, pace targets, interval training and race predictions.</p>
                     </div>
-                    <div>
-                        <h3>Control</h3>
-                        <p class="small-text">Export or delete your data anytime.</p>
+                    <div class="card text-center reveal reveal-delay-3" style="padding: var(--space-12) var(--space-8);">
+                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">🚴</div>
+                        <h3 class="mb-3">Cycling</h3>
+                        <p class="small-text">Power-based training, FTP tracking, structured rides and event preparation.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Final CTA -->
-        <section id="join" class="section text-center">
-            <div class="container" style="max-width: 600px;">
-                <h2 class="mb-4">Start Training Smarter</h2>
-                <p class="mb-8">Pro launches end of February. Get ready for the future of adaptive training.</p>
-                <div class="text-center">
-                    <span class="btn btn-primary" style="cursor: default;">Coming end of February</span>
+        <!-- ===== PRIVACY ===== -->
+        <section class="section">
+            <div class="container" style="max-width: 900px;">
+                <div class="text-center mb-12 reveal">
+                    <p class="section-label">Privacy</p>
+                    <h2>Your data. <span class="gradient-text-blue">Always.</span></h2>
+                    <p style="max-width: 500px; margin: var(--space-4) auto 0;">We believe your health data belongs to you — not us, not advertisers. That's not a feature, it's a foundation.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="card text-center reveal reveal-delay-1">
+                        <div class="card-icon" style="margin: 0 auto var(--space-4);">🔒</div>
+                        <h3 class="mb-3">Local First</h3>
+                        <p class="small-text">Data processing happens on-device wherever possible. Your health data stays on your phone.</p>
+                    </div>
+                    <div class="card text-center reveal reveal-delay-2">
+                        <div class="card-icon" style="margin: 0 auto var(--space-4);">📄</div>
+                        <h3 class="mb-3">Transparent</h3>
+                        <p class="small-text">Plain-language privacy policy. No hidden clauses, no confusing legal jargon.</p>
+                    </div>
+                    <div class="card text-center reveal reveal-delay-3">
+                        <div class="card-icon" style="margin: 0 auto var(--space-4);">⚙️</div>
+                        <h3 class="mb-3">Full Control</h3>
+                        <p class="small-text">Export or delete all your data anytime. In standard .FIT and .TCX formats.</p>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- ===== CTA ===== -->
+        <section id="join" class="section" style="background: linear-gradient(180deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%); border-top: 1px solid var(--color-border);">
+            <div class="container text-center" style="max-width: 600px;">
+                <div class="reveal">
+                    <p class="section-label">Get Started</p>
+                    <h2 class="mb-4">Start training <span class="gradient-text">smarter.</span></h2>
+                    <p class="mb-8" style="max-width: 450px; margin-left: auto; margin-right: auto; margin-bottom: var(--space-8);">
+                        TrainQ Pro launches end of February. Free beta access available now — no credit card required.
+                    </p>
+                    <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+                        <span class="btn btn-primary" style="cursor: default;">Coming end of February</span>
+                        <a href="features.html" class="btn btn-secondary">Explore Features</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-grid">
-            <div>
-                <div class="footer-title">TrainQ</div>
-                <p class="small-text mb-4">Professional adaptive training structure for serious athletes.</p>
-                <p class="small-text text-muted">&copy; 2026 TrainQ Inc.</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="margin-bottom: var(--space-4); display: inline-flex;">
+                        <img src="images/logos/logo.png" alt="TrainQ" style="height: 28px;">
+                    </a>
+                    <p>Adaptive training structure for athletes who want to progress — not just train.</p>
+                    <p style="font-size: 0.84rem; color: var(--color-text-muted);">&copy; 2026 TrainQ Inc.</p>
+                </div>
+                <div>
+                    <div class="footer-title">Product</div>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="features.html" class="footer-link">Features</a>
+                    <a href="pricing.html" class="footer-link">Pricing</a>
+                    <a href="faq.html" class="footer-link">FAQ</a>
+                </div>
+                <div>
+                    <div class="footer-title">Company</div>
+                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">Blog <span style="font-size: 0.78rem; color: var(--color-text-muted);">(Soon)</span></a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+                <div>
+                    <div class="footer-title">Legal</div>
+                    <a href="imprint.html" class="footer-link">Imprint</a>
+                    <a href="privacy.html" class="footer-link">Privacy</a>
+                    <a href="terms.html" class="footer-link">Terms</a>
+                </div>
             </div>
-            <div>
-                <div class="footer-title">Product</div>
-                <a href="index.html" class="footer-link">Home</a>
-                <a href="features.html" class="footer-link">Features</a>
-                <a href="pricing.html" class="footer-link">Pricing</a>
-                <a href="faq.html" class="footer-link">FAQ</a>
-            </div>
-            <div>
-                <div class="footer-title">Company</div>
-                <a href="#" class="footer-link">About</a>
-                <a href="#" class="footer-link">Blog (Coming Soon)</a>
-                <a href="#" class="footer-link">Contact</a>
-            </div>
-            <div>
-                <div class="footer-title">Legal</div>
-                <a href="imprint.html" class="footer-link">Imprint</a>
-                <a href="privacy.html" class="footer-link">Privacy</a>
-                <a href="terms.html" class="footer-link">Terms</a>
+            <div class="footer-bottom">
+                <p>Made with precision for athletes.</p>
+                <p>Available on iOS · Garmin Ready</p>
             </div>
         </div>
     </footer>
 
+    <script>
+        // ── Scroll reveal ──────────────────────────────────
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // ── Navbar scroll state ────────────────────────────
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 30);
+        }, { passive: true });
+
+        // ── Mobile menu ────────────────────────────────────
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = mobileNav.classList.toggle('open');
+            mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+            mobileMenuBtn.textContent = isOpen ? '✕' : '☰';
+        });
+
+        // Close on nav link click
+        mobileNav.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('open');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+
+        // ── Button ripple ──────────────────────────────────
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const ripple = document.createElement('span');
+                const size = Math.max(rect.width, rect.height);
+                ripple.classList.add('ripple');
+                ripple.style.cssText = `
+                    width: ${size}px; height: ${size}px;
+                    left: ${e.clientX - rect.left - size / 2}px;
+                    top: ${e.clientY - rect.top - size / 2}px;
+                `;
+                this.appendChild(ripple);
+                ripple.addEventListener('animationend', () => ripple.remove());
+            });
+        });
+    </script>
 </body>
 
 </html>

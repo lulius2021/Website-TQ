@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing - TrainQ</title>
+    <title>Pricing — TrainQ</title>
+    <meta name="description" content="TrainQ is free in public beta. Pro plan launches end of February with advanced features for serious athletes.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,87 +13,116 @@
 </head>
 
 <body>
+    <div class="aurora-orb"></div>
 
     <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container nav-content">
-            <a href="index.html" class="logo">TrainQ</a>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            <a href="index.html" class="logo">
+                <img src="images/logos/logo.png" alt="TrainQ">
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">☰</button>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="features.html" class="nav-link">Features</a>
                 <a href="faq.html" class="nav-link">FAQ</a>
-                <a href="pricing.html" class="nav-link" style="color: var(--color-primary);">Pricing</a>
-                <a href="/de/pricing.html" class="nav-link" style="margin-left: 10px; opacity: 0.8;">DE</a>
+                <a href="pricing.html" class="nav-link active" aria-current="page">Pricing</a>
+                <a href="/de/pricing.html" class="nav-link nav-lang">DE</a>
             </div>
         </div>
     </nav>
 
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="features.html" class="nav-link">Features</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="pricing.html" class="nav-link active">Pricing</a>
+        <a href="/de/pricing.html" class="nav-link nav-lang">DE</a>
+    </div>
+
     <main>
-        <section class="section text-center">
-            <div class="container" style="max-width: 800px;">
-                <span class="badge">Coming Soon</span>
-                <h1 class="mb-4">Simple, Transparent Pricing</h1>
-                <p class="mb-8">TrainQ Pro launches end of February. Get ready.</p>
+
+        <!-- Header -->
+        <section class="section text-center" style="padding-bottom: var(--space-12);">
+            <div class="container reveal" style="max-width: 600px;">
+                <span class="badge badge-neon">Coming Soon</span>
+                <h1 class="mb-4">Simple, <span class="gradient-text">Transparent</span> Pricing</h1>
+                <p>TrainQ Pro launches end of February. Start free during public beta — no credit card required.</p>
             </div>
         </section>
 
+        <!-- Pricing Cards -->
         <section class="section" style="padding-top: 0;">
-            <div class="container" style="max-width: 1000px;">
-                <div class="grid-2">
+            <div class="container" style="max-width: 900px;">
+                <div class="grid-2" style="gap: var(--space-6); align-items: start;">
 
-                    <!-- Beta Plan -->
-                    <div class="card highlight" style="position: relative;">
-                        <div
-                            style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--color-primary); color: white; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 600;">
-                            Current Phase</div>
-                        <div class="text-center mb-8" style="padding-top: var(--space-4);">
+                    <!-- Beta / Free Plan -->
+                    <div class="pricing-card featured reveal">
+                        <div class="pricing-badge">Current Phase</div>
+                        <div class="text-center mb-8" style="padding-top: var(--space-6);">
                             <h2 class="mb-2">Public Beta</h2>
-                            <div style="font-size: 3rem; font-weight: 800; color: var(--color-text-primary);">Free</div>
-                            <p class="small-text">No credit card required</p>
+                            <div class="price-amount mb-2" style="color: var(--color-primary-neon);">Free</div>
+                            <p class="small-text" style="color: var(--color-text-muted);">No credit card required</p>
                         </div>
-                        <ul style="list-style: none; padding: 0; margin-bottom: var(--space-8);">
-                            <li class="mb-4" style="display: flex; gap: var(--space-2);">
-                                <span style="color: var(--color-primary);">✓</span> Full access to adaptive engine
-                            </li>
-                            <li class="mb-4" style="display: flex; gap: var(--space-2);">
-                                <span style="color: var(--color-primary);">✓</span> Unlimited workout creation
-                            </li>
-                            <li class="mb-4" style="display: flex; gap: var(--space-2);">
-                                <span style="color: var(--color-primary);">✓</span> Analytics Dashboard
-                            </li>
-                            <li class="mb-4" style="display: flex; gap: var(--space-2);">
-                                <span style="color: var(--color-primary);">✓</span> Community Support
-                            </li>
-                        </ul>
+                        <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-6); margin-bottom: var(--space-8);">
+                            <div class="feature-check">
+                                <span class="icon">✓</span>
+                                Full access to adaptive training engine
+                            </div>
+                            <div class="feature-check">
+                                <span class="icon">✓</span>
+                                Unlimited workout creation
+                            </div>
+                            <div class="feature-check">
+                                <span class="icon">✓</span>
+                                Analytics Dashboard
+                            </div>
+                            <div class="feature-check">
+                                <span class="icon">✓</span>
+                                Apple Health & Garmin integration
+                            </div>
+                            <div class="feature-check">
+                                <span class="icon">✓</span>
+                                Community support
+                            </div>
+                        </div>
                         <div class="text-center">
                             <span class="btn btn-primary w-full" style="cursor: default;">Coming end of February</span>
                         </div>
                     </div>
 
-                    <!-- Pro Plan -->
-                    <div class="card" style="background-color: var(--color-bg-subtle); border-style: dashed;">
+                    <!-- Pro Plan (Coming Soon) -->
+                    <div class="pricing-card reveal reveal-delay-2" style="opacity: 0.72;">
                         <div class="text-center mb-8" style="padding-top: var(--space-4);">
-                            <h2 class="mb-2" style="color: var(--color-text-secondary);">Pro</h2>
-                            <div style="font-size: 3rem; font-weight: 800; color: var(--color-text-muted);">Soon</div>
-                            <p class="small-text">Coming end of February</p>
+                            <span class="badge" style="margin-bottom: var(--space-4);">Coming Soon</span>
+                            <h2 class="mb-2" style="color: var(--color-text-secondary);">Plus</h2>
+                            <div class="price-amount mb-2" style="color: var(--color-text-muted);">Soon</div>
+                            <p class="small-text" style="color: var(--color-text-muted);">Launching end of February</p>
                         </div>
-                        <ul style="list-style: none; padding: 0; margin-bottom: var(--space-8); opacity: 0.6;">
-                            <li class="mb-4" style="display: flex; gap: var(--space-2);">
-                                <span>✓</span> Advanced biometric analysis
-                            </li>
-                            <li class="mb-4" style="display: flex; gap: var(--space-2);">
-                                <span>✓</span> Coach connectivity
-                            </li>
-                            <li class="mb-4" style="display: flex; gap: var(--space-2);">
-                                <span>✓</span> Team management
-                            </li>
-                            <li class="mb-4" style="display: flex; gap: var(--space-2);">
-                                <span>✓</span> API Access
-                            </li>
-                        </ul>
+                        <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-6); margin-bottom: var(--space-8);">
+                            <div class="feature-check" style="opacity: 0.6;">
+                                <span class="icon" style="background: rgba(150,175,220,0.08); border-color: rgba(150,175,220,0.2); color: var(--color-text-muted);">✓</span>
+                                Everything in Beta
+                            </div>
+                            <div class="feature-check" style="opacity: 0.6;">
+                                <span class="icon" style="background: rgba(150,175,220,0.08); border-color: rgba(150,175,220,0.2); color: var(--color-text-muted);">✓</span>
+                                Advanced biometric analysis
+                            </div>
+                            <div class="feature-check" style="opacity: 0.6;">
+                                <span class="icon" style="background: rgba(150,175,220,0.08); border-color: rgba(150,175,220,0.2); color: var(--color-text-muted);">✓</span>
+                                Coach connectivity
+                            </div>
+                            <div class="feature-check" style="opacity: 0.6;">
+                                <span class="icon" style="background: rgba(150,175,220,0.08); border-color: rgba(150,175,220,0.2); color: var(--color-text-muted);">✓</span>
+                                Priority support
+                            </div>
+                            <div class="feature-check" style="opacity: 0.6;">
+                                <span class="icon" style="background: rgba(150,175,220,0.08); border-color: rgba(150,175,220,0.2); color: var(--color-text-muted);">✓</span>
+                                API access
+                            </div>
+                        </div>
                         <div class="text-center">
-                            <button class="btn btn-secondary w-full" disabled>Coming Soon</button>
+                            <button class="btn btn-secondary w-full" disabled style="cursor: not-allowed; opacity: 0.5;">Coming Soon</button>
                         </div>
                     </div>
 
@@ -100,44 +130,94 @@
             </div>
         </section>
 
-        <section class="section bg-subtle text-center">
-            <div class="container">
+        <!-- FAQ CTA -->
+        <section class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border);">
+            <div class="container text-center reveal">
                 <h2 class="mb-4">Questions about Pricing?</h2>
-                <a href="faq.html" class="btn btn-secondary">Visit FAQ</a>
+                <p class="mb-8">Check our FAQ or reach out — we're happy to help.</p>
+                <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+                    <a href="faq.html" class="btn btn-primary">Visit FAQ</a>
+                    <a href="#" class="btn btn-secondary">Contact Us</a>
+                </div>
             </div>
         </section>
+
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-grid">
-            <div>
-                <div class="footer-title">TrainQ</div>
-                <p class="small-text mb-4">Professional adaptive training structure for serious athletes.</p>
-                <p class="small-text text-muted">&copy; 2026 TrainQ Inc.</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="margin-bottom: var(--space-4); display: inline-flex;">
+                        <img src="images/logos/logo.png" alt="TrainQ" style="height: 28px;">
+                    </a>
+                    <p>Adaptive training structure for athletes who want to progress — not just train.</p>
+                    <p style="font-size: 0.84rem; color: var(--color-text-muted);">&copy; 2026 TrainQ Inc.</p>
+                </div>
+                <div>
+                    <div class="footer-title">Product</div>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="features.html" class="footer-link">Features</a>
+                    <a href="pricing.html" class="footer-link">Pricing</a>
+                    <a href="faq.html" class="footer-link">FAQ</a>
+                </div>
+                <div>
+                    <div class="footer-title">Company</div>
+                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">Blog <span style="font-size: 0.78rem; color: var(--color-text-muted);">(Soon)</span></a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+                <div>
+                    <div class="footer-title">Legal</div>
+                    <a href="imprint.html" class="footer-link">Imprint</a>
+                    <a href="privacy.html" class="footer-link">Privacy</a>
+                    <a href="terms.html" class="footer-link">Terms</a>
+                </div>
             </div>
-            <div>
-                <div class="footer-title">Product</div>
-                <a href="index.html" class="footer-link">Home</a>
-                <a href="features.html" class="footer-link">Features</a>
-                <a href="pricing.html" class="footer-link">Pricing</a>
-                <a href="faq.html" class="footer-link">FAQ</a>
-            </div>
-            <div>
-                <div class="footer-title">Company</div>
-                <a href="#" class="footer-link">About</a>
-                <a href="#" class="footer-link">Blog (Coming Soon)</a>
-                <a href="#" class="footer-link">Contact</a>
-            </div>
-            <div>
-                <div class="footer-title">Legal</div>
-                <a href="imprint.html" class="footer-link">Imprint</a>
-                <a href="privacy.html" class="footer-link">Privacy</a>
-                <a href="terms.html" class="footer-link">Terms</a>
+            <div class="footer-bottom">
+                <p>Made with precision for athletes.</p>
+                <p>Available on iOS · Garmin Ready</p>
             </div>
         </div>
     </footer>
 
+    <script>
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 30);
+        }, { passive: true });
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = mobileNav.classList.toggle('open');
+            mobileMenuBtn.textContent = isOpen ? '✕' : '☰';
+        });
+
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.disabled) return;
+                const rect = this.getBoundingClientRect();
+                const ripple = document.createElement('span');
+                const size = Math.max(rect.width, rect.height);
+                ripple.classList.add('ripple');
+                ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px;`;
+                this.appendChild(ripple);
+                ripple.addEventListener('animationend', () => ripple.remove());
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - TrainQ</title>
+    <title>FAQ — TrainQ</title>
+    <meta name="description" content="Frequently asked questions about TrainQ — pricing, iOS availability, adaptive training, data privacy and more.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,127 +13,167 @@
 </head>
 
 <body>
+    <div class="aurora-orb"></div>
 
     <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container nav-content">
-            <a href="index.html" class="logo">TrainQ</a>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            <a href="index.html" class="logo">
+                <img src="images/logos/logo.png" alt="TrainQ">
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">☰</button>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="features.html" class="nav-link">Features</a>
-                <a href="faq.html" class="nav-link" style="color: var(--color-primary);">FAQ</a>
+                <a href="faq.html" class="nav-link active" aria-current="page">FAQ</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
-                <a href="/de/faq.html" class="nav-link" style="margin-left: 10px; opacity: 0.8;">DE</a>
+                <a href="/de/faq.html" class="nav-link nav-lang">DE</a>
             </div>
         </div>
     </nav>
 
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="features.html" class="nav-link">Features</a>
+        <a href="faq.html" class="nav-link active">FAQ</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="/de/faq.html" class="nav-link nav-lang">DE</a>
+    </div>
+
     <main>
-        <section class="section text-center">
-            <div class="container" style="max-width: 800px;">
-                <h1 class="mb-4">Frequently Asked Questions</h1>
-                <p class="mb-8">Everything you need to know about the product and billing.</p>
+
+        <!-- Header -->
+        <section class="section text-center" style="padding-bottom: var(--space-8);">
+            <div class="container reveal" style="max-width: 600px;">
+                <p class="section-label">Help</p>
+                <h1 class="mb-4">Frequently Asked <span class="gradient-text">Questions</span></h1>
+                <p>Everything you need to know about TrainQ. Can't find an answer? <a href="#" style="color: var(--color-primary-neon);">Contact us.</a></p>
             </div>
         </section>
 
+        <!-- FAQ Accordion -->
         <section class="section" style="padding-top: 0;">
-            <div class="container" style="max-width: 800px;">
+            <div class="container" style="max-width: 760px;">
 
-                <div class="card"
-                    style="padding: 0; overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+                <div class="card reveal" style="padding: 0; overflow: hidden;">
 
-                    <div class="accordion-item" style="padding: 0 var(--space-6);">
+                    <div class="accordion-item">
                         <button class="accordion-header" onclick="toggleAccordion(this)">
                             Is TrainQ available on iOS and Android?
-                            <span style="font-weight: 400; color: var(--color-text-muted);">+</span>
+                            <span class="accordion-chevron">+</span>
                         </button>
                         <div class="accordion-content">
-                            TrainQ is currently iOS-first (iPhone and Watch). An Android version is in development and
-                            scheduled for late 2026.
+                            TrainQ is currently iOS-first — available for iPhone and Apple Watch. An Android version is in development and scheduled for late 2026. We're building the best possible iOS experience first before expanding to other platforms.
                         </div>
                     </div>
 
-                    <div class="accordion-item" style="padding: 0 var(--space-6);">
+                    <div class="accordion-item">
                         <button class="accordion-header" onclick="toggleAccordion(this)">
-                            Do I need special equipment?
-                            <span style="font-weight: 400; color: var(--color-text-muted);">+</span>
+                            Do I need special equipment to use TrainQ?
+                            <span class="accordion-chevron">+</span>
                         </button>
                         <div class="accordion-content">
-                            No specialized gym equipment is needed. However, we strongly recommend a reliable heart-rate
-                            monitor (chest strap or arm band) for the best adaptive results.
+                            No specialized equipment is required to get started. However, we strongly recommend a reliable heart-rate monitor — a chest strap or optical armband — for the best adaptive training results. TrainQ also integrates seamlessly with Garmin devices for athletes who already use them.
                         </div>
                     </div>
 
-                    <div class="accordion-item" style="padding: 0 var(--space-6);">
+                    <div class="accordion-item">
                         <button class="accordion-header" onclick="toggleAccordion(this)">
-                            How does adaptive training work?
-                            <span style="font-weight: 400; color: var(--color-text-muted);">+</span>
+                            How does the adaptive training engine work?
+                            <span class="accordion-chevron">+</span>
                         </button>
                         <div class="accordion-content">
-                            We analyze your completed session data (Pace, HR, RPE) and compare it to the planned
-                            prescription. If you under/over-performed or missed a session, the engine recalculates the
-                            next 3-7 days to keep you on track without burnout.
+                            After each session, TrainQ analyzes your performance data — pace, heart rate, RPE, and adherence — and compares it to your planned prescription. If you under- or over-performed, or missed a session entirely, the engine automatically recalculates the next 3–7 days to keep you on track without causing burnout or injury.
                         </div>
                     </div>
 
-                    <div class="accordion-item" style="padding: 0 var(--space-6);">
+                    <div class="accordion-item">
                         <button class="accordion-header" onclick="toggleAccordion(this)">
-                            What about data privacy?
-                            <span style="font-weight: 400; color: var(--color-text-muted);">+</span>
+                            What sports does TrainQ support?
+                            <span class="accordion-chevron">+</span>
                         </button>
                         <div class="accordion-content">
-                            Privacy is our core value. Your health data is processed locally on your device whenever
-                            possible. We do not sell your data to third parties or advertisers. See our <a
-                                href="privacy.html"
-                                style="color: var(--color-primary); text-decoration: underline;">Privacy Policy</a> for
-                            details.
+                            TrainQ is built for all sports with structured training plans. The primary focus is on <strong style="color: var(--color-text-primary);">gym / strength training</strong>, <strong style="color: var(--color-text-primary);">running</strong>, and <strong style="color: var(--color-text-primary);">cycling</strong>. Other endurance sports like swimming, triathlon, and hiking are also supported.
                         </div>
                     </div>
 
-                    <div class="accordion-item" style="padding: 0 var(--space-6); border-bottom: none;">
+                    <div class="accordion-item">
                         <button class="accordion-header" onclick="toggleAccordion(this)">
-                            Can I export my data?
-                            <span style="font-weight: 400; color: var(--color-text-muted);">+</span>
+                            How does TrainQ handle my data and privacy?
+                            <span class="accordion-chevron">+</span>
                         </button>
                         <div class="accordion-content">
-                            Yes. You can export all your workout history in standard .FIT or .TCX formats at any time.
-                            It's your data.
+                            Privacy is a core value, not an afterthought. Your health data is processed locally on your device wherever possible. We don't sell your data to third parties or advertisers — ever. You can export or delete all your data at any time. See our <a href="privacy.html" style="color: var(--color-primary-neon); text-decoration: underline;">Privacy Policy</a> for full details.
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            Can I export my workout data?
+                            <span class="accordion-chevron">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            Yes, always. You can export your complete workout history in standard <strong style="color: var(--color-text-primary);">.FIT</strong> and <strong style="color: var(--color-text-primary);">.TCX</strong> formats at any time. It's your data and you should always have full control over it.
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            When will TrainQ Plus launch?
+                            <span class="accordion-chevron">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            TrainQ Plus (formerly called Pro) launches end of February 2026. During the public beta phase, all features are available for free. No credit card is required to try TrainQ.
                         </div>
                     </div>
 
                 </div>
 
+                <!-- Still have questions -->
+                <div class="text-center mt-8 reveal">
+                    <p class="mb-4" style="color: var(--color-text-muted);">Still have questions?</p>
+                    <a href="#" class="btn btn-secondary">Get in touch</a>
+                </div>
+
             </div>
         </section>
+
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-grid">
-            <div>
-                <div class="footer-title">TrainQ</div>
-                <p class="small-text mb-4">Professional adaptive training structure for serious athletes.</p>
-                <p class="small-text text-muted">&copy; 2026 TrainQ Inc.</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="margin-bottom: var(--space-4); display: inline-flex;">
+                        <img src="images/logos/logo.png" alt="TrainQ" style="height: 28px;">
+                    </a>
+                    <p>Adaptive training structure for athletes who want to progress — not just train.</p>
+                    <p style="font-size: 0.84rem; color: var(--color-text-muted);">&copy; 2026 TrainQ Inc.</p>
+                </div>
+                <div>
+                    <div class="footer-title">Product</div>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="features.html" class="footer-link">Features</a>
+                    <a href="pricing.html" class="footer-link">Pricing</a>
+                    <a href="faq.html" class="footer-link">FAQ</a>
+                </div>
+                <div>
+                    <div class="footer-title">Company</div>
+                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">Blog <span style="font-size: 0.78rem; color: var(--color-text-muted);">(Soon)</span></a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+                <div>
+                    <div class="footer-title">Legal</div>
+                    <a href="imprint.html" class="footer-link">Imprint</a>
+                    <a href="privacy.html" class="footer-link">Privacy</a>
+                    <a href="terms.html" class="footer-link">Terms</a>
+                </div>
             </div>
-            <div>
-                <div class="footer-title">Product</div>
-                <a href="index.html" class="footer-link">Home</a>
-                <a href="features.html" class="footer-link">Features</a>
-                <a href="pricing.html" class="footer-link">Pricing</a>
-                <a href="faq.html" class="footer-link">FAQ</a>
-            </div>
-            <div>
-                <div class="footer-title">Company</div>
-                <a href="#" class="footer-link">About</a>
-                <a href="#" class="footer-link">Blog (Coming Soon)</a>
-                <a href="#" class="footer-link">Contact</a>
-            </div>
-            <div>
-                <div class="footer-title">Legal</div>
-                <a href="imprint.html" class="footer-link">Imprint</a>
-                <a href="privacy.html" class="footer-link">Privacy</a>
-                <a href="terms.html" class="footer-link">Terms</a>
+            <div class="footer-bottom">
+                <p>Made with precision for athletes.</p>
+                <p>Available on iOS · Garmin Ready</p>
             </div>
         </div>
     </footer>
@@ -140,26 +181,59 @@
     <script>
         function toggleAccordion(button) {
             const item = button.parentElement;
-            const content = item.querySelector('.accordion-content');
-            const icon = button.querySelector('span');
+            const chevron = button.querySelector('.accordion-chevron');
 
-            // Simple toggle logic
+            // Close all others
+            document.querySelectorAll('.accordion-item.active').forEach(openItem => {
+                if (openItem !== item) {
+                    openItem.classList.remove('active');
+                    openItem.querySelector('.accordion-chevron').textContent = '+';
+                }
+            });
+
             if (item.classList.contains('active')) {
                 item.classList.remove('active');
-                icon.textContent = '+';
+                chevron.textContent = '+';
             } else {
-                // Optional: Close others
-                // document.querySelectorAll('.accordion-item').forEach(i => {
-                //   i.classList.remove('active');
-                //   i.querySelector('button span').textContent = '+';
-                // });
-
                 item.classList.add('active');
-                icon.textContent = '−';
+                chevron.textContent = '+';
             }
         }
-    </script>
 
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 30);
+        }, { passive: true });
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = mobileNav.classList.toggle('open');
+            mobileMenuBtn.textContent = isOpen ? '✕' : '☰';
+        });
+
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const ripple = document.createElement('span');
+                const size = Math.max(rect.width, rect.height);
+                ripple.classList.add('ripple');
+                ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px;`;
+                this.appendChild(ripple);
+                ripple.addEventListener('animationend', () => ripple.remove());
+            });
+        });
+    </script>
 </body>
 
 </html>

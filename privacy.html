@@ -12,21 +12,31 @@
 </head>
 
 <body>
+    <div class="aurora-orb"></div>
 
     <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container nav-content">
-            <a href="index.html" class="logo">TrainQ</a>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            <a href="index.html" class="logo">
+                <img src="images/logos/logo.png" alt="TrainQ">
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">☰</button>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="features.html" class="nav-link">Features</a>
                 <a href="faq.html" class="nav-link">FAQ</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
-                <a href="/de/privacy.html" class="nav-link" style="margin-left: 10px; opacity: 0.8;">DE</a>
+                <a href="/de/privacy.html" class="nav-link nav-lang">DE</a>
             </div>
         </div>
     </nav>
+
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="features.html" class="nav-link">Features</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+    </div>
 
     <main>
         <section class="section">
@@ -116,34 +126,54 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-grid">
-            <div>
-                <div class="footer-title">TrainQ</div>
-                <p class="small-text mb-4">Professional adaptive training structure for serious athletes.</p>
-                <p class="small-text text-muted">&copy; 2026 TrainQ Inc.</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="margin-bottom: var(--space-4); display: inline-flex;">
+                        <img src="images/logos/logo.png" alt="TrainQ" style="height: 28px;">
+                    </a>
+                    <p>Adaptive training structure for athletes who want to progress — not just train.</p>
+                    <p style="font-size: 0.84rem; color: var(--color-text-muted);">&copy; 2026 TrainQ Inc.</p>
+                </div>
+                <div>
+                    <div class="footer-title">Product</div>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="features.html" class="footer-link">Features</a>
+                    <a href="pricing.html" class="footer-link">Pricing</a>
+                    <a href="faq.html" class="footer-link">FAQ</a>
+                </div>
+                <div>
+                    <div class="footer-title">Company</div>
+                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">Blog <span style="font-size: 0.78rem; color: var(--color-text-muted);">(Soon)</span></a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+                <div>
+                    <div class="footer-title">Legal</div>
+                    <a href="imprint.html" class="footer-link">Imprint</a>
+                    <a href="privacy.html" class="footer-link" style="color: var(--color-primary-neon);">Privacy</a>
+                    <a href="terms.html" class="footer-link">Terms</a>
+                </div>
             </div>
-            <div>
-                <div class="footer-title">Product</div>
-                <a href="index.html" class="footer-link">Home</a>
-                <a href="features.html" class="footer-link">Features</a>
-                <a href="pricing.html" class="footer-link">Pricing</a>
-                <a href="faq.html" class="footer-link">FAQ</a>
-            </div>
-            <div>
-                <div class="footer-title">Company</div>
-                <a href="#" class="footer-link">About</a>
-                <a href="#" class="footer-link">Blog (Coming Soon)</a>
-                <a href="#" class="footer-link">Contact</a>
-            </div>
-            <div>
-                <div class="footer-title">Legal</div>
-                <a href="imprint.html" class="footer-link">Imprint</a>
-                <a href="privacy.html" class="footer-link" style="color: var(--color-primary);">Privacy</a>
-                <a href="terms.html" class="footer-link">Terms</a>
+            <div class="footer-bottom">
+                <p>Made with precision for athletes.</p>
+                <p>Available on iOS · Garmin Ready</p>
             </div>
         </div>
     </footer>
 
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 30);
+        }, { passive: true });
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = mobileNav.classList.toggle('open');
+            mobileMenuBtn.textContent = isOpen ? '✕' : '☰';
+        });
+    </script>
 </body>
 
 </html>
