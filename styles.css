@@ -1494,20 +1494,13 @@ html.light .navbar.scrolled .nav-content {
   background: rgba(245, 247, 251, 0.95);
 }
 
-/* Smooth transition for theme switch */
+/* Smooth transition for theme switch — only on key elements */
 html {
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-html *, html *::before, html *::after {
-  transition-property: background-color, color, border-color, box-shadow, opacity, transform;
-  transition-duration: 0.4s;
-  transition-timing-function: ease;
-}
-
-/* Override for elements that need their own timing */
-.btn, .card, .nav-link, .reveal {
-  transition-property: background-color, color, border-color, box-shadow, opacity, transform;
+body, .navbar, .nav-content, .card, .footer, .section, .btn {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* ============================================================
