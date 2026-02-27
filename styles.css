@@ -786,8 +786,13 @@ a {
 .hero-mockup {
   width: 100%;
   border-radius: 36px;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 60px rgba(59, 127, 255, 0.2);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7), 0 0 60px rgba(59, 127, 255, 0.2);
   display: block;
+  background: #000;
+}
+
+html.light .hero-mockup {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2), 0 0 40px rgba(37, 99, 235, 0.12);
 }
 
 .hero-glow {
@@ -1451,9 +1456,7 @@ html.light .btn-primary {
   box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-html.light .hero-mockup {
-  box-shadow: 0 40px 100px rgba(37, 99, 235, 0.15), 0 0 0 1px rgba(37, 99, 235, 0.1), 0 0 60px rgba(37, 99, 235, 0.1);
-}
+
 
 html.light .badge {
   background: rgba(37, 99, 235, 0.1);
