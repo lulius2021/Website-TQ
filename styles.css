@@ -324,15 +324,15 @@ a {
   color: var(--color-text-secondary);
   padding: 7px 16px;
   border-radius: var(--radius-full);
-  transition: color 0.2s ease, background 0.2s ease, transform 0.2s var(--ease-spring);
+  transition: color 0.12s ease, background 0.12s ease, transform 0.15s var(--ease-spring);
   position: relative;
   white-space: nowrap;
 }
 
 .nav-link:hover {
   color: var(--color-text-primary);
-  background: rgba(59, 127, 255, 0.08);
-  transform: translateY(-1px);
+  background: rgba(59, 127, 255, 0.1);
+  transform: translateY(-2px);
 }
 
 /* Tubelight active state — bottom glow bar */
@@ -352,13 +352,13 @@ a {
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--color-primary-neon), transparent);
   border-radius: var(--radius-full);
-  transition: transform 0.3s var(--ease-spring), opacity 0.3s ease;
+  transition: transform 0.15s var(--ease-spring), opacity 0.15s ease;
   opacity: 0;
 }
 
 .nav-link:hover::before {
-  transform: translateX(-50%) scaleX(0.6);
-  opacity: 0.5;
+  transform: translateX(-50%) scaleX(0.7);
+  opacity: 0.6;
 }
 
 .nav-link.active::before,
@@ -378,7 +378,7 @@ a {
   background: radial-gradient(ellipse at 50% 100%, rgba(0, 207, 255, 0.35) 0%, transparent 70%);
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.15s ease;
 }
 
 .nav-link.active::after,
@@ -1147,6 +1147,33 @@ a {
   line-height: 1.6;
   color: var(--color-text-muted);
   margin-bottom: var(--space-4);
+}
+
+.footer-socials {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(59, 127, 255, 0.06);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  transition: all 0.2s var(--ease-spring);
+}
+
+.social-icon:hover {
+  color: var(--color-primary-neon);
+  border-color: var(--color-border-neon);
+  background: rgba(0, 207, 255, 0.08);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 4px 16px rgba(0, 207, 255, 0.15);
 }
 
 .footer-bottom {
