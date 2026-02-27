@@ -785,26 +785,14 @@ a {
 
 .hero-mockup {
   width: 100%;
-  border-radius: 36px;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7), 0 0 60px rgba(59, 127, 255, 0.2);
+  border-radius: 0;
+  box-shadow: none;
   display: block;
-  background: #000;
-}
-
-html.light .hero-mockup {
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2), 0 0 40px rgba(37, 99, 235, 0.12);
+  background: transparent;
 }
 
 .hero-glow {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 150%;
-  height: 150%;
-  background: radial-gradient(circle, rgba(59, 127, 255, 0.35) 0%, rgba(0, 207, 255, 0.15) 35%, transparent 65%);
-  z-index: -1;
-  pointer-events: none;
-  filter: blur(40px);
+  display: none;
 }
 
 /* ============================================================
@@ -818,20 +806,14 @@ html.light .hero-mockup {
 }
 
 .feature-img-wrapper::before {
-  content: "";
-  position: absolute;
-  width: 80%;
-  height: 80%;
-  background: radial-gradient(circle, rgba(59, 127, 255, 0.2) 0%, transparent 70%);
-  filter: blur(40px);
-  z-index: 0;
+  display: none;
 }
 
 .feature-img {
   width: 100%;
-  max-width: 62%;
+  max-width: 100%;
   border-radius: var(--radius-xl);
-  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(59, 127, 255, 0.12);
+  box-shadow: none;
   display: block;
   margin: 0 auto;
   position: relative;
@@ -840,7 +822,7 @@ html.light .hero-mockup {
 }
 
 .feature-img-wrapper:hover .feature-img {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 /* ============================================================
