@@ -288,7 +288,7 @@ a {
 }
 
 .logo img {
-  height: 34px;
+  height: 44px;
   width: auto;
   transition: filter var(--duration-base) ease;
 }
@@ -735,7 +735,7 @@ a {
 
 .hero-mockup-wrapper {
   position: relative;
-  max-width: 340px;
+  max-width: 480px;
   margin: var(--space-12) auto 0;
   animation: float 5s ease-in-out infinite;
 }
@@ -1337,6 +1337,202 @@ article p {
 }
 
 .tab-panel[hidden] { display: none; }
+
+/* ============================================================
+   LIGHT / DARK THEME TOGGLE
+   ============================================================ */
+.theme-toggle {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: 1001;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-bright);
+  background: var(--color-bg-card);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-glow-sm);
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.12) rotate(15deg);
+  box-shadow: var(--shadow-glow-lg);
+}
+
+/* Light theme overrides */
+html.light {
+  --color-bg-default: #F5F7FB;
+  --color-bg-subtle: #EDF0F7;
+  --color-bg-card: rgba(255, 255, 255, 0.9);
+  --color-bg-card-hover: rgba(245, 248, 255, 0.95);
+  --color-text-primary: #0F172A;
+  --color-text-secondary: rgba(30, 41, 59, 0.75);
+  --color-text-muted: rgba(100, 116, 139, 0.6);
+  --color-border: rgba(59, 127, 255, 0.15);
+  --color-border-bright: rgba(59, 127, 255, 0.3);
+  --color-primary-soft: rgba(59, 127, 255, 0.08);
+  --color-surface: rgba(59, 127, 255, 0.03);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06), 0 0 0 1px var(--color-border);
+}
+
+html.light body::before {
+  background-image:
+    linear-gradient(rgba(59, 127, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 127, 255, 0.04) 1px, transparent 1px);
+}
+
+html.light body::after {
+  background: radial-gradient(circle, rgba(59, 127, 255, 0.08) 0%, transparent 65%);
+}
+
+html.light .aurora-orb {
+  background: radial-gradient(circle, rgba(0, 207, 255, 0.05) 0%, transparent 65%);
+}
+
+html.light .navbar::before {
+  background: rgba(245, 247, 251, 0.85);
+}
+
+html.light .navbar.scrolled::before {
+  background: rgba(245, 247, 251, 0.95);
+}
+
+/* Smooth transition for theme switch */
+html {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+html *, html *::before, html *::after {
+  transition-property: background-color, color, border-color, box-shadow, opacity, transform;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+}
+
+/* Override for elements that need their own timing */
+.btn, .card, .nav-link, .reveal {
+  transition-property: background-color, color, border-color, box-shadow, opacity, transform;
+}
+
+/* ============================================================
+   ENHANCED ANIMATIONS — Fade, Slide, Scale
+   ============================================================ */
+
+/* Slide from left */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide from right */
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale up */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s var(--ease-smooth), transform 0.6s var(--ease-spring);
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Fade up with blur */
+.reveal-blur {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(8px);
+  transition: opacity 0.6s var(--ease-smooth), transform 0.6s var(--ease-smooth), filter 0.6s var(--ease-smooth);
+}
+
+.reveal-blur.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Stagger children animation */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s var(--ease-smooth), transform 0.5s var(--ease-smooth);
+}
+
+.stagger-children.visible > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(3) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(4) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(5) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(6) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+
+/* Card hover glow pulse */
+.card:hover {
+  animation: card-glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes card-glow-pulse {
+  0%, 100% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--color-border-bright); }
+  50% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 20px rgba(59, 127, 255, 0.15), 0 0 0 1px var(--color-border-bright); }
+}
+
+/* Hero title word animation */
+.hero-title .gradient-text {
+  display: inline-block;
+  animation: text-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes text-shimmer {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+/* ============================================================
+   FASTER TAB TRANSITIONS
+   ============================================================ */
+.tab-btn {
+  transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s var(--ease-spring);
+}
+
+.tab-btn:hover {
+  transform: translateY(-1px);
+}
+
+.tab-btn[aria-selected="true"] {
+  transform: translateY(-2px);
+}
+
+.tab-panel {
+  animation: tab-fade-in 0.25s var(--ease-smooth);
+}
+
+@keyframes tab-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* ============================================================
    REDUCE MOTION

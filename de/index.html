@@ -15,6 +15,9 @@
 <body>
     <div class="aurora-orb"></div>
 
+    <!-- Light/Dark Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Hell/Dunkel umschalten">🌙</button>
+
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="container nav-content">
@@ -136,7 +139,7 @@
         <!-- FEATURE 1 -->
         <section class="section">
             <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
-                <div class="reveal">
+                <div class="reveal-left reveal">
                     <span class="badge">Smartes Training</span>
                     <h2 class="mb-4">Strukturierte Einheiten,<br><span class="gradient-text-blue">null Verwirrung.</span></h2>
                     <p class="mb-6">Schluss mit Rätselraten. TrainQ erstellt professionelle Pläne für deine Ziele — und zeigt dir genau, was du in jeder Einheit tun sollst.</p>
@@ -146,7 +149,7 @@
                         <li class="feature-check"><span class="icon">✓</span>Adherence- & Performance-Scores nach der Einheit</li>
                     </ul>
                 </div>
-                <div class="feature-img-wrapper reveal reveal-delay-2">
+                <div class="feature-img-wrapper reveal-right reveal reveal-delay-2">
                     <img src="../images/sections/Live Start.png" alt="Live Training" class="feature-img">
                 </div>
             </div>
@@ -155,10 +158,10 @@
         <!-- FEATURE 2 -->
         <section class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
             <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
-                <div class="feature-img-wrapper reveal">
+                <div class="feature-img-wrapper reveal-left reveal">
                     <img src="../images/sections/Kalender.png" alt="Trainingskalender" class="feature-img">
                 </div>
-                <div class="reveal reveal-delay-2">
+                <div class="reveal-right reveal reveal-delay-2">
                     <span class="badge">Adaptive Engine</span>
                     <h2 class="mb-4">Dein Zeitplan ändert sich.<br><span class="gradient-text-blue">Dein Plan passt sich an.</span></h2>
                     <p class="mb-6">Das Leben kommt dazwischen. TrainQ verschiebt Einheiten automatisch, wenn du ein Training verpasst, müde bist oder mehr Erholung brauchst.</p>
@@ -180,7 +183,7 @@
                         <li class="feature-check"><span class="icon">✓</span>Apple Health & Garmin Synchronisation</li>
                     </ul>
                 </div>
-                <div class="feature-img-wrapper reveal reveal-delay-2">
+                <div class="feature-img-wrapper reveal-right reveal reveal-delay-2">
                     <img src="../images/sections/Dashboard.png" alt="Statistik Dashboard" class="feature-img">
                 </div>
             </div>
@@ -308,7 +311,22 @@
                 }
             });
         }, { threshold: 0.12 });
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .stagger-children').forEach(el => revealObserver.observe(el));
+
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('trainq-theme');
+        if (savedTheme === 'light') {
+            document.documentElement.classList.add('light');
+            themeToggle.textContent = '☀️';
+        }
+        themeToggle.addEventListener('click', () => {
+            const isLight = document.documentElement.classList.toggle('light');
+            themeToggle.textContent = isLight ? '☀️' : '🌙';
+            localStorage.setItem('trainq-theme', isLight ? 'light' : 'dark');
+            themeToggle.style.transform = 'scale(1.12) rotate(360deg)';
+            setTimeout(() => themeToggle.style.transform = '', 400);
+        });
 
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
