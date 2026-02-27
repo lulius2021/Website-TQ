@@ -744,10 +744,10 @@ a {
 
 .title-logo {
   display: inline-block;
-  height: 0.85em;
+  height: 1.15em;
   width: auto;
-  vertical-align: baseline;
-  margin-right: -0.05em;
+  vertical-align: -0.15em;
+  margin-right: -0.03em;
   filter: brightness(1.1);
   transition: filter 0.3s ease;
 }
