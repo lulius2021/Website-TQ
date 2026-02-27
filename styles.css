@@ -747,7 +747,7 @@ a {
   height: 1.5em;
   width: auto;
   vertical-align: -0.25em;
-  margin-right: -0.03em;
+  margin-right: -0.15em;
   filter: brightness(1.1);
   transition: filter 0.3s ease;
 }
