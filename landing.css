@@ -1,0 +1,401 @@
+/* ============================================================
+   LANDING PAGE — Audi-inspired cinematic layout
+   ============================================================ */
+
+/* ── Override nav for transparent overlay ── */
+.landing-page .landing-nav {
+  position: fixed;
+  top: var(--space-4);
+  left: 0;
+  right: 0;
+}
+
+.landing-page .landing-nav .nav-content {
+  background: rgba(6, 11, 24, 0.4);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.landing-page .landing-nav.scrolled .nav-content {
+  background: rgba(6, 11, 24, 0.9);
+  border-color: var(--color-border-bright);
+}
+
+/* ── Scroll-fade animation ── */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.scroll-fade.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Hero fade-in ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-delay-1 { transition-delay: 0.3s; }
+.fade-delay-2 { transition-delay: 0.6s; }
+
+/* ============================================================
+   HERO — Full viewport cinematic
+   ============================================================ */
+.land-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.land-hero-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+
+.land-hero-video {
+  height: 100%;
+  width: auto;
+  min-width: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+.land-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 11, 24, 0.6) 0%,
+    rgba(6, 11, 24, 0.3) 40%,
+    rgba(6, 11, 24, 0.7) 100%
+  );
+  z-index: 1;
+}
+
+.land-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 var(--space-6);
+  max-width: 800px;
+}
+
+.land-hero-title {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-6);
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
+}
+
+.land-hero-sub {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: rgba(200, 215, 255, 0.8);
+  font-weight: 400;
+  margin-bottom: var(--space-8);
+  letter-spacing: 0.02em;
+}
+
+.land-hero-actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.land-scroll-hint {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.land-scroll-hint:hover {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: white !important;
+}
+
+/* ============================================================
+   LOGO REVEAL
+   ============================================================ */
+.land-logo-reveal {
+  padding: 120px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.land-logo-reveal-inner {
+  text-align: center;
+}
+
+.land-big-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: var(--space-6);
+  filter: drop-shadow(0 0 40px rgba(59, 127, 255, 0.4));
+  animation: logo-pulse 4s ease-in-out infinite;
+}
+
+@keyframes logo-pulse {
+  0%, 100% { filter: drop-shadow(0 0 40px rgba(59, 127, 255, 0.4)); transform: scale(1); }
+  50% { filter: drop-shadow(0 0 60px rgba(59, 127, 255, 0.6)); transform: scale(1.03); }
+}
+
+.land-tagline {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 300;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   STATS — Animated counters
+   ============================================================ */
+.land-stats {
+  padding: 80px 0;
+}
+
+.land-stats-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+}
+
+.land-stat {
+  flex: 1;
+  text-align: center;
+  padding: var(--space-12) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.land-stat-divider {
+  width: 1px;
+  height: 80px;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+.land-stat-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.land-stat-number {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 300;
+  color: var(--color-text-primary);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.land-stat-pct {
+  font-size: 0.5em;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.land-stat-unit {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 767px) {
+  .land-stats-grid {
+    flex-direction: column;
+  }
+  .land-stat-divider {
+    width: 60%;
+    height: 1px;
+  }
+}
+
+/* ============================================================
+   FEATURE SHOWCASE — Full-bleed alternating
+   ============================================================ */
+.land-feature {
+  padding: 100px 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .land-feature {
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-16);
+  }
+
+  .land-feature-reverse {
+    grid-template-columns: 1fr 1.2fr;
+  }
+
+  .land-feature-reverse .land-feature-media {
+    order: 2;
+  }
+
+  .land-feature-reverse .land-feature-text {
+    order: 1;
+  }
+}
+
+.land-feature-img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: var(--radius-xl);
+  display: block;
+  transition: transform 0.5s var(--ease-smooth);
+}
+
+.land-feature-media:hover .land-feature-img {
+  transform: scale(1.02);
+}
+
+.land-feature-text h2 {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  margin-bottom: var(--space-4);
+}
+
+.land-feature-text p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* ============================================================
+   SPORTS CARDS
+   ============================================================ */
+.land-sports {
+  padding: 100px 0;
+  background: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.land-sports-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .land-sports-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.land-sport-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-12) var(--space-8);
+  text-align: center;
+  transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s ease;
+}
+
+.land-sport-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.land-sport-card-featured {
+  border-color: rgba(59, 127, 255, 0.3);
+  box-shadow: 0 0 30px rgba(59, 127, 255, 0.1);
+}
+
+.land-sport-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-4);
+}
+
+.land-sport-card h3 {
+  margin-bottom: var(--space-3);
+}
+
+.land-sport-card p {
+  font-size: var(--text-sm);
+}
+
+/* ============================================================
+   PRIVACY — Minimal section
+   ============================================================ */
+.land-privacy {
+  padding: 120px 0;
+}
+
+/* ============================================================
+   CTA — Final call
+   ============================================================ */
+.land-cta {
+  padding: 100px 0 120px;
+  border-top: 1px solid var(--color-border);
+  background: linear-gradient(180deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%);
+}
+
+.land-cta-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: var(--space-4);
+}
+
+/* ============================================================
+   LIGHT MODE OVERRIDES
+   ============================================================ */
+html.light .landing-page .landing-nav .nav-content {
+  background: rgba(245, 247, 251, 0.5);
+}
+
+html.light .landing-page .landing-nav.scrolled .nav-content {
+  background: rgba(245, 247, 251, 0.92);
+}
+
+html.light .land-hero-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(238, 242, 255, 0.5) 0%,
+    rgba(238, 242, 255, 0.2) 40%,
+    rgba(238, 242, 255, 0.7) 100%
+  );
+}
+
+html.light .land-hero-video {
+  opacity: 0.85;
+}
+
+html.light .land-hero-title {
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}

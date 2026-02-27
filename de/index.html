@@ -1,36 +1,29 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrainQ — Smarter trainieren</title>
-    <meta name="description" content="TrainQ passt sich deiner Leistung an und hilft dir, deine sportlichen Ziele mit datenbasiertem Training zu erreichen — für Gym, Laufen und Radfahren.">
+    <meta name="description" content="TrainQ passt sich deiner Leistung an und hilft dir, deine sportlichen Ziele mit datenbasiertem Training zu erreichen.">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../landing.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-
-<body>
+<body class="landing-page">
     <div class="aurora-orb"></div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Theme wechseln">🌙</button>
 
-    <!-- Light/Dark Toggle -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Hell/Dunkel umschalten">🌙</button>
-
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar landing-nav" id="navbar">
         <div class="container nav-content">
-            <a href="index.html" class="logo">
-                <img src="../images/logos/logo.png" alt="TrainQ">
-            </a>
+            <a href="index.html" class="logo"><img src="../images/logos/logo.png" alt="TrainQ"></a>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü öffnen">☰</button>
             <div class="nav-links">
                 <a href="index.html" class="nav-link active" aria-current="page">Home</a>
                 <a href="features.html" class="nav-link">Features</a>
                 <a href="blog.html" class="nav-link">Blog</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-        <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
                 <a href="pricing.html" class="nav-link">Preise</a>
                 <a href="../index.html" class="nav-link nav-lang">EN</a>
             </div>
@@ -41,234 +34,146 @@
         <a href="index.html" class="nav-link active">Home</a>
         <a href="features.html" class="nav-link">Features</a>
         <a href="blog.html" class="nav-link">Blog</a>
-                <a href="blog.html" class="nav-link">Blog</a>
         <a href="faq.html" class="nav-link">FAQ</a>
         <a href="pricing.html" class="nav-link">Preise</a>
         <a href="../index.html" class="nav-link nav-lang">EN</a>
     </div>
 
     <main>
-
-        <!-- HERO -->
-        <section class="section" style="padding-bottom: 0; padding-top: var(--space-20);">
-            <div class="container hero">
-                <div class="hero-content">
-                    <span class="hero-eyebrow">Pro startet Ende März</span>
-                    <h1 class="hero-title">
-                        <img src="../images/logos/logo.png" alt="T" class="title-logo">rainieren mit<br>
-                        <span class="gradient-text">Daten-Klarheit.</span>
-                    </h1>
-                    <p class="hero-description">
-                        TrainQ passt sich deiner Leistung an — mit professioneller Struktur für Gym, Laufen und Radfahren. Fortschritt ohne Rätselraten.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="https://apps.apple.com/app/trainq" class="btn btn-primary" target="_blank" rel="noopener"><span>📲 App Store</span></a>
-                        <a href="#how-it-works" class="btn btn-secondary">Wie es funktioniert →</a>
-                    </div>
-                    <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: center;" class="reveal reveal-delay-4">
-                        <span class="stat-pill"><span class="stat-dot"></span>iOS-First</span>
-                        <span class="stat-pill"><span class="stat-dot"></span>Privacy-First</span>
-                        <span class="stat-pill"><span class="stat-dot"></span>Garmin Ready</span>
-                    </div>
-                </div>
-
-                <div class="hero-mockup-wrapper">
-                    <video src="../images/hero/hero-ambient-9x16.mp4" autoplay loop muted playsinline
-                        class="hero-mockup"></video>
-                    <div class="hero-glow"></div>
+        <section class="land-hero">
+            <div class="land-hero-bg">
+                <video src="../images/hero/hero-ambient-9x16.mp4" autoplay loop muted playsinline class="land-hero-video"></video>
+            </div>
+            <div class="land-hero-overlay"></div>
+            <div class="land-hero-content">
+                <h1 class="land-hero-title fade-in">
+                    <img src="../images/logos/logo.png" alt="T" class="title-logo">rainieren mit<br>
+                    <span class="gradient-text">Daten-Klarheit.</span>
+                </h1>
+                <p class="land-hero-sub fade-in fade-delay-1">Adaptives Training für Gym, Laufen & Radfahren.</p>
+                <div class="land-hero-actions fade-in fade-delay-2">
+                    <a href="https://apps.apple.com/app/trainq" class="btn btn-primary" target="_blank" rel="noopener">📲 App Store</a>
+                    <a href="#discover" class="btn btn-ghost land-scroll-hint">Entdecken ↓</a>
                 </div>
             </div>
         </section>
 
-        <!-- DIVIDER -->
-        <div class="container" style="padding-top: var(--space-16); padding-bottom: var(--space-16);">
-            <div class="section-divider"></div>
-        </div>
+        <section class="land-logo-reveal" id="discover">
+            <div class="land-logo-reveal-inner scroll-fade">
+                <img src="../images/logos/logo.png" alt="TrainQ" class="land-big-logo">
+                <p class="land-tagline">Smarte Trainingsstruktur für jeden Athleten.</p>
+            </div>
+        </section>
 
-        <!-- WARUM TRAINQ -->
-        <section class="section" style="padding-top: 0;">
+        <section class="land-stats">
             <div class="container">
-                <div class="text-center mb-12 reveal">
-                    <p class="section-label">Warum TrainQ</p>
-                    <h2>Für Athleten, die <span class="gradient-text-blue">echten Fortschritt</span> wollen.</h2>
-                </div>
-
-                <div class="grid-3">
-                    <div class="card reveal reveal-delay-1">
-                        <div class="card-icon">🎯</div>
-                        <h3 class="mb-3">Trainiere mit Klarheit</h3>
-                        <p>Professionelle Pläne, die Verwirrung eliminieren. Jede Einheit hat klare Ziele — Tempo, Herzfrequenz, Dauer.</p>
+                <div class="land-stats-grid scroll-fade">
+                    <div class="land-stat">
+                        <span class="land-stat-label">Passt sich deinem Leben an</span>
+                        <span class="land-stat-number"><span class="counter" data-target="3">0</span></span>
+                        <span class="land-stat-unit">Sportarten</span>
                     </div>
-                    <div class="card reveal reveal-delay-2">
-                        <div class="card-icon">🔄</div>
-                        <h3 class="mb-3">Passt sich deinem Leben an</h3>
-                        <p>Training verpasst? Unser adaptiver Motor passt deinen Plan automatisch an. Du bist nie mehr „hinterher".</p>
+                    <div class="land-stat-divider"></div>
+                    <div class="land-stat">
+                        <span class="land-stat-label">Echtzeit-Anleitung</span>
+                        <span class="land-stat-number"><span class="counter" data-target="100">0</span><span class="land-stat-pct">%</span></span>
+                        <span class="land-stat-unit">Live Tracking</span>
                     </div>
-                    <div class="card reveal reveal-delay-3">
-                        <div class="card-icon">📈</div>
-                        <h3 class="mb-3">Fortschritts-Einblicke</h3>
-                        <p>Klare, bedeutungsvolle Statistiken — keine Rohdaten-Flut. Verstehe, ob du wirklich besser wirst.</p>
+                    <div class="land-stat-divider"></div>
+                    <div class="land-stat">
+                        <span class="land-stat-label">Deine Daten gehören dir</span>
+                        <span class="land-stat-number"><span class="counter" data-target="0">0</span></span>
+                        <span class="land-stat-unit">Daten verkauft</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- WIE ES FUNKTIONIERT -->
-        <section id="how-it-works" class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <section class="land-feature">
+            <div class="land-feature-media scroll-fade">
+                <img src="../images/sections/Dashboard.png" alt="Dashboard" class="land-feature-img">
+            </div>
+            <div class="land-feature-text scroll-fade">
+                <span class="badge">Smartes Training</span>
+                <h2>Strukturierte Einheiten,<br><span class="gradient-text-blue">null Verwirrung.</span></h2>
+                <p>Professionelle Pläne, die Rätselraten eliminieren. Jede Einheit hat klare Ziele — Tempo, Herzfrequenz, Dauer.</p>
+            </div>
+        </section>
+
+        <section class="land-feature land-feature-reverse">
+            <div class="land-feature-media scroll-fade">
+                <img src="../images/sections/Kalender.png" alt="Kalender" class="land-feature-img">
+            </div>
+            <div class="land-feature-text scroll-fade">
+                <span class="badge">Adaptive Engine</span>
+                <h2>Dein Zeitplan ändert sich.<br><span class="gradient-text-blue">Dein Plan passt sich an.</span></h2>
+                <p>Das Leben kommt dazwischen. TrainQ verschiebt Einheiten automatisch und passt die Intensität an.</p>
+            </div>
+        </section>
+
+        <section class="land-feature">
+            <div class="land-feature-media scroll-fade">
+                <img src="../images/sections/Live Start.png" alt="Live Training" class="land-feature-img">
+            </div>
+            <div class="land-feature-text scroll-fade">
+                <span class="badge">Statistiken</span>
+                <h2>Saubere Statistiken.<br><span class="gradient-text-blue">Echter Einblick.</span></h2>
+                <p>Fitness-Trends, Wettkampf-Prognosen, Ermüdungs-Tracking — alles in einem Dashboard. Apple Health & Garmin verbunden.</p>
+            </div>
+        </section>
+
+        <section class="land-sports">
             <div class="container">
-                <div class="text-center mb-12 reveal">
-                    <p class="section-label">Der Prozess</p>
-                    <h2>Einfach by Design.</h2>
-                </div>
-                <div class="steps-grid">
-                    <div class="reveal reveal-delay-1">
-                        <div class="step-number">01</div>
-                        <h3 class="mb-3">Ziel setzen</h3>
-                        <p>Wähle eine Sportart und ein Ziel — 5k, Marathon, Radrennen oder allgemeine Fitness. TrainQ erstellt deinen persönlichen Plan.</p>
-                    </div>
-                    <div class="reveal reveal-delay-2">
-                        <div class="step-number">02</div>
-                        <h3 class="mb-3">Live trainieren</h3>
-                        <p>Führe geführte Einheiten mit Echtzeit-Feedback durch. Jedes Intervall, jeder Satz — strukturiert und direkt in der App verfolgt.</p>
-                    </div>
-                    <div class="reveal reveal-delay-3">
-                        <div class="step-number">03</div>
-                        <h3 class="mb-3">Auswerten & Anpassen</h3>
-                        <p>Deine Leistung beeinflusst die nächsten Einheiten. Der adaptive Motor hält dich auf Kurs — ohne Übertraining.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FEATURE 1 -->
-        <section class="section">
-            <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
-                <div class="reveal-left reveal">
-                    <span class="badge">Smartes Training</span>
-                    <h2 class="mb-4">Strukturierte Einheiten,<br><span class="gradient-text-blue">null Verwirrung.</span></h2>
-                    <p class="mb-6">Schluss mit Rätselraten. TrainQ erstellt professionelle Pläne für deine Ziele — und zeigt dir genau, was du in jeder Einheit tun sollst.</p>
-                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3);">
-                        <li class="feature-check"><span class="icon">✓</span>Automatisierte Workout-Strukturierung</li>
-                        <li class="feature-check"><span class="icon">✓</span>Live-Anleitung während des Trainings</li>
-                        <li class="feature-check"><span class="icon">✓</span>Adherence- & Performance-Scores nach der Einheit</li>
-                    </ul>
-                </div>
-                <div class="feature-img-wrapper reveal-right reveal reveal-delay-2">
-                    <img src="../images/sections/Live Start.png" alt="Live Training" class="feature-img">
-                </div>
-            </div>
-        </section>
-
-        <!-- FEATURE 2 -->
-        <section class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
-            <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
-                <div class="feature-img-wrapper reveal-left reveal">
-                    <img src="../images/sections/Kalender.png" alt="Trainingskalender" class="feature-img">
-                </div>
-                <div class="reveal-right reveal reveal-delay-2">
-                    <span class="badge">Adaptive Engine</span>
-                    <h2 class="mb-4">Dein Zeitplan ändert sich.<br><span class="gradient-text-blue">Dein Plan passt sich an.</span></h2>
-                    <p class="mb-6">Das Leben kommt dazwischen. TrainQ verschiebt Einheiten automatisch, wenn du ein Training verpasst, müde bist oder mehr Erholung brauchst.</p>
-                    <a href="features.html" class="btn btn-secondary">Alle Features entdecken →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- FEATURE 3 -->
-        <section class="section">
-            <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
-                <div class="reveal">
-                    <span class="badge">Statistiken</span>
-                    <h2 class="mb-4">Saubere Statistiken.<br><span class="gradient-text-blue">Echter Einblick.</span></h2>
-                    <p class="mb-6">TrainQ legt großen Wert auf saubere, bedeutungsvolle Statistiken statt Rohdaten. Verstehe deine Fitness-Trends und sieh, wie du dich wirklich verbesserst.</p>
-                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3);">
-                        <li class="feature-check"><span class="icon">✓</span>Fitness vs. Ermüdung Trend-Visualisierung</li>
-                        <li class="feature-check"><span class="icon">✓</span>Wettkampfzeit-Prognosen aus echten Daten</li>
-                        <li class="feature-check"><span class="icon">✓</span>Apple Health & Garmin Synchronisation</li>
-                    </ul>
-                </div>
-                <div class="feature-img-wrapper reveal-right reveal reveal-delay-2">
-                    <img src="../images/sections/Dashboard.png" alt="Statistik Dashboard" class="feature-img">
-                </div>
-            </div>
-        </section>
-
-        <!-- SPORTARTEN -->
-        <section class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
-            <div class="container">
-                <div class="text-center mb-12 reveal">
+                <div class="text-center scroll-fade" style="margin-bottom: var(--space-12);">
                     <p class="section-label">Alle Sportarten</p>
                     <h2>Für jeden Athleten.</h2>
-                    <p style="max-width: 500px; margin: var(--space-4) auto 0;">TrainQ funktioniert für jede Sportart — mit besonderem Fokus auf die drei beliebtesten Trainingsdisziplinen.</p>
                 </div>
-                <div class="grid-3">
-                    <div class="card text-center reveal reveal-delay-1" style="padding: var(--space-12) var(--space-8);">
-                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">🏋️</div>
-                        <h3 class="mb-3">Gym</h3>
-                        <p class="small-text">Kraftpläne, progressive Überlastung, Übungstracking und persönliche Bestleistungen.</p>
+                <div class="land-sports-grid">
+                    <div class="land-sport-card scroll-fade">
+                        <div class="land-sport-icon">🏋️</div>
+                        <h3>Gym</h3>
+                        <p>Kraftpläne, progressive Überlastung, Übungstracking und persönliche Bestleistungen.</p>
                     </div>
-                    <div class="card text-center reveal reveal-delay-2" style="padding: var(--space-12) var(--space-8); border-color: rgba(59, 127, 255, 0.3); box-shadow: 0 0 30px rgba(59, 127, 255, 0.1);">
-                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">🏃</div>
-                        <h3 class="mb-3">Laufen</h3>
-                        <p class="small-text">Von 5k bis Marathon, Tempoziele, Intervalltraining und Wettkampf-Prognosen.</p>
+                    <div class="land-sport-card land-sport-card-featured scroll-fade">
+                        <div class="land-sport-icon">🏃</div>
+                        <h3>Laufen</h3>
+                        <p>Von 5k bis Marathon, Tempoziele, Intervalltraining und Wettkampf-Prognosen.</p>
                     </div>
-                    <div class="card text-center reveal reveal-delay-3" style="padding: var(--space-12) var(--space-8);">
-                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">🚴</div>
-                        <h3 class="mb-3">Radfahren</h3>
-                        <p class="small-text">Leistungsbasiertes Training, FTP-Tracking, strukturierte Fahrten und Event-Vorbereitung.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- DATENSCHUTZ -->
-        <section class="section">
-            <div class="container" style="max-width: 900px;">
-                <div class="text-center mb-12 reveal">
-                    <p class="section-label">Datenschutz</p>
-                    <h2>Deine Daten. <span class="gradient-text-blue">Immer.</span></h2>
-                    <p style="max-width: 500px; margin: var(--space-4) auto 0;">Wir glauben, dass deine Gesundheitsdaten dir gehören — nicht uns, nicht Werbetreibenden. Das ist kein Feature, das ist ein Grundprinzip.</p>
-                </div>
-                <div class="grid-3">
-                    <div class="card text-center reveal reveal-delay-1">
-                        <div class="card-icon" style="margin: 0 auto var(--space-4);">🔒</div>
-                        <h3 class="mb-3">Lokal First</h3>
-                        <p class="small-text">Datenverarbeitung findet wo möglich auf deinem Gerät statt. Deine Gesundheitsdaten bleiben auf deinem Telefon.</p>
-                    </div>
-                    <div class="card text-center reveal reveal-delay-2">
-                        <div class="card-icon" style="margin: 0 auto var(--space-4);">📄</div>
-                        <h3 class="mb-3">Transparent</h3>
-                        <p class="small-text">Verständliche Datenschutzerklärung. Keine versteckten Klauseln, kein juristisches Kauderwelsch.</p>
-                    </div>
-                    <div class="card text-center reveal reveal-delay-3">
-                        <div class="card-icon" style="margin: 0 auto var(--space-4);">⚙️</div>
-                        <h3 class="mb-3">Volle Kontrolle</h3>
-                        <p class="small-text">Exportiere oder lösche alle deine Daten jederzeit. In Standard .FIT und .TCX Formaten.</p>
+                    <div class="land-sport-card scroll-fade">
+                        <div class="land-sport-icon">🚴</div>
+                        <h3>Radfahren</h3>
+                        <p>Leistungsbasiertes Training, FTP-Tracking, strukturierte Fahrten und Event-Vorbereitung.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA -->
-        <section id="join" class="section" style="background: linear-gradient(180deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%); border-top: 1px solid var(--color-border);">
-            <div class="container text-center" style="max-width: 600px;">
-                <div class="reveal">
-                    <p class="section-label">Loslegen</p>
-                    <h2 class="mb-4">Beginne <span class="gradient-text">smarter zu trainieren.</span></h2>
-                    <p class="mb-8" style="max-width: 450px; margin-left: auto; margin-right: auto; margin-bottom: var(--space-8);">
-                        TrainQ Pro startet Ende März. Kostenloser Beta-Zugang — keine Kreditkarte erforderlich.
-                    </p>
-                    <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
-                        <span class="btn btn-primary" style="cursor: default;">Verfügbar Ende März</span>
-                        <a href="features.html" class="btn btn-secondary">Features entdecken</a>
-                    </div>
-                </div>
+        <section class="land-privacy">
+            <div class="container text-center scroll-fade" style="max-width: 700px;">
+                <p class="section-label">Datenschutz</p>
+                <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; letter-spacing: -0.02em;">
+                    Deine Daten. <span class="gradient-text-blue" style="font-weight: 700;">Immer deine.</span>
+                </h2>
+                <p style="margin-top: var(--space-6); font-size: 1.1rem;">
+                    Lokale Verarbeitung. Volle Exportkontrolle. Keine Werbung, kein Tracking, kein Datenverkauf. Nie.
+                </p>
             </div>
         </section>
 
+        <section class="land-cta">
+            <div class="container text-center scroll-fade" style="max-width: 600px;">
+                <h2 class="land-cta-title">Beginne <span class="gradient-text">smarter zu trainieren.</span></h2>
+                <p style="margin-bottom: var(--space-8); color: var(--color-text-secondary);">
+                    TrainQ Pro startet Ende März. Kostenloser Beta-Zugang jetzt verfügbar.
+                </p>
+                <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+                    <a href="https://apps.apple.com/app/trainq" class="btn btn-primary" target="_blank" rel="noopener">📲 Im App Store laden</a>
+                    <a href="features.html" class="btn btn-secondary">Features entdecken</a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -279,15 +184,9 @@
                     <p>Adaptive Trainingsstruktur für Athleten, die wirklich weiterkommen wollen.</p>
                     <p style="font-size: 0.84rem; color: var(--color-text-muted);">&copy; 2026 TrainQ Inc.</p>
                     <div class="footer-socials">
-                        <a href="https://instagram.com/trainq.app" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                        </a>
-                        <a href="https://x.com/trainqapp" target="_blank" rel="noopener" aria-label="X" class="social-icon">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                        </a>
-                        <a href="https://facebook.com/trainqapp" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                        </a>
+                        <a href="https://instagram.com/trainq.app" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                        <a href="https://x.com/trainqapp" target="_blank" rel="noopener" aria-label="X" class="social-icon"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="https://facebook.com/trainqapp" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
                     </div>
                 </div>
                 <div>
@@ -318,6 +217,37 @@
     </footer>
 
     <script src="../shared.js"></script>
-</body>
+    <script>
+        const scrollObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('in-view'); scrollObs.unobserve(entry.target); }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.scroll-fade').forEach(el => scrollObs.observe(el));
 
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.fade-in').forEach(el => setTimeout(() => el.classList.add('visible'), 200));
+        });
+
+        const counterObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target; const target = parseInt(el.dataset.target);
+                    const start = performance.now();
+                    function tick(now) {
+                        const p = Math.min((now - start) / 1500, 1);
+                        el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target);
+                        if (p < 1) requestAnimationFrame(tick);
+                    }
+                    requestAnimationFrame(tick); counterObs.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+        document.querySelector('.land-scroll-hint')?.addEventListener('click', (e) => {
+            e.preventDefault(); document.getElementById('discover')?.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
 </html>
