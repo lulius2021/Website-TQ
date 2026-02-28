@@ -778,7 +778,7 @@ a {
 
 .hero-mockup-wrapper {
   position: relative;
-  max-width: 460px;
+  max-width: 520px;
   width: 100%;
   margin: var(--space-12) auto 0;
   animation: float 5s ease-in-out infinite;
@@ -786,9 +786,9 @@ a {
 
 @media (min-width: 768px) {
   .hero-mockup-wrapper {
-    max-width: 600px;
+    max-width: 700px;
     margin-top: 0;
-    margin-right: -60px;
+    margin-right: -80px;
   }
 }
 
@@ -799,8 +799,8 @@ a {
 
 .hero-mockup {
   width: 100%;
-  border-radius: 0;
-  box-shadow: none;
+  border-radius: 32px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
   display: block;
   background: transparent;
 }
