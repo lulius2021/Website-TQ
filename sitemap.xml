@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://trainq.app/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://trainq.app/features.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/blog.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://trainq.app/pricing.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/faq.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/about.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/blog/polarized-training.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/blog/progressive-overload.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/blog/sleep-performance.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/blog/ftp-testing.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/blog/running-cadence.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/blog/carb-periodization.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/blog/compound-vs-isolation.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/blog/indoor-vs-outdoor.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/blog/hrv-readiness.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/blog/protein-timing.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/blog/norwegian-method.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/blog/concurrent-training.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/privacy.html</loc><priority>0.4</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://trainq.app/terms.html</loc><priority>0.4</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://trainq.app/imprint.html</loc><priority>0.4</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://trainq.app/de/</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://trainq.app/de/features.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/de/blog.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://trainq.app/de/pricing.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://trainq.app/de/faq.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+</urlset>

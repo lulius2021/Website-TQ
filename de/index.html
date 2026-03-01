@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    <div class="page-loader" id="pageLoader"><img src="../images/logos/logo.png" alt="Loading"></div>
     <div class="aurora-orb"></div>
 
     <!-- Light/Dark Toggle -->
@@ -157,7 +158,7 @@
                     </ul>
                 </div>
                 <div class="feature-img-wrapper reveal-right reveal reveal-delay-2">
-                    <img src="../images/sections/Live Start.png" alt="Live Training" class="feature-img">
+                    <img src="../images/sections/Live Start.webp" alt="Live Training" class="feature-img" loading="lazy">
                 </div>
             </div>
         </section>
@@ -166,7 +167,7 @@
         <section class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
             <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
                 <div class="feature-img-wrapper reveal-left reveal">
-                    <img src="../images/sections/Kalender.png" alt="Trainingskalender" class="feature-img">
+                    <img src="../images/sections/Kalender.webp" alt="Trainingskalender" class="feature-img" loading="lazy">
                 </div>
                 <div class="reveal-right reveal reveal-delay-2">
                     <span class="badge">Adaptive Engine</span>
@@ -191,7 +192,7 @@
                     </ul>
                 </div>
                 <div class="feature-img-wrapper reveal-right reveal reveal-delay-2">
-                    <img src="../images/sections/Dashboard.png" alt="Statistik Dashboard" class="feature-img">
+                    <img src="../images/sections/Dashboard.webp" alt="Statistik Dashboard" class="feature-img" loading="lazy">
                 </div>
             </div>
         </section>
@@ -395,6 +396,12 @@
     </footer>
 
     <script src="../shared.js"></script>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+    <div class="cookie-banner" id="cookieBanner">
+    <p>Wir nutzen nur essenzielle Cookies. Kein Tracking. <a href="../privacy.html">Datenschutz</a></p>
+    <button class="cookie-btn cookie-btn-accept">Akzeptieren</button>
+    <button class="cookie-btn cookie-btn-decline">Ablehnen</button>
+</div>
 </body>
 
 </html>

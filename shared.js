@@ -116,9 +116,55 @@ function init() {
   }
 }
 
+// ── Back to top ──
+function initBackToTop() {
+  var btn = document.getElementById('backToTop');
+  if (!btn) return;
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(function() {
+        btn.classList.toggle('visible', window.scrollY > 600);
+        ticking = false;
+      });
+    }
+  }, { passive: true });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// ── Cookie banner ──
+function initCookieBanner() {
+  if (localStorage.getItem('trainq-cookies')) return;
+  var banner = document.getElementById('cookieBanner');
+  if (!banner) return;
+  setTimeout(function() { banner.classList.add('visible'); }, 1500);
+  banner.querySelector('.cookie-btn-accept')?.addEventListener('click', function() {
+    localStorage.setItem('trainq-cookies', 'accepted');
+    banner.classList.remove('visible');
+    banner.classList.add('hidden');
+  });
+  banner.querySelector('.cookie-btn-decline')?.addEventListener('click', function() {
+    localStorage.setItem('trainq-cookies', 'declined');
+    banner.classList.remove('visible');
+    banner.classList.add('hidden');
+  });
+}
+
+// ── Page loader ──
+function hideLoader() {
+  var loader = document.getElementById('pageLoader');
+  if (loader) loader.classList.add('hidden');
+}
+
 // Run init immediately if DOM ready, otherwise wait
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', function() { init(); initBackToTop(); initCookieBanner(); });
 } else {
-  init();
+  init(); initBackToTop(); initCookieBanner();
 }
+
+// Hide loader when page fully loaded
+window.addEventListener('load', hideLoader);
