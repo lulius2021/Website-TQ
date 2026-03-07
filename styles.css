@@ -1724,6 +1724,61 @@ body, .navbar, .nav-content, .card, .footer, .section, .btn {
 }
 
 /* ============================================================
+   APP SCREENSHOTS CAROUSEL
+   ============================================================ */
+
+.screenshot-carousel {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0 0 var(--space-4);
+}
+
+.screenshot-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.screenshot-track {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0 var(--space-2);
+  width: max-content;
+}
+
+.screenshot-card {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.screenshot-card img {
+  width: 280px;
+  height: auto;
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.screenshot-card:hover img {
+  transform: scale(1.03);
+}
+
+.screenshot-label {
+  margin-top: 0.75rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 640px) {
+  .screenshot-card img {
+    width: 220px;
+  }
+  .screenshot-track {
+    gap: 1rem;
+  }
+}
+
+/* ============================================================
    BLOG TEASER
    ============================================================ */
 .blog-teaser-card {
