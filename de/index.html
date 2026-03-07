@@ -259,33 +259,37 @@
                     <h2>TrainQ in Aktion.</h2>
                     <p style="max-width: 540px; margin: var(--space-4) auto 0;">Von adaptivem Training bis Ernaehrungstracking — alles was du brauchst in einer App.</p>
                 </div>
-                <div class="screenshot-carousel reveal">
-                    <div class="screenshot-track">
-                        <div class="screenshot-card">
-                            <img src="../images/screenshots/dashboard-mockup.png" alt="TrainQ Dashboard" loading="lazy">
-                            <p class="screenshot-label">Dashboard</p>
-                        </div>
-                        <div class="screenshot-card">
-                            <img src="../images/screenshots/workout-mockup.png" alt="Workout Tracking" loading="lazy">
-                            <p class="screenshot-label">Workout Tracking</p>
-                        </div>
-                        <div class="screenshot-card">
-                            <img src="../images/screenshots/calendar-mockup.png" alt="Trainingskalender" loading="lazy">
-                            <p class="screenshot-label">Kalender</p>
-                        </div>
-                        <div class="screenshot-card">
-                            <img src="../images/screenshots/nutrition-mockup.png" alt="Ernaehrungstracking" loading="lazy">
-                            <p class="screenshot-label">Ernaehrung</p>
-                        </div>
-                        <div class="screenshot-card">
-                            <img src="../images/screenshots/stats-mockup.png" alt="Trainingsstatistiken" loading="lazy">
-                            <p class="screenshot-label">Statistiken</p>
-                        </div>
-                        <div class="screenshot-card">
-                            <img src="../images/screenshots/challenges-mockup.png" alt="Challenges" loading="lazy">
-                            <p class="screenshot-label">Challenges</p>
+                <div class="screenshot-carousel-wrapper reveal">
+                    <button class="carousel-arrow carousel-arrow-left" aria-label="Zurück" onclick="this.parentElement.querySelector('.screenshot-carousel').scrollBy({left:-300,behavior:'smooth'})">‹</button>
+                    <div class="screenshot-carousel">
+                        <div class="screenshot-track">
+                            <div class="screenshot-card">
+                                <img src="../images/screenshots/dashboard-mockup.png" alt="TrainQ Dashboard" loading="lazy">
+                                <p class="screenshot-label">Dashboard</p>
+                            </div>
+                            <div class="screenshot-card">
+                                <img src="../images/screenshots/workout-mockup.png" alt="Workout Tracking" loading="lazy">
+                                <p class="screenshot-label">Workout Tracking</p>
+                            </div>
+                            <div class="screenshot-card">
+                                <img src="../images/screenshots/calendar-mockup.png" alt="Trainingskalender" loading="lazy">
+                                <p class="screenshot-label">Kalender</p>
+                            </div>
+                            <div class="screenshot-card">
+                                <img src="../images/screenshots/nutrition-mockup.png" alt="Ernährungstracking" loading="lazy">
+                                <p class="screenshot-label">Ernährung</p>
+                            </div>
+                            <div class="screenshot-card">
+                                <img src="../images/screenshots/stats-mockup.png" alt="Trainingsstatistiken" loading="lazy">
+                                <p class="screenshot-label">Statistiken</p>
+                            </div>
+                            <div class="screenshot-card">
+                                <img src="../images/screenshots/challenges-mockup.png" alt="Challenges" loading="lazy">
+                                <p class="screenshot-label">Challenges</p>
+                            </div>
                         </div>
                     </div>
+                    <button class="carousel-arrow carousel-arrow-right" aria-label="Weiter" onclick="this.parentElement.querySelector('.screenshot-carousel').scrollBy({left:300,behavior:'smooth'})">›</button>
                 </div>
             </div>
         </section>
