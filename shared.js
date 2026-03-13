@@ -124,65 +124,99 @@ function initNavIndicator() {
   var navLinks = document.querySelector('.nav-links');
   if (!navLinks) return;
 
-  // Create the indicator element
   var indicator = document.createElement('div');
   indicator.className = 'nav-indicator';
   navLinks.appendChild(indicator);
 
   var links = navLinks.querySelectorAll('.nav-link:not(.nav-lang)');
   var activeLink = navLinks.querySelector('.nav-link.active, .nav-link[aria-current="page"]');
+  var isAnimating = false;
 
-  function moveIndicator(target, animate) {
+  function positionIndicator(target, instant) {
     if (!target) { indicator.classList.remove('visible'); return; }
     var navRect = navLinks.getBoundingClientRect();
     var linkRect = target.getBoundingClientRect();
-    var left = linkRect.left - navRect.left;
-    var width = linkRect.width;
 
-    if (!animate) {
+    if (instant) {
       indicator.style.transition = 'none';
       indicator.offsetHeight;
     }
 
-    indicator.style.left = left + 'px';
-    indicator.style.width = width + 'px';
+    indicator.style.left = (linkRect.left - navRect.left) + 'px';
+    indicator.style.width = linkRect.width + 'px';
     indicator.classList.add('visible');
 
-    if (!animate) {
+    if (instant) {
       indicator.offsetHeight;
       indicator.style.transition = '';
     }
   }
 
-  // Position on active link immediately
+  // Set initial position (no animation)
   if (activeLink) {
     requestAnimationFrame(function() {
-      moveIndicator(activeLink, false);
+      positionIndicator(activeLink, true);
     });
   }
 
-  // On click: animate indicator to clicked link, then navigate
+  // Click handler — full animation sequence
   for (var i = 0; i < links.length; i++) {
     links[i].addEventListener('click', function(e) {
       var clicked = this;
-      // Skip if already active or external link
-      if (clicked === activeLink) return;
+      if (clicked === activeLink || isAnimating) return;
       var href = clicked.getAttribute('href');
       if (!href || href.startsWith('http') || href.startsWith('#')) return;
 
       e.preventDefault();
+      isAnimating = true;
 
-      // Animate indicator to the clicked tab
-      moveIndicator(clicked, true);
+      // Calculate stretch: during slide, expand width toward the target
+      var navRect = navLinks.getBoundingClientRect();
+      var fromRect = activeLink ? activeLink.getBoundingClientRect() : { left: navRect.left, width: 0 };
+      var toRect = clicked.getBoundingClientRect();
 
-      // Update active styling immediately
+      var fromLeft = fromRect.left - navRect.left;
+      var toLeft = toRect.left - navRect.left;
+      var goingRight = toLeft > fromLeft;
+
+      // Phase 1: Stretch toward target (the indicator expands to cover both positions)
+      var stretchLeft = Math.min(fromLeft, toLeft);
+      var stretchRight = Math.max(fromLeft + fromRect.width, toLeft + toRect.width);
+      var stretchWidth = stretchRight - stretchLeft;
+
+      indicator.classList.remove('landing', 'glow');
+      indicator.classList.add('sliding');
+      indicator.style.left = stretchLeft + 'px';
+      indicator.style.width = stretchWidth + 'px';
+
+      // Update active text
       if (activeLink) activeLink.classList.remove('active');
       clicked.classList.add('active');
 
-      // Navigate after animation completes
+      // Phase 2: Contract to target (after stretch completes)
+      setTimeout(function() {
+        indicator.style.left = (toRect.left - navRect.left) + 'px';
+        indicator.style.width = toRect.width + 'px';
+      }, 180);
+
+      // Phase 3: Spring bounce + glow on landing
+      setTimeout(function() {
+        indicator.classList.remove('sliding');
+        indicator.classList.add('landing', 'glow');
+        clicked.classList.add('tab-pop');
+      }, 400);
+
+      // Phase 4: Navigate
       setTimeout(function() {
         window.location.href = href;
-      }, 350);
+      }, 600);
+
+      // Cleanup classes after animation
+      setTimeout(function() {
+        indicator.classList.remove('landing', 'glow');
+        clicked.classList.remove('tab-pop');
+        isAnimating = false;
+      }, 900);
     });
   }
 
@@ -192,7 +226,7 @@ function initNavIndicator() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function() {
       var current = navLinks.querySelector('.nav-link.active, .nav-link[aria-current="page"]');
-      if (current) moveIndicator(current, false);
+      if (current) positionIndicator(current, true);
     }, 100);
   });
 }
