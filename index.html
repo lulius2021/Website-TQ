@@ -21,7 +21,15 @@
 </head>
 
 <body>
-    <!-- No page loader, no aurora orbs — clean load -->
+    <!-- SVG filter for liquid glass refraction -->
+    <svg style="position:absolute;width:0;height:0">
+      <defs>
+        <filter id="glass-refract">
+          <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" result="noise" seed="2"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+    </svg>
 
     <!-- Light/Dark Toggle -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">🌙</button>
