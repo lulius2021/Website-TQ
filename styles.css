@@ -211,12 +211,18 @@ a {
    NAVBAR — Floating Pill + Tubelight Effect
    ============================================================ */
 .navbar {
-  display: none;
+  position: sticky;
+  top: var(--space-4);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-6);
+  background: none;
+  pointer-events: none;
 }
 
-.navbar::before {
-  display: none;
-}
+.navbar::before { display: none; }
 
 .nav-content {
   display: flex;
@@ -225,20 +231,23 @@ a {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  background: rgba(6, 11, 24, 0.7);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--color-border-bright);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-full);
-  padding: 10px 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: 8px 12px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset,
+              0 4px 20px rgba(0, 0, 0, 0.15);
   pointer-events: all;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .navbar.scrolled .nav-content {
-  background: rgba(6, 11, 24, 0.92);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset,
+              0 8px 28px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
@@ -261,12 +270,11 @@ a {
 .nav-links {
   display: none;
   align-items: center;
-  gap: var(--space-2);
-  background: rgba(59, 127, 255, 0.05);
-  border: 1px solid var(--color-border);
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-full);
-  padding: 6px 8px;
-  backdrop-filter: blur(12px);
+  padding: 4px 6px;
 }
 
 @media (min-width: 768px) {
@@ -275,85 +283,115 @@ a {
 
 .nav-link {
   font-weight: 500;
-  font-size: 0.92rem;
-  color: var(--color-text-secondary);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.6);
   padding: 7px 16px;
   border-radius: var(--radius-full);
-  transition: color 0.12s ease, background 0.12s ease, transform 0.15s var(--ease-spring);
+  transition: color 0.15s ease, background 0.15s ease;
   position: relative;
   white-space: nowrap;
 }
 
 .nav-link:hover {
-  color: var(--color-text-primary);
-  background: rgba(59, 127, 255, 0.1);
-  transform: translateY(-2px);
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.08);
 }
 
-/* Active nav link */
+/* Active nav link — glass pill */
 .nav-link.active,
 .nav-link[aria-current="page"] {
-  color: var(--color-text-primary);
-  background: rgba(59, 127, 255, 0.1);
+  color: white;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset;
 }
 
-/* Nav CTA button */
+/* Nav CTA button — glass */
 .nav-cta {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: white !important;
-  background: var(--color-primary) !important;
+  background: rgba(59, 127, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
   padding: 7px 18px !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
 }
 
 .nav-cta:hover {
-  transform: translateY(-1px);
-  background: var(--color-primary-hover) !important;
+  background: rgba(59, 127, 255, 0.3) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
 }
 
 /* Language switcher */
 .nav-lang {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: var(--color-text-muted) !important;
+  color: rgba(255, 255, 255, 0.4) !important;
   letter-spacing: 0.04em;
   padding: 5px 10px !important;
-  border: 1px solid var(--color-border) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   background: transparent !important;
 }
 
 .nav-lang:hover {
-  color: var(--color-primary-neon) !important;
-  border-color: var(--color-border-neon) !important;
-  background: rgba(0, 207, 255, 0.05) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
 }
 
 /* Mobile nav */
 .mobile-menu-btn {
-  background: rgba(59, 127, 255, 0.08);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 1.2rem;
   cursor: pointer;
   padding: 8px 12px;
   display: block;
-  transition: all var(--duration-fast) ease;
+  transition: all 0.15s ease;
   line-height: 1;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .mobile-menu-btn:hover {
-  background: rgba(59, 127, 255, 0.15);
-  border-color: var(--color-border-bright);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: white;
 }
 
 @media (min-width: 768px) {
   .mobile-menu-btn { display: none; }
 }
 
-/* Mobile menu dropdown — hidden with navbar */
+/* Mobile menu — liquid glass */
 .mobile-nav {
-  display: none !important;
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: var(--space-4);
+  right: var(--space-4);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(28px) saturate(1.4);
+  -webkit-backdrop-filter: blur(28px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  z-index: 999;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset,
+              0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: mobile-menu-in var(--duration-base) var(--ease-smooth);
+}
+
+.mobile-nav.open {
+  display: flex;
+}
+
+html.light .mobile-nav {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(0, 0, 0, 0.06);
 }
 
 @keyframes mobile-menu-in {
@@ -1349,12 +1387,40 @@ html.light .step-number {
 }
 
 html.light .nav-content {
-  background: rgba(245, 247, 251, 0.8);
-  border-color: rgba(59, 127, 255, 0.2);
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset,
+              0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
 html.light .navbar.scrolled .nav-content {
-  background: rgba(245, 247, 251, 0.95);
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+html.light .nav-link {
+  color: rgba(15, 23, 42, 0.5);
+}
+
+html.light .nav-link:hover {
+  color: rgba(15, 23, 42, 0.9);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+html.light .nav-link.active,
+html.light .nav-link[aria-current="page"] {
+  color: #0f172a;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+html.light .nav-lang {
+  color: rgba(15, 23, 42, 0.35) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .nav-lang:hover {
+  color: rgba(15, 23, 42, 0.7) !important;
+  background: rgba(0, 0, 0, 0.03) !important;
 }
 
 /* Smooth transition for theme switch — only on key elements */
