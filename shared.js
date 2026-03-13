@@ -159,7 +159,7 @@ function initNavIndicator() {
     });
   }
 
-  // Click handler — full animation sequence
+  // Click handler — smooth liquid slide, then navigate
   for (var i = 0; i < links.length; i++) {
     links[i].addEventListener('click', function(e) {
       var clicked = this;
@@ -170,53 +170,20 @@ function initNavIndicator() {
       e.preventDefault();
       isAnimating = true;
 
-      // Calculate stretch: during slide, expand width toward the target
+      // Simply slide the indicator to the clicked tab
       var navRect = navLinks.getBoundingClientRect();
-      var fromRect = activeLink ? activeLink.getBoundingClientRect() : { left: navRect.left, width: 0 };
       var toRect = clicked.getBoundingClientRect();
+      indicator.style.left = (toRect.left - navRect.left) + 'px';
+      indicator.style.width = toRect.width + 'px';
 
-      var fromLeft = fromRect.left - navRect.left;
-      var toLeft = toRect.left - navRect.left;
-      var goingRight = toLeft > fromLeft;
-
-      // Phase 1: Stretch toward target (the indicator expands to cover both positions)
-      var stretchLeft = Math.min(fromLeft, toLeft);
-      var stretchRight = Math.max(fromLeft + fromRect.width, toLeft + toRect.width);
-      var stretchWidth = stretchRight - stretchLeft;
-
-      indicator.classList.remove('landing', 'glow');
-      indicator.classList.add('sliding');
-      indicator.style.left = stretchLeft + 'px';
-      indicator.style.width = stretchWidth + 'px';
-
-      // Update active text
+      // Update active styling
       if (activeLink) activeLink.classList.remove('active');
       clicked.classList.add('active');
 
-      // Phase 2: Contract to target (after stretch completes)
-      setTimeout(function() {
-        indicator.style.left = (toRect.left - navRect.left) + 'px';
-        indicator.style.width = toRect.width + 'px';
-      }, 180);
-
-      // Phase 3: Spring bounce + glow on landing
-      setTimeout(function() {
-        indicator.classList.remove('sliding');
-        indicator.classList.add('landing', 'glow');
-        clicked.classList.add('tab-pop');
-      }, 400);
-
-      // Phase 4: Navigate
+      // Navigate after the slide completes
       setTimeout(function() {
         window.location.href = href;
-      }, 600);
-
-      // Cleanup classes after animation
-      setTimeout(function() {
-        indicator.classList.remove('landing', 'glow');
-        clicked.classList.remove('tab-pop');
-        isAnimating = false;
-      }, 900);
+      }, 420);
     });
   }
 
