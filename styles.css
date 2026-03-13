@@ -332,7 +332,7 @@ html.light .nav-indicator {
 }
 
 .nav-link:hover {
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* Active nav link — text only, indicator handles the glass bg */

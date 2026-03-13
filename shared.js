@@ -119,7 +119,7 @@ function init() {
   }
 }
 
-// ── Nav liquid glass sliding indicator (iOS 26 style) ──
+// ── Nav liquid glass sliding indicator (iOS 26 style — click to slide) ──
 function initNavIndicator() {
   var navLinks = document.querySelector('.nav-links');
   if (!navLinks) return;
@@ -129,7 +129,7 @@ function initNavIndicator() {
   indicator.className = 'nav-indicator';
   navLinks.appendChild(indicator);
 
-  var links = navLinks.querySelectorAll('.nav-link');
+  var links = navLinks.querySelectorAll('.nav-link:not(.nav-lang)');
   var activeLink = navLinks.querySelector('.nav-link.active, .nav-link[aria-current="page"]');
 
   function moveIndicator(target, animate) {
@@ -141,7 +141,7 @@ function initNavIndicator() {
 
     if (!animate) {
       indicator.style.transition = 'none';
-      indicator.offsetHeight; // force reflow
+      indicator.offsetHeight;
     }
 
     indicator.style.left = left + 'px';
@@ -154,36 +154,45 @@ function initNavIndicator() {
     }
   }
 
-  // Position on active link immediately (no animation)
+  // Position on active link immediately
   if (activeLink) {
-    // Wait a frame for layout
     requestAnimationFrame(function() {
       moveIndicator(activeLink, false);
     });
   }
 
-  // Slide to hovered link
+  // On click: animate indicator to clicked link, then navigate
   for (var i = 0; i < links.length; i++) {
-    links[i].addEventListener('mouseenter', function() {
-      moveIndicator(this, true);
+    links[i].addEventListener('click', function(e) {
+      var clicked = this;
+      // Skip if already active or external link
+      if (clicked === activeLink) return;
+      var href = clicked.getAttribute('href');
+      if (!href || href.startsWith('http') || href.startsWith('#')) return;
+
+      e.preventDefault();
+
+      // Animate indicator to the clicked tab
+      moveIndicator(clicked, true);
+
+      // Update active styling immediately
+      if (activeLink) activeLink.classList.remove('active');
+      clicked.classList.add('active');
+
+      // Navigate after animation completes
+      setTimeout(function() {
+        window.location.href = href;
+      }, 350);
     });
   }
-
-  // Slide back to active on mouse leave
-  navLinks.addEventListener('mouseleave', function() {
-    if (activeLink) {
-      moveIndicator(activeLink, true);
-    } else {
-      indicator.classList.remove('visible');
-    }
-  });
 
   // Update on resize
   var resizeTimer;
   window.addEventListener('resize', function() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function() {
-      if (activeLink) moveIndicator(activeLink, false);
+      var current = navLinks.querySelector('.nav-link.active, .nav-link[aria-current="page"]');
+      if (current) moveIndicator(current, false);
     }, 100);
   });
 }
