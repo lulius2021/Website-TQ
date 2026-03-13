@@ -211,15 +211,7 @@ a {
    NAVBAR — Floating Pill + Tubelight Effect
    ============================================================ */
 .navbar {
-  position: sticky;
-  top: var(--space-4);
-  z-index: 1000;
-  height: auto;
-  display: flex;
-  align-items: center;
-  padding: 0 var(--space-6);
-  background: none;
-  pointer-events: none;
+  display: none;
 }
 
 .navbar::before {
@@ -359,25 +351,9 @@ a {
   .mobile-menu-btn { display: none; }
 }
 
-/* Mobile menu dropdown */
+/* Mobile menu dropdown — hidden with navbar */
 .mobile-nav {
-  display: none;
-  position: fixed;
-  top: 80px;
-  left: 0;
-  right: 0;
-  background: rgba(6, 11, 24, 0.97);
-  backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--color-border);
-  padding: var(--space-4);
-  z-index: 999;
-  flex-direction: column;
-  gap: var(--space-2);
-  animation: mobile-menu-in var(--duration-base) var(--ease-smooth);
-}
-
-.mobile-nav.open {
-  display: flex;
+  display: none !important;
 }
 
 @keyframes mobile-menu-in {
@@ -418,22 +394,30 @@ a {
   user-select: none;
 }
 
+/* Liquid Glass Buttons */
 .btn-primary {
-  background: var(--color-primary);
+  background: rgba(59, 127, 255, 0.25);
   color: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset,
+              0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .btn-primary::before { display: none; }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  background: var(--color-primary-hover);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  background: rgba(59, 127, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset,
+              0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary:active {
   transform: translateY(0);
+  background: rgba(59, 127, 255, 0.4);
 }
 
 /* Ripple */
@@ -450,34 +434,42 @@ a {
   to { transform: scale(4); opacity: 0; }
 }
 
-/* Secondary button */
+/* Secondary — liquid glass */
 .btn-secondary {
-  background: transparent;
-  border-color: var(--color-border-bright);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--color-text-primary);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset,
+              0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .btn-secondary:hover {
-  background: rgba(59, 127, 255, 0.08);
-  border-color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-1px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset,
+              0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .btn-secondary:active {
   transform: translateY(0);
 }
 
-/* Ghost / outline */
+/* Ghost — liquid glass */
 .btn-ghost {
-  background: transparent;
-  border-color: var(--color-border);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--color-text-secondary);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .btn-ghost:hover {
   color: var(--color-text-primary);
-  border-color: var(--color-border-bright);
-  background: rgba(59, 127, 255, 0.05);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* ============================================================
@@ -1313,8 +1305,28 @@ html.light .gradient-text-blue {
 }
 
 html.light .btn-primary {
-  background: #2563EB;
-  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.2);
+  background: rgba(37, 99, 235, 0.2);
+  border-color: rgba(37, 99, 235, 0.25);
+  color: #1e40af;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset,
+              0 4px 16px rgba(37, 99, 235, 0.12);
+}
+
+html.light .btn-primary:hover {
+  background: rgba(37, 99, 235, 0.3);
+  border-color: rgba(37, 99, 235, 0.35);
+}
+
+html.light .btn-secondary {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset,
+              0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+html.light .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
 
@@ -1541,6 +1553,7 @@ body, .navbar, .nav-content, .card, .footer, .section, .btn {
 .signup-btn {
   white-space: nowrap;
   flex-shrink: 0;
+  height: 46px;
 }
 
 @media (max-width: 480px) {
@@ -1563,9 +1576,11 @@ body, .navbar, .nav-content, .card, .footer, .section, .btn {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid var(--color-border);
-  background: var(--color-bg-card);
-  color: var(--color-text);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--color-text-secondary);
   font-size: 1.5rem;
   cursor: pointer;
   display: flex;
@@ -1573,13 +1588,14 @@ body, .navbar, .nav-content, .card, .footer, .section, .btn {
   justify-content: center;
   transition: all 0.15s ease;
   z-index: 2;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset;
 }
 
 .carousel-arrow:hover {
-  background: var(--color-primary);
+  background: rgba(59, 127, 255, 0.2);
   color: white;
-  border-color: var(--color-primary);
-  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
 }
 
 .screenshot-carousel {
@@ -2019,24 +2035,31 @@ html { scroll-behavior: smooth; }
 }
 
 .cookie-btn-accept {
-  background: var(--color-primary);
+  background: rgba(59, 127, 255, 0.25);
   color: white;
-  box-shadow: 0 2px 12px rgba(37, 99, 235, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
 }
 
 .cookie-btn-accept:hover {
-  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+  background: rgba(59, 127, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.22);
 }
 
 .cookie-btn-decline {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--color-text-secondary);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .cookie-btn-decline:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.09);
   color: var(--color-text);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* ============================================================
