@@ -21,9 +21,7 @@
 </head>
 
 <body>
-    <div class="page-loader" id="pageLoader"><img src="images/logos/logo.png" alt="Loading"></div>
-    <!-- Aurora background orb -->
-    <div class="aurora-orb"></div>
+    <!-- No page loader, no aurora orbs — clean load -->
 
     <!-- Light/Dark Toggle -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">🌙</button>
@@ -59,12 +57,12 @@
     <main>
 
         <!-- ===== HERO ===== -->
-        <section class="section" style="padding-bottom: 0; padding-top: var(--space-20);">
+        <section class="section section-nopad-bottom" style="padding-top: var(--space-20);">
             <div class="container hero">
                 <div class="hero-content">
                     <span class="hero-eyebrow">Pro launches end of March</span>
                     <h1 class="hero-title">
-                        <img src="images/logos/logo.png" alt="T" class="title-logo">rain with<br>
+                        Train with<br>
                         <span class="gradient-text">data-driven clarity.</span>
                     </h1>
                     <p class="hero-description">
@@ -72,11 +70,10 @@
                         and cycling. Progress without guesswork.
                     </p>
                     <div class="hero-actions">
-                        <a href="https://apps.apple.com/app/trainq" class="btn btn-primary" target="_blank" rel="noopener"><span>📲 App Store</span></a>
+                        <a href="https://apps.apple.com/app/trainq" class="btn btn-primary" target="_blank" rel="noopener">Download on App Store</a>
                         <a href="#how-it-works" class="btn btn-secondary">How it works →</a>
                     </div>
-                    <!-- Trust indicators -->
-                    <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: center;" class="reveal reveal-delay-4">
+                    <div class="hero-pills reveal reveal-delay-4">
                         <span class="stat-pill"><span class="stat-dot"></span>iOS-First</span>
                         <span class="stat-pill"><span class="stat-dot"></span>Privacy-First</span>
                         <span class="stat-pill"><span class="stat-dot"></span>Garmin Ready</span>
@@ -98,7 +95,7 @@
         </div>
 
         <!-- ===== WHY TRAINQ ===== -->
-        <section class="section" style="padding-top: 0;">
+        <section class="section section-nopad-top">
             <div class="container">
                 <div class="text-center mb-12 reveal">
                     <p class="section-label">Why TrainQ</p>
@@ -107,17 +104,17 @@
 
                 <div class="grid-3">
                     <div class="card reveal reveal-delay-1">
-                        <div class="card-icon">🎯</div>
+                        <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
                         <h3 class="mb-3">Train with Clarity</h3>
                         <p>Professional-grade plans that eliminate confusion. Every session has exact targets — pace, heart rate, duration.</p>
                     </div>
                     <div class="card reveal reveal-delay-2">
-                        <div class="card-icon">🔄</div>
+                        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg></div>
                         <h3 class="mb-3">Adapts to Your Life</h3>
                         <p>Missed a session? Our adaptive engine automatically recalibrates your plan. You're never "behind" again.</p>
                     </div>
                     <div class="card reveal reveal-delay-3">
-                        <div class="card-icon">📈</div>
+                        <div class="card-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
                         <h3 class="mb-3">Progress Insight</h3>
                         <p>Clean, actionable statistics — not just raw data. Understand if you're actually improving.</p>
                     </div>
@@ -126,7 +123,7 @@
         </section>
 
         <!-- ===== HOW IT WORKS ===== -->
-        <section id="how-it-works" class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <section id="how-it-works" class="section section-alt">
             <div class="container">
                 <div class="text-center mb-12 reveal">
                     <p class="section-label">The Process</p>
@@ -154,12 +151,12 @@
 
         <!-- ===== FEATURE 1: Training Clarity ===== -->
         <section class="section">
-            <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
+            <div class="container grid-2 grid-feature">
                 <div class="reveal-left reveal">
                     <span class="badge">Smart Training</span>
                     <h2 class="mb-4">Structured sessions,<br><span class="gradient-text-blue">zero confusion.</span></h2>
                     <p class="mb-6">Stop guessing what to do next. TrainQ builds professional-grade plans tailored to your specific goals — and shows you exactly what to do in every session.</p>
-                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3);">
+                    <ul class="feature-list">
                         <li class="feature-check">
                             <span class="icon">✓</span>
                             Automated workout structuring per sport
@@ -181,8 +178,8 @@
         </section>
 
         <!-- ===== FEATURE 2: Adaptive Engine ===== -->
-        <section class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
-            <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
+        <section class="section section-alt">
+            <div class="container grid-2 grid-feature">
                 <div class="feature-img-wrapper reveal-left reveal">
                     <img src="images/screenshots/calendar-mockup.png" alt="Training Calendar" class="feature-img" loading="lazy">
                 </div>
@@ -197,12 +194,12 @@
 
         <!-- ===== FEATURE 3: Statistics ===== -->
         <section class="section">
-            <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
+            <div class="container grid-2 grid-feature">
                 <div class="reveal">
                     <span class="badge">Analytics</span>
                     <h2 class="mb-4">Clean statistics.<br><span class="gradient-text-blue">Real insight.</span></h2>
                     <p class="mb-6">TrainQ prioritizes clean, meaningful statistics over raw data dumps. Understand your fitness trends, predict race times, and see exactly how you're progressing.</p>
-                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3);">
+                    <ul class="feature-list">
                         <li class="feature-check">
                             <span class="icon">✓</span>
                             Fitness vs. Fatigue trend visualization
@@ -224,26 +221,26 @@
         </section>
 
         <!-- ===== SPORTS ===== -->
-        <section class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <section class="section section-alt">
             <div class="container">
                 <div class="text-center mb-12 reveal">
                     <p class="section-label">All Sports</p>
                     <h2>Built for every athlete.</h2>
-                    <p style="max-width: 500px; margin: var(--space-4) auto 0;">TrainQ works for any sport — with a special focus on the three most popular training disciplines.</p>
+                    <p class="section-desc">TrainQ works for any sport — with a special focus on the three most popular training disciplines.</p>
                 </div>
                 <div class="grid-3">
-                    <div class="card text-center reveal reveal-delay-1" style="padding: var(--space-12) var(--space-8);">
-                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">🏋️</div>
+                    <div class="card text-center reveal reveal-delay-1">
+                        <div class="sport-icon"><svg viewBox="0 0 24 24"><path d="M6.5 6.5h11v11h-11z"/><path d="M2 12h4.5M17.5 12H22M12 2v4.5M12 17.5V22"/></svg></div>
                         <h3 class="mb-3">Gym</h3>
                         <p class="small-text">Strength plans, progressive overload, exercise tracking and personal records.</p>
                     </div>
-                    <div class="card text-center reveal reveal-delay-2" style="padding: var(--space-12) var(--space-8); border-color: rgba(59, 127, 255, 0.3); box-shadow: 0 0 30px rgba(59, 127, 255, 0.1);">
-                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">🏃</div>
+                    <div class="card text-center highlight reveal reveal-delay-2">
+                        <div class="sport-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M7 21l3-7 2 2 2-2 3 7"/><path d="M10 14l-3-3 2-4h6l2 4-3 3"/></svg></div>
                         <h3 class="mb-3">Running</h3>
                         <p class="small-text">5k to marathon plans, pace targets, interval training and race predictions.</p>
                     </div>
-                    <div class="card text-center reveal reveal-delay-3" style="padding: var(--space-12) var(--space-8);">
-                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">🚴</div>
+                    <div class="card text-center reveal reveal-delay-3">
+                        <div class="sport-icon"><svg viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg></div>
                         <h3 class="mb-3">Cycling</h3>
                         <p class="small-text">Power-based training, FTP tracking, structured rides and event preparation.</p>
                     </div>
@@ -253,25 +250,25 @@
 
         <!-- ===== PRIVACY ===== -->
         <section class="section">
-            <div class="container" style="max-width: 900px;">
+            <div class="container section-narrow">
                 <div class="text-center mb-12 reveal">
                     <p class="section-label">Privacy</p>
                     <h2>Your data. <span class="gradient-text-blue">Always.</span></h2>
-                    <p style="max-width: 500px; margin: var(--space-4) auto 0;">We believe your health data belongs to you — not us, not advertisers. That's not a feature, it's a foundation.</p>
+                    <p class="section-desc">We believe your health data belongs to you — not us, not advertisers. That's not a feature, it's a foundation.</p>
                 </div>
                 <div class="grid-3">
                     <div class="card text-center reveal reveal-delay-1">
-                        <div class="card-icon" style="margin: 0 auto var(--space-4);">🔒</div>
+                        <div class="card-icon" style="margin: 0 auto var(--space-4);"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
                         <h3 class="mb-3">Local First</h3>
                         <p class="small-text">Data processing happens on-device wherever possible. Your health data stays on your phone.</p>
                     </div>
                     <div class="card text-center reveal reveal-delay-2">
-                        <div class="card-icon" style="margin: 0 auto var(--space-4);">📄</div>
+                        <div class="card-icon" style="margin: 0 auto var(--space-4);"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
                         <h3 class="mb-3">Transparent</h3>
                         <p class="small-text">Plain-language privacy policy. No hidden clauses, no confusing legal jargon.</p>
                     </div>
                     <div class="card text-center reveal reveal-delay-3">
-                        <div class="card-icon" style="margin: 0 auto var(--space-4);">⚙️</div>
+                        <div class="card-icon" style="margin: 0 auto var(--space-4);"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
                         <h3 class="mb-3">Full Control</h3>
                         <p class="small-text">Export or delete all your data anytime. In standard .FIT and .TCX formats.</p>
                     </div>
@@ -285,7 +282,7 @@
                 <div class="text-center mb-12 reveal">
                     <p class="section-label">Inside the App</p>
                     <h2>See TrainQ in action.</h2>
-                    <p style="max-width: 540px; margin: var(--space-4) auto 0;">From adaptive workouts to nutrition tracking — everything you need in one app.</p>
+                    <p class="section-desc">From adaptive workouts to nutrition tracking — everything you need in one app.</p>
                 </div>
                 <div class="screenshot-carousel-wrapper reveal">
                     <button class="carousel-arrow carousel-arrow-left" aria-label="Previous" onclick="this.parentElement.querySelector('.screenshot-carousel').scrollBy({left:-300,behavior:'smooth'})">‹</button>
@@ -323,8 +320,8 @@
         </section>
 
         <!-- ===== COMPARISON ===== -->
-        <section class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
-            <div class="container" style="max-width: 900px;">
+        <section class="section section-alt">
+            <div class="container section-narrow">
                 <div class="text-center mb-12 reveal">
                     <p class="section-label">Compare</p>
                     <h2>How TrainQ stacks up.</h2>
@@ -400,20 +397,20 @@
                 </div>
                 <div class="grid-3">
                     <a href="blog/polarized-training.html" class="card blog-teaser-card reveal reveal-delay-1">
-                        <div class="blog-card-tag" style="margin-bottom: var(--space-3);">Running</div>
-                        <h3 class="mb-3" style="font-size: 1.05rem;">Polarized vs. Threshold Training</h3>
+                        <div class="blog-card-tag">Running</div>
+                        <h3 class="mb-3">Polarized vs. Threshold Training</h3>
                         <p class="small-text">Why 80/20 intensity distribution outperforms threshold-heavy approaches — backed by science.</p>
                         <span class="blog-teaser-read">Read article →</span>
                     </a>
                     <a href="blog/sleep-performance.html" class="card blog-teaser-card reveal reveal-delay-2">
-                        <div class="blog-card-tag" style="margin-bottom: var(--space-3);">Recovery</div>
-                        <h3 class="mb-3" style="font-size: 1.05rem;">Sleep Is the #1 Performance Enhancer</h3>
+                        <div class="blog-card-tag">Recovery</div>
+                        <h3 class="mb-3">Sleep Is the #1 Performance Enhancer</h3>
                         <p class="small-text">No supplement comes close to 8+ hours of sleep. Here's the Stanford data.</p>
                         <span class="blog-teaser-read">Read article →</span>
                     </a>
                     <a href="blog/norwegian-method.html" class="card blog-teaser-card reveal reveal-delay-3">
-                        <div class="blog-card-tag" style="margin-bottom: var(--space-3);">Running</div>
-                        <h3 class="mb-3" style="font-size: 1.05rem;">The Norwegian Double Threshold Method</h3>
+                        <div class="blog-card-tag">Running</div>
+                        <h3 class="mb-3">The Norwegian Double Threshold Method</h3>
                         <p class="small-text">How Norwegian runners broke world records with a counterintuitive training approach.</p>
                         <span class="blog-teaser-read">Read article →</span>
                     </a>
@@ -425,8 +422,8 @@
         </section>
 
         <!-- ===== EMAIL SIGNUP ===== -->
-        <section class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
-            <div class="container text-center" style="max-width: 550px;">
+        <section class="section section-alt">
+            <div class="container text-center section-tight">
                 <div class="reveal">
                     <p class="section-label">Stay Updated</p>
                     <h2 class="mb-4">Get notified at launch.</h2>
@@ -441,15 +438,15 @@
         </section>
 
         <!-- ===== CTA ===== -->
-        <section id="join" class="section" style="background: linear-gradient(180deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%); border-top: 1px solid var(--color-border);">
-            <div class="container text-center" style="max-width: 600px;">
+        <section id="join" class="section" style="border-top: 1px solid var(--color-border);">
+            <div class="container text-center section-tight">
                 <div class="reveal">
                     <p class="section-label">Get Started</p>
                     <h2 class="mb-4">Start training <span class="gradient-text">smarter.</span></h2>
-                    <p class="mb-8" style="max-width: 450px; margin-left: auto; margin-right: auto; margin-bottom: var(--space-8);">
+                    <p class="section-desc mb-8">
                         TrainQ Pro launches end of March. Free beta access available now — no credit card required.
                     </p>
-                    <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+                    <div class="hero-actions" style="justify-content: center;">
                         <span class="btn btn-primary" style="cursor: default;">Coming end of March</span>
                         <a href="features.html" class="btn btn-secondary">Explore Features</a>
                     </div>
@@ -484,7 +481,7 @@
     <script src="shared.js"></script>
     <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
     <div class="cookie-banner" id="cookieBanner">
-    <p class="cookie-banner-title">🍪 Cookie Settings</p>
+    <p class="cookie-banner-title">Cookie Settings</p>
     <p>We only use essential cookies to ensure our website works properly. No tracking, no ads, no third-party analytics. <a href="privacy.html">Learn more</a></p>
     <div class="cookie-banner-actions">
         <button class="cookie-btn cookie-btn-accept">Accept All</button>
