@@ -263,6 +263,7 @@ a {
   display: none;
   align-items: center;
   gap: 2px;
+  position: relative;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(40px) saturate(1.8) brightness(1.1);
   -webkit-backdrop-filter: blur(40px) saturate(1.8) brightness(1.1);
@@ -277,6 +278,43 @@ a {
     0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
+/* Sliding liquid glass indicator */
+.nav-indicator {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  height: calc(100% - 10px);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-top-color: rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(20px) brightness(1.2);
+  -webkit-backdrop-filter: blur(20px) brightness(1.2);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.2) inset,
+    0 -1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.1, 1),
+              width 0.3s cubic-bezier(0.4, 0, 0.1, 1),
+              opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+}
+
+.nav-indicator.visible {
+  opacity: 1;
+}
+
+html.light .nav-indicator {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.06);
+  border-top-color: rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
 @media (min-width: 768px) {
   .nav-links { display: flex; }
 }
@@ -284,25 +322,23 @@ a {
 .nav-link {
   font-weight: 500;
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.55);
   padding: 7px 16px;
   border-radius: var(--radius-full);
-  transition: color 0.15s ease, background 0.15s ease;
+  transition: color 0.2s ease;
   position: relative;
+  z-index: 1;
   white-space: nowrap;
 }
 
 .nav-link:hover {
   color: rgba(255, 255, 255, 0.95);
-  background: rgba(255, 255, 255, 0.08);
 }
 
-/* Active nav link — glass pill */
+/* Active nav link — text only, indicator handles the glass bg */
 .nav-link.active,
 .nav-link[aria-current="page"] {
   color: white;
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset;
 }
 
 /* Nav CTA button — glass */

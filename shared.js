@@ -100,6 +100,9 @@ function init() {
     ripple.addEventListener('animationend', function() { ripple.remove(); });
   });
 
+  // Nav liquid glass sliding indicator
+  initNavIndicator();
+
   // FAQ Accordion
   var headers = document.querySelectorAll('.accordion-header');
   for (var i = 0; i < headers.length; i++) {
@@ -114,6 +117,75 @@ function init() {
       if (!wasActive) item.classList.add('active');
     });
   }
+}
+
+// ── Nav liquid glass sliding indicator (iOS 26 style) ──
+function initNavIndicator() {
+  var navLinks = document.querySelector('.nav-links');
+  if (!navLinks) return;
+
+  // Create the indicator element
+  var indicator = document.createElement('div');
+  indicator.className = 'nav-indicator';
+  navLinks.appendChild(indicator);
+
+  var links = navLinks.querySelectorAll('.nav-link');
+  var activeLink = navLinks.querySelector('.nav-link.active, .nav-link[aria-current="page"]');
+
+  function moveIndicator(target, animate) {
+    if (!target) { indicator.classList.remove('visible'); return; }
+    var navRect = navLinks.getBoundingClientRect();
+    var linkRect = target.getBoundingClientRect();
+    var left = linkRect.left - navRect.left;
+    var width = linkRect.width;
+
+    if (!animate) {
+      indicator.style.transition = 'none';
+      indicator.offsetHeight; // force reflow
+    }
+
+    indicator.style.left = left + 'px';
+    indicator.style.width = width + 'px';
+    indicator.classList.add('visible');
+
+    if (!animate) {
+      indicator.offsetHeight;
+      indicator.style.transition = '';
+    }
+  }
+
+  // Position on active link immediately (no animation)
+  if (activeLink) {
+    // Wait a frame for layout
+    requestAnimationFrame(function() {
+      moveIndicator(activeLink, false);
+    });
+  }
+
+  // Slide to hovered link
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener('mouseenter', function() {
+      moveIndicator(this, true);
+    });
+  }
+
+  // Slide back to active on mouse leave
+  navLinks.addEventListener('mouseleave', function() {
+    if (activeLink) {
+      moveIndicator(activeLink, true);
+    } else {
+      indicator.classList.remove('visible');
+    }
+  });
+
+  // Update on resize
+  var resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      if (activeLink) moveIndicator(activeLink, false);
+    }, 100);
+  });
 }
 
 // ── Back to top ──
