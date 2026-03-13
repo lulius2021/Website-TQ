@@ -31,23 +31,23 @@
   --color-text-muted: rgba(150, 175, 220, 0.5);
 
   /* --- SPACING --- */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-12: 48px;
-  --space-16: 64px;
-  --space-20: 80px;
-  --space-24: 96px;
+  --space-1: 3px;
+  --space-2: 6px;
+  --space-3: 10px;
+  --space-4: 14px;
+  --space-6: 20px;
+  --space-8: 28px;
+  --space-12: 40px;
+  --space-16: 52px;
+  --space-20: 64px;
+  --space-24: 76px;
 
   /* --- RADII --- */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
-  --radius-xl: 32px;
-  --radius-full: 9999px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+  --radius-full: 8px;
 
   /* --- SHADOWS --- */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
@@ -58,14 +58,14 @@
 
   /* --- TYPOGRAPHY --- */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --text-xs: 0.8rem;
-  --text-sm: 0.9rem;
-  --text-base: 1rem;
-  --text-body: 1.1rem;
-  --text-lg: 1.25rem;
-  --text-h3: 1.6rem;
-  --text-h2: 2.4rem;
-  --text-h1: clamp(2.8rem, 5vw, 4.75rem);
+  --text-xs: 0.75rem;
+  --text-sm: 0.85rem;
+  --text-base: 0.95rem;
+  --text-body: 1rem;
+  --text-lg: 1.15rem;
+  --text-h3: 1.35rem;
+  --text-h2: 2rem;
+  --text-h1: clamp(2.4rem, 4.5vw, 4rem);
   --leading-tight: 1.1;
   --leading-snug: 1.3;
   --leading-normal: 1.65;
@@ -159,7 +159,7 @@ a {
    ============================================================ */
 .container {
   width: 100%;
-  max-width: 1160px;
+  max-width: 1060px;
   margin: 0 auto;
   padding: 0 var(--space-6);
   position: relative;
@@ -191,7 +191,7 @@ a {
 @media (min-width: 768px) {
   .grid-2 { grid-template-columns: 1fr 1fr; }
   .grid-3 { grid-template-columns: repeat(3, 1fr); }
-  :root { --text-h1: 4.5rem; }
+  :root { --text-h1: 3.5rem; }
 }
 
 .grid-feature {
@@ -269,8 +269,8 @@ a {
   -webkit-backdrop-filter: blur(40px) saturate(1.8) brightness(1.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-top-color: rgba(255, 255, 255, 0.35);
-  border-radius: var(--radius-full);
-  padding: 5px 6px;
+  border-radius: var(--radius-lg);
+  padding: 4px 5px;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.15) inset,
     0 -1px 0 rgba(255, 255, 255, 0.05) inset,
@@ -284,7 +284,7 @@ a {
   top: 5px;
   left: 0;
   height: calc(100% - 10px);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-top-color: rgba(255, 255, 255, 0.38);
@@ -387,10 +387,10 @@ html.light .nav-indicator.glow {
 
 .nav-link {
   font-weight: 500;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   color: rgba(255, 255, 255, 0.55);
-  padding: 7px 16px;
-  border-radius: var(--radius-full);
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
   transition: color 0.2s ease;
   position: relative;
   z-index: 1;
@@ -515,12 +515,12 @@ html.light .mobile-nav {
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: 0 var(--space-8);
-  height: 52px;
-  border-radius: var(--radius-full);
+  padding: 0 var(--space-6);
+  height: 42px;
+  border-radius: var(--radius-md);
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.88rem;
   cursor: pointer;
   border: 1px solid transparent;
   white-space: nowrap;
@@ -636,7 +636,7 @@ html.light .mobile-nav {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: var(--space-8);
+  padding: var(--space-6);
   box-shadow: var(--shadow-card);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -661,9 +661,9 @@ html.light .mobile-nav {
 }
 
 .card-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
   background: var(--color-primary-soft);
   display: flex;
   align-items: center;
@@ -689,16 +689,16 @@ html.light .mobile-nav {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: 6px 14px;
+  padding: 4px 10px;
   background: rgba(59, 127, 255, 0.08);
   border: 1px solid rgba(59, 127, 255, 0.25);
-  border-radius: var(--radius-full);
-  font-size: 0.82rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
   font-weight: 600;
   color: #93C5FD;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
 }
 
 .badge-neon {
@@ -733,11 +733,11 @@ html.light .mobile-nav {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: 6px 16px;
+  padding: 4px 12px;
   background: rgba(0, 207, 255, 0.07);
   border: 1px solid rgba(0, 207, 255, 0.25);
-  border-radius: var(--radius-full);
-  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--color-primary-neon);
   margin-bottom: var(--space-6);
@@ -797,8 +797,8 @@ html.light .mobile-nav {
 
 .hero-mockup {
   width: 100%;
-  border-radius: 24px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
   display: block;
   background: transparent;
 }
@@ -944,12 +944,12 @@ html.light .mobile-nav {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: 10px 20px;
+  padding: 6px 14px;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
   backdrop-filter: blur(12px);
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: var(--color-text-secondary);
   transition: all var(--duration-base) ease;
@@ -1043,8 +1043,8 @@ html.light .mobile-nav {
 .pricing-card {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-12) var(--space-8);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-6);
   backdrop-filter: blur(16px);
   position: relative;
   overflow: hidden;
@@ -1726,8 +1726,8 @@ body, .navbar, .nav-content, .card, .footer, .section, .btn {
 
 .signup-input {
   flex: 1;
-  padding: 12px 18px;
-  border-radius: var(--radius-full);
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--color-border-bright);
   background: var(--color-bg-card);
   color: var(--color-text-primary);
@@ -1747,7 +1747,7 @@ body, .navbar, .nav-content, .card, .footer, .section, .btn {
 .signup-btn {
   white-space: nowrap;
   flex-shrink: 0;
-  height: 46px;
+  height: 40px;
 }
 
 @media (max-width: 480px) {
@@ -1824,9 +1824,9 @@ body, .navbar, .nav-content, .card, .footer, .section, .btn {
 }
 
 .screenshot-card img {
-  width: 280px;
+  width: 260px;
   height: auto;
-  border-radius: 1rem;
+  border-radius: var(--radius-lg);
   transition: transform 0.3s ease;
 }
 
@@ -2167,9 +2167,9 @@ html { scroll-behavior: smooth; }
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--color-border);
-  border-radius: 1rem;
-  padding: 1.5rem 2rem;
-  max-width: 520px;
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.5rem;
+  max-width: 480px;
   width: calc(100% - 2rem);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05);
   display: flex;
@@ -2213,11 +2213,11 @@ html { scroll-behavior: smooth; }
 
 .cookie-btn {
   flex: 1;
-  padding: 0.625rem 1.25rem;
-  border-radius: 0.625rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
   border: none;
   font-family: var(--font-sans);
-  font-size: 0.84rem;
+  font-size: 0.78rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -2278,9 +2278,9 @@ html { scroll-behavior: smooth; }
    SPORT ICON (clean text-based)
    ============================================================ */
 .sport-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
   background: var(--color-primary-soft);
   display: flex;
   align-items: center;
