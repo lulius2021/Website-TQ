@@ -4,10 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ — TrainQ</title>
+    <meta name="description" content="Häufig gestellte Fragen zu TrainQ — Preise, iOS-Verfügbarkeit, adaptives Training, Datenschutz und mehr.">
     <link rel="icon" type="image/png" href="../images/favicon-32.png">
     <meta property="og:image" content="https://trainq.app/images/og-image.png">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../fonts/inter.css">
+    <style>
+        .faq-hero {
+            padding: 140px 0 64px;
+            text-align: center;
+        }
+        .faq-hero h1 {
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            margin-bottom: 18px;
+        }
+        .faq-hero p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 460px;
+            margin: 0 auto;
+        }
+        .faq-hero p a { color: var(--blue); }
+
+        .faq-list {
+            max-width: 720px;
+            margin: 0 auto;
+            padding-bottom: 96px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-card);
+            transition: border-color 0.2s;
+        }
+        .faq-item.open {
+            border-color: var(--border-light);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 10px 16px;
+            background: none;
+            border: none;
+            color: white;
+            font-family: var(--font);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            text-align: left;
+            cursor: pointer;
+            transition: color 0.15s;
+        }
+        .faq-question:hover { color: white; }
+
+        .faq-icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1;
+            transition: background 0.2s, border-color 0.2s, transform 0.3s;
+        }
+        .faq-item.open .faq-icon {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: white;
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.25s ease;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 400px;
+        }
+        .faq-answer-inner {
+            padding: 10px 16px 14px;
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+            line-height: 1.75;
+            border-top: 1px solid var(--border);
+        }
+        .faq-answer-inner a { color: var(--blue); }
+        .faq-answer-inner strong { color: var(--text-primary); }
+
+        .faq-photo {
+            max-width: 720px;
+            margin: 8px auto;
+            border-radius: 14px;
+            overflow: hidden;
+            height: 260px;
+        }
+        .faq-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .faq-photo-inline {
+            margin: 8px 0;
+        }
+
+        .faq-cta {
+            text-align: center;
+            padding: 56px 0 96px;
+            border-top: 1px solid var(--border);
+        }
+        .faq-cta p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
 
@@ -21,13 +148,10 @@
 
             <div class="nav-desktop">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="features.html" class="nav-link">Features</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="faq.html" class="nav-link active" aria-current="page">FAQ</a>
 
                 <div class="nav-dropdown">
                     <button class="nav-link dropdown-trigger" id="sportsDropdownBtn" aria-expanded="false" aria-haspopup="true">
-                        Sports
+                        Sportarten
                         <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
                             <path d="M6 8L2 4h8z"/>
                         </svg>
@@ -39,6 +163,9 @@
                     </div>
                 </div>
 
+                <a href="features.html" class="nav-link">Features</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="faq.html" class="nav-link active" aria-current="page">FAQ</a>
                 <a href="../faq.html" class="nav-link nav-lang">EN</a>
 
                 <a href="https://apps.apple.com/app/trainq" class="btn-nav-primary" target="_blank" rel="noopener">
@@ -75,96 +202,135 @@
     </header>
 
     <main>
-        <section style="padding-top: 120px;" class="section text-center" style="padding-bottom: var(--space-8);">
-            <div class="container reveal" style="max-width: 600px;">
+        <div class="container">
+
+            <!-- Hero -->
+            <div class="faq-hero reveal">
                 <p class="section-label">Hilfe</p>
-                <h1 class="mb-4">Häufig gestellte <span class="gradient-text">Fragen</span></h1>
-                <p>Alles, was du über TrainQ wissen musst. Keine Antwort gefunden? <a href="mailto:Julius.Deusch@trainq.app" style="color: var(--color-primary-neon);">Kontaktiere uns.</a></p>
+                <h1>Häufig gestellte<br>Fragen.</h1>
+                <p>Keine Antwort gefunden? <a href="mailto:Julius.Deusch@trainq.app">Direkt schreiben.</a></p>
             </div>
-        </section>
 
-        <section class="section" style="padding-top: 0;">
-            <div class="container" style="max-width: 760px;">
-                <div class="card reveal" style="padding: 0; overflow: hidden;">
+            <!-- Foto 1 -->
+            <div class="faq-photo reveal">
+                <picture>
+                    <source srcset="../fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.webp" type="image/webp">
+                    <img src="../fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.jpg" alt="Läufer in Bewegung" loading="lazy" width="800" height="1200">
+                </picture>
+            </div>
 
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
-                            Ist TrainQ für iOS und Android verfügbar?
-                            <span class="accordion-chevron">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            TrainQ ist aktuell iOS-first — verfügbar für iPhone und Apple Watch. Eine Android-Version ist in Entwicklung und für Ende 2026 geplant. Wir bauen zuerst die bestmögliche iOS-Erfahrung auf.
+            <!-- FAQ Items -->
+            <div class="faq-list">
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Ist TrainQ für iOS und Android verfügbar?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            TrainQ ist aktuell <strong>iOS-first</strong> — verfügbar für iPhone und Apple Watch. Eine Android-Version ist in Entwicklung und für Ende 2026 geplant. Wir bauen zuerst die bestmögliche iOS-Erfahrung, bevor wir auf andere Plattformen erweitern.
                         </div>
                     </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
-                            Brauche ich spezielle Ausrüstung?
-                            <span class="accordion-chevron">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            Nein, keine Spezialausrüstung nötig. Wir empfehlen jedoch einen Herzfrequenzmesser — Brustgurt oder Armband — für die besten Ergebnisse. TrainQ integriert sich auch nahtlos mit Garmin-Geräten.
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
-                            Wie funktioniert die adaptive Engine?
-                            <span class="accordion-chevron">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            Nach jeder Einheit analysiert TrainQ deine Leistungsdaten — Tempo, Herzfrequenz, RPE und Adherence — und vergleicht sie mit dem Plan. Bei Abweichungen oder verpassten Einheiten berechnet die Engine die nächsten Tage automatisch neu, ohne Überlastung zu riskieren.
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
-                            Welche Sportarten werden unterstützt?
-                            <span class="accordion-chevron">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            TrainQ unterstützt alle Sportarten mit strukturierten Plänen. Der Hauptfokus liegt auf <strong style="color: var(--color-text-primary);">Gym / Krafttraining</strong>, <strong style="color: var(--color-text-primary);">Laufen</strong> und <strong style="color: var(--color-text-primary);">Radfahren</strong>. Weitere Ausdauersportarten wie Schwimmen, Triathlon und Wandern werden ebenfalls unterstützt.
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
-                            Wie geht TrainQ mit meinen Daten um?
-                            <span class="accordion-chevron">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            Datenschutz ist ein Grundprinzip. Deine Gesundheitsdaten werden wo möglich lokal auf deinem Gerät verarbeitet. Wir verkaufen deine Daten nie an Dritte. Du kannst alle Daten jederzeit exportieren oder löschen. Mehr in unserer <a href="privacy.html" style="color: var(--color-primary-neon); text-decoration: underline;">Datenschutzerklärung</a>.
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
-                            Kann ich meine Trainingsdaten exportieren?
-                            <span class="accordion-chevron">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            Ja, immer. Du kannst deine gesamte Trainingshistorie jederzeit in Standard <strong style="color: var(--color-text-primary);">.FIT</strong> und <strong style="color: var(--color-text-primary);">.TCX</strong> Formaten exportieren. Es sind deine Daten.
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
-                            Wann startet TrainQ Plus?
-                            <span class="accordion-chevron">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            TrainQ Plus startet Ende März 2026. In der Public Beta Phase sind alle Features kostenlos verfügbar — keine Kreditkarte erforderlich.
-                        </div>
-                    </div>
-
                 </div>
 
-                <div class="text-center mt-8 reveal">
-                    <p class="mb-4" style="color: var(--color-text-muted);">Noch Fragen?</p>
-                    <a href="mailto:Julius.Deusch@trainq.app" class="btn btn-secondary">Kontakt aufnehmen</a>
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Brauche ich spezielle Ausrüstung?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Keine Spezialausrüstung nötig. Wir empfehlen jedoch einen <strong>Herzfrequenzmesser</strong> — Brustgurt oder Optik-Armband — für die besten adaptiven Trainingsergebnisse. TrainQ integriert sich auch nahtlos mit <strong>Garmin-Geräten</strong> für Athleten, die diese bereits nutzen.
+                        </div>
+                    </div>
                 </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Wie funktioniert die adaptive Trainings-Engine?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Nach jeder Einheit analysiert TrainQ deine Leistungsdaten — Tempo, Herzfrequenz, RPE und Adherence — und vergleicht sie mit deiner geplanten Vorgabe. Wenn du unter- oder überperfomed hast oder eine Einheit verpasst hast, berechnet die Engine die nächsten 3–7 Tage automatisch neu, damit du auf Kurs bleibst ohne auszubrennen.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Welche Sportarten werden unterstützt?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            TrainQ ist für alle Sportarten mit strukturierten Plänen gebaut. Der Hauptfokus liegt auf <strong>Gym / Krafttraining</strong>, <strong>Laufen</strong> und <strong>Radfahren</strong>. Weitere Ausdauersportarten wie Schwimmen, Triathlon und Wandern werden ebenfalls unterstützt.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Wie geht TrainQ mit meinen Daten und meiner Privatsphäre um?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Datenschutz ist ein Grundprinzip, kein Nachgedanke. Deine Gesundheitsdaten werden <strong>lokal auf deinem Gerät</strong> verarbeitet, wo immer möglich. Wir verkaufen deine Daten nie an Dritte oder Werbetreibende. Du kannst alle Daten jederzeit exportieren oder löschen. Unsere <a href="privacy.html">Datenschutzerklärung</a> enthält alle Details.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 2 -->
+                <div class="faq-photo faq-photo-inline reveal">
+                    <picture>
+                        <source srcset="../fotos/risen-wang-20jX9b35r_M-unsplash.webp" type="image/webp">
+                        <img src="../fotos/risen-wang-20jX9b35r_M-unsplash.jpg" alt="Leeres Gym" loading="lazy" width="1600" height="1198">
+                    </picture>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Kann ich meine Trainingsdaten exportieren?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Ja, immer. Du kannst deine komplette Trainingshistorie jederzeit in den Standardformaten <strong>.FIT</strong> und <strong>.TCX</strong> exportieren. Es sind deine Daten und du sollst immer die volle Kontrolle darüber haben.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Wann startet TrainQ Plus?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            TrainQ Plus startet <strong>Ende März 2026</strong>. In der Public-Beta-Phase sind alle Features kostenlos verfügbar — keine Kreditkarte erforderlich.
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </section>
+
+            <!-- Foto 3 -->
+            <div class="faq-photo reveal">
+                <picture>
+                    <source srcset="../fotos/maico-amorim-SJWPKMb9u-k-unsplash.webp" type="image/webp">
+                    <img src="../fotos/maico-amorim-SJWPKMb9u-k-unsplash.jpg" alt="Athlet beim Training" loading="lazy" width="2400" height="1596">
+                </picture>
+            </div>
+
+            <!-- CTA -->
+            <div class="faq-cta reveal">
+                <p>Noch Fragen?</p>
+                <a href="mailto:Julius.Deusch@trainq.app" class="btn btn-secondary">Kontakt aufnehmen</a>
+            </div>
+
+        </div>
     </main>
 
     <footer class="footer">
@@ -192,10 +358,22 @@
 
     <script src="../shared.js" defer></script>
     <script src="../js/header.js" defer></script>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var item = this.closest('.faq-item');
+                var isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item.open').forEach(function(el) {
+                    el.classList.remove('open');
+                });
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+    </script>
     <button class="back-to-top" id="backToTop" aria-label="Nach oben">↑</button>
     <div class="cookie-banner" id="cookieBanner">
         <p class="cookie-banner-title">Cookie-Einstellungen</p>
-        <p>Wir verwenden nur notwendige Cookies. <a href="privacy.html" style="color:var(--blue);">Mehr erfahren</a></p>
+        <p>Wir verwenden nur notwendige Cookies, um unsere Website korrekt zu betreiben. Kein Tracking, keine Werbung, keine Drittanbieter-Analysen. <a href="privacy.html" style="color:var(--blue);">Mehr erfahren</a></p>
         <div class="cookie-banner-actions">
             <button class="cookie-btn cookie-btn-accept">Alle akzeptieren</button>
             <button class="cookie-btn cookie-btn-decline">Nur notwendige</button>
