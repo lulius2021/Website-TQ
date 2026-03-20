@@ -9,272 +9,519 @@
     <meta property="og:image" content="https://trainq.app/images/og-image.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="fonts/inter.css">
+    <style>
+        /* ── Blog Page Styles ── */
+        .blog-hero {
+            padding: 140px 0 64px;
+            text-align: center;
+        }
+        .blog-hero h1 {
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            margin-bottom: 18px;
+        }
+        .blog-hero p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* ── Category filter ── */
+        .blog-filter {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 0 56px;
+        }
+        .blog-filter-btn {
+            padding: 7px 18px;
+            border-radius: 999px;
+            border: 1px solid var(--border-light);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            cursor: pointer;
+            font-family: var(--font);
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+        }
+        .blog-filter-btn:hover {
+            border-color: var(--blue);
+            color: white;
+        }
+        .blog-filter-btn.active {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: white;
+        }
+
+        /* ── Grid ── */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
+
+        /* ── Card ── */
+        .blog-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+        .blog-card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+        }
+        .blog-card-accent {
+            height: 3px;
+            width: 100%;
+        }
+        .blog-card-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .blog-card-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .blog-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.4;
+            color: white;
+            margin-bottom: 12px;
+        }
+        .blog-card p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            flex: 1;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .blog-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            font-size: 0.775rem;
+            color: var(--text-dimmer);
+            gap: 8px;
+        }
+        .blog-card-footer .read-more {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--blue);
+            white-space: nowrap;
+        }
+
+        /* Category colors */
+        .cat-running   { color: #3D8AFF; }
+        .cat-strength  { color: #FF6B35; }
+        .cat-cycling   { color: #00C896; }
+        .cat-recovery  { color: #A78BFA; }
+        .cat-nutrition { color: #F59E0B; }
+
+        .accent-running   { background: #3D8AFF; }
+        .accent-strength  { background: #FF6B35; }
+        .accent-cycling   { background: #00C896; }
+        .accent-recovery  { background: #A78BFA; }
+        .accent-nutrition { background: #F59E0B; }
+
+        /* Card photo thumbnail */
+        .blog-card-img {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .blog-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .blog-card:hover .blog-card-img img {
+            transform: scale(1.04);
+        }
+
+        /* Featured card (first, spans 2 cols) */
+        .blog-card-featured {
+            grid-column: span 2;
+            flex-direction: row;
+        }
+        .blog-card-featured .blog-card-img {
+            width: 42%;
+            height: auto;
+            min-height: 260px;
+            flex-shrink: 0;
+        }
+        .blog-card-featured .blog-card-body { padding: 32px; }
+        .blog-card-featured h3 {
+            font-size: 1.35rem;
+            letter-spacing: -0.03em;
+            line-height: 1.3;
+        }
+        .blog-card-featured p {
+            font-size: 0.9375rem;
+            -webkit-line-clamp: 3;
+        }
+        @media (max-width: 900px) {
+            .blog-card-featured { grid-column: span 1; flex-direction: column; }
+            .blog-card-featured .blog-card-img { width: 100%; height: 200px; min-height: auto; }
+        }
+        @media (max-width: 600px) { .blog-card-featured { grid-column: span 1; } }
+    </style>
 </head>
 <body>
-    <div class="page-loader" id="pageLoader"><img src="images/logos/logo.png" alt="Loading"></div>
-    <div class="aurora-orb"></div>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
 
-    <nav class="navbar" id="navbar">
-        <div class="container nav-content">
-            <a href="index.html" class="logo"><img src="images/logos/logo.png" alt="TrainQ"></a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">☰</button>
-            <div class="nav-links">
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+
+            <a href="index.html" class="logo">
+                <img src="images/logos/logo.png" alt="TrainQ" width="120" height="40">
+            </a>
+
+            <div class="nav-desktop">
                 <a href="index.html" class="nav-link">Home</a>
+
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger" id="sportsDropdownBtn" aria-expanded="false" aria-haspopup="true">
+                        Sports
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                            <path d="M6 8L2 4h8z"/>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="index.html#sports" class="dropdown-item">🏋️ Gym</a>
+                        <a href="index.html#sports" class="dropdown-item">🏃 Running</a>
+                        <a href="index.html#sports" class="dropdown-item">🚴 Cycling</a>
+                    </div>
+                </div>
+
                 <a href="features.html" class="nav-link">Features</a>
                 <a href="blog.html" class="nav-link active" aria-current="page">Blog</a>
                 <a href="faq.html" class="nav-link">FAQ</a>
-                <a href="pricing.html" class="nav-link">Pricing</a>
                 <a href="/de/blog.html" class="nav-link nav-lang">DE</a>
+
+                <a href="https://apps.apple.com/app/trainq" class="btn-nav-primary" target="_blank" rel="noopener">
+                    Get Started
+                </a>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-links">
+                    <a href="index.html" class="mobile-link">Home</a>
+                    <a href="features.html" class="mobile-link">Features</a>
+                    <a href="blog.html" class="mobile-link">Blog</a>
+                    <a href="faq.html" class="mobile-link">FAQ</a>
+                    <div class="mobile-divider"></div>
+                    <a href="index.html#sports" class="mobile-link">🏋️ Gym</a>
+                    <a href="index.html#sports" class="mobile-link">🏃 Running</a>
+                    <a href="index.html#sports" class="mobile-link">🚴 Cycling</a>
+                    <div class="mobile-divider"></div>
+                    <a href="/de/blog.html" class="mobile-link">🇩🇪 Deutsch</a>
+                </div>
+                <a href="https://apps.apple.com/app/trainq" class="btn btn-primary btn-mobile-cta" target="_blank" rel="noopener">
+                    Download on App Store
+                </a>
             </div>
         </div>
-    </nav>
-
-    <div class="mobile-nav" id="mobileNav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="features.html" class="nav-link">Features</a>
-        <a href="blog.html" class="nav-link active">Blog</a>
-        <a href="faq.html" class="nav-link">FAQ</a>
-        <a href="pricing.html" class="nav-link">Pricing</a>
-        <a href="/de/blog.html" class="nav-link nav-lang">DE</a>
-    </div>
+    </header>
 
     <main>
-        <section class="section text-center" style="padding-bottom: var(--space-8);">
-            <div class="container reveal" style="max-width: 700px;">
-                <p class="section-label">Blog</p>
-                <h1>Science-Backed <span class="gradient-text">Training Insights</span></h1>
-                <p style="margin-top: var(--space-4); max-width: 560px; margin-left: auto; margin-right: auto;">
-                    Studies, methods, and practical takeaways — curated for athletes who train with intention.
-                </p>
+
+        <!-- Hero -->
+        <div class="container">
+            <div class="blog-hero reveal">
+                <p class="section-label">Training Science</p>
+                <h1>Evidence-based<br>training insights.</h1>
+                <p>Studies, methods, and practical takeaways — curated for athletes who train with intention.</p>
             </div>
-        </section>
 
-        <!-- Category Filter -->
-        <section style="padding: 0 0 var(--space-8);">
-            <div class="container" style="max-width: 900px;">
-                <div class="blog-categories reveal">
-                    <button class="blog-cat active" data-cat="all">All</button>
-                    <button class="blog-cat" data-cat="running">Running</button>
-                    <button class="blog-cat" data-cat="strength">Strength</button>
-                    <button class="blog-cat" data-cat="cycling">Cycling</button>
-                    <button class="blog-cat" data-cat="recovery">Recovery</button>
-                    <button class="blog-cat" data-cat="nutrition">Nutrition</button>
-                </div>
+            <!-- Filter -->
+            <div class="blog-filter reveal">
+                <button class="blog-filter-btn active" data-cat="all">All</button>
+                <button class="blog-filter-btn" data-cat="running">🏃 Running</button>
+                <button class="blog-filter-btn" data-cat="strength">🏋️ Strength</button>
+                <button class="blog-filter-btn" data-cat="cycling">🚴 Cycling</button>
+                <button class="blog-filter-btn" data-cat="recovery">💤 Recovery</button>
+                <button class="blog-filter-btn" data-cat="nutrition">🥗 Nutrition</button>
             </div>
-        </section>
 
-        <!-- Blog Articles -->
-        <section style="padding: 0 0 var(--space-16);">
-            <div class="container" style="max-width: 900px;">
-                <div class="blog-grid">
+            <!-- Grid -->
+            <div class="blog-grid" style="padding-bottom: 96px;">
 
-                    <!-- Article 1 -->
-                    <article class="blog-card reveal" data-cat="running">
-                        <div class="blog-card-tag">Running</div>
-                        <h3><a href="blog/polarized-training.html" style="color:inherit;text-decoration:none">Polarized vs. Threshold Training: What the Research Says</a></h3>
-                        <p>A 2024 meta-analysis in <em>Sports Medicine</em> confirmed that polarized training (80% easy / 20% hard) outperforms threshold-heavy approaches for VO2max gains in trained runners. The key finding: spending more time at low intensity paradoxically produces faster race times.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Key Takeaway:</strong> Don't run your easy runs too hard. 80/20 distribution works — the science is clear.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Stöggl & Sperlich, Sports Medicine, 2024</span>
-                                <span>🕐 4 min read</span>
-                            </div>
+                <!-- Featured: Polarized Training -->
+                <a href="blog/polarized-training.html" class="blog-card blog-card-featured reveal" data-cat="running">
+                    <div class="blog-card-img">
+                        <picture>
+                            <source srcset="fotos/pexels-airamdphoto-36541474.webp" type="image/webp">
+                            <img src="fotos/pexels-airamdphoto-36541474.jpg" alt="Runner on track" loading="lazy" width="800" height="1200">
+                        </picture>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-tag cat-running">🏃 Running</span>
+                        <h3>Polarized vs. Threshold Training: What the Research Says</h3>
+                        <p>A 2024 meta-analysis in Sports Medicine confirmed that polarized training (80% easy / 20% hard) outperforms threshold-heavy approaches for VO2max gains in trained runners. The key finding: spending more time at low intensity paradoxically produces faster race times.</p>
+                        <div class="blog-card-footer">
+                            <span>Stöggl & Sperlich, Sports Medicine 2024</span>
+                            <span class="read-more">4 min read →</span>
                         </div>
-                    </article>
+                    </div>
+                </a>
 
-                    <!-- Article 2 -->
-                    <article class="blog-card reveal" data-cat="strength">
-                        <div class="blog-card-tag">Strength</div>
-                        <h3><a href="blog/progressive-overload.html" style="color:inherit;text-decoration:none">Progressive Overload: Why 2-5% Weekly Increases Still Win</a></h3>
-                        <p>Research from the Journal of Strength & Conditioning consistently shows that gradual progressive overload (2-5% per week) produces superior long-term strength gains compared to aggressive loading. A 2024 study tracked 200+ lifters over 16 weeks — the conservative group gained 23% more strength with 60% fewer injuries.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Key Takeaway:</strong> Patience beats aggression. Small, consistent increases compound into massive strength gains over months.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 J Strength Cond Res, 2024</span>
-                                <span>🕐 5 min read</span>
-                            </div>
+                <!-- Progressive Overload -->
+                <a href="blog/progressive-overload.html" class="blog-card reveal" data-cat="strength">
+                    <div class="blog-card-img">
+                        <picture>
+                            <source srcset="fotos/benjamin-brunner-wcOGQeT1jIw-unsplash.webp" type="image/webp">
+                            <img src="fotos/benjamin-brunner-wcOGQeT1jIw-unsplash.jpg" alt="Barbells" loading="lazy" width="800" height="533">
+                        </picture>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-tag cat-strength">🏋️ Strength</span>
+                        <h3>Progressive Overload: Why 2–5% Weekly Increases Still Win</h3>
+                        <p>Gradual progressive overload consistently outperforms aggressive loading. A 2024 study tracked 200+ lifters over 16 weeks — the conservative group gained 23% more strength with 60% fewer injuries.</p>
+                        <div class="blog-card-footer">
+                            <span>J Strength Cond Res, 2024</span>
+                            <span class="read-more">5 min read →</span>
                         </div>
-                    </article>
+                    </div>
+                </a>
 
-                    <!-- Article 3 -->
-                    <article class="blog-card reveal" data-cat="recovery">
-                        <div class="blog-card-tag">Recovery</div>
-                        <h3><a href="blog/sleep-performance.html" style="color:inherit;text-decoration:none">Sleep is the #1 Performance Enhancer — Here's the Data</a></h3>
-                        <p>Stanford's sleep research lab found that extending sleep to 8-10 hours improved sprint times by 5%, free throw accuracy by 9%, and reaction time by 15% in collegiate athletes. A separate 2024 study showed that just one night of poor sleep (&lt;6h) reduces power output by 10-15%.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Key Takeaway:</strong> No supplement, ice bath, or recovery gadget comes close to consistent 8+ hours of sleep.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Mah et al., Sleep, Stanford University</span>
-                                <span>🕐 4 min read</span>
-                            </div>
+                <!-- Sleep -->
+                <a href="blog/sleep-performance.html" class="blog-card reveal" data-cat="recovery">
+                    <div class="blog-card-accent accent-recovery"></div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-tag cat-recovery">💤 Recovery</span>
+                        <h3>Sleep is the #1 Performance Enhancer — Here's the Data</h3>
+                        <p>Stanford research: extending sleep to 8–10 hours improved sprint times by 5%, free throw accuracy by 9%, and reaction time by 15%. One night of poor sleep reduces power output by 10–15%.</p>
+                        <div class="blog-card-footer">
+                            <span>Mah et al., Sleep, Stanford</span>
+                            <span class="read-more">4 min read →</span>
                         </div>
-                    </article>
+                    </div>
+                </a>
 
-                    <!-- Article 4 -->
-                    <article class="blog-card reveal" data-cat="cycling">
-                        <div class="blog-card-tag">Cycling</div>
-                        <h3><a href="blog/ftp-testing.html" style="color:inherit;text-decoration:none">FTP Testing: Ramp Test vs. 20-Minute Protocol</a></h3>
-                        <p>A 2025 study in the International Journal of Sports Physiology compared ramp tests with traditional 20-minute FTP tests across 150 cyclists. Result: ramp tests overestimate FTP by an average of 5-8% in endurance-trained cyclists, leading to too-hard training zones.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Key Takeaway:</strong> If you primarily race long events, the 20-minute test gives more accurate zones. Ramp tests favor anaerobic athletes.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Int J Sports Physiol Perform, 2025</span>
-                                <span>🕐 5 min read</span>
-                            </div>
+                <!-- FTP -->
+                <a href="blog/ftp-testing.html" class="blog-card reveal" data-cat="cycling">
+                    <div class="blog-card-img">
+                        <picture>
+                            <source srcset="fotos/krzysztof-kowalik-ypR86XLah9Y-unsplash.webp" type="image/webp">
+                            <img src="fotos/krzysztof-kowalik-ypR86XLah9Y-unsplash.jpg" alt="Cyclist in mountains" loading="lazy" width="800" height="600">
+                        </picture>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-tag cat-cycling">🚴 Cycling</span>
+                        <h3>FTP Testing: Ramp Test vs. 20-Minute Protocol</h3>
+                        <p>Ramp tests overestimate FTP by 5–8% in endurance-trained cyclists, leading to training zones that are too hard. For long-event racers, the 20-minute protocol gives more accurate zones.</p>
+                        <div class="blog-card-footer">
+                            <span>Int J Sports Physiol Perform, 2025</span>
+                            <span class="read-more">5 min read →</span>
                         </div>
-                    </article>
+                    </div>
+                </a>
 
-                    <!-- Article 5 -->
-                    <article class="blog-card reveal" data-cat="running">
-                        <div class="blog-card-tag">Running</div>
-                        <h3><a href="blog/running-cadence.html" style="color:inherit;text-decoration:none">The Critical Role of Running Cadence in Injury Prevention</a></h3>
-                        <p>Research published in the British Journal of Sports Medicine shows that increasing cadence by just 5-10% significantly reduces impact forces on the knee and hip. A cadence of 170-180 steps/min is associated with 30% lower injury rates compared to overstriders at 150-160 spm.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Key Takeaway:</strong> Shorten your stride, increase your cadence. It's the simplest injury prevention strategy with the strongest evidence.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Br J Sports Med, 2023</span>
-                                <span>🕐 3 min read</span>
-                            </div>
+                <!-- Cadence -->
+                <a href="blog/running-cadence.html" class="blog-card reveal" data-cat="running">
+                    <div class="blog-card-img">
+                        <picture>
+                            <source srcset="fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.webp" type="image/webp">
+                            <img src="fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.jpg" alt="Blurred runner in motion" loading="lazy" width="800" height="1200">
+                        </picture>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-tag cat-running">🏃 Running</span>
+                        <h3>The Critical Role of Running Cadence in Injury Prevention</h3>
+                        <p>Increasing cadence by 5–10% significantly reduces impact forces on the knee and hip. 170–180 spm is associated with 30% lower injury rates compared to overstriders at 150–160 spm.</p>
+                        <div class="blog-card-footer">
+                            <span>Br J Sports Med, 2023</span>
+                            <span class="read-more">3 min read →</span>
                         </div>
-                    </article>
+                    </div>
+                </a>
 
-                    <!-- Article 6 -->
-                    <article class="blog-card reveal" data-cat="nutrition">
-                        <div class="blog-card-tag">Nutrition</div>
-                        <h3><a href="blog/carb-periodization.html" style="color:inherit;text-decoration:none">Carb Periodization: Fuel the Work, Not the Day</a></h3>
-                        <p>The "fuel for the work required" model, validated in a 2024 study from Liverpool John Moores University, shows that strategic carb timing around training — rather than constant high-carb diets — improves both performance and body composition. Athletes who periodized carbs lost 2.1kg more fat while maintaining power output.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Key Takeaway:</strong> High carbs on hard training days, lower carbs on rest days. Simple periodization beats both extremes.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Impey et al., J Sports Sci, 2024</span>
-                                <span>🕐 5 min read</span>
-                            </div>
+                <!-- Carb Periodization -->
+                <a href="blog/carb-periodization.html" class="blog-card reveal" data-cat="nutrition">
+                    <div class="blog-card-img">
+                        <picture>
+                            <source srcset="fotos/afiq-fatah-1cVmsgAkm9A-unsplash.webp" type="image/webp">
+                            <img src="fotos/afiq-fatah-1cVmsgAkm9A-unsplash.jpg" alt="Runner in motion" loading="lazy" width="800" height="531">
+                        </picture>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-tag cat-nutrition">🥗 Nutrition</span>
+                        <h3>Carb Periodization: Fuel the Work, Not the Day</h3>
+                        <p>Strategic carb timing around training — not constant high-carb diets — improves both performance and body composition. Athletes who periodized carbs lost 2.1kg more fat while maintaining power output.</p>
+                        <div class="blog-card-footer">
+                            <span>Impey et al., J Sports Sci, 2024</span>
+                            <span class="read-more">5 min read →</span>
                         </div>
-                    </article>
+                    </div>
+                </a>
 
-                    <!-- Article 7 -->
-                    <article class="blog-card reveal" data-cat="strength">
-                        <div class="blog-card-tag">Strength</div>
-                        <h3><a href="blog/compound-vs-isolation.html" style="color:inherit;text-decoration:none">Compound vs. Isolation: The Efficiency Debate Settled</a></h3>
-                        <p>A comprehensive review in the Journal of Sports Science (2024) analyzed 47 studies and concluded: compound movements (squat, deadlift, bench) produce equal or superior hypertrophy to isolation exercises in less time. For time-limited athletes, a program built around 4-5 compound lifts outperforms 10+ isolation exercises.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Key Takeaway:</strong> If you have 45 minutes, prioritize compounds. Isolation work is supplementary, not foundational.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 J Sports Sci, 2024 (Meta-Review)</span>
-                                <span>🕐 4 min read</span>
-                            </div>
+                <!-- Compound vs Isolation -->
+                <a href="blog/compound-vs-isolation.html" class="blog-card reveal" data-cat="strength">
+                    <div class="blog-card-img">
+                        <picture>
+                            <source srcset="fotos/cindy-koops-NBCuJtqgGX8-unsplash.webp" type="image/webp">
+                            <img src="fotos/cindy-koops-NBCuJtqgGX8-unsplash.jpg" alt="Barbell overhead lift" loading="lazy" width="800" height="533">
+                        </picture>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-tag cat-strength">🏋️ Strength</span>
+                        <h3>Compound vs. Isolation: The Efficiency Debate Settled</h3>
+                        <p>A review of 47 studies: compound movements produce equal or superior hypertrophy in less time. For time-limited athletes, 4–5 compound lifts outperforms 10+ isolation exercises.</p>
+                        <div class="blog-card-footer">
+                            <span>J Sports Sci, 2024 (Meta-Review)</span>
+                            <span class="read-more">4 min read →</span>
                         </div>
-                    </article>
+                    </div>
+                </a>
 
-                    <!-- Article 8 -->
-                    <article class="blog-card reveal" data-cat="cycling">
-                        <div class="blog-card-tag">Cycling</div>
-                        <h3><a href="blog/indoor-vs-outdoor.html" style="color:inherit;text-decoration:none">Indoor vs. Outdoor Training: Is Zwift Enough?</a></h3>
-                        <p>A 2025 comparison study found that indoor smart-trainer sessions produce 95% of the physiological adaptation of outdoor rides when matched for intensity and duration. However, outdoor riding develops bike handling, fueling strategy, and mental resilience that indoor training cannot replicate.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Key Takeaway:</strong> Indoor training is excellent for structured intervals. But race preparation requires outdoor specificity.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Eur J Sport Sci, 2025</span>
-                                <span>🕐 4 min read</span>
-                            </div>
+                <!-- Indoor vs Outdoor -->
+                <a href="blog/indoor-vs-outdoor.html" class="blog-card reveal" data-cat="cycling">
+                    <div class="blog-card-accent accent-cycling"></div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-tag cat-cycling">🚴 Cycling</span>
+                        <h3>Indoor vs. Outdoor Training: Is Zwift Enough?</h3>
+                        <p>Indoor smart-trainer sessions produce 95% of the physiological adaptation of outdoor rides when matched for intensity. But outdoor riding develops bike handling and mental resilience that indoor training cannot replicate.</p>
+                        <div class="blog-card-footer">
+                            <span>Eur J Sport Sci, 2025</span>
+                            <span class="read-more">4 min read →</span>
                         </div>
-                    </article>
+                    </div>
+                </a>
 
-                    <!-- Article 9 -->
-                    <article class="blog-card reveal" data-cat="recovery">
-                        <div class="blog-card-tag">Recovery</div>
-                        <h3><a href="blog/hrv-readiness.html" style="color:inherit;text-decoration:none">Heart Rate Variability: The Best Readiness Indicator?</a></h3>
-                        <p>Multiple studies (2023-2025) confirm that morning HRV is the single best objective marker for training readiness. Athletes who adjusted training intensity based on daily HRV measurements showed 15% greater performance improvements and 40% fewer overtraining symptoms compared to fixed-schedule training.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Key Takeaway:</strong> Measure HRV every morning. If it's significantly below your baseline, reduce intensity or take a rest day.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Plews et al., Int J Sports Physiol, 2023-2025</span>
-                                <span>🕐 5 min read</span>
-                            </div>
+                <!-- HRV -->
+                <a href="blog/hrv-readiness.html" class="blog-card reveal" data-cat="recovery">
+                    <div class="blog-card-img">
+                        <picture>
+                            <source srcset="fotos/victor-freitas-KkYWWpurqbE-unsplash.webp" type="image/webp">
+                            <img src="fotos/victor-freitas-KkYWWpurqbE-unsplash.jpg" alt="Athlete on rowing machine" loading="lazy" width="800" height="533">
+                        </picture>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-tag cat-recovery">💤 Recovery</span>
+                        <h3>Heart Rate Variability: The Best Readiness Indicator?</h3>
+                        <p>Morning HRV is the single best objective marker for training readiness. Athletes who adjusted training intensity based on daily HRV showed 15% greater performance improvements and 40% fewer overtraining symptoms.</p>
+                        <div class="blog-card-footer">
+                            <span>Plews et al., Int J Sports Physiol, 2023–25</span>
+                            <span class="read-more">5 min read →</span>
                         </div>
-                    </article>
+                    </div>
+                </a>
 
-                    <!-- Article 10 -->
-                    <article class="blog-card reveal" data-cat="nutrition">
-                        <div class="blog-card-tag">Nutrition</div>
-                        <h3><a href="blog/protein-timing.html" style="color:inherit;text-decoration:none">Protein Timing: Does the Anabolic Window Exist?</a></h3>
-                        <p>The "30-minute anabolic window" myth has been thoroughly debunked. A 2024 meta-analysis in Nutrients showed that total daily protein intake (1.6-2.2g/kg) matters far more than timing. The real window is 24-48 hours post-exercise, during which elevated muscle protein synthesis occurs.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Key Takeaway:</strong> Focus on hitting your daily protein target. Timing is a minor optimization at best.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Schoenfeld & Aragon, Nutrients, 2024</span>
-                                <span>🕐 4 min read</span>
-                            </div>
+                <!-- Protein Timing -->
+                <a href="blog/protein-timing.html" class="blog-card reveal" data-cat="nutrition">
+                    <div class="blog-card-img">
+                        <picture>
+                            <source srcset="fotos/sour-moha-_cUZkx0wTyM-unsplash.webp" type="image/webp">
+                            <img src="fotos/sour-moha-_cUZkx0wTyM-unsplash.jpg" alt="Athlete on treadmill" loading="lazy" width="800" height="1198">
+                        </picture>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-tag cat-nutrition">🥗 Nutrition</span>
+                        <h3>Protein Timing: Does the Anabolic Window Exist?</h3>
+                        <p>The "30-minute anabolic window" is a myth. Total daily protein intake (1.6–2.2g/kg) matters far more than timing. The real window is 24–48 hours post-exercise.</p>
+                        <div class="blog-card-footer">
+                            <span>Schoenfeld & Aragon, Nutrients, 2024</span>
+                            <span class="read-more">4 min read →</span>
                         </div>
-                    </article>
+                    </div>
+                </a>
 
-                    <!-- Article 11 -->
-                    <article class="blog-card reveal" data-cat="running">
-                        <div class="blog-card-tag">Running</div>
-                        <h3><a href="blog/norwegian-method.html" style="color:inherit;text-decoration:none">The Norwegian Method: Double Threshold Training Explained</a></h3>
-                        <p>Norwegian distance runners have dominated recent world records using a "double threshold" approach: two moderate-intensity threshold sessions per day rather than one hard session. Research from the Norwegian School of Sport Sciences shows this method improves lactate clearance by 20% while keeping injury risk low.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Key Takeaway:</strong> For advanced runners: splitting threshold work into two shorter sessions may be more effective than one long one.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Casado et al., SJMSS, 2024</span>
-                                <span>🕐 6 min read</span>
-                            </div>
+                <!-- Norwegian Method -->
+                <a href="blog/norwegian-method.html" class="blog-card reveal" data-cat="running">
+                    <div class="blog-card-img">
+                        <picture>
+                            <source srcset="fotos/jorgen-hendriksen-3xxG3Mw7nOg-unsplash.webp" type="image/webp">
+                            <img src="fotos/jorgen-hendriksen-3xxG3Mw7nOg-unsplash.jpg" alt="Two runners racing" loading="lazy" width="800" height="1200">
+                        </picture>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-tag cat-running">🏃 Running</span>
+                        <h3>The Norwegian Method: Double Threshold Training Explained</h3>
+                        <p>Two moderate-intensity threshold sessions per day rather than one hard session. Research shows this method improves lactate clearance by 20% while keeping injury risk low.</p>
+                        <div class="blog-card-footer">
+                            <span>Casado et al., SJMSS, 2024</span>
+                            <span class="read-more">6 min read →</span>
                         </div>
-                    </article>
+                    </div>
+                </a>
 
-                    <!-- Article 12 -->
-                    <article class="blog-card reveal" data-cat="strength">
-                        <div class="blog-card-tag">Strength</div>
-                        <h3><a href="blog/concurrent-training.html" style="color:inherit;text-decoration:none">Concurrent Training: Can You Build Muscle and Run Fast?</a></h3>
-                        <p>The "interference effect" is real but manageable. A 2024 study in the Journal of Applied Physiology showed that separating strength and endurance sessions by 6+ hours eliminates most interference. Prioritize the modality that matters more to your goals in morning sessions when hormonal profiles are optimal.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Key Takeaway:</strong> Yes, you can do both. Separate sessions by 6+ hours, and do your priority sport first in the day.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 J Appl Physiol, 2024</span>
-                                <span>🕐 5 min read</span>
-                            </div>
+                <!-- Concurrent Training -->
+                <a href="blog/concurrent-training.html" class="blog-card reveal" data-cat="strength">
+                    <div class="blog-card-img">
+                        <picture>
+                            <source srcset="fotos/alexander-red-qo1pyCD02t4-unsplash.webp" type="image/webp">
+                            <img src="fotos/alexander-red-qo1pyCD02t4-unsplash.jpg" alt="Athlete in squat rack" loading="lazy" width="1200" height="800">
+                        </picture>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-tag cat-strength">🏋️ Strength</span>
+                        <h3>Concurrent Training: Can You Build Muscle and Run Fast?</h3>
+                        <p>Separating strength and endurance sessions by 6+ hours eliminates most interference. Prioritize the modality that matters more to your goals in morning sessions.</p>
+                        <div class="blog-card-footer">
+                            <span>J Appl Physiol, 2024</span>
+                            <span class="read-more">5 min read →</span>
                         </div>
-                    </article>
+                    </div>
+                </a>
 
-                </div>
             </div>
-        </section>
+        </div>
+
     </main>
 
-        <footer class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-row">
                 <div class="footer-left">
-                    <a href="index.html" class="logo"><img src="images/logos/logo.png" alt="TrainQ"></a>
+                    <a href="index.html" class="logo">
+                        <img src="images/favicon-32.png" alt="TrainQ" style="filter:brightness(0) invert(1);height:26px;">
+                        <span class="logo-text">TrainQ</span>
+                    </a>
                     <div class="footer-socials">
                         <a href="https://instagram.com/trainq.app" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
                         <a href="https://x.com/trainqapp" target="_blank" rel="noopener" aria-label="X" class="social-icon"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                        <a href="https://facebook.com/trainqapp" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
                     </div>
                 </div>
                 <div class="footer-center">
@@ -287,33 +534,30 @@
         </div>
     </footer>
 
-    <script src="shared.js"></script>
+    <script src="shared.js" defer></script>
+    <script src="js/header.js" defer></script>
     <script>
-        // Blog category filter
-        document.querySelectorAll('.blog-cat').forEach(btn => {
+        document.querySelectorAll('.blog-filter-btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                document.querySelectorAll('.blog-cat').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.blog-filter-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 var cat = this.dataset.cat;
                 document.querySelectorAll('.blog-card').forEach(card => {
-                    if (cat === 'all' || card.dataset.cat === cat) {
-                        card.style.display = '';
-                        card.style.animation = 'blog-fade-in 0.3s ease forwards';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    var show = cat === 'all' || card.dataset.cat === cat;
+                    card.style.display = show ? '' : 'none';
                 });
             });
         });
     </script>
     <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
     <div class="cookie-banner" id="cookieBanner">
-    <p class="cookie-banner-title">🍪 Cookie Settings</p>
-    <p>We only use essential cookies to ensure our website works properly. No tracking, no ads, no third-party analytics. <a href="privacy.html">Learn more</a></p>
-    <div class="cookie-banner-actions">
-        <button class="cookie-btn cookie-btn-accept">Accept All</button>
-        <button class="cookie-btn cookie-btn-decline">Essential Only</button>
+        <p class="cookie-banner-title">Cookie Settings</p>
+        <p>We only use essential cookies to ensure our website works properly. No tracking, no ads, no third-party analytics. <a href="privacy.html" style="color:var(--blue);">Learn more</a></p>
+        <div class="cookie-banner-actions">
+            <button class="cookie-btn cookie-btn-accept">Accept All</button>
+            <button class="cookie-btn cookie-btn-decline">Essential Only</button>
+        </div>
     </div>
-</div>
+
 </body>
 </html>

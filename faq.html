@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,150 +9,341 @@
     <meta property="og:image" content="https://trainq.app/images/og-image.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="fonts/inter.css">
+    <style>
+        .faq-hero {
+            padding: 140px 0 64px;
+            text-align: center;
+        }
+        .faq-hero h1 {
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            margin-bottom: 18px;
+        }
+        .faq-hero p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 460px;
+            margin: 0 auto;
+        }
+        .faq-hero p a { color: var(--blue); }
+
+        .faq-list {
+            max-width: 720px;
+            margin: 0 auto;
+            padding-bottom: 96px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-card);
+            transition: border-color 0.2s;
+        }
+        .faq-item.open {
+            border-color: var(--border-light);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 10px 16px;
+            background: none;
+            border: none;
+            color: white;
+            font-family: var(--font);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            text-align: left;
+            cursor: pointer;
+            transition: color 0.15s;
+        }
+        .faq-question:hover { color: white; }
+
+        .faq-icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1;
+            transition: background 0.2s, border-color 0.2s, transform 0.3s;
+        }
+        .faq-item.open .faq-icon {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: white;
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.25s ease;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 400px;
+        }
+        .faq-answer-inner {
+            padding: 10px 16px 14px;
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+            line-height: 1.75;
+            border-top: 1px solid var(--border);
+        }
+        .faq-answer-inner a { color: var(--blue); }
+        .faq-answer-inner strong { color: var(--text-primary); }
+
+        .faq-photo {
+            max-width: 720px;
+            margin: 8px auto;
+            border-radius: 14px;
+            overflow: hidden;
+            height: 260px;
+        }
+        .faq-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .faq-photo-inline {
+            margin: 8px 0;
+        }
+
+        .faq-cta {
+            text-align: center;
+            padding: 56px 0 96px;
+            border-top: 1px solid var(--border);
+        }
+        .faq-cta p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
-
 <body>
-    <div class="page-loader" id="pageLoader"><img src="images/logos/logo.png" alt="Loading"></div>
-    <div class="aurora-orb"></div>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
 
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="container nav-content">
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+
             <a href="index.html" class="logo">
-                <img src="images/logos/logo.png" alt="TrainQ">
+                <img src="images/logos/logo.png" alt="TrainQ" width="120" height="40">
             </a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">☰</button>
-            <div class="nav-links">
+
+            <div class="nav-desktop">
                 <a href="index.html" class="nav-link">Home</a>
+
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger" id="sportsDropdownBtn" aria-expanded="false" aria-haspopup="true">
+                        Sports
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                            <path d="M6 8L2 4h8z"/>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="index.html#sports" class="dropdown-item">🏋️ Gym</a>
+                        <a href="index.html#sports" class="dropdown-item">🏃 Running</a>
+                        <a href="index.html#sports" class="dropdown-item">🚴 Cycling</a>
+                    </div>
+                </div>
+
                 <a href="features.html" class="nav-link">Features</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="faq.html" class="nav-link active" aria-current="page">FAQ</a>
-                <a href="pricing.html" class="nav-link">Pricing</a>
                 <a href="/de/faq.html" class="nav-link nav-lang">DE</a>
+
+                <a href="https://apps.apple.com/app/trainq" class="btn-nav-primary" target="_blank" rel="noopener">
+                    Get Started
+                </a>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-links">
+                    <a href="index.html" class="mobile-link">Home</a>
+                    <a href="features.html" class="mobile-link">Features</a>
+                    <a href="blog.html" class="mobile-link">Blog</a>
+                    <a href="faq.html" class="mobile-link">FAQ</a>
+                    <div class="mobile-divider"></div>
+                    <a href="index.html#sports" class="mobile-link">🏋️ Gym</a>
+                    <a href="index.html#sports" class="mobile-link">🏃 Running</a>
+                    <a href="index.html#sports" class="mobile-link">🚴 Cycling</a>
+                    <div class="mobile-divider"></div>
+                    <a href="/de/faq.html" class="mobile-link">🇩🇪 Deutsch</a>
+                </div>
+                <a href="https://apps.apple.com/app/trainq" class="btn btn-primary btn-mobile-cta" target="_blank" rel="noopener">
+                    Download on App Store
+                </a>
             </div>
         </div>
-    </nav>
-
-    <div class="mobile-nav" id="mobileNav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="features.html" class="nav-link">Features</a>
-        <a href="blog.html" class="nav-link">Blog</a>
-        <a href="faq.html" class="nav-link active">FAQ</a>
-        <a href="pricing.html" class="nav-link">Pricing</a>
-        <a href="/de/faq.html" class="nav-link nav-lang">DE</a>
-    </div>
+    </header>
 
     <main>
+        <div class="container">
 
-        <!-- Header -->
-        <section class="section text-center" style="padding-bottom: var(--space-8);">
-            <div class="container reveal" style="max-width: 600px;">
+            <!-- Hero -->
+            <div class="faq-hero reveal">
                 <p class="section-label">Help</p>
-                <h1 class="mb-4">Frequently Asked <span class="gradient-text">Questions</span></h1>
-                <p>Everything you need to know about TrainQ. Can't find an answer? <a href="mailto:Julius.Deusch@trainq.app" style="color: var(--color-primary-neon);">Contact us.</a></p>
+                <h1>Frequently asked<br>questions.</h1>
+                <p>Can't find an answer? <a href="mailto:Julius.Deusch@trainq.app">Contact us directly.</a></p>
             </div>
-        </section>
 
-        <!-- FAQ Accordion -->
-        <section class="section" style="padding-top: 0;">
-            <div class="container" style="max-width: 760px;">
+            <!-- Photo 1 -->
+            <div class="faq-photo reveal">
+                <picture>
+                    <source srcset="fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.webp" type="image/webp">
+                    <img src="fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.jpg" alt="Runner in motion" loading="lazy" width="800" height="1200">
+                </picture>
+            </div>
 
-                <div class="card reveal" style="padding: 0; overflow: hidden;">
+            <!-- FAQ Items -->
+            <div class="faq-list">
 
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
-                            Is TrainQ available on iOS and Android?
-                            <span class="accordion-chevron">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            TrainQ is currently iOS-first — available for iPhone and Apple Watch. An Android version is in development and scheduled for late 2026. We're building the best possible iOS experience first before expanding to other platforms.
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Is TrainQ available on iOS and Android?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            TrainQ is currently <strong>iOS-first</strong> — available for iPhone and Apple Watch. An Android version is in development and scheduled for late 2026. We're building the best possible iOS experience first before expanding to other platforms.
                         </div>
                     </div>
+                </div>
 
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
-                            Do I need special equipment to use TrainQ?
-                            <span class="accordion-chevron">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            No specialized equipment is required to get started. However, we strongly recommend a reliable heart-rate monitor — a chest strap or optical armband — for the best adaptive training results. TrainQ also integrates seamlessly with Garmin devices for athletes who already use them.
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Do I need special equipment to use TrainQ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            No specialized equipment is required to get started. However, we strongly recommend a reliable <strong>heart-rate monitor</strong> — a chest strap or optical armband — for the best adaptive training results. TrainQ also integrates seamlessly with <strong>Garmin devices</strong> for athletes who already use them.
                         </div>
                     </div>
+                </div>
 
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
-                            How does the adaptive training engine work?
-                            <span class="accordion-chevron">+</span>
-                        </button>
-                        <div class="accordion-content">
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        How does the adaptive training engine work?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
                             After each session, TrainQ analyzes your performance data — pace, heart rate, RPE, and adherence — and compares it to your planned prescription. If you under- or over-performed, or missed a session entirely, the engine automatically recalculates the next 3–7 days to keep you on track without causing burnout or injury.
                         </div>
                     </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
-                            What sports does TrainQ support?
-                            <span class="accordion-chevron">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            TrainQ is built for all sports with structured training plans. The primary focus is on <strong style="color: var(--color-text-primary);">gym / strength training</strong>, <strong style="color: var(--color-text-primary);">running</strong>, and <strong style="color: var(--color-text-primary);">cycling</strong>. Other endurance sports like swimming, triathlon, and hiking are also supported.
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
-                            How does TrainQ handle my data and privacy?
-                            <span class="accordion-chevron">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            Privacy is a core value, not an afterthought. Your health data is processed locally on your device wherever possible. We don't sell your data to third parties or advertisers — ever. You can export or delete all your data at any time. See our <a href="privacy.html" style="color: var(--color-primary-neon); text-decoration: underline;">Privacy Policy</a> for full details.
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
-                            Can I export my workout data?
-                            <span class="accordion-chevron">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            Yes, always. You can export your complete workout history in standard <strong style="color: var(--color-text-primary);">.FIT</strong> and <strong style="color: var(--color-text-primary);">.TCX</strong> formats at any time. It's your data and you should always have full control over it.
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
-                            When will TrainQ Plus launch?
-                            <span class="accordion-chevron">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            TrainQ Plus (formerly called Pro) launches end of March 2026. During the public beta phase, all features are available for free. No credit card is required to try TrainQ.
-                        </div>
-                    </div>
-
                 </div>
 
-                <!-- Still have questions -->
-                <div class="text-center mt-8 reveal">
-                    <p class="mb-4" style="color: var(--color-text-muted);">Still have questions?</p>
-                    <a href="mailto:Julius.Deusch@trainq.app" class="btn btn-secondary">Get in touch</a>
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        What sports does TrainQ support?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            TrainQ is built for all sports with structured training plans. The primary focus is on <strong>gym / strength training</strong>, <strong>running</strong>, and <strong>cycling</strong>. Other endurance sports like swimming, triathlon, and hiking are also supported.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        How does TrainQ handle my data and privacy?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Privacy is a core value, not an afterthought. Your health data is processed <strong>locally on your device</strong> wherever possible. We don't sell your data to third parties or advertisers — ever. You can export or delete all your data at any time. See our <a href="privacy.html">Privacy Policy</a> for full details.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="faq-photo faq-photo-inline reveal">
+                    <picture>
+                        <source srcset="fotos/risen-wang-20jX9b35r_M-unsplash.webp" type="image/webp">
+                        <img src="fotos/risen-wang-20jX9b35r_M-unsplash.jpg" alt="Empty gym" loading="lazy" width="1600" height="1198">
+                    </picture>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Can I export my workout data?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Yes, always. You can export your complete workout history in standard <strong>.FIT</strong> and <strong>.TCX</strong> formats at any time. It's your data and you should always have full control over it.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        When will TrainQ Plus launch?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            TrainQ Plus launches <strong>end of March 2026</strong>. During the public beta phase, all features are available for free — no credit card required.
+                        </div>
+                    </div>
                 </div>
 
             </div>
-        </section>
 
+            <!-- Photo 3 -->
+            <div class="faq-photo reveal">
+                <picture>
+                    <source srcset="fotos/maico-amorim-SJWPKMb9u-k-unsplash.webp" type="image/webp">
+                    <img src="fotos/maico-amorim-SJWPKMb9u-k-unsplash.jpg" alt="Athlete training" loading="lazy" width="2400" height="1596">
+                </picture>
+            </div>
+
+            <!-- CTA -->
+            <div class="faq-cta reveal">
+                <p>Still have questions?</p>
+                <a href="mailto:Julius.Deusch@trainq.app" class="btn btn-secondary">Get in touch</a>
+            </div>
+
+        </div>
     </main>
 
-    <!-- Footer -->
-        <footer class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-row">
                 <div class="footer-left">
-                    <a href="index.html" class="logo"><img src="images/logos/logo.png" alt="TrainQ"></a>
+                    <a href="index.html" class="logo">
+                        <img src="images/favicon-32.png" alt="TrainQ" style="filter:brightness(0) invert(1);height:26px;">
+                        <span class="logo-text">TrainQ</span>
+                    </a>
                     <div class="footer-socials">
                         <a href="https://instagram.com/trainq.app" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
                         <a href="https://x.com/trainqapp" target="_blank" rel="noopener" aria-label="X" class="social-icon"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                        <a href="https://facebook.com/trainqapp" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
                     </div>
                 </div>
                 <div class="footer-center">
@@ -166,16 +356,29 @@
         </div>
     </footer>
 
-    <script src="shared.js"></script>
+    <script src="shared.js" defer></script>
+    <script src="js/header.js" defer></script>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var item = this.closest('.faq-item');
+                var isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item.open').forEach(function(el) {
+                    el.classList.remove('open');
+                });
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+    </script>
     <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
     <div class="cookie-banner" id="cookieBanner">
-    <p class="cookie-banner-title">🍪 Cookie Settings</p>
-    <p>We only use essential cookies to ensure our website works properly. No tracking, no ads, no third-party analytics. <a href="privacy.html">Learn more</a></p>
-    <div class="cookie-banner-actions">
-        <button class="cookie-btn cookie-btn-accept">Accept All</button>
-        <button class="cookie-btn cookie-btn-decline">Essential Only</button>
+        <p class="cookie-banner-title">Cookie Settings</p>
+        <p>We only use essential cookies to ensure our website works properly. No tracking, no ads, no third-party analytics. <a href="privacy.html" style="color:var(--blue);">Learn more</a></p>
+        <div class="cookie-banner-actions">
+            <button class="cookie-btn cookie-btn-accept">Accept All</button>
+            <button class="cookie-btn cookie-btn-decline">Essential Only</button>
+        </div>
     </div>
-</div>
-</body>
 
+</body>
 </html>
