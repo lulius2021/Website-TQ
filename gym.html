@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Training — TrainQ</title>
+    <meta name="description" content="Progressive strength plans, rep tracking, and PR monitoring — TrainQ makes gym training structured, measurable, and actually effective.">
+    <link rel="icon" type="image/png" href="images/favicon-32.png">
+    <meta property="og:image" content="https://trainq.app/images/og-image.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="fonts/inter.css">
+</head>
+
+<body>
+
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logos/logo.png" alt="TrainQ" width="120" height="40">
+            </a>
+            <div class="nav-desktop">
+                <a href="index.html" class="nav-link">Home</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger" id="sportsDropdownBtn" aria-expanded="false" aria-haspopup="true">
+                        Sports
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="gym.html" class="dropdown-item">🏋️ Gym</a>
+                        <a href="running.html" class="dropdown-item">🏃 Running</a>
+                        <a href="cycling.html" class="dropdown-item">🚴 Cycling</a>
+                    </div>
+                </div>
+                <a href="features.html" class="nav-link">Features</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="/de/gym.html" class="nav-link nav-lang">DE</a>
+                <a href="https://apps.apple.com/app/trainq" class="btn-nav-primary" target="_blank" rel="noopener">Get Started</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-links">
+                    <a href="index.html" class="mobile-link">Home</a>
+                    <a href="features.html" class="mobile-link">Features</a>
+                    <a href="blog.html" class="mobile-link">Blog</a>
+                    <a href="faq.html" class="mobile-link">FAQ</a>
+                    <div class="mobile-divider"></div>
+                    <a href="gym.html" class="mobile-link">🏋️ Gym</a>
+                    <a href="running.html" class="mobile-link">🏃 Running</a>
+                    <a href="cycling.html" class="mobile-link">🚴 Cycling</a>
+                    <div class="mobile-divider"></div>
+                    <a href="/de/gym.html" class="mobile-link">🇩🇪 Deutsch</a>
+                </div>
+                <a href="https://apps.apple.com/app/trainq" class="btn btn-primary btn-mobile-cta" target="_blank" rel="noopener">Download on App Store</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero-section">
+            <div class="hero-top-fade"></div>
+            <div class="hero-bg">
+                <picture>
+                    <source srcset="fotos/john-arano-h4i9G-de7Po-unsplash.webp" type="image/webp">
+                    <img src="fotos/john-arano-h4i9G-de7Po-unsplash.jpg" alt="" fetchpriority="high" width="1200" height="801">
+                </picture>
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-container container" style="grid-template-columns: 1fr; max-width: 780px;">
+                <div class="hero-text" style="max-width: 100%;">
+                    <p class="section-label" style="margin-bottom: 16px;">🏋️ Gym</p>
+                    <h1 class="hero-title">
+                        Strength training<br>
+                        that <span class="text-blue">builds on itself.</span>
+                    </h1>
+                    <p class="hero-desc">
+                        No more random workouts. TrainQ gives you a progressive plan built around your goals — and tracks every rep, every set, every PR.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="https://apps.apple.com/app/trainq" class="btn btn-primary" target="_blank" rel="noopener">Download on App Store</a>
+                        <a href="#plans" class="btn btn-secondary">See training plans →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT YOU GET -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-header center reveal">
+                    <p class="section-label">What TrainQ does for Gym</p>
+                    <h2>Everything a coach would give you.<br>In your pocket.</h2>
+                </div>
+                <div class="grid-3">
+                    <div class="card reveal reveal-delay-1">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M6 4v16M18 4v16M2 8h4M18 8h4M2 16h4M18 16h4M6 12h12"/></svg>
+                        </div>
+                        <h3>Progressive Overload Built In</h3>
+                        <p>Every week, the plan gets harder — but only as fast as you can handle it. Volume and intensity increase automatically based on your performance.</p>
+                    </div>
+                    <div class="card reveal reveal-delay-2">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        </div>
+                        <h3>PR Tracking & Milestones</h3>
+                        <p>Track your one-rep maxes, estimate future PRs, and celebrate every personal record. The data stays with you and gets smarter over time.</p>
+                    </div>
+                    <div class="card reveal reveal-delay-3">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <h3>Live Session Guidance</h3>
+                        <p>Every set tells you the exact weight, reps, and rest time. No guessing, no mental math — just lift and follow the plan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRAINING PLANS -->
+        <section id="plans" class="section">
+            <div class="container">
+                <div class="section-header center reveal">
+                    <p class="section-label">Training Plans</p>
+                    <h2>Pick your goal.<br>TrainQ builds the rest.</h2>
+                    <p>All plans are periodized, adaptive, and built around your schedule.</p>
+                </div>
+                <div class="grid-3" style="margin-top: var(--space-10);">
+                    <div class="card reveal reveal-delay-1" style="border-color: rgba(0,102,255,0.25);">
+                        <div style="font-size:2rem;margin-bottom:12px;">💪</div>
+                        <h3>Hypertrophy</h3>
+                        <p class="small-text">Maximize muscle size with high-volume, moderate-intensity blocks. 3–5 days per week.</p>
+                    </div>
+                    <div class="card reveal reveal-delay-2" style="border-color: rgba(0,102,255,0.25);">
+                        <div style="font-size:2rem;margin-bottom:12px;">🏆</div>
+                        <h3>Strength</h3>
+                        <p class="small-text">Build raw strength with compound movements. Lower reps, higher intensity. 3–4 days per week.</p>
+                    </div>
+                    <div class="card reveal reveal-delay-3" style="border-color: rgba(0,102,255,0.25);">
+                        <div style="font-size:2rem;margin-bottom:12px;">⚡</div>
+                        <h3>Power & Athletic</h3>
+                        <p class="small-text">Combine strength and speed for explosive performance. Ideal for athletes training in the gym. 4 days per week.</p>
+                    </div>
+                    <div class="card reveal reveal-delay-1" style="border-color: rgba(0,102,255,0.25);">
+                        <div style="font-size:2rem;margin-bottom:12px;">🔄</div>
+                        <h3>Body Recomposition</h3>
+                        <p class="small-text">Lose fat and build muscle simultaneously with intelligent load management. 3–4 days per week.</p>
+                    </div>
+                    <div class="card reveal reveal-delay-2" style="border-color: rgba(0,102,255,0.25);">
+                        <div style="font-size:2rem;margin-bottom:12px;">🌱</div>
+                        <h3>Beginner Foundation</h3>
+                        <p class="small-text">Learn the fundamentals with a guided full-body program. Build the base you'll train on for years. 3 days per week.</p>
+                    </div>
+                    <div class="card reveal reveal-delay-3" style="border-color: rgba(0,102,255,0.25);">
+                        <div style="font-size:2rem;margin-bottom:12px;">🎯</div>
+                        <h3>General Fitness</h3>
+                        <p class="small-text">Stay strong, healthy, and mobile. Balanced program mixing strength, cardio, and mobility work.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURE: Smart Scheduling -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="feature-grid">
+                    <div class="feature-image reveal reveal-left">
+                        <picture>
+                            <source srcset="fotos/victor-freitas-qZ-U9z4TQ6A-unsplash.webp" type="image/webp">
+                            <img src="fotos/victor-freitas-qZ-U9z4TQ6A-unsplash.jpg" alt="Barbell deadlift" loading="lazy" width="1200" height="800">
+                        </picture>
+                    </div>
+                    <div class="feature-text reveal reveal-right reveal-delay-2">
+                        <span class="badge">✨ Smart Programming</span>
+                        <h2>Periodization without<br><span class="text-blue">the spreadsheet.</span></h2>
+                        <p>Most lifters plateau because they repeat the same workout forever. TrainQ automatically phases your training — hypertrophy blocks into strength blocks into deload weeks — so you keep progressing without burning out.</p>
+                        <ul class="feature-list">
+                            <li class="feature-check"><span class="icon">✓</span>Automatic deload weeks based on fatigue signals</li>
+                            <li class="feature-check"><span class="icon">✓</span>Phase shifts: hypertrophy → strength → peaking</li>
+                            <li class="feature-check"><span class="icon">✓</span>Volume and intensity adjust to your recovery rate</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURE: Muscle Balance -->
+        <section class="section">
+            <div class="container">
+                <div class="feature-grid">
+                    <div class="feature-text reveal reveal-left">
+                        <span class="badge">⚖️ Balance & Recovery</span>
+                        <h2>Train hard.<br><span class="text-blue">Recover harder.</span></h2>
+                        <p>Imbalances and overuse injuries kill progress. TrainQ tracks your weekly muscle group volume and flags when you're overdoing push days or skipping pulls — keeping your body balanced and injury-free.</p>
+                        <ul class="feature-list">
+                            <li class="feature-check"><span class="icon">✓</span>Weekly muscle group volume tracking</li>
+                            <li class="feature-check"><span class="icon">✓</span>Push/pull/legs balance monitoring</li>
+                            <li class="feature-check"><span class="icon">✓</span>Rest day recommendations based on soreness + HRV</li>
+                        </ul>
+                    </div>
+                    <div class="feature-image reveal reveal-right reveal-delay-2">
+                        <picture>
+                            <source srcset="fotos/benjamin-brunner-wcOGQeT1jIw-unsplash.webp" type="image/webp">
+                            <img src="fotos/benjamin-brunner-wcOGQeT1jIw-unsplash.jpg" alt="Gym workout" loading="lazy" width="800" height="533">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OTHER SPORTS -->
+        <section class="section section-alt">
+            <div class="container section-narrow">
+                <div class="section-header center reveal">
+                    <p class="section-label">Also in TrainQ</p>
+                    <h2>Gym is just the start.</h2>
+                </div>
+                <div class="grid-3" style="margin-top:var(--space-8);">
+                    <a href="running.html" class="card reveal reveal-delay-1" style="text-decoration:none;">
+                        <div style="font-size:2rem;margin-bottom:12px;">🏃</div>
+                        <h3>Running</h3>
+                        <p class="small-text">5k to marathon. Interval sessions, pace zones, and race-day predictions.</p>
+                        <span style="color:var(--blue);font-size:0.875rem;margin-top:12px;display:block;">Explore Running →</span>
+                    </a>
+                    <a href="cycling.html" class="card reveal reveal-delay-2" style="text-decoration:none;">
+                        <div style="font-size:2rem;margin-bottom:12px;">🚴</div>
+                        <h3>Cycling</h3>
+                        <p class="small-text">FTP-based intensity, structured rides, and event peaking — driven by your numbers.</p>
+                        <span style="color:var(--blue);font-size:0.875rem;margin-top:12px;display:block;">Explore Cycling →</span>
+                    </a>
+                    <a href="features.html" class="card reveal reveal-delay-3" style="text-decoration:none;">
+                        <div style="font-size:2rem;margin-bottom:12px;">📋</div>
+                        <h3>All Features</h3>
+                        <p class="small-text">Analytics, adaptive engine, Garmin sync, and more — see the full picture.</p>
+                        <span style="color:var(--blue);font-size:0.875rem;margin-top:12px;display:block;">See All Features →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section section-alt" style="border-top:1px solid var(--border);">
+            <div class="container text-center section-tight">
+                <div class="reveal">
+                    <p class="section-label">Beta Access</p>
+                    <h2 style="margin-bottom:16px;">Wanna test it?</h2>
+                    <p style="color:var(--text-muted);font-size:1.0625rem;margin-bottom:40px;max-width:440px;margin-left:auto;margin-right:auto;">Drop your email — we'll send you a TestFlight invite. Free. No catch.</p>
+                    <form class="beta-form" id="betaForm">
+                        <input type="email" class="beta-input" placeholder="your@email.com" required autocomplete="email">
+                        <button type="submit" class="btn btn-primary">Get Access</button>
+                    </form>
+                    <p class="beta-success" id="betaSuccess">✓ You're on the list — invite coming soon.</p>
+                    <p style="margin-top:14px;font-size:0.8125rem;color:var(--text-dimmer);">No spam. Unsubscribe anytime.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-row">
+                <div class="footer-left">
+                    <a href="index.html" class="logo">
+                        <img src="images/favicon-32.png" alt="TrainQ" style="filter:brightness(0) invert(1);height:26px;">
+                        <span class="logo-text">TrainQ</span>
+                    </a>
+                    <div class="footer-socials">
+                        <a href="https://instagram.com/trainq.app" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                        <a href="https://x.com/trainqapp" target="_blank" rel="noopener" aria-label="X" class="social-icon"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-center">
+                    <a href="imprint.html">Imprint</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                </div>
+                <span class="footer-right">&copy; 2026 TrainQ</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="shared.js" defer></script>
+    <script src="js/header.js" defer></script>
+    <script>
+        document.getElementById('betaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var email = this.querySelector('input[type="email"]').value;
+            fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ email: email })
+            }).catch(function() {});
+            this.style.display = 'none';
+            document.getElementById('betaSuccess').style.display = 'block';
+        });
+    </script>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+    <div class="cookie-banner" id="cookieBanner">
+        <p class="cookie-banner-title">Cookie Settings</p>
+        <p>We only use essential cookies to ensure our website works properly. No tracking, no ads, no third-party analytics. <a href="privacy.html" style="color:var(--blue);">Learn more</a></p>
+        <div class="cookie-banner-actions">
+            <button class="cookie-btn cookie-btn-accept">Accept All</button>
+            <button class="cookie-btn cookie-btn-decline">Essential Only</button>
+        </div>
+    </div>
+
+</body>
+</html>
