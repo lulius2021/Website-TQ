@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Training — TrainQ</title>
+    <meta name="description" content="Krafttraining das auf sich selbst aufbaut. Adaptive Pläne für Hypertrophie, Kraft und Körperrekomposition — immer auf deine Leistung abgestimmt.">
+    <link rel="icon" type="image/png" href="../images/logos/hauptlogo.png">
+    <meta property="og:image" content="https://trainq.app/images/og-image.png">
+    <link rel="stylesheet" href="../styles-light.css">
+    <link rel="stylesheet" href="../fonts/inter.css">
+</head>
+<body>
+
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo-wordmark">Train<span>Q</span></a>
+            <div class="nav-desktop">
+                <a href="index.html" class="nav-link">Home</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+                        Sportarten
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="gym.html" class="dropdown-item">🏋️ Gym</a>
+                        <a href="running.html" class="dropdown-item">🏃 Laufen</a>
+                        <a href="cycling.html" class="dropdown-item">🚴 Radfahren</a>
+                    </div>
+                </div>
+                <a href="features.html" class="nav-link">Features</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <div class="nav-actions">
+                    <a href="../gym.html" class="btn btn-outline btn-sm">EN</a>
+                    <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-sm" target="_blank" rel="noopener">Jetzt starten</a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü öffnen">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="features.html" class="mobile-link">Features</a>
+            <a href="blog.html" class="mobile-link">Blog</a>
+            <a href="faq.html" class="mobile-link">FAQ</a>
+            <div class="mobile-divider"></div>
+            <a href="gym.html" class="mobile-link">🏋️ Gym</a>
+            <a href="running.html" class="mobile-link">🏃 Laufen</a>
+            <a href="cycling.html" class="mobile-link">🚴 Radfahren</a>
+            <div class="mobile-divider"></div>
+            <a href="../gym.html" class="mobile-link">🇬🇧 English</a>
+            <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-mobile-cta" target="_blank" rel="noopener">Im App Store laden</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Page Hero -->
+        <div class="page-hero reveal">
+            <div class="container text-center">
+                <span class="badge">🏋️ Gym</span>
+                <h1>Krafttraining das<br>auf sich selbst aufbaut.</h1>
+                <p>Adaptive Pläne die deinen Fortschritt analysieren und sich anpassen — Woche für Woche.</p>
+            </div>
+        </div>
+
+        <!-- Photo Strip -->
+        <div class="container reveal" style="margin-bottom: 64px;">
+            <div class="photo-strip" style="height: 420px;">
+                <picture>
+                    <source srcset="../fotos/john-arano-h4i9G-de7Po-unsplash.webp" type="image/webp">
+                    <img src="../fotos/john-arano-h4i9G-de7Po-unsplash.jpg" alt="Athlet im Gym" loading="eager" width="800" height="1000">
+                </picture>
+            </div>
+        </div>
+
+        <!-- Feature Cards -->
+        <section class="section section-alt">
+            <div class="container reveal">
+                <div class="section-heading text-center">
+                    <h2>Alles für strukturiertes Krafttraining</h2>
+                </div>
+                <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+                    <div class="card">
+                        <div style="font-size:1.5rem; margin-bottom:12px;">📈</div>
+                        <h3>Progressive Überlastung</h3>
+                        <p>Automatisch berechnete Progression. Nicht zu viel, nicht zu wenig — genau das Richtige für anhaltende Kraftzuwächse.</p>
+                    </div>
+                    <div class="card">
+                        <div style="font-size:1.5rem; margin-bottom:12px;">🏆</div>
+                        <h3>PR-Tracking</h3>
+                        <p>Verfolge deine Bestleistungen bei jeder Übung. Automatische Benachrichtigung wenn du einen neuen PR aufstellst.</p>
+                    </div>
+                    <div class="card">
+                        <div style="font-size:1.5rem; margin-bottom:12px;">⚡</div>
+                        <h3>Live-Führung</h3>
+                        <p>Set-Tracking, Pausentimer und Apple Watch-Integration halten dich im Fluss — ohne auf den Bildschirm zu schauen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Training Plans -->
+        <section class="section" id="plans">
+            <div class="container reveal">
+                <div class="section-heading text-center">
+                    <span class="badge">Trainingspläne</span>
+                    <h2>Finde deinen Plan</h2>
+                    <p>Jeder Plan ist speziell auf dein Ziel ausgelegt und passt sich deinem Fortschritt an.</p>
+                </div>
+                <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+                    <div class="card" style="border-top: 3px solid #EBF2FF;">
+                        <h3>Hypertrophie</h3>
+                        <p>Muskelaufbau mit wissenschaftlich belegter Volumenverteilung. 4-5 Tage/Woche.</p>
+                    </div>
+                    <div class="card" style="border-top: 3px solid #EBF2FF;">
+                        <h3>Kraft</h3>
+                        <p>Maximale Kraft durch Periodisierung. Fokus auf Kniebeuge, Kreuzheben und Bankdrücken.</p>
+                    </div>
+                    <div class="card" style="border-top: 3px solid #EBF2FF;">
+                        <h3>Power</h3>
+                        <p>Explosive Kraft und athletische Leistung. Kombination aus Kraft- und Schnelligkeitstraining.</p>
+                    </div>
+                    <div class="card" style="border-top: 3px solid #EBF2FF;">
+                        <h3>Rekomposition</h3>
+                        <p>Gleichzeitig Muskeln aufbauen und Fett reduzieren. Kaloriendefizit-optimierte Programmierung.</p>
+                    </div>
+                    <div class="card" style="border-top: 3px solid #EBF2FF;">
+                        <h3>Einsteiger</h3>
+                        <p>Grundlagen richtig lernen. Technikfokus und schrittweiser Aufbau in 3 Tagen/Woche.</p>
+                    </div>
+                    <div class="card" style="border-top: 3px solid #EBF2FF;">
+                        <h3>Allgemeine Fitness</h3>
+                        <p>Ganzheitliche Fitness ohne festes Ziel. Flexibel, abwechslungsreich, nachhaltig.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Split: Smart Programming -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="split-grid reveal">
+                    <div class="split-image">
+                        <picture>
+                            <source srcset="../fotos/victor-freitas-WvDYdXDzkhs-unsplash.webp" type="image/webp">
+                            <img src="../fotos/victor-freitas-WvDYdXDzkhs-unsplash.jpg" alt="Gewichte" loading="lazy" width="900" height="600">
+                        </picture>
+                    </div>
+                    <div class="split-text">
+                        <span class="badge">Periodisierung</span>
+                        <h2>Periodisierung ohne Tabellen</h2>
+                        <p>Professionelle Trainingsplanung — automatisch. TrainQ berücksichtigt Volumen, Intensität und Erholung, damit du dich auf das Training konzentrieren kannst.</p>
+                        <ul class="feature-checklist">
+                            <li><span class="check-icon">✓</span><span>Wöchentliche Deload-Wochen automatisch eingeplant</span></li>
+                            <li><span class="check-icon">✓</span><span>Übungsrotation verhindert Plateaus</span></li>
+                            <li><span class="check-icon">✓</span><span>Satz- und Wiederholungsanzahl basierend auf deiner Kapazität</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Split: Recovery -->
+        <section class="section">
+            <div class="container">
+                <div class="split-grid reveal">
+                    <div class="split-text">
+                        <span class="badge">Erholung</span>
+                        <h2>Hart trainieren. Besser erholen.</h2>
+                        <p>Erholung ist kein Luxus — sie ist der Ort, wo Kraft entsteht. TrainQ überwacht deine Belastung und plant Ruhetage bevor du sie brauchst.</p>
+                        <ul class="feature-checklist">
+                            <li><span class="check-icon">✓</span><span>HRV- und Herzfrequenz-Daten aus Apple Health</span></li>
+                            <li><span class="check-icon">✓</span><span>Automatische Intensitätsanpassung nach schlechten Nächten</span></li>
+                            <li><span class="check-icon">✓</span><span>Wöchentliche Belastungsanalyse mit klaren Empfehlungen</span></li>
+                        </ul>
+                    </div>
+                    <div class="split-image">
+                        <picture>
+                            <source srcset="../fotos/benjamin-brunner-NkE4ykMCiKk-unsplash.webp" type="image/webp">
+                            <img src="../fotos/benjamin-brunner-NkE4ykMCiKk-unsplash.jpg" alt="Gym" loading="lazy" width="900" height="600">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sport Teaser -->
+        <section class="section section-sky">
+            <div class="container reveal">
+                <div class="section-heading text-center">
+                    <h2>Trainiere auch außerhalb des Gyms</h2>
+                </div>
+                <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+                    <div class="card">
+                        <div style="font-size:1.5rem; margin-bottom:12px;">🏃</div>
+                        <h3>Laufen</h3>
+                        <p>Von 5k bis Marathon. Adaptive Laufpläne die sich deiner aktuellen Form anpassen.</p>
+                        <a href="running.html" class="btn btn-outline" style="margin-top:16px; display:inline-block;">Laufen entdecken</a>
+                    </div>
+                    <div class="card">
+                        <div style="font-size:1.5rem; margin-bottom:12px;">🚴</div>
+                        <h3>Radfahren</h3>
+                        <p>Power-Zone Training, FTP-Tests und Event-Peaking für Radsportler.</p>
+                        <a href="cycling.html" class="btn btn-outline" style="margin-top:16px; display:inline-block;">Radfahren entdecken</a>
+                    </div>
+                    <div class="card">
+                        <div style="font-size:1.5rem; margin-bottom:12px;">✦</div>
+                        <h3>Alle Features</h3>
+                        <p>Analytics, Garmin-Integration, Apple Health Sync und mehr.</p>
+                        <a href="features.html" class="btn btn-outline" style="margin-top:16px; display:inline-block;">Features ansehen</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section section-alt">
+            <div class="container text-center reveal">
+                <div class="section-heading">
+                    <h2>Starte heute smarter zu trainieren.</h2>
+                    <p>Kostenlos in der Public Beta — keine Kreditkarte erforderlich.</p>
+                </div>
+                <a href="https://apps.apple.com/app/trainq" class="btn btn-dark" target="_blank" rel="noopener">Im App Store laden</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-row">
+                <a href="index.html" class="footer-logo">Train<span>Q</span></a>
+                <div class="footer-links">
+                    <a href="imprint.html">Impressum</a>
+                    <a href="privacy.html">Datenschutz</a>
+                    <a href="terms.html">AGB</a>
+                </div>
+                <span class="footer-copy">&copy; 2026 TrainQ</span>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Nach oben">↑</button>
+    <div class="cookie-banner" id="cookieBanner">
+        <p class="cookie-banner-title">Cookie-Einstellungen</p>
+        <p>Wir verwenden nur notwendige Cookies, damit unsere Website korrekt funktioniert. Kein Tracking, keine Werbung. <a href="privacy.html">Mehr erfahren</a></p>
+        <div class="cookie-banner-actions">
+            <button class="cookie-btn cookie-btn-accept">Akzeptieren</button>
+            <button class="cookie-btn cookie-btn-decline">Nur notwendige</button>
+        </div>
+    </div>
+
+    <script>
+        var hdr = document.getElementById('header');
+        var btt = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            hdr.classList.toggle('scrolled', window.scrollY > 10);
+            btt.classList.toggle('visible', window.scrollY > 400);
+        }, {passive: true});
+        btt.addEventListener('click', function() { window.scrollTo({top:0, behavior:'smooth'}); });
+
+        var mBtn = document.getElementById('mobileMenuBtn');
+        var mMenu = document.getElementById('mobileMenu');
+        mBtn.addEventListener('click', function() { mMenu.classList.toggle('open'); });
+
+        var dWrap = document.querySelector('.nav-dropdown');
+        var dTrigger = document.querySelector('.dropdown-trigger');
+        if (dTrigger && dWrap) {
+            dTrigger.addEventListener('click', function(e) { e.stopPropagation(); dWrap.classList.toggle('open'); });
+            document.addEventListener('click', function() { dWrap.classList.remove('open'); });
+        }
+
+        var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+        }, {threshold: 0.1});
+        document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+
+        var cb = document.getElementById('cookieBanner');
+        if (!localStorage.getItem('tq_cookie')) cb.classList.add('visible');
+        document.querySelector('.cookie-btn-accept').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
+        document.querySelector('.cookie-btn-decline').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
+
+        document.querySelectorAll('a[href]').forEach(function(a) {
+            a.addEventListener('mouseenter', function() {
+                var h = a.getAttribute('href');
+                if (h && !h.startsWith('#') && !h.startsWith('http') && !document.querySelector('link[rel=prefetch][href="'+h+'"]')) {
+                    var l = document.createElement('link'); l.rel = 'prefetch'; l.href = h; document.head.appendChild(l);
+                }
+            }, {once: true});
+        });
+    </script>
+
+</body>
+</html>

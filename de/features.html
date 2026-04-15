@@ -1,191 +1,187 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Features — TrainQ</title>
     <meta name="description" content="Entdecke TrainQ's komplettes Feature-Set — adaptive Trainingspläne, Live-Session-Führung, klare Analysen und Garmin-Integration.">
-    <link rel="icon" type="image/png" href="../images/favicon-32.png">
+    <link rel="icon" type="image/png" href="../images/logos/hauptlogo.png">
     <meta property="og:image" content="https://trainq.app/images/og-image.png">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles-light.css">
     <link rel="stylesheet" href="../fonts/inter.css">
 </head>
-
 <body>
 
-    <!-- ===== HEADER ===== -->
     <header class="header" id="header">
         <nav class="nav-container">
-
-            <!-- Logo -->
-            <a href="index.html" class="logo">
-                <img src="../images/logos/logo.png" alt="TrainQ" width="120" height="40">
-            </a>
-
-            <!-- Desktop Navigation -->
+            <a href="index.html" class="logo-wordmark">Train<span>Q</span></a>
             <div class="nav-desktop">
-
                 <a href="index.html" class="nav-link">Home</a>
-
-                <!-- Sports Dropdown -->
                 <div class="nav-dropdown">
-                    <button class="nav-link dropdown-trigger" id="sportsDropdownBtn" aria-expanded="false" aria-haspopup="true">
+                    <button class="nav-link dropdown-trigger" aria-expanded="false" aria-haspopup="true">
                         Sportarten
-                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-                            <path d="M6 8L2 4h8z"/>
-                        </svg>
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
                     </button>
                     <div class="dropdown-menu">
-                        <a href="index.html#sports" class="dropdown-item">🏋️ Gym</a>
-                        <a href="index.html#sports" class="dropdown-item">🏃 Laufen</a>
-                        <a href="index.html#sports" class="dropdown-item">🚴 Radfahren</a>
+                        <a href="gym.html" class="dropdown-item">🏋️ Gym</a>
+                        <a href="running.html" class="dropdown-item">🏃 Laufen</a>
+                        <a href="cycling.html" class="dropdown-item">🚴 Radfahren</a>
                     </div>
                 </div>
-
                 <a href="features.html" class="nav-link active" aria-current="page">Features</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="faq.html" class="nav-link">FAQ</a>
-                <a href="../features.html" class="nav-link nav-lang">EN</a>
-
-                <a href="https://apps.apple.com/app/trainq" class="btn-nav-primary" target="_blank" rel="noopener">
-                    Jetzt starten
-                </a>
+                <div class="nav-actions">
+                    <a href="../features.html" class="btn btn-outline btn-sm">EN</a>
+                    <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-sm" target="_blank" rel="noopener">Jetzt starten</a>
+                </div>
             </div>
-
-            <!-- Mobile Menu Button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü öffnen">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
             </button>
         </nav>
-
-        <!-- Mobile Menu Overlay -->
         <div class="mobile-menu" id="mobileMenu">
-            <div class="mobile-menu-content">
-                <div class="mobile-menu-links">
-                    <a href="index.html" class="mobile-link">Home</a>
-                    <a href="features.html" class="mobile-link">Features</a>
-                    <a href="blog.html" class="mobile-link">Blog</a>
-                    <a href="faq.html" class="mobile-link">FAQ</a>
-                    <div class="mobile-divider"></div>
-                    <a href="index.html#sports" class="mobile-link">🏋️ Gym</a>
-                    <a href="index.html#sports" class="mobile-link">🏃 Laufen</a>
-                    <a href="index.html#sports" class="mobile-link">🚴 Radfahren</a>
-                    <div class="mobile-divider"></div>
-                    <a href="../features.html" class="mobile-link">🇬🇧 English</a>
-                </div>
-                <a href="https://apps.apple.com/app/trainq" class="btn btn-primary btn-mobile-cta" target="_blank" rel="noopener">
-                    Im App Store laden
-                </a>
-            </div>
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="features.html" class="mobile-link">Features</a>
+            <a href="blog.html" class="mobile-link">Blog</a>
+            <a href="faq.html" class="mobile-link">FAQ</a>
+            <div class="mobile-divider"></div>
+            <a href="gym.html" class="mobile-link">🏋️ Gym</a>
+            <a href="running.html" class="mobile-link">🏃 Laufen</a>
+            <a href="cycling.html" class="mobile-link">🚴 Radfahren</a>
+            <div class="mobile-divider"></div>
+            <a href="../features.html" class="mobile-link">🇬🇧 English</a>
+            <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-mobile-cta" target="_blank" rel="noopener">Im App Store laden</a>
         </div>
     </header>
 
     <main>
 
         <!-- Page Hero -->
-        <section class="section" style="padding-top: 120px; padding-bottom: var(--space-12);">
-            <div class="container" style="display:grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
-                <div class="reveal">
-                    <p class="section-label">Features</p>
-                    <h1>Gebaut für <span class="gradient-text">Performance.</span></h1>
-                    <p style="margin-top: var(--space-4);">
-                        Ein komplettes Toolkit für professionelle Trainingsstruktur in deinem Alltag — für Gym, Laufen, Radfahren und mehr.
-                    </p>
-                </div>
-                <div class="feature-image reveal reveal-delay-2" style="border-radius:16px; overflow:hidden; max-height:460px;">
-                    <picture>
-                        <source srcset="../fotos/risen-wang-20jX9b35r_M-unsplash.webp" type="image/webp">
-                        <img src="../fotos/risen-wang-20jX9b35r_M-unsplash.jpg" alt="Leeres Gym" loading="lazy" width="1600" height="1198" style="width:100%;height:100%;object-fit:cover;">
-                    </picture>
-                </div>
+        <div class="page-hero reveal">
+            <div class="container text-center">
+                <span class="badge">Features</span>
+                <h1>Gebaut für<br>Performance.</h1>
+                <p>Ein komplettes Toolkit für professionelle Trainingsstruktur — für Gym, Laufen, Radfahren und mehr.</p>
             </div>
-            <style>@media(max-width:768px){.features-hero-grid{grid-template-columns:1fr!important;}.features-hero-img{display:none;}}</style>
-        </section>
+        </div>
+
+        <!-- Photo Strip -->
+        <div class="container reveal" style="margin-bottom: 64px;">
+            <div class="photo-strip" style="height: 420px;">
+                <picture>
+                    <source srcset="../fotos/risen-wang-20jX9b35r_M-unsplash.webp" type="image/webp">
+                    <img src="../fotos/risen-wang-20jX9b35r_M-unsplash.jpg" alt="Leeres Gym" loading="eager" width="1600" height="1198">
+                </picture>
+            </div>
+        </div>
 
         <!-- Feature 1: Trainingsklarheit -->
-        <section class="section" style="border-top: 1px solid var(--color-border);">
-            <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
-                <div class="reveal">
-                    <span class="badge">Struktur</span>
-                    <h2 class="mb-4">Trainings-<span class="gradient-text-blue">Klarheit</span></h2>
-                    <p class="mb-6">Kein Rätselraten mehr. TrainQ erstellt professionelle Pläne für deine Ziele und passt sie mit deinem Fortschritt an.</p>
-                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3);">
-                        <li class="feature-check">
-                            <span class="icon">✓</span>
-                            <span><strong style="color: var(--color-text-primary);">Zielorientierte Pläne:</strong> 5k, 10k, Marathon, Radfahren, Gym oder allgemeine Fitness.</span>
-                        </li>
-                        <li class="feature-check">
-                            <span class="icon">✓</span>
-                            <span><strong style="color: var(--color-text-primary);">Smartes Scheduling:</strong> Workouts optimal rund um deine Verfügbarkeit platziert.</span>
-                        </li>
-                        <li class="feature-check">
-                            <span class="icon">✓</span>
-                            <span><strong style="color: var(--color-text-primary);">Einheitendetails:</strong> Exaktes Tempo, Herzfrequenz und Dauer für jedes Intervall.</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="feature-img-wrapper reveal reveal-delay-2">
-                    <img src="../images/screenshots/calendar-mockup.png" class="feature-img" alt="Trainingskalender">
+        <section class="section">
+            <div class="container">
+                <div class="split-grid reveal">
+                    <div class="split-text">
+                        <span class="badge">Struktur</span>
+                        <h2>Trainings&shy;klarheit</h2>
+                        <p>Kein Rätselraten mehr. TrainQ erstellt professionelle Pläne für deine Ziele und passt sie mit deinem Fortschritt an.</p>
+                        <ul class="feature-checklist">
+                            <li><span class="check-icon">✓</span><span><strong>Zielorientierte Pläne:</strong> 5k, 10k, Marathon, Radfahren, Gym oder allgemeine Fitness.</span></li>
+                            <li><span class="check-icon">✓</span><span><strong>Smartes Scheduling:</strong> Workouts optimal rund um deine Verfügbarkeit platziert.</span></li>
+                            <li><span class="check-icon">✓</span><span><strong>Einheitendetails:</strong> Exaktes Tempo, Herzfrequenz und Dauer für jedes Intervall.</span></li>
+                        </ul>
+                    </div>
+                    <div class="split-image">
+                        <picture>
+                            <source srcset="../fotos/john-arano-h4i9G-de7Po-unsplash.webp" type="image/webp">
+                            <img src="../fotos/john-arano-h4i9G-de7Po-unsplash.jpg" alt="Gym Training" loading="lazy" width="800" height="1000">
+                        </picture>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Feature 2: Adaptive Engine -->
-        <section class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
-            <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
-                <div class="feature-img-wrapper reveal">
-                    <img src="../images/screenshots/workout-mockup.png" class="feature-img" alt="Live Training">
-                </div>
-                <div class="reveal reveal-delay-2">
-                    <span class="badge">Adaptive Engine</span>
-                    <h2 class="mb-4">Passt sich der <span class="gradient-text-blue">Realität an</span></h2>
-                    <p class="mb-6">Training verpasst? Krank? Erschöpft? TrainQ kalibriert deinen Plan automatisch neu — du fühlst dich nie mehr „hinterher".</p>
-                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3);">
-                        <li class="feature-check">
-                            <span class="icon">✓</span>
-                            <span><strong style="color: var(--color-text-primary);">Auto-Umplanung:</strong> Verschiebt verpasste Einheiten sofort, ohne manuellen Aufwand.</span>
-                        </li>
-                        <li class="feature-check">
-                            <span class="icon">✓</span>
-                            <span><strong style="color: var(--color-text-primary);">Ermüdungserkennung:</strong> Erkennt wann du einen Ruhetag brauchst — bevor du es weißt.</span>
-                        </li>
-                        <li class="feature-check">
-                            <span class="icon">✓</span>
-                            <span><strong style="color: var(--color-text-primary);">Progressive Überlastung:</strong> Erhöht die Intensität nur wenn du wirklich bereit bist.</span>
-                        </li>
-                    </ul>
+        <section class="section section-alt">
+            <div class="container">
+                <div class="split-grid reveal">
+                    <div class="split-image">
+                        <picture>
+                            <source srcset="../fotos/maico-amorim-SJWPKMb9u-k-unsplash.webp" type="image/webp">
+                            <img src="../fotos/maico-amorim-SJWPKMb9u-k-unsplash.jpg" alt="Athlet beim Training" loading="lazy" width="2400" height="1596">
+                        </picture>
+                    </div>
+                    <div class="split-text">
+                        <span class="badge">Adaptive Engine</span>
+                        <h2>Passt sich der Realität an</h2>
+                        <p>Training verpasst? Krank? Erschöpft? TrainQ kalibriert deinen Plan automatisch neu — du fühlst dich nie mehr „hinterher".</p>
+                        <ul class="feature-checklist">
+                            <li><span class="check-icon">✓</span><span><strong>Auto-Umplanung:</strong> Verschiebt verpasste Einheiten sofort, ohne manuellen Aufwand.</span></li>
+                            <li><span class="check-icon">✓</span><span><strong>Ermüdungserkennung:</strong> Erkennt wann du einen Ruhetag brauchst — bevor du es weißt.</span></li>
+                            <li><span class="check-icon">✓</span><span><strong>Progressive Überlastung:</strong> Erhöht die Intensität nur wenn du wirklich bereit bist.</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Feature 3: Analytics -->
         <section class="section">
-            <div class="container grid-2" style="align-items: center; gap: var(--space-16);">
-                <div class="reveal">
-                    <span class="badge">Analytics</span>
-                    <h2 class="mb-4">Echter Fortschritts-<span class="gradient-text-blue">Einblick</span></h2>
-                    <p class="mb-6">Über rohe Zahlen hinausgehen. Verstehe, ob du dich wirklich verbesserst — mit klaren, bedeutsamen Metriken, die zählen.</p>
-                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3);">
-                        <li class="feature-check">
-                            <span class="icon">✓</span>
-                            <span><strong style="color: var(--color-text-primary);">Fitness-Trends:</strong> Fitness vs. Ermüdung im Zeitverlauf visualisieren.</span>
-                        </li>
-                        <li class="feature-check">
-                            <span class="icon">✓</span>
-                            <span><strong style="color: var(--color-text-primary);">Wettkampf-Prognosen:</strong> Zeiten auf Basis aktueller Trainingsdaten schätzen.</span>
-                        </li>
-                        <li class="feature-check">
-                            <span class="icon">✓</span>
-                            <span><strong style="color: var(--color-text-primary);">Health-Sync:</strong> Integration mit Apple Health & Garmin Connect.</span>
-                        </li>
-                    </ul>
+            <div class="container">
+                <div class="split-grid reveal">
+                    <div class="split-text">
+                        <span class="badge">Analytics</span>
+                        <h2>Echter Fortschritts&shy;einblick</h2>
+                        <p>Über rohe Zahlen hinausgehen. Verstehe, ob du dich wirklich verbesserst — mit klaren, bedeutsamen Metriken.</p>
+                        <ul class="feature-checklist">
+                            <li><span class="check-icon">✓</span><span><strong>Fitness-Trends:</strong> Fitness vs. Ermüdung im Zeitverlauf visualisieren.</span></li>
+                            <li><span class="check-icon">✓</span><span><strong>Wettkampf-Prognosen:</strong> Zeiten auf Basis aktueller Trainingsdaten schätzen.</span></li>
+                            <li><span class="check-icon">✓</span><span><strong>Health-Sync:</strong> Integration mit Apple Health &amp; Garmin Connect.</span></li>
+                        </ul>
+                    </div>
+                    <div class="split-image">
+                        <picture>
+                            <source srcset="../fotos/victor-freitas-WvDYdXDzkhs-unsplash.webp" type="image/webp">
+                            <img src="../fotos/victor-freitas-WvDYdXDzkhs-unsplash.jpg" alt="Gewichte" loading="lazy" width="900" height="600">
+                        </picture>
+                    </div>
                 </div>
-                <div class="feature-img-wrapper reveal reveal-delay-2">
-                    <img src="../images/screenshots/stats-mockup.png" class="feature-img" alt="Statistik Dashboard">
+            </div>
+        </section>
+
+        <!-- Feature 4: Live-Session -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="split-grid reveal">
+                    <div class="split-image">
+                        <picture>
+                            <source srcset="../fotos/benjamin-brunner-NkE4ykMCiKk-unsplash.webp" type="image/webp">
+                            <img src="../fotos/benjamin-brunner-NkE4ykMCiKk-unsplash.jpg" alt="Gym" loading="lazy" width="900" height="600">
+                        </picture>
+                    </div>
+                    <div class="split-text">
+                        <span class="badge">Live-Session</span>
+                        <h2>Echtzeit-Führung beim Training</h2>
+                        <p>Wisse genau, was als nächstes kommt. Intervall-Timer, Set-Tracking und Apple Watch-Integration halten dich im Fluss.</p>
+                        <ul class="feature-checklist">
+                            <li><span class="check-icon">✓</span><span><strong>Set &amp; Rep Tracking:</strong> Gewicht, Sätze und Wiederholungen direkt in der App.</span></li>
+                            <li><span class="check-icon">✓</span><span><strong>Intervall-Timer:</strong> Audio-Signale für Arbeit und Pause ohne auf den Bildschirm zu schauen.</span></li>
+                            <li><span class="check-icon">✓</span><span><strong>Apple Watch:</strong> Session-Metriken direkt am Handgelenk.</span></li>
+                        </ul>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section section-alt">
+            <div class="container text-center reveal">
+                <div class="section-heading">
+                    <h2>Bereit, strukturiert zu trainieren?</h2>
+                    <p>Kostenlos starten — keine Kreditkarte erforderlich.</p>
+                </div>
+                <a href="https://apps.apple.com/app/trainq" class="btn btn-dark" target="_blank" rel="noopener">Im App Store laden</a>
             </div>
         </section>
 
@@ -194,37 +190,66 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-row">
-                <div class="footer-left">
-                    <a href="index.html" class="logo">
-                        <img src="../images/favicon-32.png" alt="TrainQ" style="filter:brightness(0) invert(1);height:26px;">
-                        <span class="logo-text">TrainQ</span>
-                    </a>
-                    <div class="footer-socials">
-                        <a href="https://instagram.com/trainq.app" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-                        <a href="https://x.com/trainqapp" target="_blank" rel="noopener" aria-label="X" class="social-icon"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                    </div>
-                </div>
-                <div class="footer-center">
+                <a href="index.html" class="footer-logo">Train<span>Q</span></a>
+                <div class="footer-links">
                     <a href="imprint.html">Impressum</a>
                     <a href="privacy.html">Datenschutz</a>
                     <a href="terms.html">AGB</a>
                 </div>
-                <span class="footer-right">&copy; 2026 TrainQ</span>
+                <span class="footer-copy">&copy; 2026 TrainQ</span>
             </div>
         </div>
     </footer>
 
-    <script src="../shared.js" defer></script>
-    <script src="../js/header.js" defer></script>
     <button class="back-to-top" id="backToTop" aria-label="Nach oben">↑</button>
     <div class="cookie-banner" id="cookieBanner">
         <p class="cookie-banner-title">Cookie-Einstellungen</p>
-        <p>Wir verwenden nur notwendige Cookies, um unsere Website korrekt zu betreiben. Kein Tracking, keine Werbung, keine Drittanbieter-Analysen. <a href="privacy.html" style="color:var(--blue);">Mehr erfahren</a></p>
+        <p>Wir verwenden nur notwendige Cookies, damit unsere Website korrekt funktioniert. Kein Tracking, keine Werbung. <a href="privacy.html">Mehr erfahren</a></p>
         <div class="cookie-banner-actions">
-            <button class="cookie-btn cookie-btn-accept">Alle akzeptieren</button>
+            <button class="cookie-btn cookie-btn-accept">Akzeptieren</button>
             <button class="cookie-btn cookie-btn-decline">Nur notwendige</button>
         </div>
     </div>
+
+    <script>
+        var hdr = document.getElementById('header');
+        var btt = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            hdr.classList.toggle('scrolled', window.scrollY > 10);
+            btt.classList.toggle('visible', window.scrollY > 400);
+        }, {passive: true});
+        btt.addEventListener('click', function() { window.scrollTo({top:0, behavior:'smooth'}); });
+
+        var mBtn = document.getElementById('mobileMenuBtn');
+        var mMenu = document.getElementById('mobileMenu');
+        mBtn.addEventListener('click', function() { mMenu.classList.toggle('open'); });
+
+        var dWrap = document.querySelector('.nav-dropdown');
+        var dTrigger = document.querySelector('.dropdown-trigger');
+        if (dTrigger && dWrap) {
+            dTrigger.addEventListener('click', function(e) { e.stopPropagation(); dWrap.classList.toggle('open'); });
+            document.addEventListener('click', function() { dWrap.classList.remove('open'); });
+        }
+
+        var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+        }, {threshold: 0.1});
+        document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+
+        var cb = document.getElementById('cookieBanner');
+        if (!localStorage.getItem('tq_cookie')) cb.classList.add('visible');
+        document.querySelector('.cookie-btn-accept').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
+        document.querySelector('.cookie-btn-decline').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
+
+        document.querySelectorAll('a[href]').forEach(function(a) {
+            a.addEventListener('mouseenter', function() {
+                var h = a.getAttribute('href');
+                if (h && !h.startsWith('#') && !h.startsWith('http') && !document.querySelector('link[rel=prefetch][href="'+h+'"]')) {
+                    var l = document.createElement('link'); l.rel = 'prefetch'; l.href = h; document.head.appendChild(l);
+                }
+            }, {once: true});
+        });
+    </script>
 
 </body>
 </html>

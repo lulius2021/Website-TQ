@@ -1,171 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing — TrainQ</title>
-    <meta name="description" content="TrainQ is free in public beta. Pro plan launches end of March with advanced features for serious athletes.">
-    <link rel="icon" type="image/png" href="images/favicon-32.png">
+    <meta name="description" content="TrainQ is free in public beta. Pro plan launches end of April with advanced features for serious athletes.">
+    <link rel="icon" type="image/png" href="images/logos/hauptlogo.png">
     <meta property="og:image" content="https://trainq.app/images/og-image.png">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-light.css">
     <link rel="stylesheet" href="fonts/inter.css">
 </head>
-
 <body>
 
-    <!-- ===== HEADER ===== -->
     <header class="header" id="header">
         <nav class="nav-container">
-
-            <!-- Logo -->
-            <a href="index.html" class="logo">
-                <img src="images/logos/logo.png" alt="TrainQ" width="120" height="40">
-            </a>
-
-            <!-- Desktop Navigation -->
+            <a href="index.html" class="logo-wordmark">Train<span>Q</span></a>
             <div class="nav-desktop">
-
                 <a href="index.html" class="nav-link">Home</a>
-
-                <!-- Sports Dropdown -->
                 <div class="nav-dropdown">
-                    <button class="nav-link dropdown-trigger" id="sportsDropdownBtn" aria-expanded="false" aria-haspopup="true">
+                    <button class="nav-link dropdown-trigger" aria-expanded="false" aria-haspopup="true">
                         Sports
-                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-                            <path d="M6 8L2 4h8z"/>
-                        </svg>
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
                     </button>
                     <div class="dropdown-menu">
-                        <a href="index.html#sports" class="dropdown-item">🏋️ Gym</a>
-                        <a href="index.html#sports" class="dropdown-item">🏃 Running</a>
-                        <a href="index.html#sports" class="dropdown-item">🚴 Cycling</a>
+                        <a href="gym.html" class="dropdown-item">🏋️ Gym</a>
+                        <a href="running.html" class="dropdown-item">🏃 Running</a>
+                        <a href="cycling.html" class="dropdown-item">🚴 Cycling</a>
                     </div>
                 </div>
-
                 <a href="features.html" class="nav-link">Features</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="faq.html" class="nav-link">FAQ</a>
-                <a href="/de/pricing.html" class="nav-link nav-lang">DE</a>
-
-                <a href="https://apps.apple.com/app/trainq" class="btn-nav-primary" target="_blank" rel="noopener">
-                    Get Started
-                </a>
+                <div class="nav-actions">
+                    <a href="/de/pricing.html" class="btn btn-outline btn-sm">DE</a>
+                    <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-sm" target="_blank" rel="noopener">Get Started</a>
+                </div>
             </div>
-
-            <!-- Mobile Menu Button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
             </button>
         </nav>
-
-        <!-- Mobile Menu Overlay -->
         <div class="mobile-menu" id="mobileMenu">
-            <div class="mobile-menu-content">
-                <div class="mobile-menu-links">
-                    <a href="index.html" class="mobile-link">Home</a>
-                    <a href="features.html" class="mobile-link">Features</a>
-                    <a href="blog.html" class="mobile-link">Blog</a>
-                    <a href="faq.html" class="mobile-link">FAQ</a>
-                    <div class="mobile-divider"></div>
-                    <a href="index.html#sports" class="mobile-link">🏋️ Gym</a>
-                    <a href="index.html#sports" class="mobile-link">🏃 Running</a>
-                    <a href="index.html#sports" class="mobile-link">🚴 Cycling</a>
-                    <div class="mobile-divider"></div>
-                    <a href="/de/pricing.html" class="mobile-link">🇩🇪 Deutsch</a>
-                </div>
-                <a href="https://apps.apple.com/app/trainq" class="btn btn-primary btn-mobile-cta" target="_blank" rel="noopener">
-                    Download on App Store
-                </a>
-            </div>
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="features.html" class="mobile-link">Features</a>
+            <a href="blog.html" class="mobile-link">Blog</a>
+            <a href="faq.html" class="mobile-link">FAQ</a>
+            <div class="mobile-divider"></div>
+            <a href="gym.html" class="mobile-link">🏋️ Gym</a>
+            <a href="running.html" class="mobile-link">🏃 Running</a>
+            <a href="cycling.html" class="mobile-link">🚴 Cycling</a>
+            <div class="mobile-divider"></div>
+            <a href="/de/pricing.html" class="mobile-link">🇩🇪 Deutsch</a>
+            <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-mobile-cta" target="_blank" rel="noopener">Download on App Store</a>
         </div>
     </header>
 
     <main>
 
-        <!-- Header -->
-        <section class="section text-center" style="padding-top: 120px; padding-bottom: var(--space-12);">
-            <div class="container reveal" style="max-width: 600px;">
-                <span class="badge badge-neon">Coming Soon</span>
-                <h1 class="mb-4">Simple, <span class="gradient-text">Transparent</span> Pricing</h1>
-                <p>TrainQ Pro launches end of March. Start free during public beta — no credit card required.</p>
+        <!-- Page Hero -->
+        <div class="page-hero reveal">
+            <div class="container text-center">
+                <span class="badge">Pricing</span>
+                <h1>Simple,<br>Transparent Pricing</h1>
+                <p>TrainQ Plus launches end of April. Start free during public beta — no credit card required.</p>
             </div>
-        </section>
+        </div>
 
         <!-- Pricing Cards -->
-        <section class="section" style="padding-top: 0;">
-            <div class="container" style="max-width: 900px;">
-                <div class="grid-2" style="gap: var(--space-6); align-items: start;">
+        <section class="section" style="padding-top: 16px;">
+            <div class="container">
+                <div class="pricing-grid reveal">
 
                     <!-- Beta / Free Plan -->
-                    <div class="pricing-card featured reveal">
-                        <div class="pricing-badge">Current Phase</div>
-                        <div class="text-center mb-8" style="padding-top: var(--space-6);">
-                            <h2 class="mb-2">Public Beta</h2>
-                            <div class="price-amount mb-2" style="color: var(--color-primary-neon);">Free</div>
-                            <p class="small-text" style="color: var(--color-text-muted);">No credit card required</p>
+                    <div class="pricing-card featured">
+                        <div class="pricing-card-header">
+                            <span class="pricing-current-tag">Current Phase</span>
+                            <div class="pricing-name">Public Beta</div>
+                            <div class="pricing-price">Free</div>
+                            <div class="pricing-note">No credit card required</div>
                         </div>
-                        <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-6); margin-bottom: var(--space-8);">
-                            <div class="feature-check">
-                                <span class="icon">✓</span>
+                        <div class="pricing-card-body">
+                            <div class="pricing-feature">
+                                <span class="check-icon">✓</span>
                                 Full access to adaptive training engine
                             </div>
-                            <div class="feature-check">
-                                <span class="icon">✓</span>
+                            <div class="pricing-feature">
+                                <span class="check-icon">✓</span>
                                 Unlimited workout creation
                             </div>
-                            <div class="feature-check">
-                                <span class="icon">✓</span>
+                            <div class="pricing-feature">
+                                <span class="check-icon">✓</span>
                                 Analytics Dashboard
                             </div>
-                            <div class="feature-check">
-                                <span class="icon">✓</span>
-                                Apple Health & Garmin integration
+                            <div class="pricing-feature">
+                                <span class="check-icon">✓</span>
+                                Apple Health &amp; Garmin integration
                             </div>
-                            <div class="feature-check">
-                                <span class="icon">✓</span>
+                            <div class="pricing-feature">
+                                <span class="check-icon">✓</span>
                                 Community support
                             </div>
-                        </div>
-                        <div class="text-center">
-                            <span class="btn btn-primary w-full" style="cursor: default;">Coming end of March</span>
+                            <a href="https://apps.apple.com/app/trainq" class="btn btn-blue btn-full" target="_blank" rel="noopener">Download Free</a>
                         </div>
                     </div>
 
                     <!-- Pro Plan (Coming Soon) -->
-                    <div class="pricing-card reveal reveal-delay-2" style="opacity: 0.72;">
-                        <div class="text-center mb-8" style="padding-top: var(--space-4);">
-                            <span class="badge" style="margin-bottom: var(--space-4);">Coming Soon</span>
-                            <h2 class="mb-2" style="color: var(--color-text-secondary);">Plus</h2>
-                            <div class="price-amount mb-2" style="color: var(--color-text-muted);">Soon</div>
-                            <p class="small-text" style="color: var(--color-text-muted);">Launching end of March</p>
+                    <div class="pricing-card">
+                        <div class="pricing-card-header">
+                            <span class="pricing-coming-tag">Coming Soon</span>
+                            <div class="pricing-name" style="color:var(--text-muted);">Plus</div>
+                            <div class="pricing-price muted">Soon</div>
+                            <div class="pricing-note">Launching end of April 2026</div>
                         </div>
-                        <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-6); margin-bottom: var(--space-8);">
-                            <div class="feature-check" style="opacity: 0.6;">
-                                <span class="icon" style="background: rgba(150,175,220,0.08); border-color: rgba(150,175,220,0.2); color: var(--color-text-muted);">✓</span>
+                        <div class="pricing-card-body">
+                            <div class="pricing-feature dim">
+                                <span class="check-icon" style="background:var(--bg-light);color:var(--text-light);">✓</span>
                                 Everything in Beta
                             </div>
-                            <div class="feature-check" style="opacity: 0.6;">
-                                <span class="icon" style="background: rgba(150,175,220,0.08); border-color: rgba(150,175,220,0.2); color: var(--color-text-muted);">✓</span>
+                            <div class="pricing-feature dim">
+                                <span class="check-icon" style="background:var(--bg-light);color:var(--text-light);">✓</span>
                                 Advanced biometric analysis
                             </div>
-                            <div class="feature-check" style="opacity: 0.6;">
-                                <span class="icon" style="background: rgba(150,175,220,0.08); border-color: rgba(150,175,220,0.2); color: var(--color-text-muted);">✓</span>
+                            <div class="pricing-feature dim">
+                                <span class="check-icon" style="background:var(--bg-light);color:var(--text-light);">✓</span>
                                 Coach connectivity
                             </div>
-                            <div class="feature-check" style="opacity: 0.6;">
-                                <span class="icon" style="background: rgba(150,175,220,0.08); border-color: rgba(150,175,220,0.2); color: var(--color-text-muted);">✓</span>
+                            <div class="pricing-feature dim">
+                                <span class="check-icon" style="background:var(--bg-light);color:var(--text-light);">✓</span>
                                 Priority support
                             </div>
-                            <div class="feature-check" style="opacity: 0.6;">
-                                <span class="icon" style="background: rgba(150,175,220,0.08); border-color: rgba(150,175,220,0.2); color: var(--color-text-muted);">✓</span>
+                            <div class="pricing-feature dim">
+                                <span class="check-icon" style="background:var(--bg-light);color:var(--text-light);">✓</span>
                                 API access
                             </div>
-                        </div>
-                        <div class="text-center">
-                            <button class="btn btn-secondary w-full" disabled style="cursor: not-allowed; opacity: 0.5;">Coming Soon</button>
+                            <button class="btn btn-outline btn-full" disabled style="cursor:not-allowed;opacity:0.5;">Coming Soon</button>
                         </div>
                     </div>
 
@@ -174,13 +144,15 @@
         </section>
 
         <!-- FAQ CTA -->
-        <section class="section" style="background-color: var(--color-bg-subtle); border-top: 1px solid var(--color-border);">
+        <section class="section section-alt">
             <div class="container text-center reveal">
-                <h2 class="mb-4">Questions about Pricing?</h2>
-                <p class="mb-8">Check our FAQ or reach out — we're happy to help.</p>
-                <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
-                    <a href="faq.html" class="btn btn-primary">Visit FAQ</a>
-                    <a href="mailto:Julius.Deusch@trainq.app" class="btn btn-secondary">Contact Us</a>
+                <div class="section-heading">
+                    <h2>Questions about Pricing?</h2>
+                    <p>Check our FAQ or reach out — we're happy to help.</p>
+                </div>
+                <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                    <a href="faq.html" class="btn btn-dark">Visit FAQ</a>
+                    <a href="mailto:Julius.Deusch@trainq.app" class="btn btn-outline">Contact Us</a>
                 </div>
             </div>
         </section>
@@ -190,37 +162,66 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-row">
-                <div class="footer-left">
-                    <a href="index.html" class="logo">
-                        <img src="images/favicon-32.png" alt="TrainQ" style="filter:brightness(0) invert(1);height:26px;">
-                        <span class="logo-text">TrainQ</span>
-                    </a>
-                    <div class="footer-socials">
-                        <a href="https://instagram.com/trainq.app" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-                        <a href="https://x.com/trainqapp" target="_blank" rel="noopener" aria-label="X" class="social-icon"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                    </div>
-                </div>
-                <div class="footer-center">
+                <a href="index.html" class="footer-logo">Train<span>Q</span></a>
+                <div class="footer-links">
                     <a href="imprint.html">Imprint</a>
                     <a href="privacy.html">Privacy</a>
                     <a href="terms.html">Terms</a>
                 </div>
-                <span class="footer-right">&copy; 2026 TrainQ</span>
+                <span class="footer-copy">&copy; 2026 TrainQ</span>
             </div>
         </div>
     </footer>
 
-    <script src="shared.js" defer></script>
-    <script src="js/header.js" defer></script>
     <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
     <div class="cookie-banner" id="cookieBanner">
         <p class="cookie-banner-title">Cookie Settings</p>
-        <p>We only use essential cookies to ensure our website works properly. No tracking, no ads, no third-party analytics. <a href="privacy.html" style="color:var(--blue);">Learn more</a></p>
+        <p>We only use essential cookies to ensure our website works properly. No tracking, no ads. <a href="privacy.html">Learn more</a></p>
         <div class="cookie-banner-actions">
-            <button class="cookie-btn cookie-btn-accept">Accept All</button>
+            <button class="cookie-btn cookie-btn-accept">Accept</button>
             <button class="cookie-btn cookie-btn-decline">Essential Only</button>
         </div>
     </div>
+
+    <script>
+        var hdr = document.getElementById('header');
+        var btt = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            hdr.classList.toggle('scrolled', window.scrollY > 10);
+            btt.classList.toggle('visible', window.scrollY > 400);
+        }, {passive: true});
+        btt.addEventListener('click', function() { window.scrollTo({top:0, behavior:'smooth'}); });
+
+        var mBtn = document.getElementById('mobileMenuBtn');
+        var mMenu = document.getElementById('mobileMenu');
+        mBtn.addEventListener('click', function() { mMenu.classList.toggle('open'); });
+
+        var dWrap = document.querySelector('.nav-dropdown');
+        var dTrigger = document.querySelector('.dropdown-trigger');
+        if (dTrigger && dWrap) {
+            dTrigger.addEventListener('click', function(e) { e.stopPropagation(); dWrap.classList.toggle('open'); });
+            document.addEventListener('click', function() { dWrap.classList.remove('open'); });
+        }
+
+        var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+        }, {threshold: 0.1});
+        document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+
+        var cb = document.getElementById('cookieBanner');
+        if (!localStorage.getItem('tq_cookie')) cb.classList.add('visible');
+        document.querySelector('.cookie-btn-accept').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
+        document.querySelector('.cookie-btn-decline').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
+
+        document.querySelectorAll('a[href]').forEach(function(a) {
+            a.addEventListener('mouseenter', function() {
+                var h = a.getAttribute('href');
+                if (h && !h.startsWith('#') && !h.startsWith('http') && !document.querySelector('link[rel=prefetch][href="'+h+'"]')) {
+                    var l = document.createElement('link'); l.rel = 'prefetch'; l.href = h; document.head.appendChild(l);
+                }
+            }, {once: true});
+        });
+    </script>
 
 </body>
 </html>
