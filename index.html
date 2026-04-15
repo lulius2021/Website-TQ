@@ -365,17 +365,19 @@
         }
         /* app mockup variant */
         .split-image.mockup {
-            background: var(--bg-light);
+            background: none;
+            border-radius: 0;
+            box-shadow: none;
+            overflow: visible;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 24px;
-            box-shadow: 0 24px 60px rgba(0,0,0,0.1);
         }
         .split-image.mockup img {
             width: auto;
-            height: 460px;
+            height: 580px;
             object-fit: contain;
+            filter: drop-shadow(0 32px 48px rgba(0,0,0,0.18));
         }
 
         /* ── Sports Section ───────────────────────────── */
@@ -741,7 +743,7 @@
         </section>
 
         <!-- ===== FEATURE SPLIT — Smart Training ===== -->
-        <section class="split-section" id="features">
+        <section class="split-section" id="features" style="background: linear-gradient(180deg, #ffffff 0%, #f5f5f3 100%);">
             <div class="container">
                 <div class="split-grid">
                     <div class="split-text reveal">
@@ -836,7 +838,7 @@
         </section>
 
         <!-- ===== FEATURE SPLIT — Adaptive Engine ===== -->
-        <section class="split-section">
+        <section class="split-section" style="background: linear-gradient(180deg, #f5f5f3 0%, #ffffff 100%);">
             <div class="container">
                 <div class="split-grid">
                     <div class="split-image reveal">

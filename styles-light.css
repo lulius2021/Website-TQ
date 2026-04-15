@@ -315,17 +315,19 @@ a { text-decoration: none; color: inherit; }
     object-fit: cover;
 }
 .split-image.mockup {
-    background: var(--bg-light);
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.1);
 }
 .split-image.mockup img {
     width: auto;
-    height: 460px;
+    height: 580px;
     object-fit: contain;
+    filter: drop-shadow(0 32px 48px rgba(0,0,0,0.18));
 }
 
 /* ── Feature check list ─────────────────────────────────── */
