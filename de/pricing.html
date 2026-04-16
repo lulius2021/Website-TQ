@@ -1,227 +1,264 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preise — TrainQ</title>
-    <meta name="description" content="TrainQ ist in der Public Beta kostenlos. TrainQ Plus startet Ende April mit erweiterten Features für ernsthafte Athleten.">
-    <link rel="icon" type="image/png" href="../images/logos/hauptlogo.png">
-    <meta property="og:image" content="https://trainq.app/images/og-image.png">
-    <link rel="stylesheet" href="../styles-light.css">
-    <link rel="stylesheet" href="../fonts/inter.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preise – TrainQ</title>
+  <meta name="description" content="TrainQ ist kostenlos während der Public Beta. Alle Features. Keine Kreditkarte. Kein Risiko.">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0a0a;--bg-2:#111111;--bg-3:#161616;--accent:#0066FF;--muted:rgba(255,255,255,0.45);--muted-2:rgba(255,255,255,0.22);--border:rgba(255,255,255,0.07);--radius:12px;--radius-lg:20px;--container:1160px;--nav-h:72px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:#fff;font-family:'Satoshi',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .container{max-width:var(--container);margin:0 auto;padding:0 24px}
+    #header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;transition:background .3s,backdrop-filter .3s}
+    #header.scrolled{background:rgba(10,10,10,0.88);backdrop-filter:blur(16px)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+    .nav-logo img{height:32px;width:auto}
+    .nav-links{display:flex;align-items:center;gap:8px}
+    .nav-links a,.nav-btn-ghost{padding:8px 14px;border-radius:8px;font-size:14px;font-weight:500;color:rgba(255,255,255,0.75);transition:color .2s,background .2s;background:none;border:none;cursor:pointer;font-family:'Satoshi',sans-serif}
+    .nav-links a:hover,.nav-btn-ghost:hover{color:#fff;background:rgba(255,255,255,0.06)}
+    .nav-links a.active{color:#fff}
+    .nav-cta{display:flex;align-items:center;gap:8px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;border-radius:var(--radius);font-size:14px;font-weight:600;font-family:'Satoshi',sans-serif;cursor:pointer;transition:all .2s;border:none}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:#0052cc;transform:translateY(-1px)}
+    .btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.18)}
+    .btn-outline:hover{background:rgba(255,255,255,0.06)}
+    .btn-sm{padding:8px 16px;font-size:13px}
+    .btn-disabled{opacity:0.4;cursor:not-allowed;pointer-events:none}
+    .lang-btn{padding:7px 13px;border-radius:8px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.12);background:transparent;cursor:pointer;transition:all .2s;font-family:'Satoshi',sans-serif}
+    .lang-btn:hover{color:#fff;border-color:rgba(255,255,255,0.3)}
+    .sports-drop-wrap{position:relative}
+    #sportsDrop{position:absolute;top:calc(100% + 8px);left:0;background:#1a1a1a;border:1px solid var(--border);border-radius:var(--radius);padding:8px;min-width:160px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s,transform .2s}
+    #sportsDrop.open{opacity:1;pointer-events:all;transform:translateY(0)}
+    #sportsDrop a{display:block;padding:9px 14px;border-radius:8px;font-size:14px;color:rgba(255,255,255,0.75);transition:all .2s}
+    #sportsDrop a:hover{background:rgba(255,255,255,0.06);color:#fff}
+    .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+    .ham span{width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+    #mobileMenu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);padding:32px 24px;flex-direction:column;gap:8px;z-index:99;overflow-y:auto}
+    #mobileMenu.open{display:flex}
+    #mobileMenu a{padding:14px 16px;border-radius:var(--radius);font-size:17px;font-weight:500;color:rgba(255,255,255,0.8);transition:all .2s}
+    #mobileMenu a:hover{background:rgba(255,255,255,0.06);color:#fff}
+    #mobileMenu .mob-cta{margin-top:16px}
+    .page-header{padding:140px 0 80px;text-align:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:24px}
+    h1{font-family:'Clash Display',sans-serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:600;letter-spacing:-0.04em;line-height:1.1;margin-bottom:20px}
+    .page-desc{font-size:1.1rem;color:var(--muted);max-width:520px;margin:0 auto}
+    .pricing-wrap{max-width:880px;margin:0 auto;padding:80px 24px}
+    .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:80px}
+    .price-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px;display:flex;flex-direction:column}
+    .price-card.featured{border-color:var(--accent);background:linear-gradient(135deg,rgba(0,102,255,0.08) 0%,var(--bg-2) 100%)}
+    .price-badge{display:inline-block;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
+    .badge-beta{background:rgba(0,102,255,0.15);color:var(--accent)}
+    .badge-soon{background:rgba(255,255,255,0.06);color:var(--muted)}
+    .price-name{font-family:'Clash Display',sans-serif;font-size:1.5rem;font-weight:600;margin-bottom:8px}
+    .price-amount{font-family:'Clash Display',sans-serif;font-size:3rem;font-weight:700;letter-spacing:-0.04em;margin-bottom:4px;line-height:1}
+    .price-amount span{font-size:1.1rem;font-weight:400;color:var(--muted);vertical-align:middle}
+    .price-desc{color:var(--muted);font-size:.9rem;margin-bottom:32px}
+    .price-features{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px;flex:1}
+    .price-features li{display:flex;align-items:flex-start;gap:10px;font-size:.93rem;color:rgba(255,255,255,0.8)}
+    .price-features li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:2px}
+    .price-features li.muted-feat{color:var(--muted)}
+    .price-features li.muted-feat::before{content:'○';color:var(--muted-2)}
+    .price-btn{width:100%;padding:14px;border-radius:var(--radius);font-size:15px;font-weight:600;font-family:'Satoshi',sans-serif;cursor:pointer;transition:all .2s;border:none;text-align:center;display:block}
+    .price-btn-primary{background:var(--accent);color:#fff}
+    .price-btn-primary:hover{background:#0052cc}
+    .price-btn-secondary{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);cursor:not-allowed}
+    .faq-cta{text-align:center;padding:60px 0;border-top:1px solid var(--border)}
+    .faq-cta h2{font-family:'Clash Display',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;letter-spacing:-0.03em;margin-bottom:12px}
+    .faq-cta p{color:var(--muted);margin-bottom:28px}
+    .faq-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    footer{background:var(--bg-2);border-top:1px solid var(--border);padding:60px 0 40px}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+    .footer-brand p{color:var(--muted);font-size:.9rem;margin-top:12px;max-width:260px;line-height:1.6}
+    .footer-logo{font-family:'Clash Display',sans-serif;font-size:1.4rem;font-weight:600;letter-spacing:-0.03em}
+    .footer-logo span{color:var(--accent)}
+    .footer-col h4{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);margin-bottom:16px}
+    .footer-col a{display:block;font-size:.9rem;color:var(--muted);margin-bottom:10px;transition:color .2s}
+    .footer-col a:hover{color:#fff}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:32px;border-top:1px solid var(--border);font-size:.85rem;color:var(--muted-2)}
+    #backToTop{position:fixed;bottom:32px;right:32px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:50}
+    #backToTop.visible{opacity:1;pointer-events:all}
+    #backToTop:hover{transform:translateY(-3px)}
+    #cookieBanner{position:fixed;bottom:24px;left:24px;right:24px;max-width:480px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:24px;z-index:200;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}
+    #cookieBanner.visible{opacity:1;pointer-events:all;transform:translateY(0)}
+    #cookieBanner p{font-size:.88rem;color:rgba(255,255,255,0.7);margin-bottom:16px;line-height:1.5}
+    .cookie-btns{display:flex;gap:10px}
+    .cookie-accept{padding:9px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:'Satoshi',sans-serif}
+    .cookie-decline{padding:9px 20px;background:transparent;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:.85rem;cursor:pointer;font-family:'Satoshi',sans-serif}
+    .fade-up{opacity:0;transform:translateY(30px)}
+    @media(max-width:700px){.pricing-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.nav-links,.nav-cta{display:none}.ham{display:flex}}
+    @media(max-width:600px){.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:12px;text-align:center}.pricing-wrap{padding:60px 0}}
+  </style>
 </head>
 <body>
 
-    <header class="header" id="header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo-wordmark">Train<span>Q</span></a>
-            <div class="nav-desktop">
-                <a href="index.html" class="nav-link">Home</a>
-                <div class="nav-dropdown">
-                    <button class="nav-link dropdown-trigger" aria-expanded="false" aria-haspopup="true">
-                        Sportarten
-                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="gym.html" class="dropdown-item">🏋️ Gym</a>
-                        <a href="running.html" class="dropdown-item">🏃 Laufen</a>
-                        <a href="cycling.html" class="dropdown-item">🚴 Radfahren</a>
-                    </div>
-                </div>
-                <a href="features.html" class="nav-link">Features</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="faq.html" class="nav-link">FAQ</a>
-                <div class="nav-actions">
-                    <a href="../pricing.html" class="btn btn-outline btn-sm">EN</a>
-                    <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-sm" target="_blank" rel="noopener">Jetzt starten</a>
-                </div>
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü öffnen">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </nav>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="features.html" class="mobile-link">Features</a>
-            <a href="blog.html" class="mobile-link">Blog</a>
-            <a href="faq.html" class="mobile-link">FAQ</a>
-            <div class="mobile-divider"></div>
-            <a href="gym.html" class="mobile-link">🏋️ Gym</a>
-            <a href="running.html" class="mobile-link">🏃 Laufen</a>
-            <a href="cycling.html" class="mobile-link">🚴 Radfahren</a>
-            <div class="mobile-divider"></div>
-            <a href="../pricing.html" class="mobile-link">🇬🇧 English</a>
-            <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-mobile-cta" target="_blank" rel="noopener">Im App Store laden</a>
+<header id="header">
+  <div class="container">
+    <nav class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <img src="../images/logos/transparent Weiß.png" alt="TrainQ" height="32">
+      </a>
+      <div class="nav-links">
+        <div class="sports-drop-wrap">
+          <button class="nav-btn-ghost" id="sportsBtn" aria-expanded="false">Sportarten ▾</button>
+          <div id="sportsDrop">
+            <a href="gym.html">🏋️ Gym</a>
+            <a href="running.html">🏃 Laufen</a>
+            <a href="cycling.html">🚴 Radfahren</a>
+          </div>
         </div>
-    </header>
+        <a href="features.html">Features</a>
+        <a href="pricing.html" class="active">Preise</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="nav-cta">
+        <a href="../pricing.html"><button class="lang-btn">EN</button></a>
+        <a href="#download" class="btn btn-primary btn-sm">App laden</a>
+      </div>
+      <button class="ham" id="mobileMenuBtn" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
 
-    <main>
+<div id="mobileMenu">
+  <a href="gym.html">🏋️ Gym</a>
+  <a href="running.html">🏃 Laufen</a>
+  <a href="cycling.html">🚴 Radfahren</a>
+  <a href="features.html">Features</a>
+  <a href="pricing.html">Preise</a>
+  <a href="blog.html">Blog</a>
+  <a href="faq.html">FAQ</a>
+  <a href="#download" class="btn btn-primary mob-cta">App laden</a>
+</div>
 
-        <!-- Page Hero -->
-        <div class="page-hero reveal">
-            <div class="container text-center">
-                <span class="badge">Preise</span>
-                <h1>Einfache,<br>transparente Preise</h1>
-                <p>TrainQ Plus startet Ende April. Jetzt kostenlos in der Public Beta starten — keine Kreditkarte erforderlich.</p>
-            </div>
-        </div>
+<div class="page-header">
+  <div class="container">
+    <div class="eyebrow">Preise</div>
+    <h1>Einfache Preise.</h1>
+    <p class="page-desc">Kostenlos während der Public Beta. Kein Abo. Keine Kreditkarte. Einfach trainieren.</p>
+  </div>
+</div>
 
-        <!-- Pricing Cards -->
-        <section class="section" style="padding-top: 16px;">
-            <div class="container">
-                <div class="pricing-grid reveal">
+<div class="pricing-wrap">
+  <div class="container">
+    <div class="pricing-grid fade-up">
+      <!-- FREE BETA -->
+      <div class="price-card featured">
+        <span class="price-badge badge-beta">Public Beta</span>
+        <div class="price-name">TrainQ Beta</div>
+        <div class="price-amount">0€<span> / Monat</span></div>
+        <p class="price-desc">Alle Features kostenlos während der Betaphase. Für immer für Early Adopters.</p>
+        <ul class="price-features">
+          <li>Adaptiver Trainingsplan (KI)</li>
+          <li>Gym, Laufen & Radfahren</li>
+          <li>Trainingskalender</li>
+          <li>Gamification (XP & Level)</li>
+          <li>Garmin & Apple Health</li>
+          <li>Unbegrenzte Einheiten</li>
+        </ul>
+        <a href="#download" class="price-btn price-btn-primary">Kostenlos laden</a>
+      </div>
 
-                    <!-- Beta / Free Plan -->
-                    <div class="pricing-card featured">
-                        <div class="pricing-card-header">
-                            <span class="pricing-current-tag">Aktuelle Phase</span>
-                            <div class="pricing-name">Public Beta</div>
-                            <div class="pricing-price">Kostenlos</div>
-                            <div class="pricing-note">Keine Kreditkarte erforderlich</div>
-                        </div>
-                        <div class="pricing-card-body">
-                            <div class="pricing-feature">
-                                <span class="check-icon">✓</span>
-                                Vollständiger Zugang zur adaptiven Engine
-                            </div>
-                            <div class="pricing-feature">
-                                <span class="check-icon">✓</span>
-                                Unbegrenzte Workout-Erstellung
-                            </div>
-                            <div class="pricing-feature">
-                                <span class="check-icon">✓</span>
-                                Statistik-Dashboard
-                            </div>
-                            <div class="pricing-feature">
-                                <span class="check-icon">✓</span>
-                                Apple Health &amp; Garmin Integration
-                            </div>
-                            <div class="pricing-feature">
-                                <span class="check-icon">✓</span>
-                                Community Support
-                            </div>
-                            <a href="https://apps.apple.com/app/trainq" class="btn btn-blue btn-full" target="_blank" rel="noopener">Kostenlos laden</a>
-                        </div>
-                    </div>
-
-                    <!-- Plus Plan (Coming Soon) -->
-                    <div class="pricing-card">
-                        <div class="pricing-card-header">
-                            <span class="pricing-coming-tag">Demnächst</span>
-                            <div class="pricing-name" style="color:var(--text-muted);">Plus</div>
-                            <div class="pricing-price muted">Bald</div>
-                            <div class="pricing-note">Startet Ende April 2026</div>
-                        </div>
-                        <div class="pricing-card-body">
-                            <div class="pricing-feature dim">
-                                <span class="check-icon" style="background:var(--bg-light);color:var(--text-light);">✓</span>
-                                Alles aus Beta
-                            </div>
-                            <div class="pricing-feature dim">
-                                <span class="check-icon" style="background:var(--bg-light);color:var(--text-light);">✓</span>
-                                Erweiterte biometrische Analyse
-                            </div>
-                            <div class="pricing-feature dim">
-                                <span class="check-icon" style="background:var(--bg-light);color:var(--text-light);">✓</span>
-                                Trainer-Anbindung
-                            </div>
-                            <div class="pricing-feature dim">
-                                <span class="check-icon" style="background:var(--bg-light);color:var(--text-light);">✓</span>
-                                Priority Support
-                            </div>
-                            <div class="pricing-feature dim">
-                                <span class="check-icon" style="background:var(--bg-light);color:var(--text-light);">✓</span>
-                                API-Zugang
-                            </div>
-                            <button class="btn btn-outline btn-full" disabled style="cursor:not-allowed;opacity:0.5;">Demnächst</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ CTA -->
-        <section class="section section-alt">
-            <div class="container text-center reveal">
-                <div class="section-heading">
-                    <h2>Noch Fragen zu den Preisen?</h2>
-                    <p>Schau in unsere FAQ oder schreib uns — wir helfen gerne.</p>
-                </div>
-                <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-                    <a href="faq.html" class="btn btn-dark">Zu den FAQ</a>
-                    <a href="mailto:Julius.Deusch@trainq.app" class="btn btn-outline">Kontakt</a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-row">
-                <a href="index.html" class="footer-logo">Train<span>Q</span></a>
-                <div class="footer-links">
-                    <a href="imprint.html">Impressum</a>
-                    <a href="privacy.html">Datenschutz</a>
-                    <a href="terms.html">AGB</a>
-                </div>
-                <span class="footer-copy">&copy; 2026 TrainQ</span>
-            </div>
-        </div>
-    </footer>
-
-    <button class="back-to-top" id="backToTop" aria-label="Nach oben">↑</button>
-    <div class="cookie-banner" id="cookieBanner">
-        <p class="cookie-banner-title">Cookie-Einstellungen</p>
-        <p>Wir verwenden nur notwendige Cookies, damit unsere Website korrekt funktioniert. Kein Tracking, keine Werbung. <a href="privacy.html">Mehr erfahren</a></p>
-        <div class="cookie-banner-actions">
-            <button class="cookie-btn cookie-btn-accept">Akzeptieren</button>
-            <button class="cookie-btn cookie-btn-decline">Nur notwendige</button>
-        </div>
+      <!-- PLUS -->
+      <div class="price-card">
+        <span class="price-badge badge-soon">Demnächst</span>
+        <div class="price-name">TrainQ Plus</div>
+        <div class="price-amount">?<span> / Monat</span></div>
+        <p class="price-desc">Alle Beta-Features plus erweiterte Tools für ernsthafte Athleten. Kommt Ende April 2026.</p>
+        <ul class="price-features">
+          <li>Alles aus der Beta</li>
+          <li class="muted-feat">Biometrische Integration (HRV)</li>
+          <li class="muted-feat">Coach-Modus</li>
+          <li class="muted-feat">Erweiterte Analysen</li>
+          <li class="muted-feat">API-Zugang</li>
+          <li class="muted-feat">Priority Support</li>
+          <li class="muted-feat">Daten-Export (CSV/JSON)</li>
+        </ul>
+        <button class="price-btn price-btn-secondary" disabled>Bald verfügbar</button>
+      </div>
     </div>
 
-    <script>
-        var hdr = document.getElementById('header');
-        var btt = document.getElementById('backToTop');
-        window.addEventListener('scroll', function() {
-            hdr.classList.toggle('scrolled', window.scrollY > 10);
-            btt.classList.toggle('visible', window.scrollY > 400);
-        }, {passive: true});
-        btt.addEventListener('click', function() { window.scrollTo({top:0, behavior:'smooth'}); });
+    <div class="faq-cta fade-up">
+      <h2>Noch Fragen?</h2>
+      <p>Schau in die FAQ oder schreib uns direkt. Wir antworten innerhalb von 24 Stunden.</p>
+      <div class="faq-cta-btns">
+        <a href="faq.html" class="btn btn-outline">FAQ ansehen</a>
+        <a href="mailto:hi@trainq.app" class="btn btn-primary">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-        var mBtn = document.getElementById('mobileMenuBtn');
-        var mMenu = document.getElementById('mobileMenu');
-        mBtn.addEventListener('click', function() { mMenu.classList.toggle('open'); });
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Train<span>Q</span></div>
+        <p>Das adaptive Trainingssystem für Läufer, Kraftsportler und Radfahrer. Smarter trainieren – besser werden.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sportarten</h4>
+        <a href="gym.html">Gym</a>
+        <a href="running.html">Laufen</a>
+        <a href="cycling.html">Radfahren</a>
+      </div>
+      <div class="footer-col">
+        <h4>Produkt</h4>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Preise</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TrainQ. Alle Rechte vorbehalten.</span>
+      <span>Made with ❤️ for athletes</span>
+    </div>
+  </div>
+</footer>
 
-        var dWrap = document.querySelector('.nav-dropdown');
-        var dTrigger = document.querySelector('.dropdown-trigger');
-        if (dTrigger && dWrap) {
-            dTrigger.addEventListener('click', function(e) { e.stopPropagation(); dWrap.classList.toggle('open'); });
-            document.addEventListener('click', function() { dWrap.classList.remove('open'); });
-        }
+<button id="backToTop" aria-label="Nach oben">↑</button>
 
-        var io = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-        }, {threshold: 0.1});
-        document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+<div id="cookieBanner">
+  <p>Wir nutzen Cookies um dein Erlebnis zu verbessern. Mit der Nutzung der Website stimmst du unserer <a href="datenschutz.html" style="color:var(--accent)">Datenschutzerklärung</a> zu.</p>
+  <div class="cookie-btns">
+    <button class="cookie-accept">Akzeptieren</button>
+    <button class="cookie-decline">Ablehnen</button>
+  </div>
+</div>
 
-        var cb = document.getElementById('cookieBanner');
-        if (!localStorage.getItem('tq_cookie')) cb.classList.add('visible');
-        document.querySelector('.cookie-btn-accept').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
-        document.querySelector('.cookie-btn-decline').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
-
-        document.querySelectorAll('a[href]').forEach(function(a) {
-            a.addEventListener('mouseenter', function() {
-                var h = a.getAttribute('href');
-                if (h && !h.startsWith('#') && !h.startsWith('http') && !document.querySelector('link[rel=prefetch][href="'+h+'"]')) {
-                    var l = document.createElement('link'); l.rel = 'prefetch'; l.href = h; document.head.appendChild(l);
-                }
-            }, {once: true});
-        });
-    </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.fade-up').forEach(el=>{gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:0.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});});
+  const hdr=document.getElementById('header'),btt=document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',window.scrollY>20);btt.classList.toggle('visible',window.scrollY>400);},{passive:true});
+  btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  const mBtn=document.getElementById('mobileMenuBtn'),mMenu=document.getElementById('mobileMenu');
+  mBtn.addEventListener('click',()=>mMenu.classList.toggle('open'));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')mMenu.classList.remove('open');});
+  const sBtn=document.getElementById('sportsBtn'),sDrop=document.getElementById('sportsDrop');
+  sBtn.addEventListener('click',e=>{e.stopPropagation();const open=sDrop.classList.toggle('open');sBtn.setAttribute('aria-expanded',open);});
+  document.addEventListener('click',()=>{sDrop.classList.remove('open');sBtn.setAttribute('aria-expanded',false);});
+  if(!localStorage.getItem('tq_cookie')){setTimeout(()=>document.getElementById('cookieBanner').classList.add('visible'),1400);}
+  document.querySelector('.cookie-accept').addEventListener('click',()=>{localStorage.setItem('tq_cookie','1');document.getElementById('cookieBanner').style.display='none';});
+  document.querySelector('.cookie-decline').addEventListener('click',()=>{localStorage.setItem('tq_cookie','1');document.getElementById('cookieBanner').style.display='none';});
+</script>
 </body>
 </html>

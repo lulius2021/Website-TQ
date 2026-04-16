@@ -1,333 +1,423 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lauftraining — TrainQ</title>
-    <meta name="description" content="Von 5k bis Marathon — TrainQ erstellt deinen Laufplan, setzt deine Tempozonen und sagt deine Wettkampfzeit voraus. Strukturiertes Training das dich wirklich ans Ziel bringt.">
-    <link rel="icon" type="image/png" href="../images/logos/hauptlogo.png">
-    <meta property="og:image" content="https://trainq.app/images/og-image.png">
-    <link rel="stylesheet" href="../styles-light.css">
-    <link rel="stylesheet" href="../fonts/inter.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laufen – TrainQ</title>
+  <meta name="description" content="Von 5k bis Marathon. TrainQ passt deinen Laufplan in Echtzeit an – basierend auf Pace-Zonen, Erholung und deinem Zielrennen.">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0a0a;--bg-2:#111111;--bg-3:#161616;--accent:#0066FF;--muted:rgba(255,255,255,0.45);--muted-2:rgba(255,255,255,0.22);--border:rgba(255,255,255,0.07);--radius:12px;--radius-lg:20px;--container:1160px;--nav-h:72px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:#fff;font-family:'Satoshi',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .container{max-width:var(--container);margin:0 auto;padding:0 24px}
+
+    /* NAV */
+    #header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;transition:background .3s,backdrop-filter .3s}
+    #header.scrolled{background:rgba(10,10,10,0.88);backdrop-filter:blur(16px)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+    .nav-logo img{height:32px;width:auto}
+    .nav-links{display:flex;align-items:center;gap:8px}
+    .nav-links a,.nav-btn-ghost{padding:8px 14px;border-radius:8px;font-size:14px;font-weight:500;color:rgba(255,255,255,0.75);transition:color .2s,background .2s;background:none;border:none;cursor:pointer;font-family:'Satoshi',sans-serif}
+    .nav-links a:hover,.nav-btn-ghost:hover{color:#fff;background:rgba(255,255,255,0.06)}
+    .nav-links a.active{color:#fff}
+    .nav-cta{display:flex;align-items:center;gap:8px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;border-radius:var(--radius);font-size:14px;font-weight:600;font-family:'Satoshi',sans-serif;cursor:pointer;transition:all .2s;border:none}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:#0052cc;transform:translateY(-1px)}
+    .btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.18)}
+    .btn-outline:hover{background:rgba(255,255,255,0.06)}
+    .btn-sm{padding:8px 16px;font-size:13px}
+    .lang-btn{padding:7px 13px;border-radius:8px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.12);background:transparent;cursor:pointer;transition:all .2s;font-family:'Satoshi',sans-serif}
+    .lang-btn:hover{color:#fff;border-color:rgba(255,255,255,0.3)}
+
+    /* Sports dropdown */
+    .sports-drop-wrap{position:relative}
+    #sportsDrop{position:absolute;top:calc(100% + 8px);left:0;background:#1a1a1a;border:1px solid var(--border);border-radius:var(--radius);padding:8px;min-width:160px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s,transform .2s}
+    #sportsDrop.open{opacity:1;pointer-events:all;transform:translateY(0)}
+    #sportsDrop a{display:block;padding:9px 14px;border-radius:8px;font-size:14px;color:rgba(255,255,255,0.75);transition:all .2s}
+    #sportsDrop a:hover{background:rgba(255,255,255,0.06);color:#fff}
+
+    /* Mobile nav */
+    .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+    .ham span{width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+    #mobileMenu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);padding:32px 24px;flex-direction:column;gap:8px;z-index:99;overflow-y:auto}
+    #mobileMenu.open{display:flex}
+    #mobileMenu a,#mobileMenu button.mob-link{padding:14px 16px;border-radius:var(--radius);font-size:17px;font-weight:500;color:rgba(255,255,255,0.8);background:none;border:none;cursor:pointer;font-family:'Satoshi',sans-serif;text-align:left;transition:all .2s}
+    #mobileMenu a:hover,#mobileMenu button.mob-link:hover{background:rgba(255,255,255,0.06);color:#fff}
+    #mobileMenu .mob-cta{margin-top:16px}
+
+    /* HERO */
+    .hero{position:relative;min-height:65vh;display:flex;align-items:flex-end;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;z-index:0}
+    .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.18;filter:grayscale(40%)}
+    .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(10,10,10,0.4) 60%,transparent 100%)}
+    .hero-inner{position:relative;z-index:1;padding:80px 0 100px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:24px}
+    h1{font-family:'Clash Display',sans-serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:600;letter-spacing:-0.04em;line-height:1.1;max-width:700px;margin-bottom:20px}
+    .hero-sub{font-size:1.1rem;color:var(--muted);max-width:560px;margin-bottom:40px}
+    .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+
+    /* SECTIONS */
+    section{padding:100px 0}
+    .section-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+    h2{font-family:'Clash Display',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;letter-spacing:-0.03em;line-height:1.15;margin-bottom:16px}
+    .section-sub{font-size:1.05rem;color:var(--muted);max-width:600px;margin-bottom:60px}
+    .section-header{text-align:center;display:flex;flex-direction:column;align-items:center}
+
+    /* FEATURE CARDS */
+    .cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .feat-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px}
+    .feat-card .icon{font-size:2rem;margin-bottom:20px}
+    .feat-card h3{font-family:'Clash Display',sans-serif;font-size:1.2rem;font-weight:600;margin-bottom:10px}
+    .feat-card p{color:var(--muted);font-size:.95rem;line-height:1.6}
+
+    /* PLAN CARDS */
+    .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .plan-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;border-top:2px solid var(--accent)}
+    .plan-card h3{font-family:'Clash Display',sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:6px}
+    .plan-card .duration{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+    .plan-card p{color:var(--muted);font-size:.9rem;line-height:1.6}
+
+    /* SPLIT */
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .split.reverse .split-img{order:-1}
+    .split-img{border-radius:var(--radius-lg);overflow:hidden;height:480px}
+    .split-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%)}
+    .split-text h2{margin-bottom:16px}
+    .split-text p{color:var(--muted);margin-bottom:28px}
+    .checklist{list-style:none;display:flex;flex-direction:column;gap:12px}
+    .checklist li{display:flex;align-items:flex-start;gap:12px;font-size:.95rem;color:rgba(255,255,255,0.8)}
+    .checklist li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:2px}
+
+    /* SPORTS TEASER */
+    .sports-teaser{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .sport-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 24px;display:flex;flex-direction:column;gap:12px;transition:border-color .2s,transform .2s}
+    .sport-card:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-3px)}
+    .sport-card .sport-icon{font-size:1.8rem}
+    .sport-card h3{font-family:'Clash Display',sans-serif;font-size:1.05rem;font-weight:600}
+    .sport-card p{color:var(--muted);font-size:.88rem;line-height:1.5;flex:1}
+    .sport-card a{font-size:.85rem;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:4px;margin-top:auto}
+
+    /* FOOTER */
+    footer{background:var(--bg-2);border-top:1px solid var(--border);padding:60px 0 40px}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+    .footer-brand p{color:var(--muted);font-size:.9rem;margin-top:12px;max-width:260px;line-height:1.6}
+    .footer-logo{font-family:'Clash Display',sans-serif;font-size:1.4rem;font-weight:600;letter-spacing:-0.03em}
+    .footer-logo span{color:var(--accent)}
+    .footer-col h4{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);margin-bottom:16px}
+    .footer-col a{display:block;font-size:.9rem;color:var(--muted);margin-bottom:10px;transition:color .2s}
+    .footer-col a:hover{color:#fff}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:32px;border-top:1px solid var(--border);font-size:.85rem;color:var(--muted-2)}
+
+    /* BACK TO TOP */
+    #backToTop{position:fixed;bottom:32px;right:32px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:50}
+    #backToTop.visible{opacity:1;pointer-events:all}
+    #backToTop:hover{transform:translateY(-3px)}
+
+    /* COOKIE */
+    #cookieBanner{position:fixed;bottom:24px;left:24px;right:24px;max-width:480px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:24px;z-index:200;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}
+    #cookieBanner.visible{opacity:1;pointer-events:all;transform:translateY(0)}
+    #cookieBanner p{font-size:.88rem;color:rgba(255,255,255,0.7);margin-bottom:16px;line-height:1.5}
+    .cookie-btns{display:flex;gap:10px}
+    .cookie-accept{padding:9px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:'Satoshi',sans-serif}
+    .cookie-decline{padding:9px 20px;background:transparent;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:.85rem;cursor:pointer;font-family:'Satoshi',sans-serif}
+
+    /* FADE UP */
+    .fade-up{opacity:0;transform:translateY(30px)}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .cards-3,.plans-grid,.sports-teaser{grid-template-columns:1fr 1fr}
+      .split,.split.reverse .split-img{grid-template-columns:1fr}
+      .split.reverse .split-img{order:0}
+      .split-img{height:300px}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .nav-links,.nav-cta{display:none}
+      .ham{display:flex}
+    }
+    @media(max-width:600px){
+      .cards-3,.plans-grid,.sports-teaser{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+    }
+  </style>
 </head>
 <body>
 
-    <header class="header" id="header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo-wordmark">Train<span>Q</span></a>
-            <div class="nav-desktop">
-                <a href="index.html" class="nav-link">Home</a>
-                <div class="nav-dropdown">
-                    <button class="nav-link dropdown-trigger" aria-expanded="false" aria-haspopup="true">
-                        Sportarten
-                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="gym.html" class="dropdown-item">🏋️ Gym</a>
-                        <a href="running.html" class="dropdown-item">🏃 Laufen</a>
-                        <a href="cycling.html" class="dropdown-item">🚴 Radfahren</a>
-                    </div>
-                </div>
-                <a href="features.html" class="nav-link">Features</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="faq.html" class="nav-link">FAQ</a>
-                <div class="nav-actions">
-                    <a href="../running.html" class="btn btn-outline btn-sm">EN</a>
-                    <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-sm" target="_blank" rel="noopener">Jetzt starten</a>
-                </div>
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü öffnen">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </nav>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="features.html" class="mobile-link">Features</a>
-            <a href="blog.html" class="mobile-link">Blog</a>
-            <a href="faq.html" class="mobile-link">FAQ</a>
-            <div class="mobile-divider"></div>
-            <a href="gym.html" class="mobile-link">🏋️ Gym</a>
-            <a href="running.html" class="mobile-link">🏃 Laufen</a>
-            <a href="cycling.html" class="mobile-link">🚴 Radfahren</a>
-            <div class="mobile-divider"></div>
-            <a href="../running.html" class="mobile-link">🇬🇧 English</a>
-            <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-mobile-cta" target="_blank" rel="noopener">Im App Store laden</a>
+<!-- NAV -->
+<header id="header">
+  <div class="container">
+    <nav class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <img src="../images/logos/transparent Weiß.png" alt="TrainQ" height="32">
+      </a>
+      <div class="nav-links">
+        <div class="sports-drop-wrap">
+          <button class="nav-btn-ghost" id="sportsBtn" aria-expanded="false">Sportarten ▾</button>
+          <div id="sportsDrop">
+            <a href="gym.html">🏋️ Gym</a>
+            <a href="running.html" class="active">🏃 Laufen</a>
+            <a href="cycling.html">🚴 Radfahren</a>
+          </div>
         </div>
-    </header>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Preise</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="nav-cta">
+        <a href="../running.html"><button class="lang-btn">EN</button></a>
+        <a href="#download" class="btn btn-primary btn-sm">App laden</a>
+      </div>
+      <button class="ham" id="mobileMenuBtn" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
 
-    <main>
+<!-- MOBILE MENU -->
+<div id="mobileMenu">
+  <a href="gym.html">🏋️ Gym</a>
+  <a href="running.html">🏃 Laufen</a>
+  <a href="cycling.html">🚴 Radfahren</a>
+  <a href="features.html">Features</a>
+  <a href="pricing.html">Preise</a>
+  <a href="blog.html">Blog</a>
+  <a href="faq.html">FAQ</a>
+  <a href="#download" class="btn btn-primary mob-cta">App laden</a>
+</div>
 
-        <!-- Page Hero -->
-        <div class="page-hero reveal">
-            <div class="container text-center">
-                <span class="badge">🏃 Laufen</span>
-                <h1>Von 5k bis Marathon.<br>TrainQ bringt dich ans Ziel.</h1>
-                <p>Strukturierte Intervalleinheiten, smarte Tempozonen und ein Plan der sich deinem Leben anpasst — nicht umgekehrt.</p>
-            </div>
-        </div>
-
-        <!-- Hero Photo -->
-        <div class="container reveal" style="margin-bottom: 0;">
-            <div class="photo-strip" style="height: 420px;">
-                <picture>
-                    <source srcset="../fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.webp" type="image/webp">
-                    <img src="../fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.jpg" alt="Läufer in Bewegung" loading="eager" width="800" height="1200">
-                </picture>
-            </div>
-        </div>
-
-        <!-- Feature Cards -->
-        <section class="section section-alt">
-            <div class="container">
-                <div class="section-heading reveal">
-                    <h2>Wissenschaftlich fundiert.<br>Kein Rätselraten.</h2>
-                </div>
-                <div class="reveal" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
-                    <div class="card">
-                        <div style="font-size:1.5rem; margin-bottom:14px;">⚡</div>
-                        <h3 style="font-size:1.0625rem; font-weight:700; margin-bottom:8px;">Tempozonen, richtig gemacht</h3>
-                        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">TrainQ berechnet deine persönlichen Tempozonen aus echten Leistungsdaten — keine generischen Tabellen. Jeder Lauf hat ein Ziel das wirklich etwas bedeutet.</p>
-                    </div>
-                    <div class="card">
-                        <div style="font-size:1.5rem; margin-bottom:14px;">🏅</div>
-                        <h3 style="font-size:1.0625rem; font-weight:700; margin-bottom:8px;">Wettkampf-Prognosen</h3>
-                        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">Basierend auf deiner aktuellen Fitness sagt TrainQ deine Wettkampfzeit voraus — wöchentlich aktualisiert wenn neue Trainingsdaten eingehen.</p>
-                    </div>
-                    <div class="card">
-                        <div style="font-size:1.5rem; margin-bottom:14px;">🔄</div>
-                        <h3 style="font-size:1.0625rem; font-weight:700; margin-bottom:8px;">Adaptives Scheduling</h3>
-                        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">Langen Lauf verpasst? Erschöpft? TrainQ ordnet deine Woche automatisch neu — ohne Schuldgefühle, ohne verschwendete Trainingstage.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Training Plans -->
-        <section class="section" id="plans">
-            <div class="container">
-                <div class="section-heading reveal">
-                    <h2>Jede Wettkampfdistanz.<br>Jedes Fitnesslevel.</h2>
-                    <p>Pläne von 8 bis 24 Wochen — je nach Ziel und Ausgangspunkt.</p>
-                </div>
-                <div class="reveal" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
-                    <div class="card" style="border-color:rgba(0,102,255,0.2);">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">🥇</div>
-                        <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">5k</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55;">Geschwindigkeit und aerobe Basis aufbauen. Ideal für Einsteiger oder Läufer die einen neuen PR laufen wollen. 8–10 Wochen.</p>
-                    </div>
-                    <div class="card" style="border-color:rgba(0,102,255,0.2);">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">🏅</div>
-                        <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">10k</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55;">Die perfekte Balance zwischen Geschwindigkeit und Ausdauer. Tempo-Läufe, Intervalle und lange Einheiten. 10–12 Wochen.</p>
-                    </div>
-                    <div class="card" style="border-color:rgba(0,102,255,0.2);">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">🎽</div>
-                        <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Halbmarathon</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55;">Die nötige Kilometergrundlage aufbauen ohne den vollen Marathon-Grind. Wettkampfspezifische lange Läufe inklusive. 12–16 Wochen.</p>
-                    </div>
-                    <div class="card" style="border-color:rgba(0,102,255,0.2);">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">🏆</div>
-                        <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Marathon</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55;">Die volle Distanz, richtig gemacht. Progressiver Aufbau langer Läufe, Taper-Protokoll und Race-Week-Strategie. 16–24 Wochen.</p>
-                    </div>
-                    <div class="card" style="border-color:rgba(0,102,255,0.2);">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">🌿</div>
-                        <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Grundlagenaufbau</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55;">Kein Wettkampf in Sicht? Baue deinen aeroben Motor mit strukturierten ruhigen Kilometern auf. Laufendes Programm.</p>
-                    </div>
-                    <div class="card" style="border-color:rgba(0,102,255,0.2);">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">⚡</div>
-                        <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Speed &amp; Intervalle</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55;">Werde schneller mit einem fokussierten 8-Wochen-Block aus Bahn-Intervallen, Tempoläufen und rennspezifischem Tempo.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Split: Session Types -->
-        <section class="section section-alt">
-            <div class="container">
-                <div class="split-grid reveal">
-                    <div class="split-image">
-                        <picture>
-                            <source srcset="../fotos/branislav-rodman-FryV9GFGJNY-unsplash.webp" type="image/webp">
-                            <img src="../fotos/branislav-rodman-FryV9GFGJNY-unsplash.jpg" alt="Läufer auf der Straße" loading="lazy" width="1200" height="2133">
-                        </picture>
-                    </div>
-                    <div class="split-text">
-                        <span class="badge">Einheitentypen</span>
-                        <h2>Jeder Lauf hat einen Zweck.</h2>
-                        <p>Nicht mehr einfach nur „laufen gehen". Jede Einheit in TrainQ hat ein klares Ziel — lockeres Aerob, Laktatschwelle, VO2max-Intervalle oder langer langsamer Dauerlauf. Du weißt genau was du tust, bevor du die Schuhe schnürst.</p>
-                        <ul class="feature-checklist">
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span><strong>Ruhige Läufe</strong> — aerobe Basis mit der richtigen Intensität aufbauen</span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span><strong>Tempoläufe</strong> — anhaltende Schwellenbelastung für Geschwindigkeitszuwächse</span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span><strong>Intervalleinheiten</strong> — strukturierte Wiederholungen mit Pausenführung</span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span><strong>Lange Läufe</strong> — progressiver Kilometeraufbau mit Tempozielen</span>
-                            </li>
-                        </ul>
-                        <div class="split-btns">
-                            <a href="https://apps.apple.com/app/trainq" class="btn btn-dark" target="_blank" rel="noopener">Kostenlos starten</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Split: Device Sync -->
-        <section class="section">
-            <div class="container">
-                <div class="split-grid reveal">
-                    <div class="split-text">
-                        <span class="badge">Gerätesync</span>
-                        <h2>Deine Uhr. Deine Daten. Synchronisiert.</h2>
-                        <p>TrainQ integriert sich mit Garmin Connect und Apple Health um echte Herzfrequenz-, Tempo- und GPS-Daten aus deinen Läufen zu holen. Die adaptive Engine nutzt diese Daten um deine Zonen zu kalibrieren und zukünftige Einheiten zu verbessern.</p>
-                        <ul class="feature-checklist">
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span><strong>Garmin Connect Sync</strong> — Workouts, HRV und Erholungswerte</span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span><strong>Apple Health Integration</strong> für Aktivität und Herzfrequenz</span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span><strong>Automatisch aktualisierte Tempozonen</strong> aus echten Leistungsdaten</span>
-                            </li>
-                        </ul>
-                        <div class="split-btns">
-                            <a href="features.html" class="btn btn-outline">Alle Features</a>
-                        </div>
-                    </div>
-                    <div class="split-image">
-                        <picture>
-                            <source srcset="../fotos/jorgen-hendriksen-3xxG3Mw7nOg-unsplash.webp" type="image/webp">
-                            <img src="../fotos/jorgen-hendriksen-3xxG3Mw7nOg-unsplash.jpg" alt="Läufer mit Uhr" loading="lazy" width="800" height="1200">
-                        </picture>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sport Teaser -->
-        <section class="section section-sky">
-            <div class="container reveal">
-                <div class="section-heading text-center">
-                    <h2>Laufen ist nur der Anfang.</h2>
-                    <p>TrainQ funktioniert für alle Sportarten mit strukturierten Trainingsplänen.</p>
-                </div>
-                <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
-                    <a href="gym.html" class="card" style="text-decoration:none;">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">🏋️</div>
-                        <h3 style="font-size:1.0625rem; font-weight:700; margin-bottom:6px;">Gym</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55; margin-bottom:12px;">Progressive Kraftpläne, Satzverfolgung und PRs — für den langen Weg.</p>
-                        <span style="color:var(--blue); font-size:0.875rem; font-weight:600;">Gym entdecken →</span>
-                    </a>
-                    <a href="cycling.html" class="card" style="text-decoration:none;">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">🚴</div>
-                        <h3 style="font-size:1.0625rem; font-weight:700; margin-bottom:6px;">Radfahren</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55; margin-bottom:12px;">FTP-basierte Intensität, strukturierte Ausfahrten und Event-Peaking — gesteuert durch deine Werte.</p>
-                        <span style="color:var(--blue); font-size:0.875rem; font-weight:600;">Radfahren entdecken →</span>
-                    </a>
-                    <a href="features.html" class="card" style="text-decoration:none;">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">📋</div>
-                        <h3 style="font-size:1.0625rem; font-weight:700; margin-bottom:6px;">Alle Features</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55; margin-bottom:12px;">Analytics, adaptive Engine, Garmin-Sync und mehr — das vollständige Bild.</p>
-                        <span style="color:var(--blue); font-size:0.875rem; font-weight:600;">Features ansehen →</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section class="section section-alt">
-            <div class="container text-center reveal">
-                <div class="section-heading">
-                    <h2>Starte heute smarter zu trainieren.</h2>
-                    <p>Kostenlos in der Public Beta — keine Kreditkarte erforderlich.</p>
-                </div>
-                <a href="https://apps.apple.com/app/trainq" class="btn btn-dark" target="_blank" rel="noopener">Im App Store laden</a>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-row">
-                <a href="index.html" class="footer-logo">Train<span>Q</span></a>
-                <div class="footer-links">
-                    <a href="imprint.html">Impressum</a>
-                    <a href="privacy.html">Datenschutz</a>
-                    <a href="terms.html">AGB</a>
-                </div>
-                <span class="footer-copy">&copy; 2026 TrainQ</span>
-            </div>
-        </div>
-    </footer>
-
-    <button class="back-to-top" id="backToTop" aria-label="Nach oben">↑</button>
-    <div class="cookie-banner" id="cookieBanner">
-        <p class="cookie-banner-title">Cookie-Einstellungen</p>
-        <p>Wir verwenden nur notwendige Cookies, damit unsere Website korrekt funktioniert. Kein Tracking, keine Werbung. <a href="privacy.html">Mehr erfahren</a></p>
-        <div class="cookie-banner-actions">
-            <button class="cookie-btn cookie-btn-accept">Akzeptieren</button>
-            <button class="cookie-btn cookie-btn-decline">Nur notwendige</button>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="../fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.jpg" alt="Läufer auf der Strecke">
+  </div>
+  <div class="container hero-inner">
+    <div class="eyebrow">🏃 Laufen</div>
+    <h1>Von 5k bis Marathon.<br>TrainQ bringt dich ans Ziel.</h1>
+    <p class="hero-sub">Intelligente Laufpläne die sich an dein Tempo, deine Erholung und deinen Wettkampftermin anpassen – automatisch.</p>
+    <div class="hero-btns">
+      <a href="#download" class="btn btn-primary">Kostenlos starten</a>
+      <a href="features.html" class="btn btn-outline">Alle Features</a>
     </div>
+  </div>
+</section>
 
-    <script>
-        var hdr = document.getElementById('header');
-        var btt = document.getElementById('backToTop');
-        window.addEventListener('scroll', function() {
-            hdr.classList.toggle('scrolled', window.scrollY > 10);
-            btt.classList.toggle('visible', window.scrollY > 400);
-        }, {passive: true});
-        btt.addEventListener('click', function() { window.scrollTo({top:0, behavior:'smooth'}); });
+<!-- FEATURES -->
+<section>
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">Lauf-Intelligence</div>
+      <h2>Training das mitdenkt</h2>
+      <p class="section-sub">TrainQ analysiert deine Läufe und passt den Plan in Echtzeit an – damit jede Einheit einen Sinn ergibt.</p>
+    </div>
+    <div class="cards-3">
+      <div class="feat-card fade-up">
+        <div class="icon">🎯</div>
+        <h3>Pace-Zonen</h3>
+        <p>Trainingszonen basierend auf deiner Laktatschwelle. Easy, Tempo, Intervall – TrainQ weiß wann welche Zone passt.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="icon">🏁</div>
+        <h3>Zielzeit-Prognosen</h3>
+        <p>Realistische Zielzeiten basierend auf deinem aktuellen Fitnesslevel. Keine Schätzungen – echte Daten.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="icon">📅</div>
+        <h3>Adaptiver Zeitplan</h3>
+        <p>Hast du eine Einheit verpasst? TrainQ passt den Plan automatisch an ohne das Zieldatum zu gefährden.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        var mBtn = document.getElementById('mobileMenuBtn');
-        var mMenu = document.getElementById('mobileMenu');
-        mBtn.addEventListener('click', function() { mMenu.classList.toggle('open'); });
+<!-- PLAN CARDS -->
+<section style="background:var(--bg-2);padding:100px 0">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">Trainingspläne</div>
+      <h2>Für jede Distanz den richtigen Plan</h2>
+      <p class="section-sub">Ob erstes Rennen oder Bestzeit – TrainQ hat einen strukturierten Plan für dein Ziel.</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card fade-up">
+        <div class="duration">8–10 Wochen</div>
+        <h3>5k</h3>
+        <p>Perfekter Einstieg. Aufbau von Grundlagenausdauer und erstem Renntempo für 5 Kilometer.</p>
+      </div>
+      <div class="plan-card fade-up">
+        <div class="duration">10–12 Wochen</div>
+        <h3>10k</h3>
+        <p>Tempo und Ausdauer kombiniert. Intervalle und lange Läufe für die 10k-Distanz.</p>
+      </div>
+      <div class="plan-card fade-up">
+        <div class="duration">12–16 Wochen</div>
+        <h3>Halbmarathon</h3>
+        <p>Der große Sprung. Periodisierter Plan mit progressiver Kilometererhöhung und Tapering.</p>
+      </div>
+      <div class="plan-card fade-up">
+        <div class="duration">16–24 Wochen</div>
+        <h3>Marathon</h3>
+        <p>Der Klassiker. Wissenschaftlich fundierter Plan mit Long Runs, Pace-Arbeit und Race-Week-Strategie.</p>
+      </div>
+      <div class="plan-card fade-up">
+        <div class="duration">6–8 Wochen</div>
+        <h3>Grundlagenausdauer</h3>
+        <p>Kein Rennen in Sicht? Bau eine starke aerobe Basis auf – der Grundstein für alle künftigen Ziele.</p>
+      </div>
+      <div class="plan-card fade-up">
+        <div class="duration">6–8 Wochen</div>
+        <h3>Speed & Intervalle</h3>
+        <p>Werde schneller. VO2max-Einheiten, Strides und Bahntraining für maximale Laufökonomie.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        var dWrap = document.querySelector('.nav-dropdown');
-        var dTrigger = document.querySelector('.dropdown-trigger');
-        if (dTrigger && dWrap) {
-            dTrigger.addEventListener('click', function(e) { e.stopPropagation(); dWrap.classList.toggle('open'); });
-            document.addEventListener('click', function() { dWrap.classList.remove('open'); });
-        }
+<!-- SPLIT 1 -->
+<section>
+  <div class="container">
+    <div class="split fade-up">
+      <div class="split-img">
+        <img src="../fotos/branislav-rodman-0tBQBGiHKIU-unsplash.jpg" alt="Läufer im Training">
+      </div>
+      <div class="split-text">
+        <div class="section-label">Strukturiertes Training</div>
+        <h2>Jede Einheit hat einen Sinn.</h2>
+        <p>Kein sinnloses Rauslaufen mehr. TrainQ balanciert Easy Runs, Tempo-Einheiten, Intervalle und Long Runs – für optimale Anpassung ohne Übertraining.</p>
+        <ul class="checklist">
+          <li>Easy Runs für aerobe Basis und Erholung</li>
+          <li>Tempo-Läufe zur Verbesserung der Laktatschwelle</li>
+          <li>Intervalltraining für VO2max und Laufökonomie</li>
+          <li>Long Runs für marathon-spezifische Ausdauer</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-        var io = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-        }, {threshold: 0.1});
-        document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+<!-- SPLIT 2 -->
+<section style="background:var(--bg-2)">
+  <div class="container">
+    <div class="split reverse fade-up">
+      <div class="split-text">
+        <div class="section-label">Geräte-Integration</div>
+        <h2>Dein Gerät. Deine Daten.</h2>
+        <p>TrainQ liest deine Laufdaten direkt aus der Uhr – und nutzt sie um zukünftige Einheiten klüger zu gestalten. Keine manuelle Eingabe nötig.</p>
+        <ul class="checklist">
+          <li>Garmin & Apple Health Integration</li>
+          <li>Automatische Pace-Zonen-Berechnung</li>
+          <li>Herzfrequenz-basierte Trainingssteuerung</li>
+          <li>Plan-Anpassung basierend auf echten Laufdaten</li>
+        </ul>
+      </div>
+      <div class="split-img">
+        <img src="../fotos/jorgen-hendriksen-3xxG3Mw7nOg-unsplash.jpg" alt="Laufuhr und Daten">
+      </div>
+    </div>
+  </div>
+</section>
 
-        var cb = document.getElementById('cookieBanner');
-        if (!localStorage.getItem('tq_cookie')) cb.classList.add('visible');
-        document.querySelector('.cookie-btn-accept').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
-        document.querySelector('.cookie-btn-decline').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
+<!-- SPORTS TEASER -->
+<section>
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">Weitere Sportarten</div>
+      <h2>Mehr als Laufen</h2>
+      <p class="section-sub">TrainQ ist dein kompletter Trainingsbegleiter – für alle Sportarten die du liebst.</p>
+    </div>
+    <div class="sports-teaser">
+      <div class="sport-card fade-up">
+        <div class="sport-icon">🏋️</div>
+        <h3>Gym</h3>
+        <p>Progressive Überlastung, PR-Tracking und smarte Pläne für maximale Kraftzuwächse.</p>
+        <a href="gym.html">Mehr erfahren →</a>
+      </div>
+      <div class="sport-card fade-up">
+        <div class="sport-icon">🚴</div>
+        <h3>Radfahren</h3>
+        <p>Power-Zonen-Training, FTP-Testing und wettkampfspezifische Peaks.</p>
+        <a href="cycling.html">Mehr erfahren →</a>
+      </div>
+      <div class="sport-card fade-up">
+        <div class="sport-icon">⚡</div>
+        <h3>Alle Features</h3>
+        <p>KI-Adaptation, Gamification, Kalender-Integration und vieles mehr.</p>
+        <a href="features.html">Features entdecken →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-        document.querySelectorAll('a[href]').forEach(function(a) {
-            a.addEventListener('mouseenter', function() {
-                var h = a.getAttribute('href');
-                if (h && !h.startsWith('#') && !h.startsWith('http') && !document.querySelector('link[rel=prefetch][href="'+h+'"]')) {
-                    var l = document.createElement('link'); l.rel = 'prefetch'; l.href = h; document.head.appendChild(l);
-                }
-            }, {once: true});
-        });
-    </script>
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Train<span>Q</span></div>
+        <p>Das adaptive Trainingssystem für Läufer, Kraftsportler und Radfahrer. Smarter trainieren – besser werden.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sportarten</h4>
+        <a href="gym.html">Gym</a>
+        <a href="running.html">Laufen</a>
+        <a href="cycling.html">Radfahren</a>
+      </div>
+      <div class="footer-col">
+        <h4>Produkt</h4>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Preise</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TrainQ. Alle Rechte vorbehalten.</span>
+      <span>Made with ❤️ for athletes</span>
+    </div>
+  </div>
+</footer>
 
+<button id="backToTop" aria-label="Nach oben">↑</button>
+
+<!-- COOKIE -->
+<div id="cookieBanner">
+  <p>Wir nutzen Cookies um dein Erlebnis zu verbessern. Mit der Nutzung der Website stimmst du unserer <a href="datenschutz.html" style="color:var(--accent)">Datenschutzerklärung</a> zu.</p>
+  <div class="cookie-btns">
+    <button class="cookie-accept">Akzeptieren</button>
+    <button class="cookie-decline">Ablehnen</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.fade-up').forEach(el=>{gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:0.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});});
+  const hdr=document.getElementById('header'),btt=document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',window.scrollY>20);btt.classList.toggle('visible',window.scrollY>400);},{passive:true});
+  btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  const mBtn=document.getElementById('mobileMenuBtn'),mMenu=document.getElementById('mobileMenu');
+  mBtn.addEventListener('click',()=>mMenu.classList.toggle('open'));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')mMenu.classList.remove('open');});
+  const sBtn=document.getElementById('sportsBtn'),sDrop=document.getElementById('sportsDrop');
+  sBtn.addEventListener('click',e=>{e.stopPropagation();const open=sDrop.classList.toggle('open');sBtn.setAttribute('aria-expanded',open);});
+  document.addEventListener('click',()=>{sDrop.classList.remove('open');sBtn.setAttribute('aria-expanded',false);});
+  if(!localStorage.getItem('tq_cookie')){setTimeout(()=>document.getElementById('cookieBanner').classList.add('visible'),1400);}
+  document.querySelector('.cookie-accept').addEventListener('click',()=>{localStorage.setItem('tq_cookie','1');document.getElementById('cookieBanner').style.display='none';});
+  document.querySelector('.cookie-decline').addEventListener('click',()=>{localStorage.setItem('tq_cookie','1');document.getElementById('cookieBanner').style.display='none';});
+</script>
 </body>
 </html>

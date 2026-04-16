@@ -1,412 +1,457 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrainQ — Kein Rätselraten. Einfach performen.</title>
-    <meta name="description" content="TrainQ gibt dir einen professionellen Trainingsplan, der sich deinem echten Leben anpasst — für Gym, Laufen und Radfahren. Kein Rätselraten. Keine verlorenen Einheiten.">
-    <link rel="icon" type="image/png" href="../images/logos/hauptlogo.png">
-    <meta property="og:title" content="TrainQ — Kein Rätselraten. Einfach performen.">
-    <meta property="og:description" content="Professionelle Trainingsstruktur für Gym, Laufen & Radfahren. Passt sich deinem Leben an.">
-    <meta property="og:image" content="https://trainq.app/images/og-image.png">
-    <meta property="og:url" content="https://trainq.app/de/">
-    <meta property="og:type" content="website">
-    <link rel="preload" as="image" href="../fotos/maico-amorim-SJWPKMb9u-k-unsplash.webp" type="image/webp">
-    <link rel="stylesheet" href="../styles-light.css">
-    <link rel="stylesheet" href="../fonts/inter.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrainQ — Schluss mit Raten. Fang an zu performen.</title>
+  <meta name="description" content="TrainQ gibt dir einen professionellen Trainingsplan der sich an dein echtes Leben anpasst – für Gym, Laufen und Radfahren. Kein Raten. Keine vergeudeten Einheiten.">
+  <link rel="icon" type="image/png" href="../images/logos/hauptlogo.png">
+  <meta property="og:title" content="TrainQ — Schluss mit Raten. Fang an zu performen.">
+  <meta property="og:description" content="Professionelles Training für Gym, Laufen und Radfahren. Passt sich deinem Leben an.">
+  <meta property="og:url" content="https://trainq.app/de">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0a0a;--bg-2:#111111;--bg-3:#161616;--accent:#0066FF;--muted:rgba(255,255,255,0.45);--muted-2:rgba(255,255,255,0.22);--border:rgba(255,255,255,0.07);--radius:12px;--radius-lg:20px;--container:1160px;--nav-h:72px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:#fff;font-family:'Satoshi',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .container{max-width:var(--container);margin:0 auto;padding:0 24px}
+
+    /* NAV */
+    #header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;transition:background .3s,backdrop-filter .3s}
+    #header.scrolled{background:rgba(10,10,10,0.88);backdrop-filter:blur(16px)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+    .nav-logo img{height:32px;width:auto}
+    .nav-links{display:flex;align-items:center;gap:8px}
+    .nav-links a,.nav-btn-ghost{padding:8px 14px;border-radius:8px;font-size:14px;font-weight:500;color:rgba(255,255,255,0.75);transition:color .2s,background .2s;background:none;border:none;cursor:pointer;font-family:'Satoshi',sans-serif}
+    .nav-links a:hover,.nav-btn-ghost:hover{color:#fff;background:rgba(255,255,255,0.06)}
+    .nav-cta{display:flex;align-items:center;gap:8px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;border-radius:var(--radius);font-size:14px;font-weight:600;font-family:'Satoshi',sans-serif;cursor:pointer;transition:all .2s;border:none}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:#0052cc;transform:translateY(-1px)}
+    .btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.18)}
+    .btn-outline:hover{background:rgba(255,255,255,0.06)}
+    .btn-sm{padding:8px 16px;font-size:13px}
+    .btn-lg{padding:14px 32px;font-size:16px;border-radius:var(--radius-lg)}
+    .lang-btn{padding:7px 13px;border-radius:8px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.12);background:transparent;cursor:pointer;transition:all .2s;font-family:'Satoshi',sans-serif}
+    .lang-btn:hover{color:#fff;border-color:rgba(255,255,255,0.3)}
+    .sports-drop-wrap{position:relative}
+    #sportsDrop{position:absolute;top:calc(100% + 8px);left:0;background:#1a1a1a;border:1px solid var(--border);border-radius:var(--radius);padding:8px;min-width:160px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s,transform .2s}
+    #sportsDrop.open{opacity:1;pointer-events:all;transform:translateY(0)}
+    #sportsDrop a{display:block;padding:9px 14px;border-radius:8px;font-size:14px;color:rgba(255,255,255,0.75);transition:all .2s}
+    #sportsDrop a:hover{background:rgba(255,255,255,0.06);color:#fff}
+    .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+    .ham span{width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+    #mobileMenu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);padding:32px 24px;flex-direction:column;gap:8px;z-index:99;overflow-y:auto}
+    #mobileMenu.open{display:flex}
+    #mobileMenu a{padding:14px 16px;border-radius:var(--radius);font-size:17px;font-weight:500;color:rgba(255,255,255,0.8);transition:all .2s}
+    #mobileMenu a:hover{background:rgba(255,255,255,0.06);color:#fff}
+    #mobileMenu .mob-cta{margin-top:16px}
+
+    /* HERO */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;z-index:0}
+    .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.15;filter:grayscale(40%)}
+    .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.3) 0%,var(--bg) 85%)}
+    .hero-inner{position:relative;z-index:1;padding:120px 0 80px;max-width:760px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:28px}
+    h1{font-family:'Clash Display',sans-serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:600;letter-spacing:-0.04em;line-height:1.05;margin-bottom:24px}
+    h1 span{color:var(--accent)}
+    .hero-sub{font-size:1.2rem;color:var(--muted);max-width:540px;margin-bottom:44px;line-height:1.7}
+    .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+    .hero-stats{display:flex;gap:40px;flex-wrap:wrap}
+    .stat{display:flex;flex-direction:column;gap:4px}
+    .stat-num{font-family:'Clash Display',sans-serif;font-size:1.8rem;font-weight:700;letter-spacing:-0.03em}
+    .stat-label{font-size:.8rem;color:var(--muted);font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+
+    /* SPORT CARDS */
+    .sports-section{padding:100px 0}
+    .section-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+    h2{font-family:'Clash Display',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;letter-spacing:-0.03em;line-height:1.15;margin-bottom:16px}
+    .section-sub{font-size:1.05rem;color:var(--muted);max-width:600px;margin-bottom:60px}
+    .section-header{text-align:center;display:flex;flex-direction:column;align-items:center}
+    .sports-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .sport-card-big{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .2s,transform .2s;display:flex;flex-direction:column}
+    .sport-card-big:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-4px)}
+    .sport-card-img{height:240px;overflow:hidden}
+    .sport-card-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%);transition:transform .4s}
+    .sport-card-big:hover .sport-card-img img{transform:scale(1.04)}
+    .sport-card-body{padding:28px;flex:1;display:flex;flex-direction:column}
+    .sport-card-body h3{font-family:'Clash Display',sans-serif;font-size:1.25rem;font-weight:600;margin-bottom:10px}
+    .sport-card-body p{color:var(--muted);font-size:.93rem;line-height:1.6;flex:1;margin-bottom:20px}
+    .sport-link{font-size:.88rem;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:6px}
+
+    /* FEATURES STRIP */
+    .features-strip{padding:100px 0;background:var(--bg-2)}
+    .features-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .feat-mini{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 24px}
+    .feat-mini .icon{font-size:1.8rem;margin-bottom:16px}
+    .feat-mini h3{font-family:'Clash Display',sans-serif;font-size:1.05rem;font-weight:600;margin-bottom:8px}
+    .feat-mini p{color:var(--muted);font-size:.88rem;line-height:1.6}
+
+    /* SPLIT */
+    .split-section{padding:100px 0}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .split.reverse .split-img{order:-1}
+    .split-img{border-radius:var(--radius-lg);overflow:hidden;height:500px}
+    .split-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%)}
+    .split-text h2{margin-bottom:16px}
+    .split-text p{color:var(--muted);margin-bottom:28px}
+    .checklist{list-style:none;display:flex;flex-direction:column;gap:12px}
+    .checklist li{display:flex;align-items:flex-start;gap:12px;font-size:.95rem;color:rgba(255,255,255,0.8)}
+    .checklist li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:2px}
+
+    /* GAMIFICATION */
+    .gamification{padding:100px 0}
+    .xp-showcase{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .xp-text h2{margin-bottom:16px}
+    .xp-text p{color:var(--muted);margin-bottom:28px}
+    .xp-visual{display:flex;flex-direction:column;gap:16px}
+    .xp-bar{background:var(--bg-3);border-radius:100px;height:8px;overflow:hidden}
+    .xp-fill{height:100%;background:linear-gradient(90deg,var(--accent),#4d94ff);border-radius:100px;transition:width 1s ease}
+    .xp-label{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);margin-bottom:6px}
+    .level-badge{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:24px}
+    .level-num{font-family:'Clash Display',sans-serif;font-size:1.4rem;font-weight:700;color:var(--accent)}
+    .level-text{font-size:.9rem;color:var(--muted)}
+
+    /* CTA FINAL */
+    .cta-final{padding:120px 0;text-align:center}
+    .cta-final h2{font-family:'Clash Display',sans-serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:600;letter-spacing:-0.04em;margin-bottom:20px}
+    .cta-final p{font-size:1.1rem;color:var(--muted);max-width:500px;margin:0 auto 40px}
+    .cta-final-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+    /* FOOTER */
+    footer{background:var(--bg-2);border-top:1px solid var(--border);padding:60px 0 40px}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+    .footer-brand p{color:var(--muted);font-size:.9rem;margin-top:12px;max-width:260px;line-height:1.6}
+    .footer-logo{font-family:'Clash Display',sans-serif;font-size:1.4rem;font-weight:600;letter-spacing:-0.03em}
+    .footer-logo span{color:var(--accent)}
+    .footer-col h4{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);margin-bottom:16px}
+    .footer-col a{display:block;font-size:.9rem;color:var(--muted);margin-bottom:10px;transition:color .2s}
+    .footer-col a:hover{color:#fff}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:32px;border-top:1px solid var(--border);font-size:.85rem;color:var(--muted-2)}
+
+    /* BACK TO TOP */
+    #backToTop{position:fixed;bottom:32px;right:32px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:50}
+    #backToTop.visible{opacity:1;pointer-events:all}
+    #backToTop:hover{transform:translateY(-3px)}
+
+    /* COOKIE */
+    #cookieBanner{position:fixed;bottom:24px;left:24px;right:24px;max-width:480px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:24px;z-index:200;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}
+    #cookieBanner.visible{opacity:1;pointer-events:all;transform:translateY(0)}
+    #cookieBanner p{font-size:.88rem;color:rgba(255,255,255,0.7);margin-bottom:16px;line-height:1.5}
+    .cookie-btns{display:flex;gap:10px}
+    .cookie-accept{padding:9px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:'Satoshi',sans-serif}
+    .cookie-decline{padding:9px 20px;background:transparent;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:.85rem;cursor:pointer;font-family:'Satoshi',sans-serif}
+
+    /* FADE UP */
+    .fade-up{opacity:0;transform:translateY(30px)}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .sports-grid{grid-template-columns:1fr}
+      .features-grid-4{grid-template-columns:1fr 1fr}
+      .split,.split.reverse .split-img{grid-template-columns:1fr}
+      .split.reverse .split-img{order:0}
+      .split-img{height:320px}
+      .xp-showcase{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .nav-links,.nav-cta{display:none}
+      .ham{display:flex}
+    }
+    @media(max-width:600px){
+      .features-grid-4{grid-template-columns:1fr}
+      .hero-stats{gap:24px}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+      .xp-showcase{padding:32px 24px}
+    }
+  </style>
 </head>
 <body>
 
-    <header class="header" id="header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo-wordmark">Train<span>Q</span></a>
-            <div class="nav-desktop">
-                <a href="index.html" class="nav-link active" aria-current="page">Home</a>
-                <div class="nav-dropdown">
-                    <button class="nav-link dropdown-trigger" aria-expanded="false" aria-haspopup="true">
-                        Sportarten
-                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="gym.html" class="dropdown-item">🏋️ Gym</a>
-                        <a href="running.html" class="dropdown-item">🏃 Laufen</a>
-                        <a href="cycling.html" class="dropdown-item">🚴 Radfahren</a>
-                    </div>
-                </div>
-                <a href="features.html" class="nav-link">Features</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="faq.html" class="nav-link">FAQ</a>
-                <div class="nav-actions">
-                    <a href="../index.html" class="btn btn-outline btn-sm">EN</a>
-                    <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-sm" target="_blank" rel="noopener">Jetzt starten</a>
-                </div>
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü öffnen">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </nav>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="features.html" class="mobile-link">Features</a>
-            <a href="blog.html" class="mobile-link">Blog</a>
-            <a href="faq.html" class="mobile-link">FAQ</a>
-            <div class="mobile-divider"></div>
-            <a href="gym.html" class="mobile-link">🏋️ Gym</a>
-            <a href="running.html" class="mobile-link">🏃 Laufen</a>
-            <a href="cycling.html" class="mobile-link">🚴 Radfahren</a>
-            <div class="mobile-divider"></div>
-            <a href="../index.html" class="mobile-link">🇬🇧 English</a>
-            <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-mobile-cta" target="_blank" rel="noopener">Im App Store laden</a>
+<!-- NAV -->
+<header id="header">
+  <div class="container">
+    <nav class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="../images/logos/transparent Weiß.png" alt="TrainQ" height="32">
+      </a>
+      <div class="nav-links">
+        <div class="sports-drop-wrap">
+          <button class="nav-btn-ghost" id="sportsBtn" aria-expanded="false">Sportarten ▾</button>
+          <div id="sportsDrop">
+            <a href="gym.html">🏋️ Gym</a>
+            <a href="running.html">🏃 Laufen</a>
+            <a href="cycling.html">🚴 Radfahren</a>
+          </div>
         </div>
-    </header>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Preise</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="nav-cta">
+        <a href="../index.html"><button class="lang-btn">EN</button></a>
+        <a href="#download" class="btn btn-primary btn-sm">App laden</a>
+      </div>
+      <button class="ham" id="mobileMenuBtn" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
 
-    <main>
+<!-- MOBILE MENU -->
+<div id="mobileMenu">
+  <a href="gym.html">🏋️ Gym</a>
+  <a href="running.html">🏃 Laufen</a>
+  <a href="cycling.html">🚴 Radfahren</a>
+  <a href="features.html">Features</a>
+  <a href="pricing.html">Preise</a>
+  <a href="blog.html">Blog</a>
+  <a href="faq.html">FAQ</a>
+  <a href="#download" class="btn btn-primary mob-cta">App laden</a>
+</div>
 
-        <!-- Hero -->
-        <div class="page-hero reveal">
-            <div class="container text-center">
-                <span class="badge">Verfügbar auf iOS</span>
-                <h1>Genau wissen<br>was du trainieren sollst.</h1>
-                <p>Professionelle Struktur für Gym, Laufen und Radfahren.<br>Kein Rätselraten. Keine verlorenen Einheiten.</p>
-                <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:32px;">
-                    <a href="https://apps.apple.com/app/trainq" class="btn btn-dark" target="_blank" rel="noopener">Im App Store laden</a>
-                    <a href="#how-it-works" class="btn btn-outline">Wie es funktioniert →</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Hero Photo -->
-        <div class="container reveal" style="margin-bottom: 64px;">
-            <div class="photo-strip" style="height: 480px;">
-                <picture>
-                    <source srcset="../fotos/maico-amorim-SJWPKMb9u-k-unsplash.webp" type="image/webp">
-                    <img src="../fotos/maico-amorim-SJWPKMb9u-k-unsplash.jpg" alt="Athlet beim Training" loading="eager" width="2400" height="1596">
-                </picture>
-            </div>
-        </div>
-
-        <!-- Warum TrainQ -->
-        <section class="section section-alt">
-            <div class="container reveal">
-                <div class="section-heading text-center">
-                    <span class="badge">Warum TrainQ</span>
-                    <h2>Anders gemacht.<br>Für Athleten, die es ernst meinen.</h2>
-                </div>
-                <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
-                    <div class="card">
-                        <div style="font-size:1.5rem; margin-bottom:12px;">🎯</div>
-                        <h3>Kein Rätselraten</h3>
-                        <p>App öffnen. Genau wissen, was zu tun ist. Jede Einheit hat präzise Ziele — Tempo, Herzfrequenz, Dauer, Wiederholungen.</p>
-                    </div>
-                    <div class="card">
-                        <div style="font-size:1.5rem; margin-bottom:12px;">🔄</div>
-                        <h3>Passt sich an, bricht nicht</h3>
-                        <p>Tag ausgelassen? Erschöpft? TrainQ strukturiert deine Woche automatisch um. Du bist nie mehr „hinterher".</p>
-                    </div>
-                    <div class="card">
-                        <div style="font-size:1.5rem; margin-bottom:12px;">📈</div>
-                        <h3>Einblick, kein Rauschen</h3>
-                        <p>Kein Datendschungel. TrainQ zeigt dir, was wirklich zählt — wirst du von Woche zu Woche fitter?</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Wie es funktioniert -->
-        <section class="section" id="how-it-works">
-            <div class="container reveal">
-                <div class="section-heading text-center">
-                    <span class="badge">Der Ablauf</span>
-                    <h2>Drei Schritte.<br>Keine Ausreden.</h2>
-                </div>
-                <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
-                    <div class="card">
-                        <div style="font-size:2rem; font-weight:800; color:var(--blue); margin-bottom:12px;">01</div>
-                        <h3>Ziel wählen</h3>
-                        <p>Sportart und Ziel auswählen. TrainQ erstellt deinen vollständigen Plan in Sekunden — strukturiert, progressiv und um dein Leben herum geplant.</p>
-                    </div>
-                    <div class="card">
-                        <div style="font-size:2rem; font-weight:800; color:var(--blue); margin-bottom:12px;">02</div>
-                        <h3>Ausführen</h3>
-                        <p>Geführte Einheiten mit Echtzeit-Zielen absolvieren. Tempo, Herzfrequenz, Wiederholungen — alles, was du brauchst, genau dann, wenn du es brauchst.</p>
-                    </div>
-                    <div class="card">
-                        <div style="font-size:2rem; font-weight:800; color:var(--blue); margin-bottom:12px;">03</div>
-                        <h3>Anpassen & weitermachen</h3>
-                        <p>Nach jeder Einheit kalibriert der Motor neu. Härter wenn du bereit bist. Leichter wenn du es brauchst. Immer vorwärts.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sportarten -->
-        <section class="section section-sky">
-            <div class="container reveal">
-                <div class="section-heading text-center">
-                    <span class="badge">Sport</span>
-                    <h2>Wähle deinen Sport.<br>Wir erledigen den Rest.</h2>
-                    <p>Eine App. Drei Disziplinen. Strukturiertes Training genau dort, wo du dich auspowerst.</p>
-                </div>
-                <div class="sports-grid">
-                    <a href="gym.html" class="sport-card">
-                        <div class="sport-photo">
-                            <picture>
-                                <source srcset="../fotos/john-arano-h4i9G-de7Po-unsplash.webp" type="image/webp">
-                                <img src="../fotos/john-arano-h4i9G-de7Po-unsplash.jpg" alt="Gym Training" loading="lazy" width="1200" height="801">
-                            </picture>
-                        </div>
-                        <div class="sport-label">
-                            <h3>🏋️ Gym</h3>
-                            <p>Progressive Kraftpläne, Rep-Tracking und PRs — für den langen Weg.</p>
-                        </div>
-                    </a>
-                    <a href="running.html" class="sport-card">
-                        <div class="sport-photo">
-                            <picture>
-                                <source srcset="../fotos/nick-gosset-3DJfakd6VoU-unsplash.webp" type="image/webp">
-                                <img src="../fotos/nick-gosset-3DJfakd6VoU-unsplash.jpg" alt="Laufen" loading="lazy" width="1200" height="1800">
-                            </picture>
-                        </div>
-                        <div class="sport-label">
-                            <h3>🏃 Laufen</h3>
-                            <p>5k bis Marathon. Intervalle, Tempozonen und Wettkampf-Prognosen aus echten Daten.</p>
-                        </div>
-                    </a>
-                    <a href="cycling.html" class="sport-card">
-                        <div class="sport-photo">
-                            <picture>
-                                <source srcset="../fotos/paolo-candelo-53B17GiIhTA-unsplash.webp" type="image/webp">
-                                <img src="../fotos/paolo-candelo-53B17GiIhTA-unsplash.jpg" alt="Radfahren" loading="lazy" width="1200" height="737">
-                            </picture>
-                        </div>
-                        <div class="sport-label">
-                            <h3>🚴 Radfahren</h3>
-                            <p>FTP-basierte Intensität, strukturierte Fahrten und Event-Peaking — gesteuert von deinen Werten.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Feature Split 1: Smartes Training -->
-        <section class="section">
-            <div class="container">
-                <div class="split-grid reveal">
-                    <div class="split-text">
-                        <span class="badge">Smartes Training</span>
-                        <h2>Immer genau wissen was als nächstes kommt.</h2>
-                        <p class="subtitle">Keine ziellosen Einheiten mehr. TrainQ plant jede Wiederholung, jedes Intervall und jeden Ruhetag rund um deine Ziele.</p>
-                        <ul class="feature-checklist">
-                            <li><span class="check-icon">✓</span><span>Zielorientierte Pläne: 5k, Marathon, Radrennen oder Krafttraining</span></li>
-                            <li><span class="check-icon">✓</span><span>Live-Ziele während der Einheit — Tempo, HF, Wiederholungen und Dauer</span></li>
-                            <li><span class="check-icon">✓</span><span>Performance-Scores und Adherence-Tracking nach dem Workout</span></li>
-                        </ul>
-                        <div class="split-btns" style="margin-top:32px;">
-                            <a href="features.html" class="btn btn-dark">Features entdecken</a>
-                            <a href="features.html" class="btn btn-outline">Mehr →</a>
-                        </div>
-                    </div>
-                    <div class="split-image">
-                        <picture>
-                            <source srcset="../fotos/victor-freitas-qZ-U9z4TQ6A-unsplash.webp" type="image/webp">
-                            <img src="../fotos/victor-freitas-qZ-U9z4TQ6A-unsplash.jpg" alt="Krafttraining" loading="lazy" width="1200" height="800">
-                        </picture>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Feature Split 2: Adaptive Engine -->
-        <section class="section section-alt">
-            <div class="container">
-                <div class="split-grid reveal">
-                    <div class="split-image">
-                        <picture>
-                            <source srcset="../fotos/branislav-rodman-FryV9GFGJNY-unsplash.webp" type="image/webp">
-                            <img src="../fotos/branislav-rodman-FryV9GFGJNY-unsplash.jpg" alt="Läufer passt sich an" loading="lazy" width="1200" height="2133">
-                        </picture>
-                    </div>
-                    <div class="split-text">
-                        <span class="badge">Adaptive Engine</span>
-                        <h2>Das Leben kommt dazwischen. TrainQ passt sich an.</h2>
-                        <p class="subtitle">Einheit ausgelassen. Erkältet. Am Wochenende übertrieben. Was auch immer passiert — TrainQ strukturiert deinen Plan automatisch neu.</p>
-                        <ul class="feature-checklist">
-                            <li><span class="check-icon">✓</span><span>Verpasste Einheiten automatisch in die Woche integrieren</span></li>
-                            <li><span class="check-icon">✓</span><span>Ermüdung erkennen und Recovery einbauen bevor du ausbrennst</span></li>
-                            <li><span class="check-icon">✓</span><span>Progressive Belastungssteuerung — Peak genau dann wenn du bereit bist</span></li>
-                        </ul>
-                        <div class="split-btns" style="margin-top:32px;">
-                            <a href="features.html" class="btn btn-dark">Alle Features</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Feature Split 3: Analytics -->
-        <section class="section">
-            <div class="container">
-                <div class="split-grid reveal">
-                    <div class="split-text">
-                        <span class="badge">Analytics</span>
-                        <h2>Daten, die wirklich etwas bedeuten.</h2>
-                        <p class="subtitle">Kein Datendschungel — echte Antworten. Geht deine Fitness nach oben? Wann erreichst du dein Wettkampfziel? TrainQ macht deinen Fortschritt sichtbar.</p>
-                        <ul class="feature-checklist">
-                            <li><span class="check-icon">✓</span><span>Fitness vs. Ermüdung Trend-Visualisierung</span></li>
-                            <li><span class="check-icon">✓</span><span>Wettkampfzeit-Prognosen aus deinen echten Leistungsdaten</span></li>
-                            <li><span class="check-icon">✓</span><span>Apple Health &amp; Garmin Connect Synchronisation</span></li>
-                        </ul>
-                    </div>
-                    <div class="split-image">
-                        <picture>
-                            <source srcset="../fotos/diego-rodriguez-OlSIZV0AeAw-unsplash.webp" type="image/webp">
-                            <img src="../fotos/diego-rodriguez-OlSIZV0AeAw-unsplash.jpg" alt="Gruppe Radfahrer auf Bergstraße" loading="lazy" width="1200" height="1800">
-                        </picture>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Datenschutz -->
-        <section class="section section-alt">
-            <div class="container reveal">
-                <div class="section-heading text-center">
-                    <span class="badge">Datenschutz zuerst</span>
-                    <h2>Deine Daten. Deine Entscheidung.</h2>
-                    <p>Deine Gesundheitsdaten gehören dir — nicht uns, nicht Werbetreibenden. Das ist kein Feature. Das ist das Fundament.</p>
-                </div>
-                <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
-                    <div class="card">
-                        <div style="font-size:1.5rem; margin-bottom:12px;">🔒</div>
-                        <h3>Lokal zuerst</h3>
-                        <p>Datenverarbeitung findet wo möglich auf deinem Gerät statt. Deine Gesundheitsdaten bleiben auf deinem Telefon.</p>
-                    </div>
-                    <div class="card">
-                        <div style="font-size:1.5rem; margin-bottom:12px;">📋</div>
-                        <h3>Transparent</h3>
-                        <p>Verständliche Datenschutzerklärung. Keine versteckten Klauseln, kein juristisches Kauderwelsch.</p>
-                    </div>
-                    <div class="card">
-                        <div style="font-size:1.5rem; margin-bottom:12px;">⚙️</div>
-                        <h3>Volle Kontrolle</h3>
-                        <p>Alle Daten jederzeit exportieren oder löschen, in den Standardformaten .FIT und .TCX.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Blog Teaser -->
-        <section class="section">
-            <div class="container reveal">
-                <div class="section-heading text-center">
-                    <span class="badge">Blog</span>
-                    <h2>Smarter trainieren mit der Wissenschaft.</h2>
-                    <p>Fundiertes Wissen für Athleten — kein Hype, nur was wirklich funktioniert.</p>
-                </div>
-                <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
-                    <a href="blog/polarized-training.html" class="card" style="text-decoration:none; color:inherit; display:flex; flex-direction:column;">
-                        <div style="font-size:0.75rem; font-weight:600; color:var(--blue); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px;">🏃 Laufen</div>
-                        <h3 style="margin-bottom:8px;">Polarisiertes vs. Schwellentraining</h3>
-                        <p style="flex:1;">Warum die 80/20-Intensitätsverteilung schwellenlastige Ansätze übertrifft — wissenschaftlich belegt.</p>
-                        <span style="color:var(--blue); font-size:0.875rem; font-weight:600; margin-top:16px;">Artikel lesen →</span>
-                    </a>
-                    <a href="blog/sleep-performance.html" class="card" style="text-decoration:none; color:inherit; display:flex; flex-direction:column;">
-                        <div style="font-size:0.75rem; font-weight:600; color:var(--blue); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px;">😴 Erholung</div>
-                        <h3 style="margin-bottom:8px;">Schlaf ist der #1 Leistungs-Booster</h3>
-                        <p style="flex:1;">Kein Supplement kommt an 8+ Stunden Schlaf heran. Die Stanford-Daten sprechen für sich.</p>
-                        <span style="color:var(--blue); font-size:0.875rem; font-weight:600; margin-top:16px;">Artikel lesen →</span>
-                    </a>
-                    <a href="blog/norwegian-method.html" class="card" style="text-decoration:none; color:inherit; display:flex; flex-direction:column;">
-                        <div style="font-size:0.75rem; font-weight:600; color:var(--blue); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px;">🏃 Laufen</div>
-                        <h3 style="margin-bottom:8px;">Die Norwegische Doppel-Schwellen-Methode</h3>
-                        <p style="flex:1;">Wie norwegische Läufer mit einem kontraintuitiven Trainingsansatz Weltrekorde brachen.</p>
-                        <span style="color:var(--blue); font-size:0.875rem; font-weight:600; margin-top:16px;">Artikel lesen →</span>
-                    </a>
-                </div>
-                <div style="text-align:center; margin-top:48px;">
-                    <a href="blog.html" class="btn btn-outline">Alle Artikel →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section class="section section-alt">
-            <div class="container text-center reveal">
-                <div class="section-heading">
-                    <h2>Starte heute smarter zu trainieren.</h2>
-                    <p>Kostenlos in der Public Beta — keine Kreditkarte erforderlich.</p>
-                </div>
-                <a href="https://apps.apple.com/app/trainq" class="btn btn-dark" target="_blank" rel="noopener">Im App Store laden</a>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-row">
-                <a href="index.html" class="footer-logo">Train<span>Q</span></a>
-                <div class="footer-links">
-                    <a href="imprint.html">Impressum</a>
-                    <a href="privacy.html">Datenschutz</a>
-                    <a href="terms.html">AGB</a>
-                </div>
-                <span class="footer-copy">&copy; 2026 TrainQ</span>
-            </div>
-        </div>
-    </footer>
-
-    <button class="back-to-top" id="backToTop" aria-label="Nach oben">↑</button>
-    <div class="cookie-banner" id="cookieBanner">
-        <p class="cookie-banner-title">Cookie-Einstellungen</p>
-        <p>Wir verwenden nur notwendige Cookies, damit unsere Website korrekt funktioniert. Kein Tracking, keine Werbung. <a href="privacy.html">Mehr erfahren</a></p>
-        <div class="cookie-banner-actions">
-            <button class="cookie-btn cookie-btn-accept">Akzeptieren</button>
-            <button class="cookie-btn cookie-btn-decline">Nur notwendige</button>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="../fotos/risen-wang-20jX9b35r_M-unsplash.jpg" alt="Athlet trainiert">
+  </div>
+  <div class="container hero-inner">
+    <div class="eyebrow">🚀 Jetzt in der Public Beta</div>
+    <h1>Schluss mit Raten.<br><span>Fang an</span> zu performen.</h1>
+    <p class="hero-sub">TrainQ gibt dir einen professionellen Trainingsplan der sich an dein echtes Leben anpasst – für Gym, Laufen und Radfahren. Kostenlos.</p>
+    <div class="hero-btns">
+      <a href="#download" class="btn btn-primary btn-lg">Kostenlos laden</a>
+      <a href="features.html" class="btn btn-outline btn-lg">Features entdecken</a>
     </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Sportarten</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Adaptiv</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">0€</span>
+        <span class="stat-label">Während Beta</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        var hdr = document.getElementById('header');
-        var btt = document.getElementById('backToTop');
-        window.addEventListener('scroll', function() {
-            hdr.classList.toggle('scrolled', window.scrollY > 10);
-            btt.classList.toggle('visible', window.scrollY > 400);
-        }, {passive: true});
-        btt.addEventListener('click', function() { window.scrollTo({top:0, behavior:'smooth'}); });
+<!-- SPORTS -->
+<section class="sports-section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">Sportarten</div>
+      <h2>Für jeden Athleten</h2>
+      <p class="section-sub">Ob Gym, Laufen oder Radfahren – TrainQ hat einen adaptiven Plan für dein Ziel.</p>
+    </div>
+    <div class="sports-grid">
+      <div class="sport-card-big fade-up">
+        <div class="sport-card-img">
+          <img src="../fotos/john-arano-h4i9G-de7Po-unsplash.jpg" alt="Gym Training">
+        </div>
+        <div class="sport-card-body">
+          <h3>🏋️ Gym</h3>
+          <p>Progressive Überlastung, PR-Tracking und Live-Führung durch jede Einheit. Für maximale Kraft und Hypertrophie.</p>
+          <a href="gym.html" class="sport-link">Gym entdecken →</a>
+        </div>
+      </div>
+      <div class="sport-card-big fade-up">
+        <div class="sport-card-img">
+          <img src="../fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.jpg" alt="Laufen">
+        </div>
+        <div class="sport-card-body">
+          <h3>🏃 Laufen</h3>
+          <p>Pace-Zonen, Zielzeit-Prognosen und adaptive Laufpläne. Von 5k bis Marathon – TrainQ bringt dich ans Ziel.</p>
+          <a href="running.html" class="sport-link">Laufen entdecken →</a>
+        </div>
+      </div>
+      <div class="sport-card-big fade-up">
+        <div class="sport-card-img">
+          <img src="../fotos/krzysztof-kowalik-NHvdPWRKBNg-unsplash.jpg" alt="Radfahren">
+        </div>
+        <div class="sport-card-body">
+          <h3>🚴 Radfahren</h3>
+          <p>Wattbasiertes Training, FTP-Testing und wettkampfspezifische Peaks für Radfahrer die es ernst meinen.</p>
+          <a href="cycling.html" class="sport-link">Radfahren entdecken →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        var mBtn = document.getElementById('mobileMenuBtn');
-        var mMenu = document.getElementById('mobileMenu');
-        mBtn.addEventListener('click', function() { mMenu.classList.toggle('open'); });
+<!-- FEATURES STRIP -->
+<section class="features-strip">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">Warum TrainQ</div>
+      <h2>Das steckt dahinter</h2>
+      <p class="section-sub">Keine leeren Versprechen – nur Features die wirklich einen Unterschied machen.</p>
+    </div>
+    <div class="features-grid-4">
+      <div class="feat-mini fade-up">
+        <div class="icon">🧠</div>
+        <h3>Adaptive KI</h3>
+        <p>Jede Einheit macht den Plan klüger. Anpassung basierend auf echter Performance.</p>
+      </div>
+      <div class="feat-mini fade-up">
+        <div class="icon">📅</div>
+        <h3>Kalender-Integration</h3>
+        <p>Verpasste Tage werden automatisch nachgeplant ohne das Ziel zu gefährden.</p>
+      </div>
+      <div class="feat-mini fade-up">
+        <div class="icon">🎮</div>
+        <h3>Gamification</h3>
+        <p>XP, Level und Achievements für jede Einheit. Training das motiviert.</p>
+      </div>
+      <div class="feat-mini fade-up">
+        <div class="icon">📱</div>
+        <h3>Native iOS</h3>
+        <p>Entwickelt für iPhone und iPad. iOS 17+ mit voller Apple Health Integration.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        var dWrap = document.querySelector('.nav-dropdown');
-        var dTrigger = document.querySelector('.dropdown-trigger');
-        if (dTrigger && dWrap) {
-            dTrigger.addEventListener('click', function(e) { e.stopPropagation(); dWrap.classList.toggle('open'); });
-            document.addEventListener('click', function() { dWrap.classList.remove('open'); });
-        }
+<!-- SPLIT: ADAPTIVE -->
+<section class="split-section">
+  <div class="container">
+    <div class="split fade-up">
+      <div class="split-text">
+        <div class="section-label">Adaptive Engine</div>
+        <h2>Der Plan passt sich dir an. Nicht umgekehrt.</h2>
+        <p>Kein statischer Trainingsplan der nach zwei Wochen nicht mehr zu deinem Leben passt. TrainQ analysiert jede Einheit und optimiert kontinuierlich – basierend auf deiner echten Performance.</p>
+        <ul class="checklist">
+          <li>Automatische Anpassung nach jeder Einheit</li>
+          <li>Erholungsbasierte Belastungssteuerung</li>
+          <li>Deload-Wochen werden automatisch eingeplant</li>
+          <li>Reagiert auf verpasste Einheiten und Überperformance</li>
+        </ul>
+      </div>
+      <div class="split-img">
+        <img src="../fotos/maico-amorim-sbFbFxYv6BA-unsplash.jpg" alt="Adaptives Training">
+      </div>
+    </div>
+  </div>
+</section>
 
-        var io = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-        }, {threshold: 0.1});
-        document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+<!-- GAMIFICATION -->
+<section class="gamification" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="xp-showcase fade-up">
+      <div class="xp-text">
+        <div class="section-label">Gamification</div>
+        <h2>Training das Spaß macht.</h2>
+        <p>Verdiene XP für jede abgeschlossene Einheit, steige im Level auf und schalte Achievements frei. TrainQ macht das Durchhalten einfacher.</p>
+        <a href="features.html" class="btn btn-primary">Alle Features ansehen</a>
+      </div>
+      <div class="xp-visual">
+        <div class="level-badge">
+          <span class="level-num">Lv 12</span>
+          <span class="level-text">Dedicated Athlete</span>
+        </div>
+        <div>
+          <div class="xp-label"><span>Fortschritt zu Level 13</span><span>2.840 / 4.000 XP</span></div>
+          <div class="xp-bar"><div class="xp-fill" style="width:71%"></div></div>
+        </div>
+        <div>
+          <div class="xp-label"><span>Diese Woche</span><span>+340 XP</span></div>
+          <div class="xp-bar"><div class="xp-fill" style="width:45%"></div></div>
+        </div>
+        <div>
+          <div class="xp-label"><span>Lauf-Streak</span><span>14 Tage</span></div>
+          <div class="xp-bar"><div class="xp-fill" style="width:88%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        var cb = document.getElementById('cookieBanner');
-        if (!localStorage.getItem('tq_cookie')) cb.classList.add('visible');
-        document.querySelector('.cookie-btn-accept').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
-        document.querySelector('.cookie-btn-decline').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
+<!-- CTA FINAL -->
+<section class="cta-final" id="download">
+  <div class="container">
+    <h2>Bereit besser zu trainieren?</h2>
+    <p>TrainQ ist kostenlos während der Public Beta. Starte heute – keine Kreditkarte nötig.</p>
+    <div class="cta-final-btns">
+      <a href="#" class="btn btn-primary btn-lg">App Store – Kostenlos</a>
+      <a href="pricing.html" class="btn btn-outline btn-lg">Preise ansehen</a>
+    </div>
+  </div>
+</section>
 
-        document.querySelectorAll('a[href]').forEach(function(a) {
-            a.addEventListener('mouseenter', function() {
-                var h = a.getAttribute('href');
-                if (h && !h.startsWith('#') && !h.startsWith('http') && !document.querySelector('link[rel=prefetch][href="'+h+'"]')) {
-                    var l = document.createElement('link'); l.rel = 'prefetch'; l.href = h; document.head.appendChild(l);
-                }
-            }, {once: true});
-        });
-    </script>
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Train<span>Q</span></div>
+        <p>Das adaptive Trainingssystem für Läufer, Kraftsportler und Radfahrer. Smarter trainieren – besser werden.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sportarten</h4>
+        <a href="gym.html">Gym</a>
+        <a href="running.html">Laufen</a>
+        <a href="cycling.html">Radfahren</a>
+      </div>
+      <div class="footer-col">
+        <h4>Produkt</h4>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Preise</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TrainQ. Alle Rechte vorbehalten.</span>
+      <span>Made with ❤️ for athletes</span>
+    </div>
+  </div>
+</footer>
 
+<button id="backToTop" aria-label="Nach oben">↑</button>
+
+<div id="cookieBanner">
+  <p>Wir nutzen Cookies um dein Erlebnis zu verbessern. Mit der Nutzung der Website stimmst du unserer <a href="datenschutz.html" style="color:var(--accent)">Datenschutzerklärung</a> zu.</p>
+  <div class="cookie-btns">
+    <button class="cookie-accept">Akzeptieren</button>
+    <button class="cookie-decline">Ablehnen</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.fade-up').forEach(el=>{gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:0.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});});
+  const hdr=document.getElementById('header'),btt=document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',window.scrollY>20);btt.classList.toggle('visible',window.scrollY>400);},{passive:true});
+  btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  const mBtn=document.getElementById('mobileMenuBtn'),mMenu=document.getElementById('mobileMenu');
+  mBtn.addEventListener('click',()=>mMenu.classList.toggle('open'));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')mMenu.classList.remove('open');});
+  const sBtn=document.getElementById('sportsBtn'),sDrop=document.getElementById('sportsDrop');
+  sBtn.addEventListener('click',e=>{e.stopPropagation();const open=sDrop.classList.toggle('open');sBtn.setAttribute('aria-expanded',open);});
+  document.addEventListener('click',()=>{sDrop.classList.remove('open');sBtn.setAttribute('aria-expanded',false);});
+  if(!localStorage.getItem('tq_cookie')){setTimeout(()=>document.getElementById('cookieBanner').classList.add('visible'),1400);}
+  document.querySelector('.cookie-accept').addEventListener('click',()=>{localStorage.setItem('tq_cookie','1');document.getElementById('cookieBanner').style.display='none';});
+  document.querySelector('.cookie-decline').addEventListener('click',()=>{localStorage.setItem('tq_cookie','1');document.getElementById('cookieBanner').style.display='none';});
+</script>
 </body>
 </html>

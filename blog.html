@@ -1,390 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog — TrainQ</title>
-    <meta name="description" content="Training science, studies, and methods — curated by TrainQ. Stay informed on running, cycling, strength training, and recovery.">
-    <link rel="icon" type="image/png" href="images/logos/hauptlogo.png">
-    <meta property="og:image" content="https://trainq.app/images/og-image.png">
-    <link rel="stylesheet" href="styles-light.css">
-    <link rel="stylesheet" href="fonts/inter.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — TrainQ</title>
+<meta name="description" content="Training insights, science-backed articles on running, strength, cycling, recovery, and nutrition.">
+<link rel="icon" type="image/png" href="images/logos/hauptlogo.png">
+<meta property="og:image" content="https://trainq.app/images/og-image.png">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#0a0a0a;--bg-2:#111111;--bg-3:#161616;--muted:rgba(255,255,255,0.45);--muted-2:rgba(255,255,255,0.22);--accent:#0066FF;--border:rgba(255,255,255,0.07);--radius:12px;--radius-lg:20px;--container:1160px;--nav-h:72px;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:#fff;font-family:'Satoshi',sans-serif;font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:'Clash Display',sans-serif;font-weight:600;letter-spacing:-0.04em;line-height:1.1;}
+h1{font-size:clamp(2.4rem,5vw,3.8rem);}
+h2{font-size:clamp(1.8rem,3.5vw,2.8rem);}
+h3{font-size:1.125rem;letter-spacing:-0.02em;}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px;}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;transition:background .3s,backdrop-filter .3s;}
+.nav.scrolled{background:rgba(10,10,10,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:var(--container);margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between;}
+.logo img{height:32px;display:block;}
+.nav-links{display:flex;align-items:center;gap:8px;}
+.nav-link{font-size:0.9375rem;color:var(--muted);padding:8px 14px;border-radius:8px;transition:color .2s;}
+.nav-link:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:8px;margin-left:16px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-radius:100px;font-size:0.9375rem;font-family:'Satoshi',sans-serif;font-weight:500;cursor:pointer;transition:all .2s;border:none;text-decoration:none;white-space:nowrap;}
+.btn-white{background:#fff;color:#000;}
+.btn-white:hover{background:rgba(255,255,255,0.88);}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border);}
+.btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,0.3);}
+.btn-sm{padding:7px 16px;font-size:0.875rem;}
+.nav-dropdown{position:relative;}
+.nav-dropdown-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);padding:8px;min-width:160px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-6px);}
+.nav-dropdown.open .nav-dropdown-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+.nav-dropdown-menu a{display:block;padding:10px 14px;border-radius:8px;font-size:0.9375rem;color:var(--muted);transition:color .2s,background .2s;}
+.nav-dropdown-menu a:hover{color:#fff;background:rgba(255,255,255,0.06);}
+.ham-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.ham-line{display:block;width:22px;height:2px;background:#fff;border-radius:2px;}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:var(--bg);padding:calc(var(--nav-h) + 24px) 24px 24px;flex-direction:column;gap:8px;}
+.mobile-menu.open{display:flex;}
+.mobile-link{font-size:1.125rem;color:var(--muted);padding:12px 0;border-bottom:1px solid var(--border);transition:color .2s;}
+.mobile-link:hover{color:#fff;}
+.mobile-divider{height:1px;background:var(--border);margin:8px 0;}
+
+/* PAGE HEADER */
+.page-header{padding:calc(var(--nav-h) + 64px) 0 64px;}
+.page-header h1{margin-bottom:16px;}
+.page-header p{color:var(--muted);font-size:1.125rem;max-width:540px;}
+
+/* FILTER */
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px;}
+.filter-btn{padding:8px 18px;border-radius:100px;font-size:0.875rem;font-family:'Satoshi',sans-serif;cursor:pointer;background:var(--bg-3);color:var(--muted);border:1px solid var(--border);transition:all .2s;}
+.filter-btn:hover,.filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+/* BLOG GRID */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.blog-card{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .2s,transform .2s;}
+.blog-card:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-2px);}
+.blog-card-img{height:200px;overflow:hidden;background:var(--bg-2);}
+.blog-card-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%);transition:transform .4s;}
+.blog-card:hover .blog-card-img img{transform:scale(1.04);}
+.blog-card-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;}
+.blog-card-body{padding:24px;}
+.blog-cat-tag{display:inline-block;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.blog-card h3{margin-bottom:8px;line-height:1.3;}
+.blog-card p{color:var(--muted);font-size:0.875rem;line-height:1.6;}
+.blog-card[style*="display:none"]{display:none!important;}
+
+/* SECTION */
+.section{padding:100px 0;}
+.section-alt{background:var(--bg-2);}
+
+/* CTA */
+.cta-section{background:var(--bg-2);padding:120px 0;text-align:center;}
+.cta-section h2{margin-bottom:16px;}
+.cta-section p{color:var(--muted);margin-bottom:40px;}
+
+/* FOOTER */
+.footer{background:var(--bg);border-top:1px solid var(--border);padding:40px 0;}
+.footer-row{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.footer-logo{font-family:'Clash Display',sans-serif;font-weight:600;font-size:1.25rem;letter-spacing:-0.03em;}
+.footer-logo span{color:var(--accent);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:0.875rem;color:var(--muted);transition:color .2s;}
+.footer-links a:hover{color:#fff;}
+.footer-copy{font-size:0.875rem;color:var(--muted-2);}
+.back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;background:var(--bg-3);border:1px solid var(--border);color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
+.back-top.visible{opacity:1;pointer-events:auto;}
+.cookie-banner{position:fixed;bottom:24px;left:24px;max-width:360px;background:#1a1a1a;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;z-index:200;display:none;}
+.cookie-banner.visible{display:block;}
+.cookie-banner p{font-size:0.875rem;color:var(--muted);line-height:1.6;margin-bottom:16px;}
+.cookie-banner p a{color:#fff;text-decoration:underline;}
+.cookie-actions{display:flex;gap:10px;}
+.cookie-accept{flex:1;padding:10px;border-radius:8px;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:0.875rem;font-family:'Satoshi',sans-serif;}
+.cookie-decline{flex:1;padding:10px;border-radius:8px;background:transparent;color:var(--muted);border:1px solid var(--border);cursor:pointer;font-size:0.875rem;font-family:'Satoshi',sans-serif;}
+.fade-up{opacity:0;transform:translateY(50px);}
+@media(max-width:900px){
+  .nav-links,.nav-actions{display:none;}
+  .ham-btn{display:flex;}
+  .blog-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .blog-grid{grid-template-columns:1fr;}
+  .section{padding:64px 0;}
+}
+</style>
 </head>
 <body>
 
-    <header class="header" id="header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo-wordmark">Train<span>Q</span></a>
-            <div class="nav-desktop">
-                <a href="index.html" class="nav-link">Home</a>
-                <div class="nav-dropdown">
-                    <button class="nav-link dropdown-trigger" aria-expanded="false" aria-haspopup="true">
-                        Sports
-                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="gym.html" class="dropdown-item">🏋️ Gym</a>
-                        <a href="running.html" class="dropdown-item">🏃 Running</a>
-                        <a href="cycling.html" class="dropdown-item">🚴 Cycling</a>
-                    </div>
-                </div>
-                <a href="features.html" class="nav-link">Features</a>
-                <a href="blog.html" class="nav-link active" aria-current="page">Blog</a>
-                <a href="faq.html" class="nav-link">FAQ</a>
-                <div class="nav-actions">
-                    <a href="/de/blog.html" class="btn btn-outline btn-sm">DE</a>
-                    <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-sm" target="_blank" rel="noopener">Get Started</a>
-                </div>
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </nav>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="features.html" class="mobile-link">Features</a>
-            <a href="blog.html" class="mobile-link">Blog</a>
-            <a href="faq.html" class="mobile-link">FAQ</a>
-            <div class="mobile-divider"></div>
-            <a href="gym.html" class="mobile-link">🏋️ Gym</a>
-            <a href="running.html" class="mobile-link">🏃 Running</a>
-            <a href="cycling.html" class="mobile-link">🚴 Cycling</a>
-            <div class="mobile-divider"></div>
-            <a href="/de/blog.html" class="mobile-link">🇩🇪 Deutsch</a>
-            <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-mobile-cta" target="_blank" rel="noopener">Download on App Store</a>
+<header class="nav" id="header">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><img src="images/logos/transparent Weiß.png" alt="TrainQ" height="32"></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <div class="nav-dropdown" id="sportsDrop">
+        <button class="nav-link btn" id="sportsBtn" style="background:none;border:none;color:var(--muted);font-family:'Satoshi',sans-serif;cursor:pointer;display:flex;align-items:center;gap:6px;" aria-expanded="false">
+          Sports
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" id="sportsDropdown">
+          <a href="gym.html">🏋️ Gym</a>
+          <a href="running.html">🏃 Running</a>
+          <a href="cycling.html">🚴 Cycling</a>
         </div>
-    </header>
-
-    <main>
-
-        <!-- Page Hero -->
-        <div class="page-hero reveal">
-            <div class="container text-center">
-                <span class="badge">Training Science</span>
-                <h1>Evidence-based<br>training insights.</h1>
-                <p>Studies, methods, and practical takeaways — curated for athletes who train with intention.</p>
-            </div>
-        </div>
-
-        <div class="container">
-
-            <!-- Filter -->
-            <div class="blog-filter reveal">
-                <button class="blog-filter-btn active" data-cat="all">All</button>
-                <button class="blog-filter-btn" data-cat="running">🏃 Running</button>
-                <button class="blog-filter-btn" data-cat="strength">🏋️ Strength</button>
-                <button class="blog-filter-btn" data-cat="cycling">🚴 Cycling</button>
-                <button class="blog-filter-btn" data-cat="recovery">💤 Recovery</button>
-                <button class="blog-filter-btn" data-cat="nutrition">🥗 Nutrition</button>
-            </div>
-
-            <!-- Grid -->
-            <div class="blog-grid-main">
-
-                <!-- Featured: Polarized Training -->
-                <a href="blog/polarized-training.html" class="blog-card-main featured reveal" data-cat="running">
-                    <div class="blog-card-img">
-                        <picture>
-                            <source srcset="fotos/pexels-airamdphoto-36541474.webp" type="image/webp">
-                            <img src="fotos/pexels-airamdphoto-36541474.jpg" alt="Runner on track" loading="lazy" width="800" height="1200">
-                        </picture>
-                    </div>
-                    <div class="blog-card-body">
-                        <span class="blog-tag-pill cat-running">🏃 Running</span>
-                        <h3>Polarized vs. Threshold Training: What the Research Says</h3>
-                        <p>A 2024 meta-analysis in Sports Medicine confirmed that polarized training (80% easy / 20% hard) outperforms threshold-heavy approaches for VO2max gains in trained runners.</p>
-                        <div class="blog-card-footer">
-                            <span>Stöggl &amp; Sperlich, Sports Medicine 2024</span>
-                            <span class="blog-read-more">4 min read →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Progressive Overload -->
-                <a href="blog/progressive-overload.html" class="blog-card-main reveal" data-cat="strength">
-                    <div class="blog-card-img">
-                        <picture>
-                            <source srcset="fotos/benjamin-brunner-wcOGQeT1jIw-unsplash.webp" type="image/webp">
-                            <img src="fotos/benjamin-brunner-wcOGQeT1jIw-unsplash.jpg" alt="Barbells" loading="lazy" width="800" height="533">
-                        </picture>
-                    </div>
-                    <div class="blog-card-body">
-                        <span class="blog-tag-pill cat-strength">🏋️ Strength</span>
-                        <h3>Progressive Overload: Why 2–5% Weekly Increases Still Win</h3>
-                        <p>Gradual progressive overload consistently outperforms aggressive loading. A 2024 study tracked 200+ lifters over 16 weeks.</p>
-                        <div class="blog-card-footer">
-                            <span>J Strength Cond Res, 2024</span>
-                            <span class="blog-read-more">5 min read →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Sleep -->
-                <a href="blog/sleep-performance.html" class="blog-card-main reveal" data-cat="recovery">
-                    <div class="blog-card-img" style="background:var(--bg-sky); display:flex; align-items:center; justify-content:center;">
-                        <span style="font-size:3rem;">💤</span>
-                    </div>
-                    <div class="blog-card-body">
-                        <span class="blog-tag-pill cat-recovery">💤 Recovery</span>
-                        <h3>Sleep is the #1 Performance Enhancer — Here's the Data</h3>
-                        <p>Stanford research: extending sleep to 8–10 hours improved sprint times by 5%, free throw accuracy by 9%, and reaction time by 15%.</p>
-                        <div class="blog-card-footer">
-                            <span>Mah et al., Sleep, Stanford</span>
-                            <span class="blog-read-more">4 min read →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- FTP -->
-                <a href="blog/ftp-testing.html" class="blog-card-main reveal" data-cat="cycling">
-                    <div class="blog-card-img">
-                        <picture>
-                            <source srcset="fotos/krzysztof-kowalik-ypR86XLah9Y-unsplash.webp" type="image/webp">
-                            <img src="fotos/krzysztof-kowalik-ypR86XLah9Y-unsplash.jpg" alt="Cyclist in mountains" loading="lazy" width="800" height="600">
-                        </picture>
-                    </div>
-                    <div class="blog-card-body">
-                        <span class="blog-tag-pill cat-cycling">🚴 Cycling</span>
-                        <h3>FTP Testing: Ramp Test vs. 20-Minute Protocol</h3>
-                        <p>Ramp tests overestimate FTP by 5–8% in endurance-trained cyclists, leading to training zones that are too hard.</p>
-                        <div class="blog-card-footer">
-                            <span>Int J Sports Physiol Perform, 2025</span>
-                            <span class="blog-read-more">5 min read →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Cadence -->
-                <a href="blog/running-cadence.html" class="blog-card-main reveal" data-cat="running">
-                    <div class="blog-card-img">
-                        <picture>
-                            <source srcset="fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.webp" type="image/webp">
-                            <img src="fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.jpg" alt="Blurred runner in motion" loading="lazy" width="800" height="1200">
-                        </picture>
-                    </div>
-                    <div class="blog-card-body">
-                        <span class="blog-tag-pill cat-running">🏃 Running</span>
-                        <h3>The Critical Role of Running Cadence in Injury Prevention</h3>
-                        <p>Increasing cadence by 5–10% significantly reduces impact forces on the knee and hip. 170–180 spm is associated with 30% lower injury rates.</p>
-                        <div class="blog-card-footer">
-                            <span>Br J Sports Med, 2023</span>
-                            <span class="blog-read-more">3 min read →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Carb Periodization -->
-                <a href="blog/carb-periodization.html" class="blog-card-main reveal" data-cat="nutrition">
-                    <div class="blog-card-img">
-                        <picture>
-                            <source srcset="fotos/afiq-fatah-1cVmsgAkm9A-unsplash.webp" type="image/webp">
-                            <img src="fotos/afiq-fatah-1cVmsgAkm9A-unsplash.jpg" alt="Runner in motion" loading="lazy" width="800" height="531">
-                        </picture>
-                    </div>
-                    <div class="blog-card-body">
-                        <span class="blog-tag-pill cat-nutrition">🥗 Nutrition</span>
-                        <h3>Carb Periodization: Fuel the Work, Not the Day</h3>
-                        <p>Strategic carb timing around training improves both performance and body composition. Athletes who periodized carbs lost 2.1kg more fat while maintaining power output.</p>
-                        <div class="blog-card-footer">
-                            <span>Impey et al., J Sports Sci, 2024</span>
-                            <span class="blog-read-more">5 min read →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Compound vs Isolation -->
-                <a href="blog/compound-vs-isolation.html" class="blog-card-main reveal" data-cat="strength">
-                    <div class="blog-card-img">
-                        <picture>
-                            <source srcset="fotos/cindy-koops-NBCuJtqgGX8-unsplash.webp" type="image/webp">
-                            <img src="fotos/cindy-koops-NBCuJtqgGX8-unsplash.jpg" alt="Barbell overhead lift" loading="lazy" width="800" height="533">
-                        </picture>
-                    </div>
-                    <div class="blog-card-body">
-                        <span class="blog-tag-pill cat-strength">🏋️ Strength</span>
-                        <h3>Compound vs. Isolation: The Efficiency Debate Settled</h3>
-                        <p>A review of 47 studies: compound movements produce equal or superior hypertrophy in less time. For time-limited athletes, 4–5 compound lifts wins.</p>
-                        <div class="blog-card-footer">
-                            <span>J Sports Sci, 2024 (Meta-Review)</span>
-                            <span class="blog-read-more">4 min read →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Indoor vs Outdoor -->
-                <a href="blog/indoor-vs-outdoor.html" class="blog-card-main reveal" data-cat="cycling">
-                    <div class="blog-card-img" style="background:var(--bg-sky); display:flex; align-items:center; justify-content:center;">
-                        <span style="font-size:3rem;">🚴</span>
-                    </div>
-                    <div class="blog-card-body">
-                        <span class="blog-tag-pill cat-cycling">🚴 Cycling</span>
-                        <h3>Indoor vs. Outdoor Training: Is Zwift Enough?</h3>
-                        <p>Indoor smart-trainer sessions produce 95% of the physiological adaptation of outdoor rides when matched for intensity.</p>
-                        <div class="blog-card-footer">
-                            <span>Eur J Sport Sci, 2025</span>
-                            <span class="blog-read-more">4 min read →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- HRV -->
-                <a href="blog/hrv-readiness.html" class="blog-card-main reveal" data-cat="recovery">
-                    <div class="blog-card-img">
-                        <picture>
-                            <source srcset="fotos/victor-freitas-KkYWWpurqbE-unsplash.webp" type="image/webp">
-                            <img src="fotos/victor-freitas-KkYWWpurqbE-unsplash.jpg" alt="Athlete on rowing machine" loading="lazy" width="800" height="533">
-                        </picture>
-                    </div>
-                    <div class="blog-card-body">
-                        <span class="blog-tag-pill cat-recovery">💤 Recovery</span>
-                        <h3>Heart Rate Variability: The Best Readiness Indicator?</h3>
-                        <p>Morning HRV is the single best objective marker for training readiness. Athletes who adjusted intensity based on daily HRV showed 15% greater performance improvements.</p>
-                        <div class="blog-card-footer">
-                            <span>Plews et al., Int J Sports Physiol, 2023–25</span>
-                            <span class="blog-read-more">5 min read →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Protein Timing -->
-                <a href="blog/protein-timing.html" class="blog-card-main reveal" data-cat="nutrition">
-                    <div class="blog-card-img">
-                        <picture>
-                            <source srcset="fotos/sour-moha-_cUZkx0wTyM-unsplash.webp" type="image/webp">
-                            <img src="fotos/sour-moha-_cUZkx0wTyM-unsplash.jpg" alt="Athlete on treadmill" loading="lazy" width="800" height="1198">
-                        </picture>
-                    </div>
-                    <div class="blog-card-body">
-                        <span class="blog-tag-pill cat-nutrition">🥗 Nutrition</span>
-                        <h3>Protein Timing: Does the Anabolic Window Exist?</h3>
-                        <p>The "30-minute anabolic window" is a myth. Total daily protein intake (1.6–2.2g/kg) matters far more than timing.</p>
-                        <div class="blog-card-footer">
-                            <span>Schoenfeld &amp; Aragon, Nutrients, 2024</span>
-                            <span class="blog-read-more">4 min read →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Norwegian Method -->
-                <a href="blog/norwegian-method.html" class="blog-card-main reveal" data-cat="running">
-                    <div class="blog-card-img">
-                        <picture>
-                            <source srcset="fotos/jorgen-hendriksen-3xxG3Mw7nOg-unsplash.webp" type="image/webp">
-                            <img src="fotos/jorgen-hendriksen-3xxG3Mw7nOg-unsplash.jpg" alt="Two runners racing" loading="lazy" width="800" height="1200">
-                        </picture>
-                    </div>
-                    <div class="blog-card-body">
-                        <span class="blog-tag-pill cat-running">🏃 Running</span>
-                        <h3>The Norwegian Method: Double Threshold Training Explained</h3>
-                        <p>Two moderate-intensity threshold sessions per day rather than one hard session. Research shows this method improves lactate clearance by 20%.</p>
-                        <div class="blog-card-footer">
-                            <span>Casado et al., SJMSS, 2024</span>
-                            <span class="blog-read-more">6 min read →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Concurrent Training -->
-                <a href="blog/concurrent-training.html" class="blog-card-main reveal" data-cat="strength">
-                    <div class="blog-card-img">
-                        <picture>
-                            <source srcset="fotos/alexander-red-qo1pyCD02t4-unsplash.webp" type="image/webp">
-                            <img src="fotos/alexander-red-qo1pyCD02t4-unsplash.jpg" alt="Athlete in squat rack" loading="lazy" width="1200" height="800">
-                        </picture>
-                    </div>
-                    <div class="blog-card-body">
-                        <span class="blog-tag-pill cat-strength">🏋️ Strength</span>
-                        <h3>Concurrent Training: Can You Build Muscle and Run Fast?</h3>
-                        <p>Separating strength and endurance sessions by 6+ hours eliminates most interference. Prioritize the modality that matters more to your goals in morning sessions.</p>
-                        <div class="blog-card-footer">
-                            <span>J Appl Physiol, 2024</span>
-                            <span class="blog-read-more">5 min read →</span>
-                        </div>
-                    </div>
-                </a>
-
-            </div>
-        </div>
-
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-row">
-                <a href="index.html" class="footer-logo">Train<span>Q</span></a>
-                <div class="footer-links">
-                    <a href="imprint.html">Imprint</a>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="terms.html">Terms</a>
-                </div>
-                <span class="footer-copy">&copy; 2026 TrainQ</span>
-            </div>
-        </div>
-    </footer>
-
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
-    <div class="cookie-banner" id="cookieBanner">
-        <p class="cookie-banner-title">Cookie Settings</p>
-        <p>We only use essential cookies to ensure our website works properly. No tracking, no ads. <a href="privacy.html">Learn more</a></p>
-        <div class="cookie-banner-actions">
-            <button class="cookie-btn cookie-btn-accept">Accept</button>
-            <button class="cookie-btn cookie-btn-decline">Essential Only</button>
-        </div>
+      </div>
+      <a href="features.html" class="nav-link">Features</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
     </div>
+    <div class="nav-actions">
+      <a href="/de/blog.html" class="btn btn-ghost btn-sm">DE</a>
+      <a href="https://apps.apple.com/app/trainq" class="btn btn-white btn-sm" target="_blank" rel="noopener">Download</a>
+    </div>
+    <button class="ham-btn" id="mobileMenuBtn" aria-label="Open menu">
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+    </button>
+  </div>
+</header>
 
-    <script>
-        var hdr = document.getElementById('header');
-        var btt = document.getElementById('backToTop');
-        window.addEventListener('scroll', function() {
-            hdr.classList.toggle('scrolled', window.scrollY > 10);
-            btt.classList.toggle('visible', window.scrollY > 400);
-        }, {passive: true});
-        btt.addEventListener('click', function() { window.scrollTo({top:0, behavior:'smooth'}); });
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="mobile-link">Home</a>
+  <a href="features.html" class="mobile-link">Features</a>
+  <a href="blog.html" class="mobile-link">Blog</a>
+  <a href="faq.html" class="mobile-link">FAQ</a>
+  <div class="mobile-divider"></div>
+  <a href="gym.html" class="mobile-link">🏋️ Gym</a>
+  <a href="running.html" class="mobile-link">🏃 Running</a>
+  <a href="cycling.html" class="mobile-link">🚴 Cycling</a>
+  <div class="mobile-divider"></div>
+  <a href="/de/blog.html" class="mobile-link">🇩🇪 Deutsch</a>
+  <a href="https://apps.apple.com/app/trainq" class="btn btn-white" style="margin-top:16px;" target="_blank" rel="noopener">Download on App Store</a>
+</div>
 
-        var mBtn = document.getElementById('mobileMenuBtn');
-        var mMenu = document.getElementById('mobileMenu');
-        mBtn.addEventListener('click', function() { mMenu.classList.toggle('open'); });
+<main>
 
-        var dWrap = document.querySelector('.nav-dropdown');
-        var dTrigger = document.querySelector('.dropdown-trigger');
-        if (dTrigger && dWrap) {
-            dTrigger.addEventListener('click', function(e) { e.stopPropagation(); dWrap.classList.toggle('open'); });
-            document.addEventListener('click', function() { dWrap.classList.remove('open'); });
-        }
+  <div class="page-header">
+    <div class="container">
+      <h1>Training Insights</h1>
+      <p>Science-backed articles on running, strength, cycling, recovery, and nutrition.</p>
+    </div>
+  </div>
 
-        var io = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-        }, {threshold: 0.08});
-        document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="running">🏃 Running</button>
+        <button class="filter-btn" data-filter="strength">🏋️ Strength</button>
+        <button class="filter-btn" data-filter="cycling">🚴 Cycling</button>
+        <button class="filter-btn" data-filter="recovery">💤 Recovery</button>
+        <button class="filter-btn" data-filter="nutrition">🥗 Nutrition</button>
+      </div>
 
-        // Blog category filter
-        document.querySelectorAll('.blog-filter-btn').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.blog-filter-btn').forEach(function(b) { b.classList.remove('active'); });
-                this.classList.add('active');
-                var cat = this.dataset.cat;
-                document.querySelectorAll('.blog-card-main').forEach(function(card) {
-                    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
-                });
-            });
-        });
+      <div class="blog-grid" id="blogGrid">
 
-        var cb = document.getElementById('cookieBanner');
-        if (!localStorage.getItem('tq_cookie')) cb.classList.add('visible');
-        document.querySelector('.cookie-btn-accept').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
-        document.querySelector('.cookie-btn-decline').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
+        <article class="blog-card fade-up" data-cat="running">
+          <div class="blog-card-img">
+            <picture>
+              <source srcset="fotos/pexels-airamdphoto-36541474.webp" type="image/webp">
+              <img src="fotos/pexels-airamdphoto-36541474.jpg" alt="Runner" loading="lazy">
+            </picture>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-cat-tag">🏃 Running</span>
+            <h3>Polarized vs. Threshold Training</h3>
+            <p>Which intensity distribution builds better endurance? We break down the science.</p>
+          </div>
+        </article>
 
-        document.querySelectorAll('a[href]').forEach(function(a) {
-            a.addEventListener('mouseenter', function() {
-                var h = a.getAttribute('href');
-                if (h && !h.startsWith('#') && !h.startsWith('http') && !document.querySelector('link[rel=prefetch][href="'+h+'"]')) {
-                    var l = document.createElement('link'); l.rel = 'prefetch'; l.href = h; document.head.appendChild(l);
-                }
-            }, {once: true});
-        });
-    </script>
+        <article class="blog-card fade-up" data-cat="strength">
+          <div class="blog-card-img">
+            <picture>
+              <source srcset="fotos/benjamin-brunner-wcOGQeT1jIw-unsplash.webp" type="image/webp">
+              <img src="fotos/benjamin-brunner-wcOGQeT1jIw-unsplash.jpg" alt="Strength training" loading="lazy">
+            </picture>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-cat-tag">🏋️ Strength</span>
+            <h3>Progressive Overload: Why 2–5% Weekly Increases Still Win</h3>
+            <p>The case for slow, consistent progression over aggressive loading.</p>
+          </div>
+        </article>
 
+        <article class="blog-card fade-up" data-cat="recovery">
+          <div class="blog-card-img">
+            <div class="blog-card-img-placeholder">💤</div>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-cat-tag">💤 Recovery</span>
+            <h3>Sleep is the #1 Performance Enhancer</h3>
+            <p>No supplement beats consistent, quality sleep. Here's what the data shows.</p>
+          </div>
+        </article>
+
+        <article class="blog-card fade-up" data-cat="cycling">
+          <div class="blog-card-img">
+            <picture>
+              <source srcset="fotos/krzysztof-kowalik-ypR86XLah9Y-unsplash.webp" type="image/webp">
+              <img src="fotos/krzysztof-kowalik-ypR86XLah9Y-unsplash.jpg" alt="Cyclist" loading="lazy">
+            </picture>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-cat-tag">🚴 Cycling</span>
+            <h3>FTP Testing: Ramp Test vs. 20-Minute Protocol</h3>
+            <p>Which FTP test is more accurate — and which should you use?</p>
+          </div>
+        </article>
+
+        <article class="blog-card fade-up" data-cat="running">
+          <div class="blog-card-img">
+            <picture>
+              <source srcset="fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.webp" type="image/webp">
+              <img src="fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.jpg" alt="Runner" loading="lazy">
+            </picture>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-cat-tag">🏃 Running</span>
+            <h3>The Critical Role of Running Cadence</h3>
+            <p>Why 170–180 steps per minute is more than a number — and how to improve yours.</p>
+          </div>
+        </article>
+
+        <article class="blog-card fade-up" data-cat="nutrition">
+          <div class="blog-card-img">
+            <picture>
+              <source srcset="fotos/afiq-fatah-1cVmsgAkm9A-unsplash.webp" type="image/webp">
+              <img src="fotos/afiq-fatah-1cVmsgAkm9A-unsplash.jpg" alt="Food" loading="lazy">
+            </picture>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-cat-tag">🥗 Nutrition</span>
+            <h3>Carb Periodization: Fuel the Work, Not the Day</h3>
+            <p>Matching carbohydrate intake to training load for better body composition and performance.</p>
+          </div>
+        </article>
+
+        <article class="blog-card fade-up" data-cat="strength">
+          <div class="blog-card-img">
+            <picture>
+              <source srcset="fotos/cindy-koops-NBCuJtqgGX8-unsplash.webp" type="image/webp">
+              <img src="fotos/cindy-koops-NBCuJtqgGX8-unsplash.jpg" alt="Gym" loading="lazy">
+            </picture>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-cat-tag">🏋️ Strength</span>
+            <h3>Compound vs. Isolation: The Efficiency Debate Settled</h3>
+            <p>When to prioritize big lifts, when isolation work earns its place.</p>
+          </div>
+        </article>
+
+        <article class="blog-card fade-up" data-cat="cycling">
+          <div class="blog-card-img">
+            <div class="blog-card-img-placeholder">🚴</div>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-cat-tag">🚴 Cycling</span>
+            <h3>Indoor vs. Outdoor Training: Is Zwift Enough?</h3>
+            <p>Comparing training stimulus, mental load, and performance transfer between modes.</p>
+          </div>
+        </article>
+
+        <article class="blog-card fade-up" data-cat="recovery">
+          <div class="blog-card-img">
+            <picture>
+              <source srcset="fotos/victor-freitas-KkYWWpurqbE-unsplash.webp" type="image/webp">
+              <img src="fotos/victor-freitas-KkYWWpurqbE-unsplash.jpg" alt="Recovery" loading="lazy">
+            </picture>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-cat-tag">💤 Recovery</span>
+            <h3>HRV: The Best Readiness Indicator?</h3>
+            <p>Heart rate variability explained — what it measures and how to act on it.</p>
+          </div>
+        </article>
+
+        <article class="blog-card fade-up" data-cat="nutrition">
+          <div class="blog-card-img">
+            <picture>
+              <source srcset="fotos/sour-moha-_cUZkx0wTyM-unsplash.webp" type="image/webp">
+              <img src="fotos/sour-moha-_cUZkx0wTyM-unsplash.jpg" alt="Nutrition" loading="lazy">
+            </picture>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-cat-tag">🥗 Nutrition</span>
+            <h3>Protein Timing: Does the Anabolic Window Exist?</h3>
+            <p>A look at post-workout protein timing and whether you really need to rush that shake.</p>
+          </div>
+        </article>
+
+        <article class="blog-card fade-up" data-cat="running">
+          <div class="blog-card-img">
+            <picture>
+              <source srcset="fotos/jorgen-hendriksen-3xxG3Mw7nOg-unsplash.webp" type="image/webp">
+              <img src="fotos/jorgen-hendriksen-3xxG3Mw7nOg-unsplash.jpg" alt="Runners" loading="lazy">
+            </picture>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-cat-tag">🏃 Running</span>
+            <h3>The Norwegian Method: Double Threshold Training</h3>
+            <p>How elite runners train twice daily at threshold — and what recreational athletes can adapt.</p>
+          </div>
+        </article>
+
+        <article class="blog-card fade-up" data-cat="strength">
+          <div class="blog-card-img">
+            <picture>
+              <source srcset="fotos/alexander-red-qo1pyCD02t4-unsplash.webp" type="image/webp">
+              <img src="fotos/alexander-red-qo1pyCD02t4-unsplash.jpg" alt="Training" loading="lazy">
+            </picture>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-cat-tag">🏋️ Strength</span>
+            <h3>Concurrent Training: Can You Build Muscle and Run Fast?</h3>
+            <p>The interference effect explained — and how to program strength and endurance together.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section fade-up">
+    <div class="container">
+      <h2>Put the science to work.</h2>
+      <p>TrainQ applies these principles automatically — so you just train.</p>
+      <a href="https://apps.apple.com/app/trainq" class="btn btn-white" target="_blank" rel="noopener">Download on App Store</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-row">
+      <a href="index.html" class="footer-logo">Train<span>Q</span></a>
+      <div class="footer-links">
+        <a href="imprint.html">Imprint</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <span class="footer-copy">&copy; 2026 TrainQ</span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>We only use necessary cookies to keep our website running. No tracking, no ads. <a href="privacy.html">Learn more</a></p>
+  <div class="cookie-actions">
+    <button class="cookie-accept">Accept</button>
+    <button class="cookie-decline">Necessary only</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.fade-up').forEach(el=>{gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:0.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});});
+const hdr=document.getElementById('header'),btt=document.getElementById('backToTop');
+window.addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',window.scrollY>20);btt.classList.toggle('visible',window.scrollY>400);},{passive:true});
+btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const mBtn=document.getElementById('mobileMenuBtn'),mMenu=document.getElementById('mobileMenu');
+mBtn.addEventListener('click',()=>mMenu.classList.toggle('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')mMenu.classList.remove('open');});
+const sBtn=document.getElementById('sportsBtn'),sDrop=document.getElementById('sportsDrop');
+sBtn.addEventListener('click',e=>{e.stopPropagation();const open=sDrop.classList.toggle('open');sBtn.setAttribute('aria-expanded',open);});
+document.addEventListener('click',()=>{sDrop.classList.remove('open');sBtn.setAttribute('aria-expanded',false);});
+// Category filter
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter=btn.dataset.filter;
+    document.querySelectorAll('.blog-card').forEach(card=>{
+      if(filter==='all'||card.dataset.cat===filter){
+        card.style.display='';
+      } else {
+        card.style.display='none';
+      }
+    });
+    ScrollTrigger.refresh();
+  });
+});
+if(!localStorage.getItem('tq_cookie')){setTimeout(()=>document.getElementById('cookieBanner').classList.add('visible'),1400);}
+document.querySelector('.cookie-accept').addEventListener('click',()=>{localStorage.setItem('tq_cookie','1');document.getElementById('cookieBanner').style.display='none';});
+document.querySelector('.cookie-decline').addEventListener('click',()=>{localStorage.setItem('tq_cookie','1');document.getElementById('cookieBanner').style.display='none';});
+</script>
 </body>
 </html>

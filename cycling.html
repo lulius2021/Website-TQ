@@ -1,333 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cycling Training — TrainQ</title>
-    <meta name="description" content="FTP-based training zones, structured rides, and event peaking — TrainQ gives cyclists the same structured approach the pros use, without the coaching fee.">
-    <link rel="icon" type="image/png" href="images/logos/hauptlogo.png">
-    <meta property="og:image" content="https://trainq.app/images/og-image.png">
-    <link rel="stylesheet" href="styles-light.css">
-    <link rel="stylesheet" href="fonts/inter.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cycling — TrainQ</title>
+<meta name="description" content="Train by the numbers. Power zone training, FTP testing, and event peaking for cyclists who want to peak on race day.">
+<link rel="icon" type="image/png" href="images/logos/hauptlogo.png">
+<meta property="og:image" content="https://trainq.app/images/og-image.png">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#0a0a0a;--bg-2:#111111;--bg-3:#161616;--muted:rgba(255,255,255,0.45);--muted-2:rgba(255,255,255,0.22);--accent:#0066FF;--border:rgba(255,255,255,0.07);--radius:12px;--radius-lg:20px;--container:1160px;--nav-h:72px;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:#fff;font-family:'Satoshi',sans-serif;font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:'Clash Display',sans-serif;font-weight:600;letter-spacing:-0.04em;line-height:1.1;}
+h1{font-size:clamp(2.4rem,5vw,3.8rem);}
+h2{font-size:clamp(1.8rem,3.5vw,2.8rem);}
+h3{font-size:1.25rem;letter-spacing:-0.02em;}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px;}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;transition:background .3s,backdrop-filter .3s;}
+.nav.scrolled{background:rgba(10,10,10,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:var(--container);margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between;}
+.logo img{height:32px;display:block;}
+.nav-links{display:flex;align-items:center;gap:8px;}
+.nav-link{font-size:0.9375rem;color:var(--muted);padding:8px 14px;border-radius:8px;transition:color .2s;}
+.nav-link:hover{color:#fff;}
+.nav-actions{display:flex;align-items:center;gap:8px;margin-left:16px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-radius:100px;font-size:0.9375rem;font-family:'Satoshi',sans-serif;font-weight:500;cursor:pointer;transition:all .2s;border:none;text-decoration:none;white-space:nowrap;}
+.btn-white{background:#fff;color:#000;}
+.btn-white:hover{background:rgba(255,255,255,0.88);}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border);}
+.btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,0.3);}
+.btn-sm{padding:7px 16px;font-size:0.875rem;}
+.nav-dropdown{position:relative;}
+.nav-dropdown-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);padding:8px;min-width:160px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-6px);}
+.nav-dropdown.open .nav-dropdown-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+.nav-dropdown-menu a{display:block;padding:10px 14px;border-radius:8px;font-size:0.9375rem;color:var(--muted);transition:color .2s,background .2s;}
+.nav-dropdown-menu a:hover{color:#fff;background:rgba(255,255,255,0.06);}
+.ham-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.ham-line{display:block;width:22px;height:2px;background:#fff;border-radius:2px;}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:var(--bg);padding:calc(var(--nav-h) + 24px) 24px 24px;flex-direction:column;gap:8px;}
+.mobile-menu.open{display:flex;}
+.mobile-link{font-size:1.125rem;color:var(--muted);padding:12px 0;border-bottom:1px solid var(--border);transition:color .2s;}
+.mobile-link:hover{color:#fff;}
+.mobile-divider{height:1px;background:var(--border);margin:8px 0;}
+.page-hero{min-height:65vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:80px;padding-top:var(--nav-h);position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.18;filter:grayscale(40%);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.3) 0%,rgba(10,10,10,0.1) 40%,rgba(10,10,10,0.9) 80%,rgba(10,10,10,1) 100%);}
+.hero-inner{position:relative;z-index:1;}
+.eyebrow{display:inline-block;font-size:0.875rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px;}
+.hero-inner h1{max-width:640px;}
+.hero-inner p{font-size:1.125rem;color:var(--muted);max-width:540px;margin-top:20px;line-height:1.65;}
+.section{padding:100px 0;}
+.section-alt{background:var(--bg-2);}
+.section-label{display:flex;align-items:center;gap:16px;font-size:0.8125rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.section-label::before{content:'';width:32px;height:1px;background:var(--accent);}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.card{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;}
+.card-icon{font-size:1.75rem;margin-bottom:16px;}
+.card h3{margin-bottom:10px;}
+.card p{color:var(--muted);font-size:0.9375rem;line-height:1.65;}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.plan-card{background:var(--bg-3);border:1px solid var(--border);border-top:2px solid var(--accent);border-radius:var(--radius-lg);padding:28px 24px;}
+.plan-card h3{font-size:1.125rem;margin-bottom:6px;}
+.plan-card .plan-duration{font-size:0.8125rem;color:var(--muted);margin-bottom:10px;}
+.plan-card p{color:var(--muted);font-size:0.9375rem;line-height:1.6;}
+.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.split-image img{width:100%;height:480px;object-fit:cover;border-radius:var(--radius-lg);filter:grayscale(15%);}
+.split-text h2{margin-bottom:20px;}
+.split-text p{color:var(--muted);line-height:1.75;margin-bottom:24px;}
+.checklist{list-style:none;display:flex;flex-direction:column;gap:14px;}
+.checklist li{display:flex;align-items:flex-start;gap:12px;font-size:0.9375rem;color:rgba(255,255,255,0.75);}
+.check{color:var(--accent);font-size:0.75rem;margin-top:3px;flex-shrink:0;}
+.sport-teaser{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.cta-section{background:var(--bg-2);padding:120px 0;text-align:center;}
+.cta-section h2{margin-bottom:16px;}
+.cta-section p{color:var(--muted);margin-bottom:40px;}
+.footer{background:var(--bg);border-top:1px solid var(--border);padding:40px 0;}
+.footer-row{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.footer-logo{font-family:'Clash Display',sans-serif;font-weight:600;font-size:1.25rem;letter-spacing:-0.03em;}
+.footer-logo span{color:var(--accent);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:0.875rem;color:var(--muted);transition:color .2s;}
+.footer-links a:hover{color:#fff;}
+.footer-copy{font-size:0.875rem;color:var(--muted-2);}
+.back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;background:var(--bg-3);border:1px solid var(--border);color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
+.back-top.visible{opacity:1;pointer-events:auto;}
+.cookie-banner{position:fixed;bottom:24px;left:24px;max-width:360px;background:#1a1a1a;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;z-index:200;display:none;}
+.cookie-banner.visible{display:block;}
+.cookie-banner p{font-size:0.875rem;color:var(--muted);line-height:1.6;margin-bottom:16px;}
+.cookie-banner p a{color:#fff;text-decoration:underline;}
+.cookie-actions{display:flex;gap:10px;}
+.cookie-accept{flex:1;padding:10px;border-radius:8px;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:0.875rem;font-family:'Satoshi',sans-serif;}
+.cookie-decline{flex:1;padding:10px;border-radius:8px;background:transparent;color:var(--muted);border:1px solid var(--border);cursor:pointer;font-size:0.875rem;font-family:'Satoshi',sans-serif;}
+.fade-up{opacity:0;transform:translateY(50px);}
+@media(max-width:900px){
+  .nav-links,.nav-actions{display:none;}
+  .ham-btn{display:flex;}
+  .cards-grid,.plans-grid,.sport-teaser{grid-template-columns:1fr 1fr;}
+  .split-grid{grid-template-columns:1fr;gap:40px;}
+  .split-grid.reverse .split-image{order:-1;}
+}
+@media(max-width:600px){
+  .cards-grid,.plans-grid,.sport-teaser{grid-template-columns:1fr;}
+  .section{padding:64px 0;}
+}
+</style>
 </head>
 <body>
 
-    <header class="header" id="header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo-wordmark">Train<span>Q</span></a>
-            <div class="nav-desktop">
-                <a href="index.html" class="nav-link">Home</a>
-                <div class="nav-dropdown">
-                    <button class="nav-link dropdown-trigger" aria-expanded="false" aria-haspopup="true">
-                        Sports
-                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="gym.html" class="dropdown-item">🏋️ Gym</a>
-                        <a href="running.html" class="dropdown-item">🏃 Running</a>
-                        <a href="cycling.html" class="dropdown-item">🚴 Cycling</a>
-                    </div>
-                </div>
-                <a href="features.html" class="nav-link">Features</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="faq.html" class="nav-link">FAQ</a>
-                <div class="nav-actions">
-                    <a href="/de/cycling.html" class="btn btn-outline btn-sm">DE</a>
-                    <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-sm" target="_blank" rel="noopener">Get Started</a>
-                </div>
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </nav>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="features.html" class="mobile-link">Features</a>
-            <a href="blog.html" class="mobile-link">Blog</a>
-            <a href="faq.html" class="mobile-link">FAQ</a>
-            <div class="mobile-divider"></div>
-            <a href="gym.html" class="mobile-link">🏋️ Gym</a>
-            <a href="running.html" class="mobile-link">🏃 Running</a>
-            <a href="cycling.html" class="mobile-link">🚴 Cycling</a>
-            <div class="mobile-divider"></div>
-            <a href="/de/cycling.html" class="mobile-link">🇩🇪 Deutsch</a>
-            <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-mobile-cta" target="_blank" rel="noopener">Download on App Store</a>
+<header class="nav" id="header">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><img src="images/logos/transparent Weiß.png" alt="TrainQ" height="32"></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <div class="nav-dropdown" id="sportsDrop">
+        <button class="nav-link btn" id="sportsBtn" style="background:none;border:none;color:var(--muted);font-family:'Satoshi',sans-serif;cursor:pointer;display:flex;align-items:center;gap:6px;" aria-expanded="false">
+          Sports
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" id="sportsDropdown">
+          <a href="gym.html">🏋️ Gym</a>
+          <a href="running.html">🏃 Running</a>
+          <a href="cycling.html">🚴 Cycling</a>
         </div>
-    </header>
-
-    <main>
-
-        <!-- Page Hero -->
-        <div class="page-hero reveal">
-            <div class="container text-center">
-                <span class="badge">🚴 Cycling</span>
-                <h1>Train by the numbers.<br>Peak on race day.</h1>
-                <p>FTP-based power zones, structured rides, and a periodized plan that builds your fitness to peak exactly when it matters.</p>
-            </div>
-        </div>
-
-        <!-- Hero Photo -->
-        <div class="container reveal" style="margin-bottom: 0;">
-            <div class="photo-strip" style="height: 420px;">
-                <picture>
-                    <source srcset="fotos/krzysztof-kowalik-ypR86XLah9Y-unsplash.webp" type="image/webp">
-                    <img src="fotos/krzysztof-kowalik-ypR86XLah9Y-unsplash.jpg" alt="Cyclist on road" loading="eager" width="800" height="600">
-                </picture>
-            </div>
-        </div>
-
-        <!-- What TrainQ does -->
-        <section class="section section-alt">
-            <div class="container">
-                <div class="section-heading reveal">
-                    <h2>Pro-level structure.<br>No coach required.</h2>
-                </div>
-                <div class="reveal" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
-                    <div class="card">
-                        <div style="font-size:1.5rem; margin-bottom:14px;">⚡</div>
-                        <h3 style="font-size:1.0625rem; font-weight:700; margin-bottom:8px;">Power Zone Training</h3>
-                        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">TrainQ calculates your FTP and builds your 7 power zones automatically. Every ride targets the exact zone your fitness needs that day.</p>
-                    </div>
-                    <div class="card">
-                        <div style="font-size:1.5rem; margin-bottom:14px;">📊</div>
-                        <h3 style="font-size:1.0625rem; font-weight:700; margin-bottom:8px;">FTP Testing Protocols</h3>
-                        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">Built-in ramp test and 20-minute FTP protocols. Test, set your zones, and get straight into training — without the spreadsheet.</p>
-                    </div>
-                    <div class="card">
-                        <div style="font-size:1.5rem; margin-bottom:14px;">🏆</div>
-                        <h3 style="font-size:1.0625rem; font-weight:700; margin-bottom:8px;">Event Peaking</h3>
-                        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">Give TrainQ your event date and it builds a periodized plan — base, build, and peak phases — so you arrive at the start line in the best shape of your life.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Training Plans -->
-        <section class="section" id="plans">
-            <div class="container">
-                <div class="section-heading reveal">
-                    <h2>Built around your event.<br>Driven by your power.</h2>
-                    <p>All plans use FTP-based zones and adapt to your schedule and recovery.</p>
-                </div>
-                <div class="reveal" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
-                    <div class="card" style="border-color:rgba(0,102,255,0.2);">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">🌿</div>
-                        <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Base Building</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55;">Build your aerobic foundation with Z2 riding. Long rides, moderate volume, high consistency. 8–12 weeks.</p>
-                    </div>
-                    <div class="card" style="border-color:rgba(0,102,255,0.2);">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">⚙️</div>
-                        <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Build Phase</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55;">Add threshold and sweet spot work on top of your aerobic base. Raise your FTP and improve sustained power. 8–10 weeks.</p>
-                    </div>
-                    <div class="card" style="border-color:rgba(0,102,255,0.2);">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">🏆</div>
-                        <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Event Peak</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55;">Sharpen up for your target event. Race-specific intervals, taper week, and a race-day plan. 6–8 weeks.</p>
-                    </div>
-                    <div class="card" style="border-color:rgba(0,102,255,0.2);">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">🏔️</div>
-                        <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Gran Fondo</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55;">Long-distance event prep. Big volume weeks, climbing simulation, and endurance-specific fueling guidance. 12–20 weeks.</p>
-                    </div>
-                    <div class="card" style="border-color:rgba(0,102,255,0.2);">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">⚡</div>
-                        <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Criterium / Circuit Race</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55;">Short, punchy efforts. VO2max intervals, sprint repeats, and race-simulation rides. 8–10 weeks.</p>
-                    </div>
-                    <div class="card" style="border-color:rgba(0,102,255,0.2);">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">🌱</div>
-                        <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Beginner Foundation</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55;">New to structured training? Start here. Learn pacing, build base fitness, and get comfortable on the bike. 8 weeks.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Feature: Structured Rides -->
-        <section class="section section-alt">
-            <div class="container">
-                <div class="split-grid">
-                    <div class="split-image reveal">
-                        <picture>
-                            <source srcset="fotos/diego-rodriguez-OlSIZV0AeAw-unsplash.webp" type="image/webp">
-                            <img src="fotos/diego-rodriguez-OlSIZV0AeAw-unsplash.jpg" alt="Cyclists on mountain road" loading="lazy" width="1200" height="1800">
-                        </picture>
-                    </div>
-                    <div class="split-text reveal reveal-delay-2">
-                        <span class="badge">Structured Rides</span>
-                        <h2>Every ride is a workout, not a ride.</h2>
-                        <p class="subtitle">Forget just spinning for two hours. TrainQ's structured rides have specific intervals, power targets, and recovery segments — so every hour you spend on the bike actually makes you faster.</p>
-                        <ul class="feature-checklist">
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span><strong>Sweet spot intervals</strong> for maximum aerobic efficiency</span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span><strong>VO2max blocks</strong> to raise your ceiling</span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span><strong>Z2 endurance rides</strong> for base and fat adaptation</span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span><strong>Sprint and neuromuscular</strong> power sessions</span>
-                            </li>
-                        </ul>
-                        <div class="split-btns">
-                            <a href="https://apps.apple.com/app/trainq" class="btn btn-dark" target="_blank" rel="noopener">Get Started Free</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Feature: Indoor & Outdoor -->
-        <section class="section">
-            <div class="container">
-                <div class="split-grid">
-                    <div class="split-text reveal">
-                        <span class="badge">Indoor & Outdoor</span>
-                        <h2>Smart trainer or open road. Both work.</h2>
-                        <p class="subtitle">TrainQ works with your Garmin head unit or smart trainer setup. Indoor rides pull power directly from your trainer. Outdoor rides use GPS and power meter data. Either way, the data feeds the plan.</p>
-                        <ul class="feature-checklist">
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span><strong>Garmin Connect sync</strong> — power, HR, cadence, and GPS</span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span><strong>Apple Health integration</strong> for activity tracking</span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span><strong>Auto-adjusts targets</strong> if you train indoors vs. outdoors</span>
-                            </li>
-                        </ul>
-                        <div class="split-btns">
-                            <a href="features.html" class="btn btn-outline">All Features</a>
-                        </div>
-                    </div>
-                    <div class="split-image reveal reveal-delay-2">
-                        <picture>
-                            <source srcset="fotos/paolo-candelo-53B17GiIhTA-unsplash.webp" type="image/webp">
-                            <img src="fotos/paolo-candelo-53B17GiIhTA-unsplash.jpg" alt="Cyclists racing" loading="lazy" width="1200" height="737">
-                        </picture>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Other Sports -->
-        <section class="section section-sky">
-            <div class="container">
-                <div class="section-heading reveal">
-                    <h2>Cycling is just the start.</h2>
-                    <p>TrainQ works across every sport with structured training plans.</p>
-                </div>
-                <div class="reveal" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
-                    <a href="gym.html" class="card" style="text-decoration:none;">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">🏋️</div>
-                        <h3 style="font-size:1.0625rem; font-weight:700; margin-bottom:6px;">Gym</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55; margin-bottom:12px;">Progressive strength plans, rep tracking, and PRs — built for the long game.</p>
-                        <span style="color:var(--blue); font-size:0.875rem; font-weight:600;">Explore Gym →</span>
-                    </a>
-                    <a href="running.html" class="card" style="text-decoration:none;">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">🏃</div>
-                        <h3 style="font-size:1.0625rem; font-weight:700; margin-bottom:6px;">Running</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55; margin-bottom:12px;">5k to marathon. Interval sessions, pace zones, and race-day predictions.</p>
-                        <span style="color:var(--blue); font-size:0.875rem; font-weight:600;">Explore Running →</span>
-                    </a>
-                    <a href="features.html" class="card" style="text-decoration:none;">
-                        <div style="font-size:1.75rem; margin-bottom:12px;">📋</div>
-                        <h3 style="font-size:1.0625rem; font-weight:700; margin-bottom:6px;">All Features</h3>
-                        <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55; margin-bottom:12px;">Analytics, adaptive engine, Garmin sync, and more — see the full picture.</p>
-                        <span style="color:var(--blue); font-size:0.875rem; font-weight:600;">See All Features →</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section class="section section-alt">
-            <div class="container text-center reveal">
-                <div class="section-heading">
-                    <h2>Start training smarter today.</h2>
-                    <p>Free during public beta — no credit card required.</p>
-                </div>
-                <a href="https://apps.apple.com/app/trainq" class="btn btn-dark" target="_blank" rel="noopener">Download on the App Store</a>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-row">
-                <a href="index.html" class="footer-logo">Train<span>Q</span></a>
-                <div class="footer-links">
-                    <a href="imprint.html">Imprint</a>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="terms.html">Terms</a>
-                </div>
-                <span class="footer-copy">&copy; 2026 TrainQ</span>
-            </div>
-        </div>
-    </footer>
-
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
-    <div class="cookie-banner" id="cookieBanner">
-        <p class="cookie-banner-title">Cookie Settings</p>
-        <p>We only use essential cookies to ensure our website works properly. No tracking, no ads. <a href="privacy.html">Learn more</a></p>
-        <div class="cookie-banner-actions">
-            <button class="cookie-btn cookie-btn-accept">Accept</button>
-            <button class="cookie-btn cookie-btn-decline">Essential Only</button>
-        </div>
+      </div>
+      <a href="features.html" class="nav-link">Features</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
     </div>
+    <div class="nav-actions">
+      <a href="/de/cycling.html" class="btn btn-ghost btn-sm">DE</a>
+      <a href="https://apps.apple.com/app/trainq" class="btn btn-white btn-sm" target="_blank" rel="noopener">Download</a>
+    </div>
+    <button class="ham-btn" id="mobileMenuBtn" aria-label="Open menu">
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+    </button>
+  </div>
+</header>
 
-    <script>
-        var hdr = document.getElementById('header');
-        var btt = document.getElementById('backToTop');
-        window.addEventListener('scroll', function() {
-            hdr.classList.toggle('scrolled', window.scrollY > 10);
-            btt.classList.toggle('visible', window.scrollY > 400);
-        }, {passive: true});
-        btt.addEventListener('click', function() { window.scrollTo({top:0, behavior:'smooth'}); });
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="mobile-link">Home</a>
+  <a href="features.html" class="mobile-link">Features</a>
+  <a href="blog.html" class="mobile-link">Blog</a>
+  <a href="faq.html" class="mobile-link">FAQ</a>
+  <div class="mobile-divider"></div>
+  <a href="gym.html" class="mobile-link">🏋️ Gym</a>
+  <a href="running.html" class="mobile-link">🏃 Running</a>
+  <a href="cycling.html" class="mobile-link">🚴 Cycling</a>
+  <div class="mobile-divider"></div>
+  <a href="/de/cycling.html" class="mobile-link">🇩🇪 Deutsch</a>
+  <a href="https://apps.apple.com/app/trainq" class="btn btn-white" style="margin-top:16px;" target="_blank" rel="noopener">Download on App Store</a>
+</div>
 
-        var mBtn = document.getElementById('mobileMenuBtn');
-        var mMenu = document.getElementById('mobileMenu');
-        mBtn.addEventListener('click', function() { mMenu.classList.toggle('open'); });
+<main>
 
-        var dWrap = document.querySelector('.nav-dropdown');
-        var dTrigger = document.querySelector('.dropdown-trigger');
-        if (dTrigger && dWrap) {
-            dTrigger.addEventListener('click', function(e) { e.stopPropagation(); dWrap.classList.toggle('open'); });
-            document.addEventListener('click', function() { dWrap.classList.remove('open'); });
-        }
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="hero-bg">
+      <picture>
+        <source srcset="fotos/krzysztof-kowalik-ypR86XLah9Y-unsplash.webp" type="image/webp">
+        <img src="fotos/krzysztof-kowalik-ypR86XLah9Y-unsplash.jpg" alt="Cyclist on the road" loading="eager">
+      </picture>
+    </div>
+    <div class="container hero-inner">
+      <span class="eyebrow">🚴 Cycling</span>
+      <h1>Train by the numbers.<br>Peak on race day.</h1>
+      <p>Power zone training and structured periodization for cyclists who take performance seriously.</p>
+    </div>
+  </section>
 
-        var io = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-        }, {threshold: 0.1});
-        document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+  <!-- FEATURE CARDS -->
+  <section class="section fade-up">
+    <div class="container">
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Power Zone Training</h3>
+          <p>Train in the right zone every session. TrainQ calculates your zones from FTP and keeps them current.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3>FTP Testing Protocols</h3>
+          <p>Ramp test or 20-minute protocol — whichever you prefer. FTP updates automatically feed your zones.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏆</div>
+          <h3>Event Peaking</h3>
+          <p>Structured taper in the final weeks before your event so you arrive fresh and sharp.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        var cb = document.getElementById('cookieBanner');
-        if (!localStorage.getItem('tq_cookie')) cb.classList.add('visible');
-        document.querySelector('.cookie-btn-accept').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
-        document.querySelector('.cookie-btn-decline').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
+  <!-- PLANS -->
+  <section class="section section-alt fade-up">
+    <div class="container">
+      <div class="section-label">Training Plans</div>
+      <h2 style="margin-bottom:48px;">Build toward your goal.</h2>
+      <div class="plans-grid">
+        <div class="plan-card">
+          <h3>🌿 Base Building</h3>
+          <div class="plan-duration">8–12 weeks</div>
+          <p>Build aerobic capacity with high-volume Z2 riding before entering structured intensity blocks.</p>
+        </div>
+        <div class="plan-card">
+          <h3>⚙️ Build Phase</h3>
+          <div class="plan-duration">8–10 weeks</div>
+          <p>Sweet spot and threshold work to raise FTP and push your ceiling higher.</p>
+        </div>
+        <div class="plan-card">
+          <h3>🏆 Event Peak</h3>
+          <div class="plan-duration">6–8 weeks</div>
+          <p>Race-specific preparation with structured taper for your event or gran fondo.</p>
+        </div>
+        <div class="plan-card">
+          <h3>🏔️ Gran Fondo</h3>
+          <div class="plan-duration">12–20 weeks</div>
+          <p>Long endurance preparation with climbing-specific blocks for multi-hour events.</p>
+        </div>
+        <div class="plan-card">
+          <h3>⚡ Criterium / Circuit</h3>
+          <div class="plan-duration">8–10 weeks</div>
+          <p>High-intensity intervals and sprint power for short, punchy racing.</p>
+        </div>
+        <div class="plan-card">
+          <h3>🌱 Beginner Foundation</h3>
+          <div class="plan-duration">8 weeks</div>
+          <p>Start structured cycling training with manageable volume and clear progression.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        document.querySelectorAll('a[href]').forEach(function(a) {
-            a.addEventListener('mouseenter', function() {
-                var h = a.getAttribute('href');
-                if (h && !h.startsWith('#') && !h.startsWith('http') && !document.querySelector('link[rel=prefetch][href="'+h+'"]')) {
-                    var l = document.createElement('link'); l.rel = 'prefetch'; l.href = h; document.head.appendChild(l);
-                }
-            }, {once: true});
-        });
-    </script>
+  <!-- SPLIT: STRUCTURED RIDES -->
+  <section class="section fade-up">
+    <div class="container">
+      <div class="split-grid">
+        <div class="split-image">
+          <picture>
+            <source srcset="fotos/diego-rodriguez-OlSIZV0AeAw-unsplash.webp" type="image/webp">
+            <img src="fotos/diego-rodriguez-OlSIZV0AeAw-unsplash.jpg" alt="Cyclist training" loading="lazy">
+          </picture>
+        </div>
+        <div class="split-text">
+          <div class="section-label">Structured Rides</div>
+          <h2>Every interval counts.</h2>
+          <p>TrainQ plans sessions across the full training spectrum — from long aerobic rides to intense VO2max efforts — building a complete cyclist.</p>
+          <ul class="checklist">
+            <li><span class="check">✓</span><span>Sweet spot intervals to raise FTP efficiently</span></li>
+            <li><span class="check">✓</span><span>VO2max blocks to expand aerobic ceiling</span></li>
+            <li><span class="check">✓</span><span>Z2 endurance rides to build the base</span></li>
+            <li><span class="check">✓</span><span>Sprint power sessions for race-day pop</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- SPLIT: INDOOR & OUTDOOR -->
+  <section class="section section-alt fade-up">
+    <div class="container">
+      <div class="split-grid reverse">
+        <div class="split-text">
+          <div class="section-label">Indoor & Outdoor</div>
+          <h2>Train wherever you ride.</h2>
+          <p>Whether you're on a smart trainer or out on the road, TrainQ syncs your data and keeps your training on track.</p>
+          <ul class="checklist">
+            <li><span class="check">✓</span><span>Garmin sync — every ride imported automatically</span></li>
+            <li><span class="check">✓</span><span>Apple Health integration out of the box</span></li>
+            <li><span class="check">✓</span><span>Power targets auto-adjust as your FTP changes</span></li>
+          </ul>
+        </div>
+        <div class="split-image">
+          <picture>
+            <source srcset="fotos/paolo-candelo-53B17GiIhTA-unsplash.webp" type="image/webp">
+            <img src="fotos/paolo-candelo-53B17GiIhTA-unsplash.jpg" alt="Indoor cycling" loading="lazy">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPORT TEASER -->
+  <section class="section fade-up">
+    <div class="container">
+      <div class="section-label">More Sports</div>
+      <h2 style="margin-bottom:40px;">Train across disciplines.</h2>
+      <div class="sport-teaser">
+        <div class="card">
+          <div class="card-icon">🏋️</div>
+          <h3>Gym</h3>
+          <p>Adaptive strength programs with progressive overload built in.</p>
+          <a href="gym.html" class="btn btn-ghost btn-sm" style="margin-top:20px;">Explore Gym</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏃</div>
+          <h3>Running</h3>
+          <p>From 5k to marathon. Adaptive running plans that adjust to your form.</p>
+          <a href="running.html" class="btn btn-ghost btn-sm" style="margin-top:20px;">Explore Running</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">✦</div>
+          <h3>All Features</h3>
+          <p>Analytics, Garmin integration, Apple Health sync and more.</p>
+          <a href="features.html" class="btn btn-ghost btn-sm" style="margin-top:20px;">See Features</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section fade-up">
+    <div class="container">
+      <h2>Start training smarter today.</h2>
+      <p>Free in Public Beta — no credit card required.</p>
+      <a href="https://apps.apple.com/app/trainq" class="btn btn-white" target="_blank" rel="noopener">Download on App Store</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-row">
+      <a href="index.html" class="footer-logo">Train<span>Q</span></a>
+      <div class="footer-links">
+        <a href="imprint.html">Imprint</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <span class="footer-copy">&copy; 2026 TrainQ</span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>We only use necessary cookies to keep our website running. No tracking, no ads. <a href="privacy.html">Learn more</a></p>
+  <div class="cookie-actions">
+    <button class="cookie-accept">Accept</button>
+    <button class="cookie-decline">Necessary only</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.fade-up').forEach(el=>{gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:0.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});});
+const hdr=document.getElementById('header'),btt=document.getElementById('backToTop');
+window.addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',window.scrollY>20);btt.classList.toggle('visible',window.scrollY>400);},{passive:true});
+btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const mBtn=document.getElementById('mobileMenuBtn'),mMenu=document.getElementById('mobileMenu');
+mBtn.addEventListener('click',()=>mMenu.classList.toggle('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')mMenu.classList.remove('open');});
+const sBtn=document.getElementById('sportsBtn'),sDrop=document.getElementById('sportsDrop');
+sBtn.addEventListener('click',e=>{e.stopPropagation();const open=sDrop.classList.toggle('open');sBtn.setAttribute('aria-expanded',open);});
+document.addEventListener('click',()=>{sDrop.classList.remove('open');sBtn.setAttribute('aria-expanded',false);});
+if(!localStorage.getItem('tq_cookie')){setTimeout(()=>document.getElementById('cookieBanner').classList.add('visible'),1400);}
+document.querySelector('.cookie-accept').addEventListener('click',()=>{localStorage.setItem('tq_cookie','1');document.getElementById('cookieBanner').style.display='none';});
+document.querySelector('.cookie-decline').addEventListener('click',()=>{localStorage.setItem('tq_cookie','1');document.getElementById('cookieBanner').style.display='none';});
+</script>
 </body>
 </html>

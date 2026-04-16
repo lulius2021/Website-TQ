@@ -1,355 +1,371 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog — TrainQ</title>
-    <meta name="description" content="Trainingswissenschaft, Studien und Methoden — kuratiert von TrainQ. Bleib informiert über Laufen, Radfahren, Krafttraining und Erholung.">
-    <link rel="icon" type="image/png" href="../images/logos/hauptlogo.png">
-    <meta property="og:image" content="https://trainq.app/images/og-image.png">
-    <link rel="stylesheet" href="../styles-light.css">
-    <link rel="stylesheet" href="../fonts/inter.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog – TrainQ</title>
+  <meta name="description" content="Trainingseinblicke, Wissenschaft und Tipps von TrainQ. Für Läufer, Kraftsportler und Radfahrer die smarter trainieren wollen.">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0a0a;--bg-2:#111111;--bg-3:#161616;--accent:#0066FF;--muted:rgba(255,255,255,0.45);--muted-2:rgba(255,255,255,0.22);--border:rgba(255,255,255,0.07);--radius:12px;--radius-lg:20px;--container:1160px;--nav-h:72px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:#fff;font-family:'Satoshi',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .container{max-width:var(--container);margin:0 auto;padding:0 24px}
+    #header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;transition:background .3s,backdrop-filter .3s}
+    #header.scrolled{background:rgba(10,10,10,0.88);backdrop-filter:blur(16px)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+    .nav-logo img{height:32px;width:auto}
+    .nav-links{display:flex;align-items:center;gap:8px}
+    .nav-links a,.nav-btn-ghost{padding:8px 14px;border-radius:8px;font-size:14px;font-weight:500;color:rgba(255,255,255,0.75);transition:color .2s,background .2s;background:none;border:none;cursor:pointer;font-family:'Satoshi',sans-serif}
+    .nav-links a:hover,.nav-btn-ghost:hover{color:#fff;background:rgba(255,255,255,0.06)}
+    .nav-links a.active{color:#fff}
+    .nav-cta{display:flex;align-items:center;gap:8px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;border-radius:var(--radius);font-size:14px;font-weight:600;font-family:'Satoshi',sans-serif;cursor:pointer;transition:all .2s;border:none}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:#0052cc;transform:translateY(-1px)}
+    .btn-sm{padding:8px 16px;font-size:13px}
+    .lang-btn{padding:7px 13px;border-radius:8px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.12);background:transparent;cursor:pointer;transition:all .2s;font-family:'Satoshi',sans-serif}
+    .lang-btn:hover{color:#fff;border-color:rgba(255,255,255,0.3)}
+    .sports-drop-wrap{position:relative}
+    #sportsDrop{position:absolute;top:calc(100% + 8px);left:0;background:#1a1a1a;border:1px solid var(--border);border-radius:var(--radius);padding:8px;min-width:160px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s,transform .2s}
+    #sportsDrop.open{opacity:1;pointer-events:all;transform:translateY(0)}
+    #sportsDrop a{display:block;padding:9px 14px;border-radius:8px;font-size:14px;color:rgba(255,255,255,0.75);transition:all .2s}
+    #sportsDrop a:hover{background:rgba(255,255,255,0.06);color:#fff}
+    .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+    .ham span{width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+    #mobileMenu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);padding:32px 24px;flex-direction:column;gap:8px;z-index:99;overflow-y:auto}
+    #mobileMenu.open{display:flex}
+    #mobileMenu a{padding:14px 16px;border-radius:var(--radius);font-size:17px;font-weight:500;color:rgba(255,255,255,0.8);transition:all .2s}
+    #mobileMenu a:hover{background:rgba(255,255,255,0.06);color:#fff}
+    #mobileMenu .mob-cta{margin-top:16px}
+    .page-header{padding:140px 0 60px;text-align:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:24px}
+    h1{font-family:'Clash Display',sans-serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:600;letter-spacing:-0.04em;line-height:1.1;margin-bottom:20px}
+    .page-desc{font-size:1.1rem;color:var(--muted);max-width:560px;margin:0 auto}
+    .filter-bar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:40px 0}
+    .filter-btn{padding:9px 20px;border-radius:100px;font-size:13px;font-weight:600;background:var(--bg-2);border:1px solid var(--border);color:rgba(255,255,255,0.6);cursor:pointer;transition:all .2s;font-family:'Satoshi',sans-serif}
+    .filter-btn:hover{color:#fff;border-color:rgba(255,255,255,0.2)}
+    .filter-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+    .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-bottom:80px}
+    .blog-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .2s,transform .2s;display:flex;flex-direction:column}
+    .blog-card:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-3px)}
+    .blog-card-img{height:200px;background:var(--bg-3);overflow:hidden}
+    .blog-card-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%);transition:transform .4s}
+    .blog-card:hover .blog-card-img img{transform:scale(1.04)}
+    .blog-card-body{padding:24px;display:flex;flex-direction:column;flex:1}
+    .blog-cat{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+    .blog-card h3{font-family:'Clash Display',sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:8px;line-height:1.3}
+    .blog-card p{color:var(--muted);font-size:.88rem;line-height:1.6;flex:1}
+    .blog-card-meta{display:flex;align-items:center;gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted-2)}
+    footer{background:var(--bg-2);border-top:1px solid var(--border);padding:60px 0 40px}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+    .footer-brand p{color:var(--muted);font-size:.9rem;margin-top:12px;max-width:260px;line-height:1.6}
+    .footer-logo{font-family:'Clash Display',sans-serif;font-size:1.4rem;font-weight:600;letter-spacing:-0.03em}
+    .footer-logo span{color:var(--accent)}
+    .footer-col h4{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);margin-bottom:16px}
+    .footer-col a{display:block;font-size:.9rem;color:var(--muted);margin-bottom:10px;transition:color .2s}
+    .footer-col a:hover{color:#fff}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:32px;border-top:1px solid var(--border);font-size:.85rem;color:var(--muted-2)}
+    #backToTop{position:fixed;bottom:32px;right:32px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:50}
+    #backToTop.visible{opacity:1;pointer-events:all}
+    #backToTop:hover{transform:translateY(-3px)}
+    #cookieBanner{position:fixed;bottom:24px;left:24px;right:24px;max-width:480px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:24px;z-index:200;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}
+    #cookieBanner.visible{opacity:1;pointer-events:all;transform:translateY(0)}
+    #cookieBanner p{font-size:.88rem;color:rgba(255,255,255,0.7);margin-bottom:16px;line-height:1.5}
+    .cookie-btns{display:flex;gap:10px}
+    .cookie-accept{padding:9px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:'Satoshi',sans-serif}
+    .cookie-decline{padding:9px 20px;background:transparent;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:.85rem;cursor:pointer;font-family:'Satoshi',sans-serif}
+    .fade-up{opacity:0;transform:translateY(30px)}
+    @media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.nav-links,.nav-cta{display:none}.ham{display:flex}}
+    @media(max-width:600px){.blog-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:12px;text-align:center}}
+  </style>
 </head>
 <body>
 
-    <header class="header" id="header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo-wordmark">Train<span>Q</span></a>
-            <div class="nav-desktop">
-                <a href="index.html" class="nav-link">Home</a>
-                <div class="nav-dropdown">
-                    <button class="nav-link dropdown-trigger" aria-expanded="false" aria-haspopup="true">
-                        Sportarten
-                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="gym.html" class="dropdown-item">🏋️ Gym</a>
-                        <a href="running.html" class="dropdown-item">🏃 Laufen</a>
-                        <a href="cycling.html" class="dropdown-item">🚴 Radfahren</a>
-                    </div>
-                </div>
-                <a href="features.html" class="nav-link">Features</a>
-                <a href="blog.html" class="nav-link active" aria-current="page">Blog</a>
-                <a href="faq.html" class="nav-link">FAQ</a>
-                <div class="nav-actions">
-                    <a href="../blog.html" class="btn btn-outline btn-sm">EN</a>
-                    <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-sm" target="_blank" rel="noopener">Jetzt starten</a>
-                </div>
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü öffnen">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </nav>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="features.html" class="mobile-link">Features</a>
-            <a href="blog.html" class="mobile-link">Blog</a>
-            <a href="faq.html" class="mobile-link">FAQ</a>
-            <div class="mobile-divider"></div>
-            <a href="gym.html" class="mobile-link">🏋️ Gym</a>
-            <a href="running.html" class="mobile-link">🏃 Laufen</a>
-            <a href="cycling.html" class="mobile-link">🚴 Radfahren</a>
-            <div class="mobile-divider"></div>
-            <a href="../blog.html" class="mobile-link">🇬🇧 English</a>
-            <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-mobile-cta" target="_blank" rel="noopener">Im App Store laden</a>
+<header id="header">
+  <div class="container">
+    <nav class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <img src="../images/logos/transparent Weiß.png" alt="TrainQ" height="32">
+      </a>
+      <div class="nav-links">
+        <div class="sports-drop-wrap">
+          <button class="nav-btn-ghost" id="sportsBtn" aria-expanded="false">Sportarten ▾</button>
+          <div id="sportsDrop">
+            <a href="gym.html">🏋️ Gym</a>
+            <a href="running.html">🏃 Laufen</a>
+            <a href="cycling.html">🚴 Radfahren</a>
+          </div>
         </div>
-    </header>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Preise</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="nav-cta">
+        <a href="../blog.html"><button class="lang-btn">EN</button></a>
+        <a href="#download" class="btn btn-primary btn-sm">App laden</a>
+      </div>
+      <button class="ham" id="mobileMenuBtn" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
 
-    <main>
+<div id="mobileMenu">
+  <a href="gym.html">🏋️ Gym</a>
+  <a href="running.html">🏃 Laufen</a>
+  <a href="cycling.html">🚴 Radfahren</a>
+  <a href="features.html">Features</a>
+  <a href="pricing.html">Preise</a>
+  <a href="blog.html">Blog</a>
+  <a href="faq.html">FAQ</a>
+  <a href="#download" class="btn btn-primary mob-cta">App laden</a>
+</div>
 
-        <!-- Page Hero -->
-        <div class="page-hero reveal">
-            <div class="container text-center">
-                <span class="badge">Blog</span>
-                <h1>Wissenschaftlich fundierte<br>Trainings-Insights</h1>
-                <p>Studien, Methoden und praktische Erkenntnisse — kuratiert für Athleten, die mit Absicht trainieren.</p>
-            </div>
-        </div>
+<div class="page-header">
+  <div class="container">
+    <div class="eyebrow">Blog</div>
+    <h1>Trainingseinblicke</h1>
+    <p class="page-desc">Wissenschaft, Tipps und Strategien für Athleten die smarter trainieren wollen – von TrainQ.</p>
+  </div>
+</div>
 
-        <!-- Category Filter -->
-        <section style="padding: 0 0 32px;">
-            <div class="container">
-                <div class="blog-categories reveal">
-                    <button class="blog-cat active" data-cat="all">Alle</button>
-                    <button class="blog-cat" data-cat="running">Laufen</button>
-                    <button class="blog-cat" data-cat="strength">Kraft</button>
-                    <button class="blog-cat" data-cat="cycling">Radfahren</button>
-                    <button class="blog-cat" data-cat="recovery">Erholung</button>
-                    <button class="blog-cat" data-cat="nutrition">Ernährung</button>
-                </div>
-            </div>
-        </section>
+<div class="container">
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">Alle</button>
+    <button class="filter-btn" data-filter="running">🏃 Laufen</button>
+    <button class="filter-btn" data-filter="strength">🏋️ Kraft</button>
+    <button class="filter-btn" data-filter="cycling">🚴 Radfahren</button>
+    <button class="filter-btn" data-filter="recovery">💤 Erholung</button>
+    <button class="filter-btn" data-filter="nutrition">🥗 Ernährung</button>
+  </div>
 
-        <!-- Blog Grid -->
-        <section style="padding: 0 0 96px;">
-            <div class="container">
-                <div class="blog-grid">
-
-                    <article class="blog-card reveal" data-cat="running">
-                        <div class="blog-card-tag">Laufen</div>
-                        <h3><a href="blog/polarized-training.html" style="color:inherit;text-decoration:none">Polarisiertes vs. Schwellentraining: Was die Forschung sagt</a></h3>
-                        <p>Eine Meta-Analyse 2024 in <em>Sports Medicine</em> bestätigte, dass polarisiertes Training (80% locker / 20% intensiv) Schwellen-lastige Ansätze bei VO2max-Gewinnen übertrifft. Die Kernaussage: Mehr Zeit bei niedriger Intensität führt paradoxerweise zu schnelleren Wettkampfzeiten.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Kernaussage:</strong> Laufe deine lockeren Läufe nicht zu schnell. Die 80/20-Verteilung funktioniert — die Wissenschaft ist eindeutig.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Stöggl &amp; Sperlich, Sports Medicine, 2024</span>
-                                <span>🕐 4 Min. Lesezeit</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card reveal" data-cat="strength">
-                        <div class="blog-card-tag">Kraft</div>
-                        <h3><a href="blog/progressive-overload.html" style="color:inherit;text-decoration:none">Progressive Überlastung: Warum 2-5% wöchentliche Steigerung immer noch gewinnt</a></h3>
-                        <p>Forschung aus dem Journal of Strength &amp; Conditioning zeigt konsistent, dass schrittweise progressive Überlastung (2-5% pro Woche) langfristig bessere Kraftzuwächse liefert als aggressives Laden. Eine 2024er Studie verfolgte 200+ Trainierende über 16 Wochen — die konservative Gruppe gewann 23% mehr Kraft bei 60% weniger Verletzungen.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Kernaussage:</strong> Geduld schlägt Aggression. Kleine, konstante Steigerungen summieren sich über Monate zu massiven Kraftzuwächsen.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 J Strength Cond Res, 2024</span>
-                                <span>🕐 5 Min. Lesezeit</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card reveal" data-cat="recovery">
-                        <div class="blog-card-tag">Erholung</div>
-                        <h3><a href="blog/sleep-performance.html" style="color:inherit;text-decoration:none">Schlaf ist der #1 Leistungs-Booster — Hier sind die Daten</a></h3>
-                        <p>Stanfords Schlafforschungslabor fand heraus, dass die Verlängerung des Schlafs auf 8-10 Stunden Sprintzeiten um 5%, Freiwurf-Genauigkeit um 9% und Reaktionszeit um 15% verbesserte. Eine separate 2024er Studie zeigte, dass nur eine Nacht mit schlechtem Schlaf (&lt;6h) die Leistungsabgabe um 10-15% reduziert.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Kernaussage:</strong> Kein Supplement, Eisbad oder Recovery-Gadget kommt an konstante 8+ Stunden Schlaf heran.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Mah et al., Sleep, Stanford University</span>
-                                <span>🕐 4 Min. Lesezeit</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card reveal" data-cat="cycling">
-                        <div class="blog-card-tag">Radfahren</div>
-                        <h3><a href="blog/ftp-testing.html" style="color:inherit;text-decoration:none">FTP-Tests: Rampentest vs. 20-Minuten-Protokoll</a></h3>
-                        <p>Eine 2025er Studie im International Journal of Sports Physiology verglich Rampentests mit traditionellen 20-Minuten-FTP-Tests bei 150 Radfahrern. Ergebnis: Rampentests überschätzen die FTP um durchschnittlich 5-8% bei ausdauertrainierten Radfahrern, was zu zu harten Trainingszonen führt.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Kernaussage:</strong> Wenn du hauptsächlich lange Rennen fährst, liefert der 20-Minuten-Test genauere Zonen. Rampentests bevorzugen anaerobe Athleten.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Int J Sports Physiol Perform, 2025</span>
-                                <span>🕐 5 Min. Lesezeit</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card reveal" data-cat="running">
-                        <div class="blog-card-tag">Laufen</div>
-                        <h3><a href="blog/running-cadence.html" style="color:inherit;text-decoration:none">Die entscheidende Rolle der Schrittfrequenz bei der Verletzungsprävention</a></h3>
-                        <p>Forschung im British Journal of Sports Medicine zeigt, dass eine Erhöhung der Schrittfrequenz um nur 5-10% die Aufprallkräfte auf Knie und Hüfte signifikant reduziert. Eine Kadenz von 170-180 Schritten/Min ist mit 30% weniger Verletzungen verbunden als bei Überstreidern mit 150-160 spm.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Kernaussage:</strong> Verkürze deinen Schritt, erhöhe deine Kadenz. Die einfachste Verletzungspräventions-Strategie mit der stärksten Evidenz.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Br J Sports Med, 2023</span>
-                                <span>🕐 3 Min. Lesezeit</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card reveal" data-cat="nutrition">
-                        <div class="blog-card-tag">Ernährung</div>
-                        <h3><a href="blog/carb-periodization.html" style="color:inherit;text-decoration:none">Kohlenhydrat-Periodisierung: Energie für die Arbeit, nicht für den Tag</a></h3>
-                        <p>Das „Fuel for the work required"-Modell, validiert in einer 2024er Studie der Liverpool John Moores University, zeigt dass strategisches Carb-Timing rund ums Training — statt konstant hoher Kohlenhydrat-Diäten — sowohl Leistung als auch Körperzusammensetzung verbessert.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Kernaussage:</strong> Viele Kohlenhydrate an harten Trainingstagen, weniger an Ruhetagen. Einfache Periodisierung schlägt beide Extreme.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Impey et al., J Sports Sci, 2024</span>
-                                <span>🕐 5 Min. Lesezeit</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card reveal" data-cat="strength">
-                        <div class="blog-card-tag">Kraft</div>
-                        <h3><a href="blog/compound-vs-isolation.html" style="color:inherit;text-decoration:none">Grundübungen vs. Isolation: Die Effizienz-Debatte geklärt</a></h3>
-                        <p>Ein umfassendes Review im Journal of Sports Science (2024) analysierte 47 Studien und kam zum Schluss: Grundübungen (Kniebeuge, Kreuzheben, Bankdrücken) produzieren gleiche oder bessere Hypertrophie als Isolationsübungen — in weniger Zeit.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Kernaussage:</strong> Wenn du 45 Minuten hast, priorisiere Grundübungen. Isolationsarbeit ist ergänzend, nicht grundlegend.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 J Sports Sci, 2024 (Meta-Review)</span>
-                                <span>🕐 4 Min. Lesezeit</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card reveal" data-cat="cycling">
-                        <div class="blog-card-tag">Radfahren</div>
-                        <h3><a href="blog/indoor-vs-outdoor.html" style="color:inherit;text-decoration:none">Indoor vs. Outdoor Training: Reicht Zwift aus?</a></h3>
-                        <p>Eine 2025er Vergleichsstudie ergab, dass Indoor-Smart-Trainer-Einheiten 95% der physiologischen Anpassung von Outdoor-Fahrten erzeugen, wenn Intensität und Dauer übereinstimmen. Allerdings entwickelt Outdoor-Fahren Radbeherrschung, Verpflegungsstrategie und mentale Widerstandsfähigkeit.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Kernaussage:</strong> Indoor-Training ist exzellent für strukturierte Intervalle. Aber Wettkampfvorbereitung erfordert Outdoor-Spezifität.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Eur J Sport Sci, 2025</span>
-                                <span>🕐 4 Min. Lesezeit</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card reveal" data-cat="recovery">
-                        <div class="blog-card-tag">Erholung</div>
-                        <h3><a href="blog/hrv-readiness.html" style="color:inherit;text-decoration:none">Herzfrequenzvariabilität: Der beste Bereitschafts-Indikator?</a></h3>
-                        <p>Mehrere Studien (2023-2025) bestätigen, dass die morgendliche HRV der beste objektive Marker für Trainingsbereitschaft ist. Athleten, die ihre Trainingsintensität anhand täglicher HRV-Messungen anpassten, zeigten 15% größere Leistungsverbesserungen und 40% weniger Übertrainingssymptome.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Kernaussage:</strong> Miss deine HRV jeden Morgen. Wenn sie deutlich unter deinem Durchschnitt liegt, reduziere die Intensität oder mach einen Ruhetag.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Plews et al., Int J Sports Physiol, 2023-2025</span>
-                                <span>🕐 5 Min. Lesezeit</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card reveal" data-cat="nutrition">
-                        <div class="blog-card-tag">Ernährung</div>
-                        <h3><a href="blog/protein-timing.html" style="color:inherit;text-decoration:none">Protein-Timing: Gibt es das anabole Fenster wirklich?</a></h3>
-                        <p>Der Mythos des „30-Minuten anabolen Fensters" wurde gründlich widerlegt. Eine 2024er Meta-Analyse in Nutrients zeigte, dass die gesamte tägliche Proteinzufuhr (1,6-2,2g/kg) weit wichtiger ist als das Timing.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Kernaussage:</strong> Konzentriere dich darauf, dein tägliches Proteinziel zu erreichen. Timing ist bestenfalls eine minimale Optimierung.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Schoenfeld &amp; Aragon, Nutrients, 2024</span>
-                                <span>🕐 4 Min. Lesezeit</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card reveal" data-cat="running">
-                        <div class="blog-card-tag">Laufen</div>
-                        <h3><a href="blog/norwegian-method.html" style="color:inherit;text-decoration:none">Die Norwegische Methode: Doppeltes Schwellentraining erklärt</a></h3>
-                        <p>Norwegische Langstreckenläufer haben mit dem „Double Threshold"-Ansatz jüngste Weltrekorde dominiert: zwei moderate Schwelleneinheiten pro Tag statt einer harten Einheit. Forschung der Norwegischen Sporthochschule zeigt, dass diese Methode die Laktat-Clearance um 20% verbessert.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Kernaussage:</strong> Für fortgeschrittene Läufer: Das Aufteilen von Schwellenarbeit in zwei kürzere Einheiten kann effektiver sein als eine lange.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 Casado et al., SJMSS, 2024</span>
-                                <span>🕐 6 Min. Lesezeit</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card reveal" data-cat="strength">
-                        <div class="blog-card-tag">Kraft</div>
-                        <h3><a href="blog/concurrent-training.html" style="color:inherit;text-decoration:none">Concurrent Training: Kann man Muskeln aufbauen und schnell laufen?</a></h3>
-                        <p>Der „Interferenz-Effekt" ist real, aber handhabbar. Eine 2024er Studie im Journal of Applied Physiology zeigte, dass die Trennung von Kraft- und Ausdauereinheiten um 6+ Stunden die meisten Interferenzen eliminiert.</p>
-                        <div class="blog-card-details">
-                            <div class="blog-takeaway">
-                                <strong>Kernaussage:</strong> Ja, du kannst beides machen. Trenne die Einheiten um 6+ Stunden und mache deinen Prioritätssport zuerst am Tag.
-                            </div>
-                            <div class="blog-meta">
-                                <span>📄 J Appl Physiol, 2024</span>
-                                <span>🕐 5 Min. Lesezeit</span>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-row">
-                <a href="index.html" class="footer-logo">Train<span>Q</span></a>
-                <div class="footer-links">
-                    <a href="imprint.html">Impressum</a>
-                    <a href="privacy.html">Datenschutz</a>
-                    <a href="terms.html">AGB</a>
-                </div>
-                <span class="footer-copy">&copy; 2026 TrainQ</span>
-            </div>
-        </div>
-    </footer>
-
-    <button class="back-to-top" id="backToTop" aria-label="Nach oben">↑</button>
-    <div class="cookie-banner" id="cookieBanner">
-        <p class="cookie-banner-title">Cookie-Einstellungen</p>
-        <p>Wir verwenden nur notwendige Cookies, damit unsere Website korrekt funktioniert. Kein Tracking, keine Werbung. <a href="privacy.html">Mehr erfahren</a></p>
-        <div class="cookie-banner-actions">
-            <button class="cookie-btn cookie-btn-accept">Akzeptieren</button>
-            <button class="cookie-btn cookie-btn-decline">Nur notwendige</button>
-        </div>
+  <div class="blog-grid">
+    <div class="blog-card fade-up" data-cat="running">
+      <div class="blog-card-img">
+        <img src="../fotos/jorgen-hendriksen-BomU_atAAKQ-unsplash.jpg" alt="Laufen">
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">🏃 Laufen</span>
+        <h3>Pace-Zonen erklärt: Warum du nicht immer ans Limit gehen solltest</h3>
+        <p>Easy Runs fühlen sich falsch an – aber sie sind der Schlüssel zu langfristiger Verbesserung. Hier ist die Wissenschaft dahinter.</p>
+        <div class="blog-card-meta"><span>TrainQ Team</span><span>·</span><span>5 Min Lesezeit</span></div>
+      </div>
     </div>
 
-    <script>
-        var hdr = document.getElementById('header');
-        var btt = document.getElementById('backToTop');
-        window.addEventListener('scroll', function() {
-            hdr.classList.toggle('scrolled', window.scrollY > 10);
-            btt.classList.toggle('visible', window.scrollY > 400);
-        }, {passive: true});
-        btt.addEventListener('click', function() { window.scrollTo({top:0, behavior:'smooth'}); });
+    <div class="blog-card fade-up" data-cat="strength">
+      <div class="blog-card-img">
+        <img src="../fotos/john-arano-h4i9G-de7Po-unsplash.jpg" alt="Krafttraining">
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">🏋️ Kraft</span>
+        <h3>Progressive Überlastung: Das einzige Prinzip das wirklich zählt</h3>
+        <p>Warum die meisten Gym-Gänger nach 3 Monaten aufhören Fortschritte zu machen – und wie du es vermeidest.</p>
+        <div class="blog-card-meta"><span>TrainQ Team</span><span>·</span><span>6 Min Lesezeit</span></div>
+      </div>
+    </div>
 
-        var mBtn = document.getElementById('mobileMenuBtn');
-        var mMenu = document.getElementById('mobileMenu');
-        mBtn.addEventListener('click', function() { mMenu.classList.toggle('open'); });
+    <div class="blog-card fade-up" data-cat="cycling">
+      <div class="blog-card-img">
+        <img src="../fotos/krzysztof-kowalik-NHvdPWRKBNg-unsplash.jpg" alt="Radfahren">
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">🚴 Radfahren</span>
+        <h3>FTP-Test: Wie du deine Functional Threshold Power bestimmst</h3>
+        <p>Schritt-für-Schritt Anleitung zum 20-Minuten FTP-Test – und warum du ihn alle 6–8 Wochen wiederholen solltest.</p>
+        <div class="blog-card-meta"><span>TrainQ Team</span><span>·</span><span>7 Min Lesezeit</span></div>
+      </div>
+    </div>
 
-        var dWrap = document.querySelector('.nav-dropdown');
-        var dTrigger = document.querySelector('.dropdown-trigger');
-        if (dTrigger && dWrap) {
-            dTrigger.addEventListener('click', function(e) { e.stopPropagation(); dWrap.classList.toggle('open'); });
-            document.addEventListener('click', function() { dWrap.classList.remove('open'); });
-        }
+    <div class="blog-card fade-up" data-cat="recovery">
+      <div class="blog-card-img">
+        <img src="../fotos/risen-wang-20jX9b35r_M-unsplash.jpg" alt="Erholung">
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">💤 Erholung</span>
+        <h3>HRV und Schlaf: Wie dein Körper dir sagt wann er bereit ist</h3>
+        <p>Herzratenvariabilität als Trainingssteuerung. Was HRV bedeutet und wie TrainQ es nutzt um deinen Plan anzupassen.</p>
+        <div class="blog-card-meta"><span>TrainQ Team</span><span>·</span><span>8 Min Lesezeit</span></div>
+      </div>
+    </div>
 
-        var io = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-        }, {threshold: 0.1});
-        document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+    <div class="blog-card fade-up" data-cat="running">
+      <div class="blog-card-img">
+        <img src="../fotos/branislav-rodman-0tBQBGiHKIU-unsplash.jpg" alt="Marathon Training">
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">🏃 Laufen</span>
+        <h3>Marathon in 16 Wochen: Wie du dich ohne Burnout vorbereitest</h3>
+        <p>Periodisierung, Long Runs und Tapering – die Struktur hinter einem erfolgreichen Marathonplan.</p>
+        <div class="blog-card-meta"><span>TrainQ Team</span><span>·</span><span>9 Min Lesezeit</span></div>
+      </div>
+    </div>
 
-        // Blog category filter
-        var cats = document.querySelectorAll('.blog-cat');
-        var cards = document.querySelectorAll('.blog-card');
-        cats.forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                cats.forEach(function(b) { b.classList.remove('active'); });
-                btn.classList.add('active');
-                var cat = btn.getAttribute('data-cat');
-                cards.forEach(function(card) {
-                    card.style.display = (cat === 'all' || card.getAttribute('data-cat') === cat) ? '' : 'none';
-                });
-            });
-        });
+    <div class="blog-card fade-up" data-cat="nutrition">
+      <div class="blog-card-img">
+        <img src="../fotos/maico-amorim-sbFbFxYv6BA-unsplash.jpg" alt="Ernährung">
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">🥗 Ernährung</span>
+        <h3>Kohlenhydrate vor dem Training: Wann und wie viel du wirklich brauchst</h3>
+        <p>Die Wissenschaft hinter Carb-Timing. Was vor einem langen Lauf oder einer intensiven Gym-Session zählt.</p>
+        <div class="blog-card-meta"><span>TrainQ Team</span><span>·</span><span>5 Min Lesezeit</span></div>
+      </div>
+    </div>
 
-        var cb = document.getElementById('cookieBanner');
-        if (!localStorage.getItem('tq_cookie')) cb.classList.add('visible');
-        document.querySelector('.cookie-btn-accept').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
-        document.querySelector('.cookie-btn-decline').addEventListener('click', function() { localStorage.setItem('tq_cookie','1'); cb.classList.remove('visible'); });
+    <div class="blog-card fade-up" data-cat="strength">
+      <div class="blog-card-img">
+        <img src="../fotos/victor-freitas-WvDYdXDzkhs-unsplash.jpg" alt="Hypertrophie">
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">🏋️ Kraft</span>
+        <h3>Hypertrophie vs. Kraft: Warum du beides nicht gleichzeitig maximieren kannst</h3>
+        <p>Rep-Ranges, Volumen und Intensität – die Unterschiede zwischen Muskelaufbau und Maximalkrafttraining.</p>
+        <div class="blog-card-meta"><span>TrainQ Team</span><span>·</span><span>6 Min Lesezeit</span></div>
+      </div>
+    </div>
 
-        document.querySelectorAll('a[href]').forEach(function(a) {
-            a.addEventListener('mouseenter', function() {
-                var h = a.getAttribute('href');
-                if (h && !h.startsWith('#') && !h.startsWith('http') && !document.querySelector('link[rel=prefetch][href="'+h+'"]')) {
-                    var l = document.createElement('link'); l.rel = 'prefetch'; l.href = h; document.head.appendChild(l);
-                }
-            }, {once: true});
-        });
-    </script>
+    <div class="blog-card fade-up" data-cat="cycling">
+      <div class="blog-card-img">
+        <img src="../fotos/diego-rodriguez-4lrGMjI4524-unsplash.jpg" alt="Radfahren Intervalle">
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">🚴 Radfahren</span>
+        <h3>Sweet Spot Training: Die effizienteste Zone für FTP-Steigerung</h3>
+        <p>Warum 88–93% FTP die magische Zone ist – und wie du Sweet Spot richtig in dein Training integrierst.</p>
+        <div class="blog-card-meta"><span>TrainQ Team</span><span>·</span><span>7 Min Lesezeit</span></div>
+      </div>
+    </div>
 
+    <div class="blog-card fade-up" data-cat="recovery">
+      <div class="blog-card-img">
+        <img src="../fotos/benjamin-brunner-NkE4ykMCiKk-unsplash.jpg" alt="Deload Woche">
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">💤 Erholung</span>
+        <h3>Deload-Wochen: Warum weniger manchmal mehr ist</h3>
+        <p>Übertraining vermeiden durch geplante Erholungsphasen. Wann du deloaden solltest und wie es richtig geht.</p>
+        <div class="blog-card-meta"><span>TrainQ Team</span><span>·</span><span>5 Min Lesezeit</span></div>
+      </div>
+    </div>
+
+    <div class="blog-card fade-up" data-cat="running">
+      <div class="blog-card-img">
+        <img src="../fotos/jorgen-hendriksen-3xxG3Mw7nOg-unsplash.jpg" alt="Laufuhr Daten">
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">🏃 Laufen</span>
+        <h3>Garmin vs. Apple Watch: Was wirklich für Läufer wichtig ist</h3>
+        <p>GPS-Genauigkeit, Herzfrequenz, Laufkadenz – ein ehrlicher Vergleich für ambitionierte Läufer.</p>
+        <div class="blog-card-meta"><span>TrainQ Team</span><span>·</span><span>8 Min Lesezeit</span></div>
+      </div>
+    </div>
+
+    <div class="blog-card fade-up" data-cat="nutrition">
+      <div class="blog-card-img">
+        <img src="../fotos/paolo-candelo-8VFAeVqoiQA-unsplash.jpg" alt="Ernährung nach Training">
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">🥗 Ernährung</span>
+        <h3>Post-Workout Ernährung: Das 30-Minuten Fenster – Mythos oder Wahrheit?</h3>
+        <p>Was die Forschung wirklich über das anabole Fenster sagt – und was du nach dem Training tatsächlich essen solltest.</p>
+        <div class="blog-card-meta"><span>TrainQ Team</span><span>·</span><span>6 Min Lesezeit</span></div>
+      </div>
+    </div>
+
+    <div class="blog-card fade-up" data-cat="strength">
+      <div class="blog-card-img">
+        <img src="../fotos/john-arano-h4i9G-de7Po-unsplash.jpg" alt="Push Pull Legs">
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">🏋️ Kraft</span>
+        <h3>Push/Pull/Legs: Warum das beste Split-System das ist das du wirklich durchhältst</h3>
+        <p>Trainingsfrequenz, Muskelgruppen-Verteilung und warum Konsistenz wichtiger ist als das perfekte Programm.</p>
+        <div class="blog-card-meta"><span>TrainQ Team</span><span>·</span><span>5 Min Lesezeit</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Train<span>Q</span></div>
+        <p>Das adaptive Trainingssystem für Läufer, Kraftsportler und Radfahrer. Smarter trainieren – besser werden.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sportarten</h4>
+        <a href="gym.html">Gym</a>
+        <a href="running.html">Laufen</a>
+        <a href="cycling.html">Radfahren</a>
+      </div>
+      <div class="footer-col">
+        <h4>Produkt</h4>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Preise</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TrainQ. Alle Rechte vorbehalten.</span>
+      <span>Made with ❤️ for athletes</span>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Nach oben">↑</button>
+
+<div id="cookieBanner">
+  <p>Wir nutzen Cookies um dein Erlebnis zu verbessern. Mit der Nutzung der Website stimmst du unserer <a href="datenschutz.html" style="color:var(--accent)">Datenschutzerklärung</a> zu.</p>
+  <div class="cookie-btns">
+    <button class="cookie-accept">Akzeptieren</button>
+    <button class="cookie-decline">Ablehnen</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.fade-up').forEach(el=>{gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:0.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});});
+  const hdr=document.getElementById('header'),btt=document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',window.scrollY>20);btt.classList.toggle('visible',window.scrollY>400);},{passive:true});
+  btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  const mBtn=document.getElementById('mobileMenuBtn'),mMenu=document.getElementById('mobileMenu');
+  mBtn.addEventListener('click',()=>mMenu.classList.toggle('open'));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')mMenu.classList.remove('open');});
+  const sBtn=document.getElementById('sportsBtn'),sDrop=document.getElementById('sportsDrop');
+  sBtn.addEventListener('click',e=>{e.stopPropagation();const open=sDrop.classList.toggle('open');sBtn.setAttribute('aria-expanded',open);});
+  document.addEventListener('click',()=>{sDrop.classList.remove('open');sBtn.setAttribute('aria-expanded',false);});
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter=btn.dataset.filter;
+      document.querySelectorAll('.blog-card').forEach(card=>{
+        if(filter==='all'||card.dataset.cat===filter){card.style.display='';}
+        else{card.style.display='none';}
+      });
+      ScrollTrigger.refresh();
+    });
+  });
+  if(!localStorage.getItem('tq_cookie')){setTimeout(()=>document.getElementById('cookieBanner').classList.add('visible'),1400);}
+  document.querySelector('.cookie-accept').addEventListener('click',()=>{localStorage.setItem('tq_cookie','1');document.getElementById('cookieBanner').style.display='none';});
+  document.querySelector('.cookie-decline').addEventListener('click',()=>{localStorage.setItem('tq_cookie','1');document.getElementById('cookieBanner').style.display='none';});
+</script>
 </body>
 </html>

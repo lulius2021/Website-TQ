@@ -122,14 +122,8 @@
             margin: 0 auto;
             padding: 0 40px;
         }
-        .logo {
-            font-family: 'Clash Display', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            color: #fff;
-        }
-        .logo span { color: var(--accent); }
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 32px; width: auto; display: block; }
         .nav-links {
             display: flex;
             align-items: center;
@@ -797,7 +791,7 @@
     <!-- ===== HEADER ===== -->
     <header class="header" id="header">
         <nav class="nav-container">
-            <a href="index.html" class="logo">Train<span>Q</span></a>
+            <a href="index.html" class="logo"><img src="images/logos/transparent Weiß.png" alt="TrainQ" height="32"></a>
 
             <div class="nav-links" id="navLinks">
                 <a href="index.html" class="nav-link active">Home</a>
