@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,174 +7,164 @@
     <meta name="description" content="TrainQ gives you a professional training plan that adapts to your real life — for gym, running, and cycling. No guesswork. No wasted sessions.">
     <link rel="icon" type="image/png" href="images/logos/hauptlogo.png">
     <meta property="og:title" content="TrainQ — Stop Guessing. Start Performing.">
-    <meta property="og:description" content="Pro-level training structure for gym, running & cycling. Adapts to your life. Keeps you moving forward.">
+    <meta property="og:description" content="Pro-level training structure for gym, running & cycling. Adapts to your life.">
     <meta property="og:image" content="https://trainq.app/images/og-image.png">
     <meta property="og:url" content="https://trainq.app">
     <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TrainQ — Stop Guessing. Start Performing.">
-    <meta name="twitter:description" content="Pro-level training structure for gym, running & cycling. Adapts to your life.">
-    <meta name="twitter:image" content="https://trainq.app/images/og-image.png">
 
-    <link rel="preload" as="image" href="fotos/maico-amorim-SJWPKMb9u-k-unsplash.webp" type="image/webp">
-    <link rel="dns-prefetch" href="https://apps.apple.com">
-    <link rel="stylesheet" href="fonts/inter.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap">
 
     <style>
-        /* ── Reset & Base ─────────────────────────────── */
+        /* ── Reset ──────────────────────────────────────── */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #fff;
-            color: #111;
+            font-family: 'Satoshi', -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
         img { display: block; max-width: 100%; }
         a { text-decoration: none; color: inherit; }
 
-        /* ── Tokens ───────────────────────────────────── */
+        /* ── Tokens ─────────────────────────────────────── */
         :root {
-            --blue: #0066FF;
-            --blue-dark: #0050CC;
-            --text: #111;
-            --text-muted: #666;
-            --text-light: #999;
-            --bg-white: #fff;
-            --bg-light: #F7F7F5;
-            --bg-sky: #EBF2FF;
-            --border: rgba(0,0,0,0.08);
-            --radius-sm: 6px;
-            --radius: 12px;
-            --radius-lg: 20px;
-            --container: 1140px;
+            --bg:       #0a0a0a;
+            --bg-2:     #111111;
+            --bg-3:     #161616;
+            --text:     #ffffff;
+            --muted:    rgba(255,255,255,0.45);
+            --muted-2:  rgba(255,255,255,0.22);
+            --accent:   #0066FF;
+            --border:   rgba(255,255,255,0.07);
+            --radius:   12px;
+            --radius-lg:20px;
+            --container:1160px;
+            --nav-h:    72px;
         }
 
-        /* ── Layout helpers ───────────────────────────── */
+        /* ── Layout ─────────────────────────────────────── */
         .container {
             width: 100%;
             max-width: var(--container);
             margin: 0 auto;
-            padding: 0 32px;
+            padding: 0 40px;
         }
-        .section { padding: 100px 0; }
-        .section-alt { background: var(--bg-light); }
-        .section-sky { background: var(--bg-sky); }
-
-        /* ── Badge ────────────────────────────────────── */
-        .badge {
-            display: inline-block;
-            padding: 4px 14px;
-            border: 1px solid rgba(0,102,255,0.25);
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.04em;
-            color: var(--blue);
-            background: rgba(0,102,255,0.06);
-            margin-bottom: 20px;
+        hr.divider {
+            border: none;
+            border-top: 1px solid var(--border);
         }
 
-        /* ── Buttons ──────────────────────────────────── */
+        /* ── Typography ─────────────────────────────────── */
+        .display {
+            font-family: 'Clash Display', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.0;
+        }
+
+        /* ── Buttons ─────────────────────────────────────── */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 13px 28px;
+            padding: 14px 32px;
             border-radius: 100px;
+            font-family: 'Satoshi', sans-serif;
             font-size: 0.9375rem;
             font-weight: 600;
             cursor: pointer;
             border: none;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
+            white-space: nowrap;
         }
-        .btn-dark {
-            background: #111;
-            color: #fff;
+        .btn-white {
+            background: #fff;
+            color: #0a0a0a;
         }
-        .btn-dark:hover { background: #333; }
-        .btn-outline {
+        .btn-white:hover { background: #e8e8e8; transform: translateY(-1px); }
+        .btn-ghost {
             background: transparent;
-            color: #111;
-            border: 1.5px solid rgba(0,0,0,0.2);
+            color: rgba(255,255,255,0.75);
+            border: 1px solid rgba(255,255,255,0.2);
         }
-        .btn-outline:hover { border-color: #111; background: rgba(0,0,0,0.04); }
-        .btn-blue {
-            background: var(--blue);
+        .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+        .btn-accent {
+            background: var(--accent);
             color: #fff;
         }
-        .btn-blue:hover { background: var(--blue-dark); }
+        .btn-accent:hover { background: #0050CC; transform: translateY(-1px); }
+        .btn-sm { padding: 9px 20px; font-size: 0.875rem; }
 
-        /* ── Header ───────────────────────────────────── */
+        /* ── Header ─────────────────────────────────────── */
         .header {
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 100;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            transition: box-shadow 0.2s;
+            transition: background 0.3s, border-color 0.3s;
+            border-bottom: 1px solid transparent;
         }
-        .header.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+        .header.scrolled {
+            background: rgba(10,10,10,0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom-color: var(--border);
+        }
         .nav-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 68px;
+            height: var(--nav-h);
             max-width: var(--container);
             margin: 0 auto;
-            padding: 0 32px;
+            padding: 0 40px;
         }
-        /* Logo */
-        .logo-wordmark {
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            color: #111;
+        .logo {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: #fff;
         }
-        .logo-wordmark span { color: var(--blue); }
-        /* Nav links */
-        .nav-desktop {
+        .logo span { color: var(--accent); }
+        .nav-links {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 2px;
         }
         .nav-link {
-            padding: 7px 14px;
-            border-radius: var(--radius-sm);
-            font-size: 0.9rem;
+            padding: 7px 16px;
+            border-radius: 100px;
+            font-size: 0.875rem;
             font-weight: 500;
-            color: var(--text-muted);
+            color: var(--muted);
             transition: color 0.15s, background 0.15s;
             background: none;
             border: none;
             cursor: pointer;
+            font-family: 'Satoshi', sans-serif;
         }
-        .nav-link:hover, .nav-link.active { color: #111; background: rgba(0,0,0,0.05); }
+        .nav-link:hover, .nav-link.active { color: #fff; background: rgba(255,255,255,0.08); }
         /* Dropdown */
         .nav-dropdown { position: relative; }
-        .dropdown-arrow {
-            transition: transform 0.2s;
-            margin-left: 2px;
-            vertical-align: middle;
-        }
+        .dropdown-arrow { transition: transform 0.2s; margin-left: 2px; vertical-align: middle; }
         .nav-dropdown.open .dropdown-arrow { transform: rotate(180deg); }
         .dropdown-menu {
             position: absolute;
             top: calc(100% + 8px);
             left: 50%;
-            transform: translateX(-50%);
-            background: #fff;
+            transform: translateX(-50%) translateY(-6px);
+            background: #1a1a1a;
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 8px;
             min-width: 160px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.6);
             opacity: 0;
             pointer-events: none;
-            transform: translateX(-50%) translateY(-4px);
             transition: opacity 0.15s, transform 0.15s;
         }
         .nav-dropdown.open .dropdown-menu {
@@ -187,12 +176,12 @@
             display: block;
             padding: 9px 14px;
             border-radius: 8px;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             font-weight: 500;
-            color: #333;
-            transition: background 0.1s;
+            color: rgba(255,255,255,0.75);
+            transition: background 0.1s, color 0.1s;
         }
-        .dropdown-item:hover { background: var(--bg-light); }
+        .dropdown-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
         /* Mobile */
         .mobile-menu-btn {
             display: none;
@@ -203,45 +192,47 @@
             cursor: pointer;
             padding: 8px;
         }
-        .hamburger-line {
-            width: 22px;
-            height: 2px;
-            background: #111;
+        .ham-line {
+            width: 24px; height: 1.5px;
+            background: rgba(255,255,255,0.8);
             border-radius: 2px;
             display: block;
-            transition: all 0.2s;
+            transition: all 0.25s;
         }
         .mobile-menu {
             display: none;
             position: fixed;
-            inset: 68px 0 0 0;
-            background: #fff;
+            inset: var(--nav-h) 0 0 0;
+            background: #0a0a0a;
             z-index: 99;
-            padding: 24px 32px;
+            padding: 32px 40px;
             flex-direction: column;
-            gap: 8px;
+            gap: 4px;
             border-top: 1px solid var(--border);
         }
         .mobile-menu.open { display: flex; }
         .mobile-link {
             display: block;
-            padding: 12px 0;
-            font-size: 1.125rem;
+            padding: 14px 0;
+            font-size: 1.25rem;
             font-weight: 500;
-            color: #111;
+            color: rgba(255,255,255,0.7);
             border-bottom: 1px solid var(--border);
+            transition: color 0.15s;
         }
-        .mobile-divider { height: 1px; background: var(--border); margin: 8px 0; }
-        .btn-mobile-cta { margin-top: 24px; text-align: center; justify-content: center; }
+        .mobile-link:hover { color: #fff; }
+        .mobile-divider { height: 1px; background: var(--border); margin: 12px 0; }
 
-        /* ── Hero ─────────────────────────────────────── */
+        /* ── Hero ────────────────────────────────────────── */
         .hero {
-            position: relative;
-            min-height: 86vh;
+            min-height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-bottom: 80px;
+            padding-top: var(--nav-h);
+            position: relative;
             overflow: hidden;
-            padding-top: 68px;
         }
         .hero-bg {
             position: absolute;
@@ -249,291 +240,440 @@
             z-index: 0;
         }
         .hero-bg img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
-            object-position: center 30%;
+            object-position: center 25%;
+            opacity: 0.22;
+            filter: grayscale(40%);
         }
-        /* gradient: white on left fading to transparent on right */
         .hero-bg::after {
             content: '';
             position: absolute;
             inset: 0;
             background: linear-gradient(
-                105deg,
-                rgba(255,255,255,0.96) 0%,
-                rgba(255,255,255,0.82) 38%,
-                rgba(255,255,255,0.2) 62%,
-                rgba(255,255,255,0) 80%
+                to bottom,
+                rgba(10,10,10,0.2) 0%,
+                rgba(10,10,10,0.1) 40%,
+                rgba(10,10,10,0.85) 80%,
+                rgba(10,10,10,1) 100%
             );
         }
-        .hero-content {
+        .hero-inner {
             position: relative;
             z-index: 1;
-            max-width: var(--container);
-            width: 100%;
-            margin: 0 auto;
-            padding: 80px 32px;
         }
         .hero-eyebrow {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             font-size: 0.8125rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
+            font-weight: 500;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--blue);
-            margin-bottom: 20px;
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 1px;
+            background: var(--muted);
         }
         .hero-title {
-            font-size: clamp(2.5rem, 5.5vw, 4.25rem);
-            font-weight: 800;
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(3.5rem, 8vw, 8rem);
+            font-weight: 600;
             letter-spacing: -0.04em;
-            line-height: 1.05;
-            color: #111;
-            margin-bottom: 20px;
-            max-width: 560px;
+            line-height: 0.95;
+            color: #fff;
+            margin-bottom: 48px;
+            overflow: hidden;
+        }
+        .hero-title .line {
+            display: block;
+            overflow: hidden;
+        }
+        .hero-title .line span {
+            display: block;
+            transform: translateY(100%);
+        }
+        .hero-bottom {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 40px;
         }
         .hero-desc {
-            font-size: 1.0625rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 36px;
-            max-width: 400px;
-        }
-        .hero-btns {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        /* ── Feature Split Section ────────────────────── */
-        .split-section { padding: 100px 0; }
-        .split-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-        .split-text { }
-        .split-text h2 {
-            font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-            font-weight: 800;
-            letter-spacing: -0.035em;
-            line-height: 1.1;
-            margin-bottom: 14px;
-        }
-        .split-text .subtitle {
             font-size: 1rem;
-            color: var(--text-muted);
-            line-height: 1.65;
-            margin-bottom: 36px;
-            max-width: 440px;
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 380px;
+            opacity: 0;
         }
-        .features-2col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px 32px;
-            margin-bottom: 36px;
-        }
-        .feature-item h4 {
-            font-size: 0.9375rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: #111;
-        }
-        .feature-item p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            line-height: 1.55;
-        }
-        .split-btns {
+        .hero-cta {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 20px;
+            opacity: 0;
         }
-        .split-image {
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: 0 24px 60px rgba(0,0,0,0.12);
-            background: #f0f0f0;
+        /* Rotating circle button */
+        .rotating-btn {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            flex-shrink: 0;
+            cursor: pointer;
         }
-        .split-image img {
-            width: 100%;
-            height: 480px;
-            object-fit: cover;
+        .rotating-btn svg.rotating-ring {
+            animation: spin 12s linear infinite;
+            position: absolute;
+            inset: 0;
         }
-        /* app mockup variant */
-        .split-image.mockup {
-            background: none;
-            border-radius: 0;
-            box-shadow: none;
-            overflow: visible;
+        .rotating-btn .center-icon {
+            position: absolute;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
         }
-        .split-image.mockup img {
-            width: auto;
-            height: 580px;
-            object-fit: contain;
-            filter: drop-shadow(0 32px 48px rgba(0,0,0,0.18));
-        }
+        .rotating-btn:hover .center-icon { transform: scale(1.15); }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* ── Sports Section ───────────────────────────── */
-        .sports-section { padding: 100px 0; }
-        .sports-header {
-            text-align: center;
-            margin-bottom: 56px;
-        }
-        .sports-header h2 {
-            font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-            font-weight: 800;
-            letter-spacing: -0.035em;
-            line-height: 1.1;
-            margin-bottom: 14px;
-        }
-        .sports-header p {
-            font-size: 1rem;
-            color: var(--text-muted);
-            max-width: 500px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-        .sports-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .sport-card {
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-        .sport-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.14); }
-        .sport-photo {
-            position: relative;
-            height: 260px;
-            overflow: hidden;
-        }
-        .sport-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-        .sport-card:hover .sport-photo img { transform: scale(1.04); }
-        .sport-label {
-            padding: 18px 20px 20px;
-            background: #fff;
-            border: 1px solid var(--border);
-            border-top: none;
-        }
-        .sport-label h3 {
-            font-size: 1.0625rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        .sport-label p {
-            font-size: 0.8125rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
+        /* ── Section base ────────────────────────────────── */
+        .section { padding: 120px 0; }
+        .section-sm { padding: 80px 0; }
 
-        /* ── Blog Teaser ──────────────────────────────── */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 48px;
+        /* ── Section label ───────────────────────────────── */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
         }
-        .blog-card {
-            background: #fff;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 28px;
-            transition: box-shadow 0.2s, transform 0.2s;
-        }
-        .blog-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.09); transform: translateY(-2px); }
-        .blog-tag {
+        .section-label::before {
+            content: '';
             display: inline-block;
-            padding: 3px 10px;
-            background: var(--bg-sky);
-            color: var(--blue);
+            width: 20px;
+            height: 1px;
+            background: var(--muted);
+        }
+
+        /* ── Features (numbered list) ────────────────────── */
+        .features-section { background: var(--bg-2); }
+        .features-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        .features-header h2 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.0;
+            max-width: 640px;
+        }
+        .features-header p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 320px;
+            text-align: right;
+        }
+        .features-list {
+            border-top: 1px solid var(--border);
+        }
+        .feature-row {
+            display: grid;
+            grid-template-columns: 80px 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            padding: 48px 0;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+        .feature-row:hover { background: rgba(255,255,255,0.02); margin: 0 -40px; padding: 48px 40px; }
+        .feature-num {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-2);
+            padding-top: 4px;
+        }
+        .feature-row h3 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+        .feature-row p {
+            font-size: 0.9375rem;
+            color: var(--muted);
+            line-height: 1.7;
+            padding-top: 6px;
+        }
+        .feature-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(0,102,255,0.12);
+            color: #6699FF;
             border-radius: 100px;
             font-size: 0.75rem;
             font-weight: 600;
             margin-bottom: 14px;
         }
-        .blog-card h3 {
+
+        /* ── Sports Section ──────────────────────────────── */
+        .sports-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .sports-head h2 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.0;
+        }
+        .sports-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .sport-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: border-color 0.25s, transform 0.3s;
+        }
+        .sport-card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-4px); }
+        .sport-photo {
+            height: 280px;
+            overflow: hidden;
+        }
+        .sport-photo img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: transform 0.5s ease, filter 0.3s;
+        }
+        .sport-card:hover .sport-photo img { transform: scale(1.04); filter: grayscale(0%); }
+        .sport-info {
+            padding: 24px 28px 28px;
+        }
+        .sport-info h3 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.375rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+        .sport-info p {
+            font-size: 0.875rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+        .sport-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.4);
+            margin-top: 16px;
+            transition: color 0.2s, gap 0.2s;
+        }
+        .sport-card:hover .sport-arrow { color: #fff; gap: 10px; }
+
+        /* ── App Mockup split ────────────────────────────── */
+        .mockup-section { background: var(--bg-2); }
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .mockup-image {
+            display: flex;
+            justify-content: center;
+        }
+        .mockup-image img {
+            height: 600px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.8));
+        }
+        .mockup-text .section-label { margin-bottom: 24px; }
+        .mockup-text h2 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(2rem, 3.5vw, 3.25rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+        .mockup-text p {
             font-size: 1rem;
-            font-weight: 700;
-            line-height: 1.35;
-            margin-bottom: 10px;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 40px;
+        }
+        .feature-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        .pill {
+            padding: 8px 18px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.6);
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .pill:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
+
+        /* ── Blog Section ────────────────────────────────── */
+        .blog-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .blog-head h2 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.0;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .blog-card {
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            transition: border-color 0.25s, transform 0.25s;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover { border-color: rgba(255,255,255,0.18); transform: translateY(-3px); }
+        .blog-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(0,102,255,0.12);
+            color: #6699FF;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+        .blog-card h3 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-bottom: 12px;
         }
         .blog-card p {
             font-size: 0.875rem;
-            color: var(--text-muted);
-            line-height: 1.55;
-            margin-bottom: 16px;
+            color: var(--muted);
+            line-height: 1.65;
+            flex: 1;
+            margin-bottom: 24px;
         }
         .blog-read {
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             font-weight: 600;
-            color: var(--blue);
+            color: rgba(255,255,255,0.35);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s, gap 0.2s;
         }
+        .blog-card:hover .blog-read { color: #fff; gap: 10px; }
 
-        /* ── Beta CTA ─────────────────────────────────── */
-        .beta-section {
-            padding: 100px 0;
+        /* ── CTA Section ─────────────────────────────────── */
+        .cta-section {
+            background: var(--bg-2);
             text-align: center;
         }
-        .beta-section h2 {
-            font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-            font-weight: 800;
-            letter-spacing: -0.035em;
-            margin-bottom: 14px;
-        }
-        .beta-section p {
-            color: var(--text-muted);
-            margin-bottom: 36px;
-            font-size: 1rem;
-        }
-        .beta-form {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            max-width: 440px;
-            margin: 0 auto;
-        }
-        .beta-input {
-            flex: 1;
-            padding: 13px 18px;
-            border-radius: 100px;
-            border: 1.5px solid var(--border);
-            font-size: 0.9375rem;
-            font-family: inherit;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .beta-input:focus { border-color: var(--blue); }
-        .beta-success {
-            display: none;
-            color: #16a34a;
+        .cta-section h2 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(3rem, 7vw, 7rem);
             font-weight: 600;
-            margin-top: 16px;
+            letter-spacing: -0.04em;
+            line-height: 0.95;
+            margin-bottom: 48px;
         }
-        .beta-note {
-            font-size: 0.8125rem;
-            color: var(--text-light);
-            margin-top: 14px;
+        .cta-section h2 em {
+            font-style: normal;
+            color: var(--muted);
+        }
+        .cta-btns {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
-        /* ── Footer ───────────────────────────────────── */
-        .footer {
+        /* ── Stats bar ───────────────────────────────────── */
+        .stats-bar {
             border-top: 1px solid var(--border);
-            padding: 36px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .stats-inner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .stat-item {
+            padding: 48px 40px;
+            border-right: 1px solid var(--border);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-num {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            margin-bottom: 6px;
+        }
+        .stat-label {
+            font-size: 0.8125rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        /* ── Footer ──────────────────────────────────────── */
+        .footer {
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
         }
         .footer-row {
             display: flex;
@@ -542,174 +682,166 @@
             gap: 24px;
         }
         .footer-logo {
-            font-size: 1.0625rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            color: #111;
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: #fff;
         }
-        .footer-logo span { color: var(--blue); }
+        .footer-logo span { color: var(--accent); }
         .footer-links {
             display: flex;
-            gap: 28px;
+            gap: 32px;
         }
         .footer-links a {
             font-size: 0.875rem;
-            color: var(--text-muted);
+            color: var(--muted);
             transition: color 0.15s;
         }
-        .footer-links a:hover { color: #111; }
+        .footer-links a:hover { color: #fff; }
         .footer-copy {
             font-size: 0.8125rem;
-            color: var(--text-light);
+            color: var(--muted-2);
         }
 
-        /* ── Back to top / Cookie ─────────────────────── */
+        /* ── Cookie / Back to top ────────────────────────── */
         .back-to-top {
             position: fixed;
-            bottom: 28px;
-            right: 28px;
-            width: 44px;
-            height: 44px;
+            bottom: 28px; right: 28px;
+            width: 44px; height: 44px;
             border-radius: 50%;
-            background: #111;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
             color: #fff;
-            border: none;
             font-size: 1.125rem;
             cursor: pointer;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.25s;
             z-index: 50;
         }
         .back-to-top.visible { opacity: 1; pointer-events: all; }
         .cookie-banner {
             position: fixed;
-            bottom: 24px;
-            left: 24px;
+            bottom: 24px; left: 24px;
             max-width: 380px;
-            background: #111;
+            background: #1a1a1a;
+            border: 1px solid var(--border);
             color: #fff;
-            border-radius: var(--radius);
-            padding: 20px 24px;
+            border-radius: var(--radius-lg);
+            padding: 24px;
             z-index: 200;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.7);
             display: none;
         }
         .cookie-banner.visible { display: block; }
-        .cookie-banner-title { font-weight: 700; margin-bottom: 6px; }
-        .cookie-banner p { font-size: 0.8125rem; color: rgba(255,255,255,0.7); line-height: 1.5; margin-bottom: 16px; }
-        .cookie-banner-actions { display: flex; gap: 10px; }
+        .cookie-banner-title { font-weight: 700; margin-bottom: 8px; font-family: 'Clash Display', sans-serif; }
+        .cookie-banner p { font-size: 0.8125rem; color: var(--muted); line-height: 1.55; margin-bottom: 20px; }
+        .cookie-actions { display: flex; gap: 10px; }
         .cookie-btn {
-            flex: 1;
-            padding: 9px;
-            border-radius: 8px;
-            border: none;
-            font-size: 0.875rem;
-            font-weight: 600;
-            cursor: pointer;
+            flex: 1; padding: 10px;
+            border-radius: var(--radius); border: none;
+            font-size: 0.875rem; font-weight: 600;
+            cursor: pointer; font-family: 'Satoshi', sans-serif;
         }
-        .cookie-btn-accept { background: #fff; color: #111; }
-        .cookie-btn-decline { background: rgba(255,255,255,0.12); color: #fff; }
+        .cookie-accept { background: #fff; color: #0a0a0a; }
+        .cookie-decline { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
 
-        /* ── Reveal animations ────────────────────────── */
-        .reveal {
+        /* ── GSAP: initial hidden states ─────────────────── */
+        .fade-up {
             opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.55s ease, transform 0.55s ease;
+            transform: translateY(40px);
         }
-        .reveal.visible { opacity: 1; transform: none; }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
+        .fade-in {
+            opacity: 0;
+        }
 
-        /* ── Responsive ───────────────────────────────── */
+        /* ── Responsive ──────────────────────────────────── */
+        @media (max-width: 1024px) {
+            .features-header { flex-direction: column; gap: 20px; }
+            .features-header p { text-align: left; max-width: 100%; }
+            .feature-row { grid-template-columns: 60px 1fr; }
+            .feature-row p { grid-column: 2; }
+            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .stat-item:nth-child(2) { border-right: none; }
+            .stat-item:nth-child(3) { border-top: 1px solid var(--border); }
+            .stat-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
+        }
         @media (max-width: 900px) {
-            .nav-desktop { display: none; }
+            :root { --container: 100%; }
+            .nav-links { display: none; }
             .mobile-menu-btn { display: flex; }
-            .split-grid { grid-template-columns: 1fr; gap: 48px; }
-            .split-image { order: -1; }
-            .split-image img { height: 320px; }
-            .split-image.mockup img { height: 300px; }
             .sports-grid { grid-template-columns: 1fr; }
             .blog-grid { grid-template-columns: 1fr; }
-            .features-2col { grid-template-columns: 1fr; }
+            .mockup-grid { grid-template-columns: 1fr; gap: 48px; }
+            .mockup-image { order: -1; }
+            .mockup-image img { height: 400px; }
+            .sports-head, .blog-head, .features-header { flex-direction: column; gap: 16px; }
+            .sports-head p, .blog-head a { align-self: flex-start; }
+            .hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
+            .cta-section h2 { font-size: clamp(2.5rem, 9vw, 4rem); }
             .footer-row { flex-direction: column; text-align: center; }
-            .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
-            .hero-bg::after {
-                background: linear-gradient(
-                    to bottom,
-                    rgba(255,255,255,0.95) 0%,
-                    rgba(255,255,255,0.85) 60%,
-                    rgba(255,255,255,0.6) 100%
-                );
-            }
         }
         @media (max-width: 600px) {
-            .container { padding: 0 20px; }
-            .section { padding: 72px 0; }
-            .hero { min-height: 80vh; }
-            .hero-content { padding: 60px 20px; }
-            .beta-form { flex-direction: column; border-radius: var(--radius); }
-            .beta-input { border-radius: var(--radius-sm); }
+            .container { padding: 0 24px; }
+            .nav-container { padding: 0 24px; }
+            .section { padding: 80px 0; }
+            .hero-title { font-size: clamp(3rem, 11vw, 5rem); }
+            .stat-item { padding: 32px 24px; }
+            .feature-row { grid-template-columns: 1fr; gap: 12px; padding: 32px 0; }
+            .feature-num { display: none; }
         }
     </style>
 </head>
-
 <body>
 
     <!-- ===== HEADER ===== -->
     <header class="header" id="header">
         <nav class="nav-container">
-            <a href="index.html" class="logo-wordmark">Train<span>Q</span></a>
+            <a href="index.html" class="logo">Train<span>Q</span></a>
 
-            <div class="nav-desktop" id="navDesktop">
+            <div class="nav-links" id="navLinks">
                 <a href="index.html" class="nav-link active">Home</a>
 
                 <div class="nav-dropdown" id="sportsDropdown">
-                    <button class="nav-link dropdown-trigger" id="sportsDropdownBtn" aria-expanded="false">
+                    <button class="nav-link dropdown-trigger" id="sportsBtn" aria-expanded="false" aria-haspopup="true">
                         Sports
                         <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
                     </button>
-                    <div class="dropdown-menu" id="sportsDropdownMenu">
-                        <a href="gym.html" class="dropdown-item">Gym</a>
-                        <a href="running.html" class="dropdown-item">Running</a>
-                        <a href="cycling.html" class="dropdown-item">Cycling</a>
+                    <div class="dropdown-menu">
+                        <a href="gym.html" class="dropdown-item">🏋️ Gym</a>
+                        <a href="running.html" class="dropdown-item">🏃 Running</a>
+                        <a href="cycling.html" class="dropdown-item">🚴 Cycling</a>
                     </div>
                 </div>
 
                 <a href="features.html" class="nav-link">Features</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
-                <a href="/de/index.html" class="nav-link">DE</a>
             </div>
 
             <div style="display:flex;align-items:center;gap:12px;">
-                <a href="https://apps.apple.com/app/trainq" class="btn btn-dark" target="_blank" rel="noopener" style="font-size:0.875rem;padding:10px 22px;">
-                    App laden
-                </a>
+                <a href="de/index.html" class="btn btn-ghost btn-sm">DE</a>
+                <a href="https://apps.apple.com/app/trainq" class="btn btn-white btn-sm" target="_blank" rel="noopener">Get App</a>
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
+                    <span class="ham-line"></span>
+                    <span class="ham-line"></span>
+                    <span class="ham-line"></span>
                 </button>
             </div>
         </nav>
 
-        <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobileMenu">
             <a href="index.html" class="mobile-link">Home</a>
             <a href="features.html" class="mobile-link">Features</a>
             <a href="blog.html" class="mobile-link">Blog</a>
             <a href="pricing.html" class="mobile-link">Pricing</a>
             <div class="mobile-divider"></div>
-            <a href="gym.html" class="mobile-link">Gym</a>
-            <a href="running.html" class="mobile-link">Running</a>
-            <a href="cycling.html" class="mobile-link">Cycling</a>
+            <a href="gym.html" class="mobile-link">🏋️ Gym</a>
+            <a href="running.html" class="mobile-link">🏃 Running</a>
+            <a href="cycling.html" class="mobile-link">🚴 Cycling</a>
             <div class="mobile-divider"></div>
-            <a href="/de/index.html" class="mobile-link">🇩🇪 Deutsch</a>
-            <a href="https://apps.apple.com/app/trainq" class="btn btn-dark btn-mobile-cta" target="_blank" rel="noopener">
-                Download on App Store
-            </a>
+            <a href="de/index.html" class="mobile-link">🇩🇪 Deutsch</a>
+            <a href="https://apps.apple.com/app/trainq" class="btn btn-white" style="margin-top:24px;justify-content:center;" target="_blank" rel="noopener">Download on App Store</a>
         </div>
     </header>
 
@@ -723,212 +855,229 @@
                     <img src="fotos/maico-amorim-SJWPKMb9u-k-unsplash.jpg" alt="" fetchpriority="high" width="2400" height="1596">
                 </picture>
             </div>
-            <div class="hero-content">
-                <span class="hero-eyebrow">Available on iOS</span>
-                <h1 class="hero-title">
-                    TrainQ wartet<br>auf dich.
+            <div class="hero-inner container">
+                <p class="hero-eyebrow" id="heroEyebrow">Available on iOS</p>
+                <h1 class="hero-title" id="heroTitle">
+                    <span class="line"><span>Stop Guessing.</span></span>
+                    <span class="line"><span>Start Performing.</span></span>
                 </h1>
-                <p class="hero-desc">
-                    Professionelle Trainingspläne für Gym, Laufen und Radfahren — die sich automatisch deinem Leben anpassen.
-                </p>
-                <div class="hero-btns">
-                    <a href="https://apps.apple.com/app/trainq" class="btn btn-dark" target="_blank" rel="noopener">
-                        App laden
-                    </a>
-                    <a href="#features" class="btn btn-outline">
-                        Mehr erfahren
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== FEATURE SPLIT — Smart Training ===== -->
-        <section class="split-section" id="features" style="background: linear-gradient(180deg, #ffffff 0%, #f5f5f3 100%);">
-            <div class="container">
-                <div class="split-grid">
-                    <div class="split-text reveal">
-                        <span class="badge">Smart Training</span>
-                        <h2>Alles für dein perfektes Training</h2>
-                        <p class="subtitle">
-                            TrainQ bietet höchste Trainingsqualität mit einer KI-Engine, die wirklich versteht, was dein Körper gerade braucht. Kein Raten. Keine verschwendeten Einheiten.
-                        </p>
-
-                        <div class="features-2col">
-                            <div class="feature-item">
-                                <h4>Adaptives Training</h4>
-                                <p>Der Plan passt sich nach jeder Einheit automatisch an — härter wenn du bereit bist, leichter wenn du Recovery brauchst.</p>
-                            </div>
-                            <div class="feature-item">
-                                <h4>Live-Vorgaben</h4>
-                                <p>Tempo, Herzfrequenz, Wiederholungen — alle Zielwerte direkt in der App während der Einheit.</p>
-                            </div>
-                            <div class="feature-item">
-                                <h4>Gamification</h4>
-                                <p>XP, Level und Streaks halten dich motiviert. Jede Einheit bringt dich deinem nächsten Level näher.</p>
-                            </div>
-                            <div class="feature-item">
-                                <h4>Kalender-Integration</h4>
-                                <p>Verpasste Einheiten werden automatisch neu eingeplant — ohne Stress, ohne Rückstand.</p>
-                            </div>
-                        </div>
-
-                        <div class="split-btns">
-                            <a href="features.html" class="btn btn-dark">Entdecken</a>
-                            <a href="features.html" class="btn btn-outline">Mehr →</a>
-                        </div>
-                    </div>
-
-                    <div class="split-image mockup reveal reveal-delay-2">
-                        <img src="images/handy.png" alt="TrainQ App Screenshot" loading="lazy">
+                <div class="hero-bottom">
+                    <p class="hero-desc" id="heroDesc">
+                        Professional training plans for gym, running and cycling — that automatically adapt to your real life.
+                    </p>
+                    <div class="hero-cta" id="heroCta">
+                        <a href="https://apps.apple.com/app/trainq" class="btn btn-white" target="_blank" rel="noopener">
+                            Download Free
+                        </a>
+                        <a href="#features" class="btn btn-ghost">
+                            Learn more
+                        </a>
+                        <!-- Rotating circle button -->
+                        <a href="https://apps.apple.com/app/trainq" class="rotating-btn" target="_blank" rel="noopener" aria-label="Download TrainQ">
+                            <svg class="rotating-ring" viewBox="0 0 120 120" width="120" height="120">
+                                <defs>
+                                    <path id="circle" d="M 60,60 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"/>
+                                </defs>
+                                <text fill="rgba(255,255,255,0.55)" font-size="10.5" font-family="Satoshi, sans-serif" font-weight="500" letter-spacing="3">
+                                    <textPath href="#circle">GET STARTED · FREE BETA · GET STARTED · FREE BETA ·</textPath>
+                                </text>
+                            </svg>
+                            <span class="center-icon">↗</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== SPORTS SECTION ===== -->
-        <section class="sports-section section-sky" id="sports">
-            <div class="container">
-                <div class="sports-header reveal">
-                    <span class="badge">Sport</span>
-                    <h2>Wähle deinen Sport.<br>Wir erledigen den Rest.</h2>
-                    <p>Eine App. Drei Disziplinen. Strukturiertes Training genau dort, wo du dich auspowerst.</p>
+        <!-- ===== STATS BAR ===== -->
+        <div class="stats-bar">
+            <div class="stats-inner">
+                <div class="stat-item fade-up">
+                    <div class="stat-num">3</div>
+                    <div class="stat-label">Sports supported</div>
                 </div>
+                <div class="stat-item fade-up">
+                    <div class="stat-num">100%</div>
+                    <div class="stat-label">Adaptive planning</div>
+                </div>
+                <div class="stat-item fade-up">
+                    <div class="stat-num">Free</div>
+                    <div class="stat-label">During public beta</div>
+                </div>
+                <div class="stat-item fade-up">
+                    <div class="stat-num">iOS 17+</div>
+                    <div class="stat-label">iPhone & Apple Watch</div>
+                </div>
+            </div>
+        </div>
 
+        <!-- ===== FEATURES ===== -->
+        <section class="section features-section" id="features">
+            <div class="container">
+                <div class="features-header">
+                    <h2 class="fade-up">Training that<br>actually works.</h2>
+                    <p class="fade-up">No guessing. No wasted sessions. Just a plan that knows when to push — and when to back off.</p>
+                </div>
+                <div class="features-list">
+                    <div class="feature-row fade-up">
+                        <div class="feature-num">01</div>
+                        <div>
+                            <div class="feature-tag">Adaptive Engine</div>
+                            <h3>Plans that learn from every session</h3>
+                        </div>
+                        <p>After every workout, TrainQ analyzes your performance data — pace, heart rate, RPE — and recalculates the next 3–7 days to keep you on track without burning out.</p>
+                    </div>
+                    <div class="feature-row fade-up">
+                        <div class="feature-num">02</div>
+                        <div>
+                            <div class="feature-tag">Live Guidance</div>
+                            <h3>Real-time targets during your workout</h3>
+                        </div>
+                        <p>Pace zones, heart rate targets, rep counts — all shown live during your session. Apple Watch integration means you never need to look at your phone.</p>
+                    </div>
+                    <div class="feature-row fade-up">
+                        <div class="feature-num">03</div>
+                        <div>
+                            <div class="feature-tag">Recovery Intelligence</div>
+                            <h3>Know when to push, know when to rest</h3>
+                        </div>
+                        <p>HRV and resting heart rate from Apple Health are used to automatically adjust intensity — so you train hard when you're ready, and recover when you need it.</p>
+                    </div>
+                    <div class="feature-row fade-up">
+                        <div class="feature-num">04</div>
+                        <div>
+                            <div class="feature-tag">Gamification</div>
+                            <h3>XP, levels and streaks that keep you moving</h3>
+                        </div>
+                        <p>Every session earns XP. Hit milestones. Build streaks. TrainQ makes consistency feel rewarding — not like a chore.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SPORTS ===== -->
+        <section class="section">
+            <div class="container">
+                <div class="sports-head">
+                    <h2 class="fade-up">One app.<br>Three sports.</h2>
+                    <p class="fade-up" style="color:var(--muted);font-size:1rem;line-height:1.7;max-width:300px;">Structured training exactly where you push yourself — gym, roads, or trails.</p>
+                </div>
                 <div class="sports-grid">
-                    <a href="gym.html" class="sport-card reveal reveal-delay-1">
+                    <a href="gym.html" class="sport-card fade-up">
                         <div class="sport-photo">
                             <picture>
                                 <source srcset="fotos/john-arano-h4i9G-de7Po-unsplash.webp" type="image/webp">
                                 <img src="fotos/john-arano-h4i9G-de7Po-unsplash.jpg" alt="Gym Training" loading="lazy">
                             </picture>
                         </div>
-                        <div class="sport-label">
+                        <div class="sport-info">
                             <h3>Gym</h3>
-                            <p>Progressive Kraftpläne, Rep-Tracking und PRs — für den langen Weg.</p>
+                            <p>Progressive overload, PR tracking, rep guidance — for the long game.</p>
+                            <span class="sport-arrow">Explore Gym →</span>
                         </div>
                     </a>
-
-                    <a href="running.html" class="sport-card reveal reveal-delay-2">
+                    <a href="running.html" class="sport-card fade-up">
                         <div class="sport-photo">
                             <picture>
                                 <source srcset="fotos/nick-gosset-3DJfakd6VoU-unsplash.webp" type="image/webp">
                                 <img src="fotos/nick-gosset-3DJfakd6VoU-unsplash.jpg" alt="Running" loading="lazy">
                             </picture>
                         </div>
-                        <div class="sport-label">
+                        <div class="sport-info">
                             <h3>Running</h3>
-                            <p>5k bis Marathon. Intervalle, Tempozonen und Rennprognosen aus echten Daten.</p>
+                            <p>5k to marathon. Intervals, pace zones and race predictions from real data.</p>
+                            <span class="sport-arrow">Explore Running →</span>
                         </div>
                     </a>
-
-                    <a href="cycling.html" class="sport-card reveal reveal-delay-3">
+                    <a href="cycling.html" class="sport-card fade-up">
                         <div class="sport-photo">
                             <picture>
                                 <source srcset="fotos/paolo-candelo-53B17GiIhTA-unsplash.webp" type="image/webp">
                                 <img src="fotos/paolo-candelo-53B17GiIhTA-unsplash.jpg" alt="Cycling" loading="lazy">
                             </picture>
                         </div>
-                        <div class="sport-label">
+                        <div class="sport-info">
                             <h3>Cycling</h3>
-                            <p>FTP-basierte Intensität, strukturierte Rides und Event-Peaking — gesteuert von deinen Werten.</p>
+                            <p>FTP-based intensity, structured rides and event peaking — powered by your numbers.</p>
+                            <span class="sport-arrow">Explore Cycling →</span>
                         </div>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- ===== FEATURE SPLIT — Adaptive Engine ===== -->
-        <section class="split-section" style="background: linear-gradient(180deg, #f5f5f3 0%, #ffffff 100%);">
+        <!-- ===== APP MOCKUP ===== -->
+        <section class="section mockup-section">
             <div class="container">
-                <div class="split-grid">
-                    <div class="split-image reveal">
-                        <picture>
-                            <source srcset="fotos/branislav-rodman-FryV9GFGJNY-unsplash.webp" type="image/webp">
-                            <img src="fotos/branislav-rodman-FryV9GFGJNY-unsplash.jpg" alt="Runner adapting" loading="lazy">
-                        </picture>
+                <div class="mockup-grid">
+                    <div class="mockup-image fade-up">
+                        <img src="images/handy.png" alt="TrainQ App" loading="lazy">
                     </div>
-                    <div class="split-text reveal reveal-delay-2">
-                        <span class="badge">Adaptive Engine</span>
-                        <h2>Das Leben kommt dazwischen.<br>TrainQ passt sich an.</h2>
-                        <p class="subtitle">
-                            Einheit verpasst. Erkältung. Überlastet. Egal was passiert — TrainQ plant deinen Plan automatisch neu, ohne Schuldgefühle, ohne Schwung zu verlieren.
-                        </p>
-
-                        <div class="features-2col">
-                            <div class="feature-item">
-                                <h4>Auto-Reschedule</h4>
-                                <p>Verpasste Einheiten werden automatisch in die Woche integriert.</p>
-                            </div>
-                            <div class="feature-item">
-                                <h4>Fatigue-Erkennung</h4>
-                                <p>TrainQ erkennt Überlastung und fügt Recovery ein bevor du burnst.</p>
-                            </div>
-                            <div class="feature-item">
-                                <h4>Progressive Load</h4>
-                                <p>Belastung steigt genau dann, wenn dein Körper bereit ist — nicht früher.</p>
-                            </div>
-                            <div class="feature-item">
-                                <h4>Health-Sync</h4>
-                                <p>Apple Health und Garmin Connect werden automatisch ausgewertet.</p>
-                            </div>
+                    <div class="mockup-text">
+                        <span class="section-label">The App</span>
+                        <h2 class="fade-up">Everything you need. Nothing you don't.</h2>
+                        <p class="fade-up">TrainQ is built around one idea: give you the structure of a personal coach, without the cost or complexity.</p>
+                        <div class="feature-pills fade-up">
+                            <span class="pill">Adaptive Training</span>
+                            <span class="pill">Apple Watch</span>
+                            <span class="pill">Garmin Sync</span>
+                            <span class="pill">Apple Health</span>
+                            <span class="pill">PR Tracking</span>
+                            <span class="pill">HRV Monitoring</span>
+                            <span class="pill">Calendar Integration</span>
+                            <span class="pill">XP & Levels</span>
                         </div>
-
-                        <div class="split-btns">
-                            <a href="features.html" class="btn btn-dark">Alle Features</a>
+                        <div class="fade-up">
+                            <a href="features.html" class="btn btn-white">See all features</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== BLOG TEASER ===== -->
-        <section class="section section-alt">
+        <!-- ===== BLOG ===== -->
+        <section class="section">
             <div class="container">
-                <div class="sports-header reveal">
-                    <span class="badge">Blog</span>
-                    <h2>Trainiere smarter mit der Wissenschaft.</h2>
-                    <p>Fundiertes Wissen für Athleten — kein Hype, nur was wirklich funktioniert.</p>
+                <div class="blog-head">
+                    <h2 class="fade-up">Train smarter<br>with science.</h2>
+                    <a href="blog.html" class="btn btn-ghost fade-up">All articles →</a>
                 </div>
-
                 <div class="blog-grid">
-                    <a href="blog/polarized-training.html" class="blog-card reveal reveal-delay-1">
-                        <div class="blog-tag">Running</div>
+                    <a href="blog/polarized-training.html" class="blog-card fade-up">
+                        <span class="blog-tag">Running</span>
                         <h3>Polarized vs. Threshold Training</h3>
-                        <p>Warum die 80/20-Intensitätsverteilung threshold-heavy Ansätzen überlegen ist — wissenschaftlich belegt.</p>
-                        <span class="blog-read">Artikel lesen →</span>
+                        <p>Why the 80/20 intensity split outperforms threshold-heavy approaches — backed by the science.</p>
+                        <span class="blog-read">Read article →</span>
                     </a>
-                    <a href="blog/sleep-performance.html" class="blog-card reveal reveal-delay-2">
-                        <div class="blog-tag">Recovery</div>
-                        <h3>Schlaf ist der #1 Performance-Booster</h3>
-                        <p>Kein Supplement kommt auch nur in die Nähe von 8+ Stunden Schlaf. Das sagen die Stanford-Daten.</p>
-                        <span class="blog-read">Artikel lesen →</span>
+                    <a href="blog/sleep-performance.html" class="blog-card fade-up">
+                        <span class="blog-tag">Recovery</span>
+                        <h3>Sleep is the #1 Performance Booster</h3>
+                        <p>No supplement comes close to 8+ hours of sleep. Here's what the Stanford data actually says.</p>
+                        <span class="blog-read">Read article →</span>
                     </a>
-                    <a href="blog/norwegian-method.html" class="blog-card reveal reveal-delay-3">
-                        <div class="blog-tag">Running</div>
-                        <h3>Die norwegische Double-Threshold-Methode</h3>
-                        <p>Wie norwegische Läufer mit einem kontraintuitiven Trainingsansatz Weltrekorde brachen.</p>
-                        <span class="blog-read">Artikel lesen →</span>
+                    <a href="blog/norwegian-method.html" class="blog-card fade-up">
+                        <span class="blog-tag">Running</span>
+                        <h3>The Norwegian Double-Threshold Method</h3>
+                        <p>How Norwegian runners broke world records with a counterintuitive training approach.</p>
+                        <span class="blog-read">Read article →</span>
                     </a>
-                </div>
-
-                <div style="text-align:center;margin-top:48px;" class="reveal">
-                    <a href="blog.html" class="btn btn-outline">Alle Artikel →</a>
                 </div>
             </div>
         </section>
 
-        <!-- ===== BETA CTA ===== -->
-        <section class="beta-section section-sky">
-            <div class="container reveal">
-                <span class="badge">Beta Access</span>
-                <h2>Wanna test it?</h2>
-                <p>Trag deine E-Mail ein — wir schicken dir eine TestFlight-Einladung. Kostenlos. Kein Haken.</p>
-                <form class="beta-form" id="betaForm">
-                    <input type="email" class="beta-input" placeholder="deine@email.com" required autocomplete="email">
-                    <button type="submit" class="btn btn-dark">Zugang sichern</button>
-                </form>
-                <p class="beta-success" id="betaSuccess">✓ Du bist auf der Liste — Einladung kommt bald.</p>
-                <p class="beta-note">Kein Spam. Jederzeit abmeldbar.</p>
+        <!-- ===== CTA ===== -->
+        <section class="section cta-section">
+            <div class="container">
+                <h2 class="fade-up">
+                    Start training<br>
+                    <em>the smart way.</em>
+                </h2>
+                <div class="cta-btns fade-up">
+                    <a href="https://apps.apple.com/app/trainq" class="btn btn-white" target="_blank" rel="noopener">
+                        Download on App Store
+                    </a>
+                    <a href="pricing.html" class="btn btn-ghost">Free during beta</a>
+                </div>
             </div>
         </section>
 
@@ -938,100 +1087,150 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-row">
-                <span class="footer-logo">Train<span>Q</span></span>
+                <a href="index.html" class="footer-logo">Train<span>Q</span></a>
                 <div class="footer-links">
-                    <a href="imprint.html">Impressum</a>
-                    <a href="privacy.html">Datenschutz</a>
-                    <a href="terms.html">AGB</a>
+                    <a href="imprint.html">Imprint</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
                 </div>
                 <span class="footer-copy">&copy; 2026 TrainQ</span>
             </div>
         </div>
     </footer>
 
-    <!-- Back to top -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
-    <!-- Cookie Banner -->
     <div class="cookie-banner" id="cookieBanner">
-        <p class="cookie-banner-title">Cookie-Einstellungen</p>
-        <p>Wir nutzen nur essenzielle Cookies. Kein Tracking, keine Werbung, keine Drittanbieter-Analysen. <a href="privacy.html" style="color:rgba(255,255,255,0.7);text-decoration:underline;">Mehr erfahren</a></p>
-        <div class="cookie-banner-actions">
-            <button class="cookie-btn cookie-btn-accept">Alle akzeptieren</button>
-            <button class="cookie-btn cookie-btn-decline">Nur Essenzielle</button>
+        <p class="cookie-banner-title">Cookie Settings</p>
+        <p>We only use essential cookies. No tracking, no ads. <a href="privacy.html" style="color:rgba(255,255,255,0.5);text-decoration:underline;">Learn more</a></p>
+        <div class="cookie-actions">
+            <button class="cookie-btn cookie-accept">Accept</button>
+            <button class="cookie-btn cookie-decline">Essential only</button>
         </div>
     </div>
 
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <script>
-        // Header scroll effect
-        const header = document.getElementById('header');
+        gsap.registerPlugin(ScrollTrigger);
+
+        /* ── Hero entrance ───────────────────────────────── */
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+        // Eyebrow fades in
+        tl.fromTo('#heroEyebrow', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7 }, 0.2);
+
+        // Title lines slide up from clip
+        document.querySelectorAll('.hero-title .line span').forEach((el, i) => {
+            tl.fromTo(el, { y: '100%' }, { y: '0%', duration: 0.9, ease: 'power4.out' }, 0.35 + i * 0.12);
+        });
+
+        // Desc + CTA fade in
+        tl.fromTo('#heroDesc', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 }, 0.85);
+        tl.fromTo('#heroCta',  { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 }, 0.95);
+
+        /* ── Scroll animations ───────────────────────────── */
+        gsap.utils.toArray('.fade-up').forEach(el => {
+            gsap.fromTo(el,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1, y: 0,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 88%',
+                        once: true
+                    }
+                }
+            );
+        });
+
+        /* ── Stagger sports cards ────────────────────────── */
+        gsap.utils.toArray('.sport-card').forEach((card, i) => {
+            ScrollTrigger.getAll().forEach(st => {
+                if (st.vars.trigger === card) st.kill();
+            });
+            gsap.fromTo(card,
+                { opacity: 0, y: 60 },
+                {
+                    opacity: 1, y: 0,
+                    duration: 0.8,
+                    delay: i * 0.1,
+                    ease: 'power3.out',
+                    scrollTrigger: { trigger: card, start: 'top 90%', once: true }
+                }
+            );
+        });
+
+        /* ── Stagger blog cards ──────────────────────────── */
+        gsap.utils.toArray('.blog-card').forEach((card, i) => {
+            ScrollTrigger.getAll().forEach(st => {
+                if (st.vars.trigger === card) st.kill();
+            });
+            gsap.fromTo(card,
+                { opacity: 0, y: 60 },
+                {
+                    opacity: 1, y: 0,
+                    duration: 0.8,
+                    delay: i * 0.1,
+                    ease: 'power3.out',
+                    scrollTrigger: { trigger: card, start: 'top 90%', once: true }
+                }
+            );
+        });
+
+        /* ── Header scroll ───────────────────────────────── */
+        const hdr = document.getElementById('header');
+        const btt = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 20);
-            document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+            hdr.classList.toggle('scrolled', window.scrollY > 20);
+            btt.classList.toggle('visible', window.scrollY > 400);
         }, { passive: true });
+        btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // Back to top
-        document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        /* ── Mobile menu ─────────────────────────────────── */
+        const mBtn = document.getElementById('mobileMenuBtn');
+        const mMenu = document.getElementById('mobileMenu');
+        mBtn.addEventListener('click', () => mMenu.classList.toggle('open'));
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') mMenu.classList.remove('open'); });
 
-        // Mobile menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') mobileMenu.classList.remove('open'); });
-
-        // Sports dropdown
-        const sportsBtn = document.getElementById('sportsDropdownBtn');
-        const sportsDropdown = document.getElementById('sportsDropdown');
-        sportsBtn.addEventListener('click', e => {
+        /* ── Sports dropdown ─────────────────────────────── */
+        const sBtn = document.getElementById('sportsBtn');
+        const sDrop = document.getElementById('sportsDropdown');
+        sBtn.addEventListener('click', e => {
             e.stopPropagation();
-            const open = sportsDropdown.classList.toggle('open');
-            sportsBtn.setAttribute('aria-expanded', open);
+            const open = sDrop.classList.toggle('open');
+            sBtn.setAttribute('aria-expanded', open);
         });
         document.addEventListener('click', () => {
-            sportsDropdown.classList.remove('open');
-            sportsBtn.setAttribute('aria-expanded', false);
+            sDrop.classList.remove('open');
+            sBtn.setAttribute('aria-expanded', false);
         });
 
-        // Scroll reveal
-        const revealObserver = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-        // Cookie banner
-        if (!localStorage.getItem('cookie_consent')) {
-            setTimeout(() => document.getElementById('cookieBanner').classList.add('visible'), 1200);
+        /* ── Cookie ──────────────────────────────────────── */
+        if (!localStorage.getItem('tq_cookie')) {
+            setTimeout(() => document.getElementById('cookieBanner').classList.add('visible'), 1400);
         }
-        document.querySelector('.cookie-btn-accept').addEventListener('click', () => {
-            localStorage.setItem('cookie_consent', 'all');
+        document.querySelector('.cookie-accept').addEventListener('click', () => {
+            localStorage.setItem('tq_cookie', '1');
             document.getElementById('cookieBanner').style.display = 'none';
         });
-        document.querySelector('.cookie-btn-decline').addEventListener('click', () => {
-            localStorage.setItem('cookie_consent', 'essential');
+        document.querySelector('.cookie-decline').addEventListener('click', () => {
+            localStorage.setItem('tq_cookie', '1');
             document.getElementById('cookieBanner').style.display = 'none';
         });
 
-        // Beta form
-        document.getElementById('betaForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            var email = this.querySelector('input[type="email"]').value;
-            fetch('https://formspree.io/f/YOUR_FORM_ID', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({ email: email })
-            }).catch(() => {});
-            this.style.display = 'none';
-            document.getElementById('betaSuccess').style.display = 'block';
-        });
-
-        // Link prefetch on hover
+        /* ── Link prefetch ───────────────────────────────── */
         document.querySelectorAll('a[href]').forEach(a => {
             a.addEventListener('mouseenter', () => {
-                const href = a.getAttribute('href');
-                if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto')) return;
-                const link = document.createElement('link');
-                link.rel = 'prefetch'; link.href = href;
-                document.head.appendChild(link);
+                const h = a.getAttribute('href');
+                if (!h || h.startsWith('http') || h.startsWith('#') || h.startsWith('mailto')) return;
+                const l = document.createElement('link');
+                l.rel = 'prefetch'; l.href = h;
+                document.head.appendChild(l);
             }, { once: true });
         });
     </script>
