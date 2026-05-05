@@ -219,16 +219,16 @@ function initBackToTop() {
 
 // ── Cookie banner ──
 function initCookieBanner() {
-  if (localStorage.getItem('trainq-cookies')) return;
+  if (localStorage.getItem('tq_cookie')) return;
   var banner = document.getElementById('cookieBanner');
   if (!banner) return;
   setTimeout(function() { banner.classList.add('show'); }, 1500);
   banner.querySelector('.cookie-btn-accept')?.addEventListener('click', function() {
-    localStorage.setItem('trainq-cookies', 'accepted');
+    localStorage.setItem('tq_cookie', 'accepted');
     banner.classList.remove('show');
   });
   banner.querySelector('.cookie-btn-decline')?.addEventListener('click', function() {
-    localStorage.setItem('trainq-cookies', 'declined');
+    localStorage.setItem('tq_cookie', 'declined');
     banner.classList.remove('show');
   });
 }
