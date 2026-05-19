@@ -9,6 +9,7 @@
 <meta property="og:image" content="https://trainq.app/images/og-image.png">
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap">
+    <link rel="stylesheet" href="site.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{--bg:#0a0a0a;--bg-2:#111111;--bg-3:#161616;--muted:rgba(255,255,255,0.45);--muted-2:rgba(255,255,255,0.22);--accent:#0066FF;--border:rgba(255,255,255,0.07);--radius:12px;--radius-lg:20px;--container:1160px;--nav-h:72px;}
@@ -25,8 +26,7 @@ h3{font-size:1.125rem;letter-spacing:-0.02em;}
 .nav.scrolled{background:rgba(10,10,10,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
 .nav-inner{max-width:var(--container);margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between;}
 .logo img{height:32px;display:block;}
-.nav-links{display:flex;align-items:center;gap:8px;}
-.nav-link{font-size:0.9375rem;color:var(--muted);padding:8px 14px;border-radius:8px;transition:color .2s;}
+
 .nav-link:hover{color:#fff;}
 .nav-actions{display:flex;align-items:center;gap:8px;margin-left:16px;}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-radius:100px;font-size:0.9375rem;font-family:'Satoshi',sans-serif;font-weight:500;cursor:pointer;transition:all .2s;border:none;text-decoration:none;white-space:nowrap;}
@@ -35,18 +35,12 @@ h3{font-size:1.125rem;letter-spacing:-0.02em;}
 .btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border);}
 .btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,0.3);}
 .btn-sm{padding:7px 16px;font-size:0.875rem;}
-.nav-dropdown{position:relative;}
+
 .nav-dropdown-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);padding:8px;min-width:160px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-6px);}
 .nav-dropdown.open .nav-dropdown-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
 .nav-dropdown-menu a{display:block;padding:10px 14px;border-radius:8px;font-size:0.9375rem;color:var(--muted);transition:color .2s,background .2s;}
 .nav-dropdown-menu a:hover{color:#fff;background:rgba(255,255,255,0.06);}
 .ham-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
-.ham-line{display:block;width:22px;height:2px;background:#fff;border-radius:2px;}
-.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:var(--bg);padding:calc(var(--nav-h) + 24px) 24px 24px;flex-direction:column;gap:8px;}
-.mobile-menu.open{display:flex;}
-.mobile-link{font-size:1.125rem;color:var(--muted);padding:12px 0;border-bottom:1px solid var(--border);transition:color .2s;}
-.mobile-link:hover{color:#fff;}
-.mobile-divider{height:1px;background:var(--border);margin:8px 0;}
 
 /* PAGE HEADER */
 .page-header{padding:calc(var(--nav-h) + 80px) 0 80px;}
@@ -82,24 +76,12 @@ h3{font-size:1.125rem;letter-spacing:-0.02em;}
 .contact-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 
 /* FOOTER */
-.footer{background:var(--bg);border-top:1px solid var(--border);padding:40px 0;}
-.footer-row{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-.footer-logo{font-family:'Clash Display',sans-serif;font-weight:600;font-size:1.25rem;letter-spacing:-0.03em;}
-.footer-logo span{color:var(--accent);}
-.footer-links{display:flex;gap:24px;}
-.footer-links a{font-size:0.875rem;color:var(--muted);transition:color .2s;}
-.footer-links a:hover{color:#fff;}
-.footer-copy{font-size:0.875rem;color:var(--muted-2);}
+
 .back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;background:var(--bg-3);border:1px solid var(--border);color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
 .back-top.visible{opacity:1;pointer-events:auto;}
-.cookie-banner{position:fixed;bottom:24px;left:24px;max-width:360px;background:#1a1a1a;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;z-index:200;display:none;}
-.cookie-banner.visible{display:block;}
-.cookie-banner p{font-size:0.875rem;color:var(--muted);line-height:1.6;margin-bottom:16px;}
+
 .cookie-banner p a{color:#fff;text-decoration:underline;}
-.cookie-actions{display:flex;gap:10px;}
-.cookie-accept{flex:1;padding:10px;border-radius:8px;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:0.875rem;font-family:'Satoshi',sans-serif;}
-.cookie-decline{flex:1;padding:10px;border-radius:8px;background:transparent;color:var(--muted);border:1px solid var(--border);cursor:pointer;font-size:0.875rem;font-family:'Satoshi',sans-serif;}
-.fade-up{opacity:0;transform:translateY(50px);}
+
 @media(max-width:1000px){
   .faq-layout{grid-template-columns:1fr;}
   .faq-photos{display:none;}
@@ -115,53 +97,30 @@ h3{font-size:1.125rem;letter-spacing:-0.02em;}
 </head>
 <body>
 
-<header class="nav" id="header">
-  <div class="nav-inner">
-    <a href="index.html" class="logo"><img src="images/logos/transparent Weiß.png" alt="TrainQ" height="32"></a>
-    <div class="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
-      <div class="nav-dropdown" id="sportsDrop">
-        <button class="nav-link btn" id="sportsBtn" style="background:none;border:none;color:var(--muted);font-family:'Satoshi',sans-serif;cursor:pointer;display:flex;align-items:center;gap:6px;" aria-expanded="false">
-          Sports
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
+<!-- ===== HEADER (DEUKOM-style) ===== -->
+    <header class="topbar" id="topbar">
+        <a href="index.html" class="brand" aria-label="TrainQ">
+            <img src="images/logos/transparent Weiß.png" alt="" class="brand-mark">
+            <span class="brand-text">
+                <span class="brand-collapse">T</span><span class="brand-collapse">R</span><span class="brand-collapse">A</span><span class="brand-collapse">I</span><span class="brand-collapse">N</span><span class="brand-collapse">Q</span>
+            </span>
+        </a>
+        <button class="menu-button" id="menuBtn" type="button" aria-label="Menü öffnen">
+            <span></span><span></span><span></span>
         </button>
-        <div class="nav-dropdown-menu" id="sportsDropdown">
-          <a href="gym.html">🏋️ Gym</a>
-          <a href="running.html">🏃 Running</a>
-          <a href="cycling.html">🚴 Cycling</a>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <div class="mobile-nav-inner">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="gym.html" class="mobile-nav-link">Gym</a>
+            <a href="running.html" class="mobile-nav-link">Running</a>
+            <a href="cycling.html" class="mobile-nav-link">Cycling</a>
+            <a href="features.html" class="mobile-nav-link">Features</a>
         </div>
-      </div>
-      <a href="features.html" class="nav-link">Features</a>
-      <a href="blog.html" class="nav-link">Blog</a>
-      <a href="faq.html" class="nav-link">FAQ</a>
-    </div>
-    <div class="nav-actions">
-      <a href="/de/faq.html" class="btn btn-ghost btn-sm">DE</a>
-      <a href="https://apps.apple.com/app/trainq" class="btn btn-white btn-sm" target="_blank" rel="noopener">Download</a>
-    </div>
-    <button class="ham-btn" id="mobileMenuBtn" aria-label="Open menu">
-      <span class="ham-line"></span>
-      <span class="ham-line"></span>
-      <span class="ham-line"></span>
-    </button>
-  </div>
-</header>
+    </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" class="mobile-link">Home</a>
-  <a href="features.html" class="mobile-link">Features</a>
-  <a href="blog.html" class="mobile-link">Blog</a>
-  <a href="faq.html" class="mobile-link">FAQ</a>
-  <div class="mobile-divider"></div>
-  <a href="gym.html" class="mobile-link">🏋️ Gym</a>
-  <a href="running.html" class="mobile-link">🏃 Running</a>
-  <a href="cycling.html" class="mobile-link">🚴 Cycling</a>
-  <div class="mobile-divider"></div>
-  <a href="/de/faq.html" class="mobile-link">🇩🇪 Deutsch</a>
-  <a href="https://apps.apple.com/app/trainq" class="btn btn-white" style="margin-top:16px;" target="_blank" rel="noopener">Download on App Store</a>
-</div>
-
-<main>
+    <main>
 
   <div class="page-header fade-up">
     <div class="container">
@@ -302,19 +261,31 @@ h3{font-size:1.125rem;letter-spacing:-0.02em;}
 
 </main>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-row">
-      <a href="index.html" class="footer-logo">Train<span>Q</span></a>
-      <div class="footer-links">
-        <a href="imprint.html">Imprint</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </div>
-      <span class="footer-copy">&copy; 2026 TrainQ</span>
-    </div>
-  </div>
-</footer>
+<!-- ===== FOOTER (DEUKOM-style) ===== -->
+    <!-- ===== FOOTER (DEUKOM-style) ===== -->
+    <!-- ===== FOOTER (DEUKOM-style) ===== -->
+    <!-- ===== FOOTER (DEUKOM-style) ===== -->
+    <!-- ===== FOOTER (DEUKOM-style) ===== -->
+    <footer class="site-footer">
+        <div class="footer-bar">
+            <a href="index.html" class="footer-left" aria-label="TrainQ">
+                <img src="images/logos/transparent Weiß.png" alt="" class="footer-logo-img">
+                <span class="footer-brand-name">TrainQ</span>
+            </a>
+            <nav class="footer-nav">
+                <a href="imprint.html">Imprint</a>
+                <span class="footer-dot">·</span>
+                <a href="privacy.html">Privacy</a>
+                <span class="footer-dot">·</span>
+                <a href="terms.html">Terms</a>
+                <span class="footer-dot">·</span>
+                <a href="faq.html">FAQ</a>
+            </nav>
+            <div class="footer-right">
+                <span class="footer-copy">&copy; 2026 TrainQ. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
 
 <button class="back-top" id="backToTop" aria-label="Back to top">↑</button>
 
@@ -326,31 +297,6 @@ h3{font-size:1.125rem;letter-spacing:-0.02em;}
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-gsap.registerPlugin(ScrollTrigger);
-gsap.utils.toArray('.fade-up').forEach(el=>{gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:0.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});});
-const hdr=document.getElementById('header'),btt=document.getElementById('backToTop');
-window.addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',window.scrollY>20);btt.classList.toggle('visible',window.scrollY>400);},{passive:true});
-btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-const mBtn=document.getElementById('mobileMenuBtn'),mMenu=document.getElementById('mobileMenu');
-mBtn.addEventListener('click',()=>mMenu.classList.toggle('open'));
-document.addEventListener('keydown',e=>{if(e.key==='Escape')mMenu.classList.remove('open');});
-const sBtn=document.getElementById('sportsBtn'),sDrop=document.getElementById('sportsDrop');
-sBtn.addEventListener('click',e=>{e.stopPropagation();const open=sDrop.classList.toggle('open');sBtn.setAttribute('aria-expanded',open);});
-document.addEventListener('click',()=>{sDrop.classList.remove('open');sBtn.setAttribute('aria-expanded',false);});
-// Accordion
-document.querySelectorAll('.faq-item').forEach(item=>{
-  item.querySelector('.faq-question').addEventListener('click',()=>{
-    const isOpen=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-    if(!isOpen) item.classList.add('open');
-  });
-});
-if(!localStorage.getItem('tq_cookie')){setTimeout(()=>document.getElementById('cookieBanner').classList.add('visible'),1400);}
-document.querySelector('.cookie-accept').addEventListener('click',()=>{localStorage.setItem('tq_cookie','1');document.getElementById('cookieBanner').style.display='none';});
-document.querySelector('.cookie-decline').addEventListener('click',()=>{localStorage.setItem('tq_cookie','1');document.getElementById('cookieBanner').style.display='none';});
-</script>
+    <script src="site.js" defer></script>
 </body>
 </html>

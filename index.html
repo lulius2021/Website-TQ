@@ -44,6 +44,8 @@
             --radius-lg:20px;
             --container:1160px;
             --nav-h:    72px;
+            --content-pad: 40px;
+            --section-progress: 0;
         }
 
         /* ── Layout ─────────────────────────────────────── */
@@ -99,158 +101,179 @@
         .btn-accent:hover { background: #0050CC; transform: translateY(-1px); }
         .btn-sm { padding: 9px 20px; font-size: 0.875rem; }
 
-        /* ── Header ─────────────────────────────────────── */
-        .header {
+        /* ── Topbar (DEUKOM-style) ──────────────────────── */
+        .topbar {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            inset: 0 0 auto 0;
             z-index: 100;
-            transition: background 0.3s, border-color 0.3s;
-            border-bottom: 1px solid transparent;
-        }
-        .header.scrolled {
-            background: rgba(10,10,10,0.88);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom-color: var(--border);
-        }
-        .nav-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: var(--nav-h);
-            max-width: var(--container);
-            margin: 0 auto;
-            padding: 0 40px;
+            gap: 1rem;
+            padding: 1.4rem clamp(2rem, 8vw, 6rem);
+            background: transparent;
+            transition: padding 220ms ease, opacity 400ms ease;
         }
-        .logo { display: flex; align-items: center; }
-        .logo img { height: 32px; width: auto; display: block; }
-        .nav-links {
+        .brand {
+            position: relative;
             display: flex;
             align-items: center;
-            gap: 2px;
+            gap: 12px;
+            color: #fff;
         }
-        .nav-link {
-            padding: 7px 16px;
-            border-radius: 100px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--muted);
-            transition: color 0.15s, background 0.15s;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-family: 'Satoshi', sans-serif;
+        .brand-mark {
+            height: 28px;
+            width: auto;
+            flex-shrink: 0;
+            display: block;
+            transition: height 220ms ease;
         }
-        .nav-link:hover, .nav-link.active { color: #fff; background: rgba(255,255,255,0.08); }
-        /* Dropdown */
-        .nav-dropdown { position: relative; }
-        .dropdown-arrow { transition: transform 0.2s; margin-left: 2px; vertical-align: middle; }
-        .nav-dropdown.open .dropdown-arrow { transform: rotate(180deg); }
-        .dropdown-menu {
-            position: absolute;
-            top: calc(100% + 8px);
-            left: 50%;
-            transform: translateX(-50%) translateY(-6px);
-            background: #1a1a1a;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 8px;
-            min-width: 160px;
-            box-shadow: 0 16px 48px rgba(0,0,0,0.6);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.15s, transform 0.15s;
+        .brand-text {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1;
+            display: flex;
+            overflow: hidden;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
         }
-        .nav-dropdown.open .dropdown-menu {
+        .brand-letter,
+        .brand-collapse {
+            display: inline-block;
+            transition: max-width 400ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms ease;
+        }
+        .brand-collapse {
+            max-width: 1.2em;
             opacity: 1;
-            pointer-events: all;
-            transform: translateX(-50%) translateY(0);
+            overflow: hidden;
+            white-space: nowrap;
         }
-        .dropdown-item {
-            display: block;
-            padding: 9px 14px;
-            border-radius: 8px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: rgba(255,255,255,0.75);
-            transition: background 0.1s, color 0.1s;
+        .topbar.is-condensed .brand-collapse {
+            max-width: 0;
+            opacity: 0;
         }
-        .dropdown-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
-        /* Mobile */
-        .mobile-menu-btn {
-            display: none;
+        .topbar.is-condensed .brand-mark {
+            height: 26px;
+        }
+
+        .menu-button {
+            display: inline-flex;
             flex-direction: column;
-            gap: 5px;
+            align-items: center;
+            justify-content: center;
+            gap: 0.28rem;
+            border: 0;
+            background: transparent;
+            padding: 0;
+            cursor: pointer;
+            transition: transform 180ms ease;
+        }
+        .menu-button:hover { transform: translateY(-1px); }
+        .menu-button span {
+            display: block;
+            width: 1.5rem;
+            height: 2px;
+            border-radius: 999px;
+            background: #fff;
+            transition: transform 300ms ease, opacity 300ms ease, width 220ms ease, height 220ms ease;
+        }
+        .menu-button.is-open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .menu-button.is-open span:nth-child(2) { opacity: 0; }
+        .menu-button.is-open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+        .topbar.is-condensed {
+            padding: 1rem clamp(2rem, 8vw, 6rem);
+        }
+        .topbar.is-condensed .menu-button span {
+            width: 0.95rem;
+            height: 1.5px;
+        }
+
+        /* Mobile Nav Overlay */
+        .mobile-nav {
+            position: fixed;
+            inset: 0;
+            z-index: 90;
+            background: rgba(10, 10, 10, 0);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            transition: background 1s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        backdrop-filter 1s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        -webkit-backdrop-filter 1s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        visibility 0s 1s;
+        }
+        .mobile-nav.is-open {
+            visibility: visible;
+            background: rgba(10, 10, 10, 0.78);
+            backdrop-filter: blur(30px) brightness(0.6);
+            -webkit-backdrop-filter: blur(30px) brightness(0.6);
+            pointer-events: auto;
+            transition: background 1s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        backdrop-filter 1s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        -webkit-backdrop-filter 1s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        visibility 0s 0s;
+        }
+        .mobile-nav-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        .mobile-nav-link {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            color: #fff;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(1.5rem);
+            transition: color 80ms ease, transform 80ms ease;
+            cursor: pointer;
             background: none;
             border: none;
-            cursor: pointer;
-            padding: 8px;
+            padding: 0;
         }
-        .ham-line {
-            width: 24px; height: 1.5px;
-            background: rgba(255,255,255,0.8);
-            border-radius: 2px;
-            display: block;
-            transition: all 0.25s;
+        .mobile-nav.is-open .mobile-nav-link {
+            opacity: 1;
+            transform: translateY(0);
+            animation: nav-link-in 600ms cubic-bezier(0.25, 0.1, 0.25, 1) both;
         }
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            inset: var(--nav-h) 0 0 0;
-            background: #0a0a0a;
-            z-index: 99;
-            padding: 32px 40px;
-            flex-direction: column;
-            gap: 4px;
-            border-top: 1px solid var(--border);
+        @keyframes nav-link-in {
+            from { opacity: 0; transform: translateY(1.5rem); }
+            to   { opacity: 1; transform: translateY(0); }
         }
-        .mobile-menu.open { display: flex; }
-        .mobile-link {
-            display: block;
-            padding: 14px 0;
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: rgba(255,255,255,0.7);
-            border-bottom: 1px solid var(--border);
-            transition: color 0.15s;
+        .mobile-nav.is-open .mobile-nav-link:nth-child(1) { animation-delay: 200ms; }
+        .mobile-nav.is-open .mobile-nav-link:nth-child(2) { animation-delay: 280ms; }
+        .mobile-nav.is-open .mobile-nav-link:nth-child(3) { animation-delay: 360ms; }
+        .mobile-nav.is-open .mobile-nav-link:nth-child(4) { animation-delay: 440ms; }
+        .mobile-nav.is-open .mobile-nav-link:nth-child(5) { animation-delay: 520ms; }
+        .mobile-nav.is-open .mobile-nav-link:nth-child(6) { animation-delay: 600ms; }
+        .mobile-nav.is-open .mobile-nav-link:nth-child(7) { animation-delay: 680ms; }
+        .mobile-nav-link:hover {
+            color: rgba(255, 255, 255, 0.55);
+            transform: translateY(-4px) scale(1.08);
+            transition: opacity 80ms ease, transform 80ms ease, color 80ms ease;
         }
-        .mobile-link:hover { color: #fff; }
-        .mobile-divider { height: 1px; background: var(--border); margin: 12px 0; }
+        .mobile-nav-link.is-active {
+            color: rgba(255, 255, 255, 0.45);
+        }
 
         /* ── Hero ────────────────────────────────────────── */
         .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            padding-bottom: 80px;
-            padding-top: var(--nav-h);
+            justify-content: flex-start;
+            padding-top: calc(var(--nav-h) + 80px);
+            padding-bottom: 60px;
             position: relative;
             overflow: hidden;
-        }
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-        }
-        .hero-bg img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            object-position: center 25%;
-            opacity: 0.22;
-            filter: grayscale(40%);
-        }
-        .hero-bg::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(10,10,10,0.2) 0%,
-                rgba(10,10,10,0.1) 40%,
-                rgba(10,10,10,0.85) 80%,
-                rgba(10,10,10,1) 100%
-            );
         }
         .hero-inner {
             position: relative;
@@ -311,6 +334,93 @@
             gap: 20px;
             opacity: 0;
         }
+        /* Scroll-Expand Stage (à la DEUKOM)
+           --section-progress = how far user has scrolled past hero top, normalized
+           to viewport height. At load = 0 (narrow). After ~50% viewport scroll = 1 (full bleed). */
+        .hero-stage {
+            width: 100vw;
+            margin-top: 80px;
+            /* Small dead-zone at start (0.05) so it doesn't move on tiny scroll */
+            --expand: max(0, calc(var(--section-progress, 0) - 0.05));
+            --t: min(1, calc(var(--expand) * 2.4));
+            /* Base inset matches container alignment (1160px max-width - 80px padding = 1080 content) */
+            --container-inset: max(40px, calc((100vw - 1080px) / 2));
+            /* Extra narrowing on top of container alignment so card starts notably smaller */
+            --extra-inset: clamp(8px, 5vw, 6rem);
+            --inset: calc(var(--container-inset) + var(--extra-inset));
+            padding-left:  calc(var(--inset) * (1 - var(--t)));
+            padding-right: calc(var(--inset) * (1 - var(--t)));
+            transition: padding-left 0.05s linear, padding-right 0.05s linear;
+        }
+        .stage-card {
+            position: relative;
+            overflow: hidden;
+            min-height: clamp(36rem, 78vh, 60rem);
+            border-radius: calc(2rem * (1 - var(--t, 0)));
+            transition: border-radius 0.05s linear;
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+        }
+        .stage-card > picture img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+        .stage-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10,10,10,0.25) 0%,
+                rgba(10,10,10,0.0) 35%,
+                rgba(10,10,10,0.0) 65%,
+                rgba(10,10,10,0.45) 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* iPhone screenshot mockups */
+        .stage-phones {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(4px, 0.6vw, 12px);
+            padding-inline: clamp(24px, 5vw, 100px);
+            pointer-events: none;
+        }
+        /* Source PNGs are 2160×2160 square with empty padding.
+           Force phone-shape box + object-fit: cover crops the empty borders away.
+           Sizing in vw (viewport-relative) so phones stay constant size
+           regardless of how wide the stage-card has expanded on scroll. */
+        .stage-phone {
+            width: clamp(150px, 18vw, 280px);
+            aspect-ratio: 9 / 19.5;
+            object-fit: cover;
+            object-position: center;
+            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.55));
+        }
+        /* Center is exactly 1.5× wider at every breakpoint */
+        .stage-phone--center {
+            width: clamp(225px, 27vw, 420px);
+            z-index: 1;
+        }
+        .stage-phone--side {
+            opacity: 0.95;
+        }
+        @media (max-width: 768px) {
+            .stage-phones { gap: 4px; padding-inline: 12px; }
+            .stage-phone { width: clamp(96px, 24vw, 200px); }
+            .stage-phone--center { width: clamp(144px, 36vw, 300px); }
+        }
+
         /* Rotating circle button */
         .rotating-btn {
             position: relative;
@@ -464,10 +574,10 @@
         .sport-photo img {
             width: 100%; height: 100%;
             object-fit: cover;
-            filter: grayscale(20%);
-            transition: transform 0.5s ease, filter 0.3s;
+            filter: grayscale(100%);
+            transition: transform 0.5s ease;
         }
-        .sport-card:hover .sport-photo img { transform: scale(1.04); filter: grayscale(0%); }
+        .sport-card:hover .sport-photo img { transform: scale(1.04); }
         .sport-info {
             padding: 24px 28px 28px;
         }
@@ -511,7 +621,7 @@
             height: 600px;
             width: auto;
             object-fit: contain;
-            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.8));
+            filter: grayscale(100%) drop-shadow(0 40px 80px rgba(0,0,0,0.8));
         }
         .mockup-text .section-label { margin-bottom: 24px; }
         .mockup-text h2 {
@@ -545,73 +655,6 @@
         }
         .pill:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
 
-        /* ── Blog Section ────────────────────────────────── */
-        .blog-head {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-        .blog-head h2 {
-            font-family: 'Clash Display', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 600;
-            letter-spacing: -0.04em;
-            line-height: 1.0;
-        }
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-        .blog-card {
-            background: var(--bg-3);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            transition: border-color 0.25s, transform 0.25s;
-            display: flex;
-            flex-direction: column;
-        }
-        .blog-card:hover { border-color: rgba(255,255,255,0.18); transform: translateY(-3px); }
-        .blog-tag {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(0,102,255,0.12);
-            color: #6699FF;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            align-self: flex-start;
-        }
-        .blog-card h3 {
-            font-family: 'Clash Display', sans-serif;
-            font-size: 1.125rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.3;
-            margin-bottom: 12px;
-        }
-        .blog-card p {
-            font-size: 0.875rem;
-            color: var(--muted);
-            line-height: 1.65;
-            flex: 1;
-            margin-bottom: 24px;
-        }
-        .blog-read {
-            font-size: 0.8125rem;
-            font-weight: 600;
-            color: rgba(255,255,255,0.35);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s, gap 0.2s;
-        }
-        .blog-card:hover .blog-read { color: #fff; gap: 10px; }
-
         /* ── CTA Section ─────────────────────────────────── */
         .cta-section {
             background: var(--bg-2);
@@ -637,65 +680,167 @@
             flex-wrap: wrap;
         }
 
-        /* ── Stats bar ───────────────────────────────────── */
-        .stats-bar {
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
+        /* ── Stats bar (single counter, container-width) ──── */
+        .stats-bar { /* no borders — clean transition */ }
         .stats-inner {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .stat-item {
-            padding: 48px 40px;
-            border-right: 1px solid var(--border);
+        .stat-item--single {
+            padding: 100px 40px;
+            text-align: center;
         }
-        .stat-item:last-child { border-right: none; }
         .stat-num {
             font-family: 'Clash Display', sans-serif;
-            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-size: clamp(3.5rem, 9vw, 8rem);
             font-weight: 600;
             letter-spacing: -0.04em;
-            margin-bottom: 6px;
+            line-height: 1;
+            margin-bottom: 18px;
+            font-variant-numeric: tabular-nums;
+        }
+        .stat-num--odometer {
+            display: inline-flex;
+            align-items: baseline;
+            line-height: 1;
+        }
+        .digit-reel {
+            display: inline-block;
+            overflow: hidden;
+            height: 1em;
+            line-height: 1;
+            vertical-align: bottom;
+        }
+        .digit-reel-track {
+            display: block;
+            transform: translateY(0);
+            transition: transform 2.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            will-change: transform;
+        }
+        .digit-reel-track > span {
+            display: block;
+            height: 1em;
+            line-height: 1;
+        }
+        .reel-sep, .reel-suffix {
+            display: inline-block;
+            line-height: 1;
         }
         .stat-label {
-            font-size: 0.8125rem;
+            font-size: 0.875rem;
             color: var(--muted);
             font-weight: 500;
+            letter-spacing: 0.05em;
         }
 
-        /* ── Footer ──────────────────────────────────────── */
-        .footer {
-            padding: 48px 0;
-            border-top: 1px solid var(--border);
+        /* ── Footer (DEUKOM-style) ───────────────────────── */
+        .site-footer {
+            position: relative;
+            padding: 0;
+            background: var(--bg);
+            margin-top: 280px;
         }
-        .footer-row {
+        /* Soft fog glow — multi-layer to mimic mist drifting over the boundary */
+        .site-footer::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 0;
+            right: 0;
+            height: 240px;
+            background:
+                radial-gradient(
+                    ellipse 70% 60% at 50% 50%,
+                    rgba(255,255,255,0.045) 0%,
+                    rgba(255,255,255,0.018) 35%,
+                    transparent 70%
+                );
+            filter: blur(14px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .site-footer::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: radial-gradient(
+                ellipse 40% 100% at 50% 50%,
+                rgba(255,255,255,0.08) 0%,
+                rgba(255,255,255,0.02) 50%,
+                transparent 100%
+            );
+            filter: blur(2px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .site-footer .footer-bar { position: relative; z-index: 1; }
+        .footer-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 24px;
+            padding: 0.9rem var(--content-pad);
+            gap: 1rem;
         }
-        .footer-logo {
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-logo-img {
+            height: 1.8rem;
+            width: auto;
+            display: block;
+        }
+        .footer-brand-name {
             font-family: 'Clash Display', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: -0.04em;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
             color: #fff;
         }
-        .footer-logo span { color: var(--accent); }
-        .footer-links {
+        .footer-nav {
             display: flex;
-            gap: 32px;
+            align-items: center;
+            gap: 0.6rem;
         }
-        .footer-links a {
-            font-size: 0.875rem;
+        .footer-nav a,
+        .footer-nav button {
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: inherit;
             color: var(--muted);
-            transition: color 0.15s;
+            font-size: 0.8rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s;
         }
-        .footer-links a:hover { color: #fff; }
-        .footer-copy {
-            font-size: 0.8125rem;
+        .footer-nav a:hover,
+        .footer-nav button:hover { color: #fff; }
+        .footer-dot {
             color: var(--muted-2);
+            font-size: 0.8rem;
+        }
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+        @media (max-width: 768px) {
+            .footer-bar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
         }
 
         /* ── Cookie / Back to top ────────────────────────── */
@@ -714,31 +859,121 @@
             z-index: 50;
         }
         .back-to-top.visible { opacity: 1; pointer-events: all; }
+        /* Cookie banner — glassmorphism + slide-in */
         .cookie-banner {
             position: fixed;
-            bottom: 24px; left: 24px;
-            max-width: 380px;
-            background: #1a1a1a;
-            border: 1px solid var(--border);
+            bottom: 20px;
+            left: 20px;
+            width: min(360px, calc(100vw - 40px));
+            background:
+                linear-gradient(180deg, rgba(22,22,22,0.92), rgba(12,12,12,0.92));
+            backdrop-filter: blur(28px) saturate(160%);
+            -webkit-backdrop-filter: blur(28px) saturate(160%);
+            border: 1px solid rgba(255,255,255,0.08);
             color: #fff;
-            border-radius: var(--radius-lg);
-            padding: 24px;
+            border-radius: 20px;
+            padding: 22px;
             z-index: 200;
-            box-shadow: 0 24px 80px rgba(0,0,0,0.7);
-            display: none;
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.55),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+            transform: translateY(24px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition:
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.5s ease,
+                visibility 0s 0.6s;
         }
-        .cookie-banner.visible { display: block; }
-        .cookie-banner-title { font-weight: 700; margin-bottom: 8px; font-family: 'Clash Display', sans-serif; }
-        .cookie-banner p { font-size: 0.8125rem; color: var(--muted); line-height: 1.55; margin-bottom: 20px; }
-        .cookie-actions { display: flex; gap: 10px; }
+        .cookie-banner.visible {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transition:
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.5s ease;
+        }
+        .cookie-banner-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 14px;
+            color: rgba(255,255,255,0.75);
+        }
+        .cookie-banner-icon svg { display: block; }
+        .cookie-banner-title {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.0625rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+        .cookie-banner p {
+            font-size: 0.8125rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.55;
+            margin-bottom: 18px;
+        }
+        .cookie-banner p a {
+            color: rgba(255,255,255,0.78);
+            text-decoration: underline;
+            text-decoration-color: rgba(255,255,255,0.18);
+            text-underline-offset: 3px;
+            transition: color 0.15s, text-decoration-color 0.15s;
+        }
+        .cookie-banner p a:hover {
+            color: #fff;
+            text-decoration-color: #fff;
+        }
+        .cookie-actions {
+            display: flex;
+            gap: 8px;
+        }
         .cookie-btn {
-            flex: 1; padding: 10px;
-            border-radius: var(--radius); border: none;
-            font-size: 0.875rem; font-weight: 600;
-            cursor: pointer; font-family: 'Satoshi', sans-serif;
+            flex: 1;
+            padding: 11px 14px;
+            border-radius: 12px;
+            border: none;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Satoshi', sans-serif;
+            letter-spacing: 0.01em;
+            transition: background 0.18s ease, transform 0.18s ease, border-color 0.18s ease, color 0.18s ease;
         }
-        .cookie-accept { background: #fff; color: #0a0a0a; }
-        .cookie-decline { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
+        .cookie-accept {
+            background: #fff;
+            color: #0a0a0a;
+        }
+        .cookie-accept:hover {
+            background: #ececec;
+            transform: translateY(-1px);
+        }
+        .cookie-decline {
+            background: transparent;
+            color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+        .cookie-decline:hover {
+            border-color: rgba(255,255,255,0.3);
+            color: #fff;
+        }
+        @media (max-width: 480px) {
+            .cookie-banner {
+                bottom: 12px;
+                left: 12px;
+                width: calc(100vw - 24px);
+                padding: 18px;
+            }
+        }
 
         /* ── GSAP: initial hidden states ─────────────────── */
         .fade-up {
@@ -755,22 +990,17 @@
             .features-header p { text-align: left; max-width: 100%; }
             .feature-row { grid-template-columns: 60px 1fr; }
             .feature-row p { grid-column: 2; }
-            .stats-inner { grid-template-columns: repeat(2, 1fr); }
-            .stat-item:nth-child(2) { border-right: none; }
-            .stat-item:nth-child(3) { border-top: 1px solid var(--border); }
-            .stat-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
         }
         @media (max-width: 900px) {
             :root { --container: 100%; }
             .nav-links { display: none; }
             .mobile-menu-btn { display: flex; }
             .sports-grid { grid-template-columns: 1fr; }
-            .blog-grid { grid-template-columns: 1fr; }
             .mockup-grid { grid-template-columns: 1fr; gap: 48px; }
             .mockup-image { order: -1; }
             .mockup-image img { height: 400px; }
-            .sports-head, .blog-head, .features-header { flex-direction: column; gap: 16px; }
-            .sports-head p, .blog-head a { align-self: flex-start; }
+            .sports-head, .features-header { flex-direction: column; gap: 16px; }
+            .sports-head p { align-self: flex-start; }
             .hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
             .cta-section h2 { font-size: clamp(2.5rem, 9vw, 4rem); }
             .footer-row { flex-direction: column; text-align: center; }
@@ -788,173 +1018,76 @@
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header class="header" id="header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo"><img src="images/logos/transparent Weiß.png" alt="TrainQ" height="32"></a>
-
-            <div class="nav-links" id="navLinks">
-                <a href="index.html" class="nav-link active">Home</a>
-
-                <div class="nav-dropdown" id="sportsDropdown">
-                    <button class="nav-link dropdown-trigger" id="sportsBtn" aria-expanded="false" aria-haspopup="true">
-                        Sports
-                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="gym.html" class="dropdown-item">🏋️ Gym</a>
-                        <a href="running.html" class="dropdown-item">🏃 Running</a>
-                        <a href="cycling.html" class="dropdown-item">🚴 Cycling</a>
-                    </div>
-                </div>
-
-                <a href="features.html" class="nav-link">Features</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="pricing.html" class="nav-link">Pricing</a>
-            </div>
-
-            <div style="display:flex;align-items:center;gap:12px;">
-                <a href="de/index.html" class="btn btn-ghost btn-sm">DE</a>
-                <a href="https://apps.apple.com/app/trainq" class="btn btn-white btn-sm" target="_blank" rel="noopener">Get App</a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
-                    <span class="ham-line"></span>
-                    <span class="ham-line"></span>
-                    <span class="ham-line"></span>
-                </button>
-            </div>
-        </nav>
-
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="features.html" class="mobile-link">Features</a>
-            <a href="blog.html" class="mobile-link">Blog</a>
-            <a href="pricing.html" class="mobile-link">Pricing</a>
-            <div class="mobile-divider"></div>
-            <a href="gym.html" class="mobile-link">🏋️ Gym</a>
-            <a href="running.html" class="mobile-link">🏃 Running</a>
-            <a href="cycling.html" class="mobile-link">🚴 Cycling</a>
-            <div class="mobile-divider"></div>
-            <a href="de/index.html" class="mobile-link">🇩🇪 Deutsch</a>
-            <a href="https://apps.apple.com/app/trainq" class="btn btn-white" style="margin-top:24px;justify-content:center;" target="_blank" rel="noopener">Download on App Store</a>
-        </div>
+    <!-- ===== HEADER (DEUKOM-style) ===== -->
+    <header class="topbar" id="topbar">
+        <a href="index.html" class="brand" aria-label="TrainQ">
+            <img src="images/logos/transparent Weiß.png" alt="" class="brand-mark">
+            <span class="brand-text">
+                <span class="brand-collapse">T</span><span class="brand-collapse">R</span><span class="brand-collapse">A</span><span class="brand-collapse">I</span><span class="brand-collapse">N</span><span class="brand-collapse">Q</span>
+            </span>
+        </a>
+        <button class="menu-button" id="menuBtn" type="button" aria-label="Menü öffnen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
+
+    <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <div class="mobile-nav-inner">
+            <a href="index.html" class="mobile-nav-link is-active">Home</a>
+            <a href="gym.html" class="mobile-nav-link">Gym</a>
+            <a href="running.html" class="mobile-nav-link">Running</a>
+            <a href="cycling.html" class="mobile-nav-link">Cycling</a>
+            <a href="features.html" class="mobile-nav-link">Features</a>
+        </div>
+    </nav>
 
     <main>
 
         <!-- ===== HERO ===== -->
-        <section class="hero">
-            <div class="hero-bg">
-                <picture>
-                    <source srcset="fotos/maico-amorim-SJWPKMb9u-k-unsplash.webp" type="image/webp">
-                    <img src="fotos/maico-amorim-SJWPKMb9u-k-unsplash.jpg" alt="" fetchpriority="high" width="2400" height="1596">
-                </picture>
-            </div>
+        <section class="hero" id="hero" data-parallax-section>
             <div class="hero-inner container">
-                <p class="hero-eyebrow" id="heroEyebrow">Available on iOS</p>
                 <h1 class="hero-title" id="heroTitle">
                     <span class="line"><span>Stop Guessing.</span></span>
                     <span class="line"><span>Start Performing.</span></span>
                 </h1>
-                <div class="hero-bottom">
-                    <p class="hero-desc" id="heroDesc">
-                        Professional training plans for gym, running and cycling — that automatically adapt to your real life.
-                    </p>
-                    <div class="hero-cta" id="heroCta">
-                        <a href="https://apps.apple.com/app/trainq" class="btn btn-white" target="_blank" rel="noopener">
-                            Download Free
-                        </a>
-                        <a href="#features" class="btn btn-ghost">
-                            Learn more
-                        </a>
-                        <!-- Rotating circle button -->
-                        <a href="https://apps.apple.com/app/trainq" class="rotating-btn" target="_blank" rel="noopener" aria-label="Download TrainQ">
-                            <svg class="rotating-ring" viewBox="0 0 120 120" width="120" height="120">
-                                <defs>
-                                    <path id="circle" d="M 60,60 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"/>
-                                </defs>
-                                <text fill="rgba(255,255,255,0.55)" font-size="10.5" font-family="Satoshi, sans-serif" font-weight="500" letter-spacing="3">
-                                    <textPath href="#circle">GET STARTED · FREE BETA · GET STARTED · FREE BETA ·</textPath>
-                                </text>
-                            </svg>
-                            <span class="center-icon">↗</span>
-                        </a>
+            </div>
+
+            <!-- Scroll-expand Stage Card (outside .container so it can grow to 100vw) -->
+            <div class="hero-stage" id="heroStage">
+                <div class="stage-card">
+                    <picture>
+                        <source srcset="fotos/maico-amorim-SJWPKMb9u-k-unsplash.webp" type="image/webp">
+                        <img src="fotos/maico-amorim-SJWPKMb9u-k-unsplash.jpg" alt="" fetchpriority="high" width="2400" height="1596">
+                    </picture>
+                    <div class="stage-phones">
+                        <img src="hero-grafik screen/left.png" alt="" class="stage-phone stage-phone--side" loading="lazy">
+                        <img src="hero-grafik screen/middle.png" alt="" class="stage-phone stage-phone--center" loading="lazy">
+                        <img src="hero-grafik screen/right.png" alt="" class="stage-phone stage-phone--side" loading="lazy">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== STATS BAR ===== -->
+        <!-- ===== STATS BAR (single counter, container-width) ===== -->
         <div class="stats-bar">
-            <div class="stats-inner">
-                <div class="stat-item fade-up">
-                    <div class="stat-num">3</div>
-                    <div class="stat-label">Sports supported</div>
-                </div>
-                <div class="stat-item fade-up">
-                    <div class="stat-num">100%</div>
-                    <div class="stat-label">Adaptive planning</div>
-                </div>
-                <div class="stat-item fade-up">
-                    <div class="stat-num">Free</div>
-                    <div class="stat-label">During public beta</div>
-                </div>
-                <div class="stat-item fade-up">
-                    <div class="stat-num">iOS 17+</div>
-                    <div class="stat-label">iPhone & Apple Watch</div>
+            <div class="container">
+                <div class="stats-inner">
+                    <div class="stat-item stat-item--single fade-up">
+                        <div class="stat-num" data-count-up="12500" data-suffix=" km" data-thousand="true" data-interval-ms="180000" data-increment-by="1">0 km</div>
+                        <div class="stat-label">Trained by beta users</div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- ===== FEATURES ===== -->
-        <section class="section features-section" id="features">
-            <div class="container">
-                <div class="features-header">
-                    <h2 class="fade-up">Training that<br>actually works.</h2>
-                    <p class="fade-up">No guessing. No wasted sessions. Just a plan that knows when to push — and when to back off.</p>
-                </div>
-                <div class="features-list">
-                    <div class="feature-row fade-up">
-                        <div class="feature-num">01</div>
-                        <div>
-                            <div class="feature-tag">Adaptive Engine</div>
-                            <h3>Plans that learn from every session</h3>
-                        </div>
-                        <p>After every workout, TrainQ analyzes your performance data — pace, heart rate, RPE — and recalculates the next 3–7 days to keep you on track without burning out.</p>
-                    </div>
-                    <div class="feature-row fade-up">
-                        <div class="feature-num">02</div>
-                        <div>
-                            <div class="feature-tag">Live Guidance</div>
-                            <h3>Real-time targets during your workout</h3>
-                        </div>
-                        <p>Pace zones, heart rate targets, rep counts — all shown live during your session. Apple Watch integration means you never need to look at your phone.</p>
-                    </div>
-                    <div class="feature-row fade-up">
-                        <div class="feature-num">03</div>
-                        <div>
-                            <div class="feature-tag">Recovery Intelligence</div>
-                            <h3>Know when to push, know when to rest</h3>
-                        </div>
-                        <p>HRV and resting heart rate from Apple Health are used to automatically adjust intensity — so you train hard when you're ready, and recover when you need it.</p>
-                    </div>
-                    <div class="feature-row fade-up">
-                        <div class="feature-num">04</div>
-                        <div>
-                            <div class="feature-tag">Gamification</div>
-                            <h3>XP, levels and streaks that keep you moving</h3>
-                        </div>
-                        <p>Every session earns XP. Hit milestones. Build streaks. TrainQ makes consistency feel rewarding — not like a chore.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- ===== SPORTS ===== -->
         <section class="section">
             <div class="container">
                 <div class="sports-head">
                     <h2 class="fade-up">One app.<br>Three sports.</h2>
-                    <p class="fade-up" style="color:var(--muted);font-size:1rem;line-height:1.7;max-width:300px;">Structured training exactly where you push yourself — gym, roads, or trails.</p>
                 </div>
                 <div class="sports-grid">
                     <a href="gym.html" class="sport-card fade-up">
@@ -1000,64 +1133,7 @@
             </div>
         </section>
 
-        <!-- ===== APP MOCKUP ===== -->
-        <section class="section mockup-section">
-            <div class="container">
-                <div class="mockup-grid">
-                    <div class="mockup-image fade-up">
-                        <img src="images/handy.png" alt="TrainQ App" loading="lazy">
-                    </div>
-                    <div class="mockup-text">
-                        <span class="section-label">The App</span>
-                        <h2 class="fade-up">Everything you need. Nothing you don't.</h2>
-                        <p class="fade-up">TrainQ is built around one idea: give you the structure of a personal coach, without the cost or complexity.</p>
-                        <div class="feature-pills fade-up">
-                            <span class="pill">Adaptive Training</span>
-                            <span class="pill">Apple Watch</span>
-                            <span class="pill">Garmin Sync</span>
-                            <span class="pill">Apple Health</span>
-                            <span class="pill">PR Tracking</span>
-                            <span class="pill">HRV Monitoring</span>
-                            <span class="pill">Calendar Integration</span>
-                            <span class="pill">XP & Levels</span>
-                        </div>
-                        <div class="fade-up">
-                            <a href="features.html" class="btn btn-white">See all features</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- ===== BLOG ===== -->
-        <section class="section">
-            <div class="container">
-                <div class="blog-head">
-                    <h2 class="fade-up">Train smarter<br>with science.</h2>
-                    <a href="blog.html" class="btn btn-ghost fade-up">All articles →</a>
-                </div>
-                <div class="blog-grid">
-                    <a href="blog/polarized-training.html" class="blog-card fade-up">
-                        <span class="blog-tag">Running</span>
-                        <h3>Polarized vs. Threshold Training</h3>
-                        <p>Why the 80/20 intensity split outperforms threshold-heavy approaches — backed by the science.</p>
-                        <span class="blog-read">Read article →</span>
-                    </a>
-                    <a href="blog/sleep-performance.html" class="blog-card fade-up">
-                        <span class="blog-tag">Recovery</span>
-                        <h3>Sleep is the #1 Performance Booster</h3>
-                        <p>No supplement comes close to 8+ hours of sleep. Here's what the Stanford data actually says.</p>
-                        <span class="blog-read">Read article →</span>
-                    </a>
-                    <a href="blog/norwegian-method.html" class="blog-card fade-up">
-                        <span class="blog-tag">Running</span>
-                        <h3>The Norwegian Double-Threshold Method</h3>
-                        <p>How Norwegian runners broke world records with a counterintuitive training approach.</p>
-                        <span class="blog-read">Read article →</span>
-                    </a>
-                </div>
-            </div>
-        </section>
 
         <!-- ===== CTA ===== -->
         <section class="section cta-section">
@@ -1066,40 +1142,47 @@
                     Start training<br>
                     <em>the smart way.</em>
                 </h2>
-                <div class="cta-btns fade-up">
-                    <a href="https://apps.apple.com/app/trainq" class="btn btn-white" target="_blank" rel="noopener">
-                        Download on App Store
-                    </a>
-                    <a href="pricing.html" class="btn btn-ghost">Free during beta</a>
-                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-row">
-                <a href="index.html" class="footer-logo">Train<span>Q</span></a>
-                <div class="footer-links">
-                    <a href="imprint.html">Imprint</a>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="terms.html">Terms</a>
-                </div>
-                <span class="footer-copy">&copy; 2026 TrainQ</span>
+    <!-- ===== FOOTER (DEUKOM-style) ===== -->
+    <footer class="site-footer">
+        <div class="footer-bar">
+            <a href="index.html" class="footer-left" aria-label="TrainQ">
+                <img src="images/logos/transparent Weiß.png" alt="" class="footer-logo-img">
+                <span class="footer-brand-name">TrainQ</span>
+            </a>
+            <nav class="footer-nav">
+                <a href="imprint.html">Imprint</a>
+                <span class="footer-dot">·</span>
+                <a href="privacy.html">Privacy</a>
+                <span class="footer-dot">·</span>
+                <a href="terms.html">Terms</a>
+                <span class="footer-dot">·</span>
+                <a href="faq.html">FAQ</a>
+            </nav>
+            <div class="footer-right">
+                <span class="footer-copy">&copy; 2026 TrainQ. All rights reserved.</span>
             </div>
         </div>
     </footer>
 
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
-
-    <div class="cookie-banner" id="cookieBanner">
-        <p class="cookie-banner-title">Cookie Settings</p>
-        <p>We only use essential cookies. No tracking, no ads. <a href="privacy.html" style="color:rgba(255,255,255,0.5);text-decoration:underline;">Learn more</a></p>
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-labelledby="cookieBannerTitle">
+        <div class="cookie-banner-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5Z"/>
+                <circle cx="8.5" cy="10.5" r="0.5" fill="currentColor"/>
+                <circle cx="15" cy="14" r="0.5" fill="currentColor"/>
+                <circle cx="11" cy="16" r="0.5" fill="currentColor"/>
+            </svg>
+        </div>
+        <p class="cookie-banner-title" id="cookieBannerTitle">Cookies</p>
+        <p>We only use essential cookies — no tracking, no ads, no third-party analytics. <a href="privacy.html">Learn more</a></p>
         <div class="cookie-actions">
-            <button class="cookie-btn cookie-accept">Accept</button>
-            <button class="cookie-btn cookie-decline">Essential only</button>
+            <button class="cookie-btn cookie-accept" type="button">Accept</button>
+            <button class="cookie-btn cookie-decline" type="button">Essential only</button>
         </div>
     </div>
 
@@ -1113,17 +1196,10 @@
         /* ── Hero entrance ───────────────────────────────── */
         const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-        // Eyebrow fades in
-        tl.fromTo('#heroEyebrow', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7 }, 0.2);
-
         // Title lines slide up from clip
         document.querySelectorAll('.hero-title .line span').forEach((el, i) => {
             tl.fromTo(el, { y: '100%' }, { y: '0%', duration: 0.9, ease: 'power4.out' }, 0.35 + i * 0.12);
         });
-
-        // Desc + CTA fade in
-        tl.fromTo('#heroDesc', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 }, 0.85);
-        tl.fromTo('#heroCta',  { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 }, 0.95);
 
         /* ── Scroll animations ───────────────────────────── */
         gsap.utils.toArray('.fade-up').forEach(el => {
@@ -1159,63 +1235,169 @@
             );
         });
 
-        /* ── Stagger blog cards ──────────────────────────── */
-        gsap.utils.toArray('.blog-card').forEach((card, i) => {
-            ScrollTrigger.getAll().forEach(st => {
-                if (st.vars.trigger === card) st.kill();
-            });
-            gsap.fromTo(card,
-                { opacity: 0, y: 60 },
-                {
-                    opacity: 1, y: 0,
-                    duration: 0.8,
-                    delay: i * 0.1,
-                    ease: 'power3.out',
-                    scrollTrigger: { trigger: card, start: 'top 90%', once: true }
-                }
-            );
-        });
-
-        /* ── Header scroll ───────────────────────────────── */
-        const hdr = document.getElementById('header');
-        const btt = document.getElementById('backToTop');
+        /* ── Topbar: condense + fade on scroll ───────────── */
+        const topbar = document.getElementById('topbar');
+        const fadeStart = 20;
+        const fadeEnd = 150;
         window.addEventListener('scroll', () => {
-            hdr.classList.toggle('scrolled', window.scrollY > 20);
-            btt.classList.toggle('visible', window.scrollY > 400);
+            const y = window.scrollY;
+            topbar.classList.toggle('is-condensed', y > 24);
+            const opacity = Math.max(0, 1 - (y - fadeStart) / (fadeEnd - fadeStart));
+            topbar.style.opacity = y < fadeStart ? '1' : String(opacity);
+            topbar.style.pointerEvents = opacity <= 0 ? 'none' : 'auto';
         }, { passive: true });
-        btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        /* ── Mobile menu ─────────────────────────────────── */
-        const mBtn = document.getElementById('mobileMenuBtn');
-        const mMenu = document.getElementById('mobileMenu');
-        mBtn.addEventListener('click', () => mMenu.classList.toggle('open'));
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') mMenu.classList.remove('open'); });
+        /* ── Count-up odometer (digit reels + steady tick increment) */
+        const animateCountUp = (el) => {
+            if (el.dataset.countUpDone === '1') return;
+            el.dataset.countUpDone = '1';
+            const target = parseFloat(el.dataset.countUp);
+            if (!Number.isFinite(target)) return;
+            const suffix = el.dataset.suffix || '';
+            const useThousand = el.dataset.thousand === 'true';
+            const locale = el.dataset.locale || navigator.language || 'en-US';
+            const intervalMs = parseInt(el.dataset.intervalMs || '0', 10);
+            const incrementBy = parseInt(el.dataset.incrementBy || '1', 10);
+            const formatValue = (n) => useThousand ? n.toLocaleString(locale) : String(n);
 
-        /* ── Sports dropdown ─────────────────────────────── */
-        const sBtn = document.getElementById('sportsBtn');
-        const sDrop = document.getElementById('sportsDropdown');
-        sBtn.addEventListener('click', e => {
-            e.stopPropagation();
-            const open = sDrop.classList.toggle('open');
-            sBtn.setAttribute('aria-expanded', open);
+            let currentValue = Math.round(target);
+            let formatted = formatValue(currentValue);
+
+            el.innerHTML = '';
+            el.classList.add('stat-num--odometer');
+            const chars = formatted.split('');
+            const reels = [];
+
+            chars.forEach((ch, i) => {
+                if (/\d/.test(ch)) {
+                    const targetDigit = parseInt(ch, 10);
+                    const reel = document.createElement('span');
+                    reel.className = 'digit-reel';
+                    const track = document.createElement('span');
+                    track.className = 'digit-reel-track';
+                    const spins = (chars.length - i) + 2;
+                    const totalSteps = spins * 10 + targetDigit;
+                    for (let n = 0; n <= totalSteps; n++) {
+                        const s = document.createElement('span');
+                        s.textContent = String(n % 10);
+                        track.appendChild(s);
+                    }
+                    track.dataset.currentSteps = totalSteps;
+                    reel.appendChild(track);
+                    el.appendChild(reel);
+                    reels.push(reel);
+                    requestAnimationFrame(() => requestAnimationFrame(() => {
+                        track.style.transform = `translateY(-${totalSteps}em)`;
+                    }));
+                } else {
+                    const sep = document.createElement('span');
+                    sep.className = 'reel-sep';
+                    sep.textContent = ch;
+                    el.appendChild(sep);
+                }
+            });
+
+            if (suffix) {
+                const suf = document.createElement('span');
+                suf.className = 'reel-suffix';
+                suf.textContent = suffix;
+                el.appendChild(suf);
+            }
+
+            // Steady tick: roll the relevant digits forward by one step
+            if (intervalMs > 0) {
+                const rollReel = (reel, newDigit) => {
+                    const track = reel.querySelector('.digit-reel-track');
+                    const currentSteps = parseInt(track.dataset.currentSteps, 10);
+                    const currentDigit = currentSteps % 10;
+                    if (currentDigit === newDigit) return;
+                    const stepsForward = (newDigit - currentDigit + 10) % 10;
+                    for (let i = 1; i <= stepsForward; i++) {
+                        const s = document.createElement('span');
+                        s.textContent = String((currentSteps + i) % 10);
+                        track.appendChild(s);
+                    }
+                    const newSteps = currentSteps + stepsForward;
+                    track.dataset.currentSteps = newSteps;
+                    track.style.transition = 'transform 0.7s cubic-bezier(0.34, 1.4, 0.64, 1)';
+                    track.style.transform = `translateY(-${newSteps}em)`;
+                };
+                // Wait for initial animation to finish before starting ticks
+                setTimeout(() => {
+                    setInterval(() => {
+                        currentValue += incrementBy;
+                        const newFormatted = formatValue(currentValue);
+                        // Skip ticks that would change digit count (e.g., 99,999 → 100,000) — extremely rare in our range
+                        if (newFormatted.length !== formatted.length) return;
+                        let reelIdx = 0;
+                        for (const ch of newFormatted) {
+                            if (/\d/.test(ch)) {
+                                rollReel(reels[reelIdx], parseInt(ch, 10));
+                                reelIdx++;
+                            }
+                        }
+                        formatted = newFormatted;
+                    }, intervalMs);
+                }, 2600);
+            }
+        };
+        const countUpObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCountUp(entry.target);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('[data-count-up]').forEach(el => countUpObserver.observe(el));
+
+        /* ── Section progress (scroll-driven expand) ───────
+           Measures: how far user has scrolled past the section's top edge,
+           normalized to one viewport height. 0 at load → 1 after scrolling ~1vh. */
+        const parallaxSections = document.querySelectorAll('[data-parallax-section]');
+        const updateParallax = () => {
+            const vh = window.innerHeight;
+            parallaxSections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const scrolledPast = Math.max(0, -rect.top);
+                const progress = Math.min(1, scrolledPast / vh);
+                section.style.setProperty('--section-progress', progress.toFixed(4));
+            });
+        };
+        updateParallax();
+        window.addEventListener('scroll', updateParallax, { passive: true });
+        window.addEventListener('resize', updateParallax);
+
+        /* ── Mobile nav overlay (DEUKOM-style) ───────────── */
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const setMenu = (open) => {
+            menuBtn.classList.toggle('is-open', open);
+            mobileNav.classList.toggle('is-open', open);
+            mobileNav.setAttribute('aria-hidden', String(!open));
+            menuBtn.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+            document.body.style.overflow = open ? 'hidden' : '';
+        };
+        menuBtn.addEventListener('click', () => setMenu(!menuBtn.classList.contains('is-open')));
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && menuBtn.classList.contains('is-open')) setMenu(false);
         });
-        document.addEventListener('click', () => {
-            sDrop.classList.remove('open');
-            sBtn.setAttribute('aria-expanded', false);
+        // Close menu when clicking a link
+        mobileNav.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => setMenu(false));
         });
 
         /* ── Cookie ──────────────────────────────────────── */
+        const cookieBanner = document.getElementById('cookieBanner');
         if (!localStorage.getItem('tq_cookie')) {
-            setTimeout(() => document.getElementById('cookieBanner').classList.add('visible'), 1400);
+            setTimeout(() => cookieBanner.classList.add('visible'), 1400);
         }
-        document.querySelector('.cookie-accept').addEventListener('click', () => {
+        const dismissCookie = () => {
             localStorage.setItem('tq_cookie', '1');
-            document.getElementById('cookieBanner').style.display = 'none';
-        });
-        document.querySelector('.cookie-decline').addEventListener('click', () => {
-            localStorage.setItem('tq_cookie', '1');
-            document.getElementById('cookieBanner').style.display = 'none';
-        });
+            cookieBanner.classList.remove('visible');
+        };
+        document.querySelector('.cookie-accept').addEventListener('click', dismissCookie);
+        document.querySelector('.cookie-decline').addEventListener('click', dismissCookie);
 
         /* ── Link prefetch ───────────────────────────────── */
         document.querySelectorAll('a[href]').forEach(a => {
